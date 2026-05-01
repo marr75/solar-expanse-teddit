@@ -1,5 +1,5 @@
 # Teddit for Solar Expanse
-Teddit is a BepInEx plugin for Solar Expanse that allows you to edit Solar Exapanse facilities, spacecraft, research, and resource deposits via YAML file.
+Teddit is a BepInEx plugin for Solar Expanse that allows you to create mods for Solar Exapanse that modify or create facilities, spacecraft, research, resource deposits, and many other parts of Solar Expanse.
 ## How to Use
 This mod is based around the use of YAML files to modify or create objects for Solar Expanse.
 
