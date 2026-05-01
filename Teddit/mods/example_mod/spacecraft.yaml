@@ -1,0 +1,24 @@
+# Spacecraft patches.
+# Keys are spacecraft type IDs (from dump/spacecraft.yaml).
+#
+# ── Fields ────────────────────────────────────────────────────────────────────
+#   orbitSC:                              bool   — true = orbital only (cannot land)
+#   timeToBuildInDays:                    float  — construction time in in-game days
+#   constructionEquipmentCountIsRequired: bool   — whether Construction Equipment is required
+#   buildCost:                            double — money cost to build
+#   buildResources:                       mapping — physical resources required: {resource_id: amount}
+#   cargoCapacity:                        float  — cargo capacity in tonnes
+#   fuelCapacity:                         float  — fuel tank size in tonnes
+#   thrust:                               float  — engine thrust (kN)
+#   exhaustV:                             float  — exhaust velocity (km/s)
+#   mass:                                 float  — dry mass (tonnes)
+#   maxLifeSupport:                       float  — max crew life-support days
+#   availableDeltaV:                      float  — total delta-V (km/s)
+#   maintenanceCostPerDay:                float  — daily upkeep cost
+#   maxPayload:                           float or null — max payload to surface; null = unlimited
+
+spacecraft_chem_small:
+  buildResources:
+    id_resource_steel: 40
+    id_resource_chips: 20
+  cargoCapacity: 200

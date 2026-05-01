@@ -1,0 +1,283 @@
+# SPACE ELEVATOR (LaunchVehicleType)
+id_LV_launch_elevator_Fake:
+  timeToBuildInDays: 110
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_hel3: 1E+23
+  maxPayload: 20000
+  maxFuelLoad: 10000
+  costLaunch: 0
+  exhaustV: 4.4
+  reusability: 1
+  maintenanceCostPerDay: 0
+  canSendHuman: true
+
+# MAGNETIC LAUNCH RAILS (LaunchVehicleType)
+id_LV_launch_magrails_Fake:
+  timeToBuildInDays: 110
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_hel3: 1E+23
+  maxPayload: 1000
+  maxFuelLoad: 10000
+  costLaunch: 1500
+  exhaustV: 4.4
+  reusability: 1
+  maintenanceCostPerDay: 0
+  canSendHuman: true
+
+# STATIONARY MASS DRIVER (LaunchVehicleType)
+id_LV_launch_massdriver_Fake:
+  timeToBuildInDays: 110
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_hel3: 1E+23
+  maxPayload: 500
+  maxFuelLoad: 10000
+  costLaunch: 0
+  exhaustV: 4.4
+  reusability: 1
+  maintenanceCostPerDay: 0
+  canSendHuman: true
+
+# ROTARY LAUNCHER (LaunchVehicleType)
+id_LV_launch_spin_Fake:
+  timeToBuildInDays: 110
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_hel3: 1E+23
+  maxPayload: 100
+  maxFuelLoad: 10000
+  costLaunch: 250
+  exhaustV: 4.4
+  reusability: 1
+  maintenanceCostPerDay: 0
+  canSendHuman: false
+
+# ID_ROCKET_CHEAT (LaunchVehicleType)
+id_Rocket_Cheat:
+  timeToBuildInDays: 0
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 0
+  maxPayload: 1000000
+  maxFuelLoad: 10000
+  costLaunch: 0
+  exhaustV: 4.4
+  reusability: 0.1
+  maintenanceCostPerDay: 0
+  canSendHuman: true
+
+# ID_ROCKET_FORCYCLEMISION (LaunchVehicleType)
+id_Rocket_ForCycleMision:
+  timeToBuildInDays: 110
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 250
+    id_resource_raremetal: 25
+  maxPayload: 800
+  maxFuelLoad: 10000
+  costLaunch: 3000
+  exhaustV: 4.4
+  reusability: 1
+  maintenanceCostPerDay: 20
+  canSendHuman: true
+
+# AL-ICE ROCKET (LaunchVehicleType)
+id_Rocket_RocketType5:
+  timeToBuildInDays: 60
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 50
+    id_resource_water: 20
+  maxPayload: 30
+  maxFuelLoad: 10000
+  costLaunch: 0
+  exhaustV: 2.5
+  reusability: 0
+  maintenanceCostPerDay: 1
+  canSendHuman: true
+
+# AL-ICE ROCKET (HEAVY) (LaunchVehicleType)
+id_Rocket_RocketType6:
+  timeToBuildInDays: 120
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 120
+    id_resource_water: 50
+  maxPayload: 300
+  maxFuelLoad: 10000
+  costLaunch: 0
+  exhaustV: 2.5
+  reusability: 0
+  maintenanceCostPerDay: 1
+  canSendHuman: true
+
+# FALCON (LaunchVehicleType)
+id_Rocket_RocketType3:
+  timeToBuildInDays: 90
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 80
+    id_resource_raremetal: 15
+  maxPayload: 42
+  maxFuelLoad: 10000
+  costLaunch: 400
+  exhaustV: 4.4
+  reusability: 0.5
+  maintenanceCostPerDay: 20
+  canSendHuman: true
+
+# KESTREL (LaunchVehicleType)
+id_Rocket_RocketType2:
+  timeToBuildInDays: 70
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 100
+  maxPayload: 64
+  maxFuelLoad: 10000
+  costLaunch: 300
+  exhaustV: 4.4
+  reusability: 0
+  maintenanceCostPerDay: 10
+  canSendHuman: true
+
+# HAWK (LaunchVehicleType)
+id_Rocket_RocketType7:
+  timeToBuildInDays: 120
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 120
+  maxPayload: 200
+  maxFuelLoad: 10000
+  costLaunch: 500
+  exhaustV: 4.4
+  reusability: 0
+  maintenanceCostPerDay: 10
+  canSendHuman: true
+
+# ALBATROSS (LaunchVehicleType)
+lv_chem_seadragon:
+  timeToBuildInDays: 180
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 800
+  maxPayload: 1800
+  maxFuelLoad: 10000
+  costLaunch: 4600
+  exhaustV: 4.4
+  reusability: 0
+  maintenanceCostPerDay: 20
+  canSendHuman: true
+
+# SPARROW (LaunchVehicleType)
+id_Rocket_RocketType1:
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 50
+  maxPayload: 10
+  maxFuelLoad: 10000
+  costLaunch: 150
+  exhaustV: 4.4
+  reusability: 0
+  maintenanceCostPerDay: 10
+  canSendHuman: true
+
+# EAGLE (LaunchVehicleType)
+id_Rocket_RocketType4:
+  timeToBuildInDays: 110
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 250
+    id_resource_raremetal: 25
+  maxPayload: 800
+  maxFuelLoad: 10000
+  costLaunch: 3000
+  exhaustV: 4.4
+  reusability: 0.1
+  maintenanceCostPerDay: 20
+  canSendHuman: true
+
+# CONDOR (LaunchVehicleType)
+lv_chemadvanced:
+  timeToBuildInDays: 160
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 500
+    id_resource_plastic: 500
+    id_resource_raremetal: 100
+  maxPayload: 8000
+  maxFuelLoad: 8000
+  costLaunch: 8000
+  exhaustV: 10
+  reusability: 0.8
+  maintenanceCostPerDay: 10
+  canSendHuman: true
+
+# TERATORN (LaunchVehicleType)
+lv_nuke_large:
+  timeToBuildInDays: 360
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 1000
+    id_resource_alloy: 100
+    id_resource_uran: 200
+  maxPayload: 20000
+  maxFuelLoad: 15000
+  costLaunch: 15000
+  exhaustV: 35
+  reusability: 0.4
+  maintenanceCostPerDay: 10
+  canSendHuman: true
+
+# MAGPIE (LaunchVehicleType)
+lv_nuke_mid:
+  timeToBuildInDays: 180
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 500
+    id_resource_raremetal: 100
+    id_resource_uran: 100
+  maxPayload: 4000
+  maxFuelLoad: 4800
+  costLaunch: 4800
+  exhaustV: 35
+  reusability: 0.5
+  maintenanceCostPerDay: 10
+  canSendHuman: true
+
+# PELICAN (LaunchVehicleType)
+lv_nuke_small:
+  timeToBuildInDays: 140
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 400
+    id_resource_raremetal: 50
+    id_resource_uran: 40
+  maxPayload: 1200
+  maxFuelLoad: 10000
+  costLaunch: 3000
+  exhaustV: 4.4
+  reusability: 0.65
+  maintenanceCostPerDay: 10
+  canSendHuman: true
+

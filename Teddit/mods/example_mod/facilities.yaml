@@ -1,0 +1,30 @@
+module_fuel:
+  needWorkersToWork: 200
+
+id_facility_cat_habitat:
+  facilityType: Habitation
+  possiblePlacement: Both
+  icon: cat.jpg
+  name: Cat Habitat
+  description: A cozy habitat module. Surprisingly comfortable.
+  maintenanceCostPerDay: 3.0
+  energyConsumption: 2.0
+  needWorkersToWork: 0
+  sortingShop: 50
+  specialAbility: CrewCapacity
+  specialAbilityParameter: 10
+  timeToBuildInDays: 30.0
+  constructionEquipmentCountIsRequired: true
+  buildCost: 5000.0
+  buildResources:
+    id_resource_steel: 50
+    id_resource_glass: 20
+  byproducts:
+    - resource: id_resource_co2
+      rate: 0.5
+      state: Gas
+
+build_outpost:
+  buildResources:
+    id_resource_steel: 50
+    id_resource_glass: 20

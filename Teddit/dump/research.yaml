@@ -1,0 +1,1945 @@
+# SPACE FARMING (ResearchDefinition)
+research_agriculture_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  requirements:
+    - research_category_biotech
+
+# REGOLITH ADAPTATION (ResearchDefinition)
+research_agriculture_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  requirements:
+    - research_agriculture_1
+
+# HYDROPONICS (ResearchDefinition)
+research_agriculture_3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  requirements:
+    - research_agriculture_2
+
+# RADIOTROPHIC FUNGI (ResearchDefinition)
+research_agriculture_4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  requirements:
+    - research_agriculture_2
+
+# LOW-G GMO (ResearchDefinition)
+research_agriculture_5:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  requirements:
+    - research_agriculture_3
+
+# BIOREACTORS (ResearchDefinition)
+research_biotech_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  requirements:
+    - research_category_biotech
+
+# KNALLGAS BACTERIA FARMS (ResearchDefinition)
+research_biotech_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  requirements:
+    - research_biotech_1
+
+# CLOSED-CYCLE ALGAE (ResearchDefinition)
+research_biotech_3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  requirements:
+    - research_biotech_2
+
+# GENETIC ENGINEERING (ResearchDefinition)
+research_biotech_4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  requirements:
+    - research_biotech_1
+
+# BIOLOGICAL MACHINES (ResearchDefinition)
+research_biotech_5:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  requirements:
+    - research_biotech_4
+
+# AGRICULTURE (ResearchDefinition)
+research_category_agriculture:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 288000
+  researchType: Biotech
+  researchSubType: SubBranch_Agriculture
+  stage: 0
+  requirements: []
+
+# BIOTECH (ResearchDefinition)
+research_category_biotech:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 288000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  requirements: []
+
+# CHEMICAL PROPULSION (ResearchDefinition)
+research_category_chem:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 288000
+  researchType: Engineering
+  researchSubType: SubBranch_Chemical
+  stage: 0
+  requirements: []
+
+# COMPUTING (ResearchDefinition)
+research_category_computing:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Physics
+  researchSubType: SubBranch_Computing
+  stage: 0
+  requirements: []
+
+# ELECTRIC PROPULSION (ResearchDefinition)
+research_category_electricprop:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Physics
+  researchSubType: SubBranch_Electroprop
+  stage: 1
+  requirements: []
+
+# ELECTROMAGNETISM (ResearchDefinition)
+research_category_electromag:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Physics
+  researchSubType: SubBranch_Electromagnetism
+  stage: 0
+  requirements: []
+
+# FUSION PROPULSION (ResearchDefinition)
+research_category_fusionprop:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 5520000
+  researchType: Physics
+  researchSubType: SubBranch_Fusion
+  stage: 2
+  requirements:
+    - research_electromag_3
+
+# INTERSTELLAR TRAVEL (ResearchDefinition)
+research_category_interstellar:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1.032E+07
+  researchType: Biotech
+  researchSubType: SubBranch_Spacecraft
+  stage: 2
+  requirements:
+    - research_sc_zeus
+    - research_lifesup_14
+    - research_mat_fibre4
+
+# LAUNCH FACILITY (ResearchDefinition)
+research_category_launch:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchFacility
+  stage: 1
+  requirements: []
+
+# LIFE SUPPORT (ResearchDefinition)
+research_category_lifesup:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 1
+  requirements: []
+
+# LAUNCH VEHICLES (ResearchDefinition)
+research_category_lv:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 1
+  requirements:
+    - research_category_chem
+
+# MATERIALS (ResearchDefinition)
+research_category_mat:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements: []
+
+# ADVANCED MATERIALS (ResearchDefinition)
+research_category_mat2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 144000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 2
+  requirements: []
+
+# MINING (ResearchDefinition)
+research_category_mine:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Engineering
+  researchSubType: SubBranch_Mining
+  stage: 1
+  requirements: []
+
+# NUCLEAR POWER (ResearchDefinition)
+research_category_nukepower:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 1
+  requirements: []
+
+# NUCLEAR PROPULSION (ResearchDefinition)
+research_category_nukeprop:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 1
+  requirements:
+    - research_category_nukepower
+
+# OBSERVATION (ResearchDefinition)
+research_category_observation:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Physics
+  researchSubType: SubBranch_Exploration
+  stage: 2
+  requirements: []
+
+# POWER (ResearchDefinition)
+research_category_power:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Physics
+  researchSubType: SubBranch_Power
+  stage: 1
+  requirements: []
+
+# ROBOTICS (ResearchDefinition)
+research_category_robotics:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 0
+  requirements:
+    - research_category_lifesup
+    - research_computing_proc2
+
+# SOLAR SAILS (ResearchDefinition)
+research_category_sails:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 2
+  requirements:
+    - research_mat_fibre1
+
+# SPACECRAFT (ResearchDefinition)
+research_category_sc:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 1
+  requirements:
+    - research_lv_main1
+
+# ADVANCED SPACECRAFT (ResearchDefinition)
+research_category_sc2:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 72000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 2
+  requirements: []
+
+# TERRAFORMING (ResearchDefinition)
+research_category_terraforming:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 648000
+  researchType: Biotech
+  researchSubType: SubBranch_Terraforming
+  stage: 2
+  requirements: []
+
+# SOLID PROPELLANT ROCKETS (ResearchDefinition)
+research_chem_main1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Engineering
+  researchSubType: SubBranch_Chemical
+  stage: 0
+  requirements:
+    - research_category_chem
+
+# KEROLOX (ResearchDefinition)
+research_chem_main2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Engineering
+  researchSubType: SubBranch_Chemical
+  stage: 0
+  requirements:
+    - research_chem_main1
+
+# METHALOX (ResearchDefinition)
+research_chem_main3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_Chemical
+  stage: 0
+  requirements:
+    - research_chem_main2
+
+# HYDROLOX (ResearchDefinition)
+research_chem_main4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Engineering
+  researchSubType: SubBranch_Chemical
+  stage: 0
+  requirements:
+    - research_chem_main3
+
+# SOLID HYDROGEN (ResearchDefinition)
+research_chem_main5:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Engineering
+  researchSubType: SubBranch_Chemical
+  stage: 0
+  requirements:
+    - research_chem_main4
+
+# POLYNITROGEN FUEL (ResearchDefinition)
+research_chem_main6:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 5520000
+  researchType: Engineering
+  researchSubType: SubBranch_Chemical
+  stage: 0
+  requirements:
+    - research_chem_main5
+
+# MACHINE LEARNING (ResearchDefinition)
+research_computing_ai1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2400000
+  researchType: Physics
+  researchSubType: SubBranch_Computing
+  stage: 0
+  requirements:
+    - research_computing_proc2
+
+# NEURAL NETWORKS (ResearchDefinition)
+research_computing_ai2:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 3000000
+  researchType: Physics
+  researchSubType: SubBranch_Computing
+  stage: 0
+  requirements: []
+
+# BASIC AI (ResearchDefinition)
+research_computing_ai3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Physics
+  researchSubType: SubBranch_Computing
+  stage: 0
+  requirements:
+    - research_computing_ai1
+
+# ADVANCED AI (ResearchDefinition)
+research_computing_ai4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Physics
+  researchSubType: SubBranch_Computing
+  stage: 0
+  requirements:
+    - research_computing_ai3
+
+# MICROPROCESSORS (ResearchDefinition)
+research_computing_proc1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Physics
+  researchSubType: SubBranch_Computing
+  stage: 0
+  requirements:
+    - research_category_computing
+
+# NANOPROCESSORS (ResearchDefinition)
+research_computing_proc2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Physics
+  researchSubType: SubBranch_Computing
+  stage: 0
+  requirements:
+    - research_computing_proc1
+
+# THREE-DIMENSIONAL INTEGRATED CIRCUITS (ResearchDefinition)
+research_computing_proc3:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 3000000
+  researchType: Physics
+  researchSubType: SubBranch_Computing
+  stage: 0
+  requirements: []
+
+# EARLY QPUS (ResearchDefinition)
+research_computing_proc4:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 2160000
+  researchType: Physics
+  researchSubType: SubBranch_Computing
+  stage: 0
+  requirements: []
+
+# REVERSIBLE CIRCUITS (ResearchDefinition)
+research_computing_proc5:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 4080000
+  researchType: Physics
+  researchSubType: SubBranch_Computing
+  stage: 0
+  requirements: []
+
+# QUANTUM COMPUTING (ResearchDefinition)
+research_computing_proc6:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Physics
+  researchSubType: SubBranch_Computing
+  stage: 0
+  requirements:
+    - research_computing_proc2
+
+# HALL THRUSTER (ResearchDefinition)
+research_electricprop_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Physics
+  researchSubType: SubBranch_Electroprop
+  stage: 0
+  requirements:
+    - research_category_electricprop
+
+# ION ENGINE (ResearchDefinition)
+research_electricprop_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1728000
+  researchType: Physics
+  researchSubType: SubBranch_Electroprop
+  stage: 0
+  requirements: []
+
+# ELECTRODELESS ION GENERATION (ResearchDefinition)
+research_electricprop_3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3456000
+  researchType: Physics
+  researchSubType: SubBranch_Electroprop
+  stage: 0
+  requirements: []
+
+# MULTI-STAGE GRID (ResearchDefinition)
+research_electricprop_4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 6912000
+  researchType: Physics
+  researchSubType: SubBranch_Electroprop
+  stage: 0
+  requirements: []
+
+# MPD (ResearchDefinition)
+research_electricprop_5:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Physics
+  researchSubType: SubBranch_Electroprop
+  stage: 0
+  requirements:
+    - research_electricprop_1
+
+# OPTIMIZED SELF-FIELD (ResearchDefinition)
+research_electricprop_6:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Physics
+  researchSubType: SubBranch_Electroprop
+  stage: 0
+  requirements:
+    - research_electricprop_5
+
+# SUPERCONDUCTING MAGNETS (ResearchDefinition)
+research_electromag_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Physics
+  researchSubType: SubBranch_Electromagnetism
+  stage: 0
+  requirements:
+    - research_category_electromag
+    - research_mat_superconductor1
+
+# MAGNETIC FIELD CONTAINMENT (ResearchDefinition)
+research_electromag_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Physics
+  researchSubType: SubBranch_Fusion
+  stage: 0
+  requirements:
+    - research_fusionpower_1
+
+# MAGNETIC NOZZLE (ResearchDefinition)
+research_electromag_3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Physics
+  researchSubType: SubBranch_Fusion
+  stage: 0
+  requirements:
+    - research_electromag_2
+
+# PHASED-ARRAYS (ResearchDefinition)
+research_electromag_5:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 864000
+  researchType: Physics
+  researchSubType: SubBranch_Electromagnetism
+  stage: 0
+  requirements: []
+
+# ATOMIC MANIPULATION (ResearchDefinition)
+research_electromag_7:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Physics
+  researchSubType: SubBranch_Electromagnetism
+  stage: 0
+  requirements:
+    - research_category_electromag
+
+# LASERS (ResearchDefinition)
+research_electromag_8:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Physics
+  researchSubType: SubBranch_Electromagnetism
+  stage: 0
+  requirements:
+    - research_category_electromag
+
+# REMOTE POWER TRANSFER (ResearchDefinition)
+research_electromag_9:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Physics
+  researchSubType: SubBranch_Electromagnetism
+  stage: 0
+  requirements:
+    - research_electromag_8
+
+# FUSION THEORY (ResearchDefinition)
+research_fusionpower_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Physics
+  researchSubType: SubBranch_Fusion
+  stage: 2
+  requirements:
+    - research_category_nukepower
+    - research_electromag_1
+
+# MAGNETIC SPIN ALIGNMENT (ResearchDefinition)
+research_fusionprop_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 8160000
+  researchType: Physics
+  researchSubType: SubBranch_Fusion
+  stage: 2
+  requirements:
+    - research_fusionprop_3
+
+# IMPROVED PLASMA CONTAINMENT (ResearchDefinition)
+research_fusionprop_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 6480000
+  researchType: Physics
+  researchSubType: SubBranch_Fusion
+  stage: 2
+  requirements:
+    - research_category_fusionprop
+
+# FUEL INJECTION OPTIMIZATION (ResearchDefinition)
+research_fusionprop_3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 7200000
+  researchType: Physics
+  researchSubType: SubBranch_Fusion
+  stage: 2
+  requirements:
+    - research_fusionprop_2
+
+# ADVANCED FUSION PROPULSION (ResearchDefinition)
+research_fusionprop_4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 9120000
+  researchType: Physics
+  researchSubType: SubBranch_Fusion
+  stage: 2
+  requirements:
+    - research_fusionprop_1
+
+# SPACE ELEVATOR (ResearchDefinition)
+research_launch_elevator:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchFacility
+  stage: 0
+  requirements:
+    - research_launch_magrail
+    - research_mat_fibre4
+
+# ELECTROMAGNETIC CATAPULT (ResearchDefinition)
+research_launch_magnetic_catapult:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchFacility
+  stage: 0
+  requirements:
+    - research_launch_massdriver
+    - research_mat_superconductor2
+
+# MAGNETIC LAUNCH RAILS (ResearchDefinition)
+research_launch_magrail:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchFacility
+  stage: 0
+  requirements:
+    - research_launch_spin
+    - research_electromag_1
+
+# MASS DRIVER (ResearchDefinition)
+research_launch_massdriver:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchFacility
+  stage: 0
+  requirements:
+    - research_launch_spin
+    - research_electromag_1
+
+# MASS DRIVER PROPULSION (ResearchDefinition)
+research_launch_massengine:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 6480000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchFacility
+  stage: 0
+  requirements:
+    - research_launch_massdriver
+    - research_category_fusionprop
+
+# LAUNCH PAD (ResearchDefinition)
+research_launch_pad:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchFacility
+  stage: 0
+  requirements:
+    - research_category_launch
+
+# SPIN-LAUNCH (ResearchDefinition)
+research_launch_spin:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchFacility
+  stage: 0
+  requirements:
+    - research_launch_pad
+
+# CREWED FLIGHT (ResearchDefinition)
+research_lifesup_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 0
+  requirements:
+    - research_category_lifesup
+
+# IMPROVED CAPSULE CONSTRUCTION (ResearchDefinition)
+research_lifesup_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 0
+  requirements:
+    - research_lifesup_1
+
+# STO TRANSPORTS (ResearchDefinition)
+research_lifesup_4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 0
+  requirements:
+    - research_lifesup_2
+
+# IMPROVED RATION PACKING (ResearchDefinition)
+research_lifesup_5:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 0
+  requirements:
+    - research_lifesup_1
+
+# IMPROVED ATMOSPHERE RECYCLING (ResearchDefinition)
+research_lifesup_6:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 0
+  requirements:
+    - research_lifesup_5
+
+# SPIN-GRAV HABITATION (ResearchDefinition)
+research_lifesup_8:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_Colonization
+  stage: 0
+  requirements:
+    - research_lifesup_11
+
+# PLANETARY HABITATS (ResearchDefinition)
+research_lifesup_9:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Biotech
+  researchSubType: SubBranch_Colonization
+  stage: 1
+  requirements:
+    - research_category_lifesup
+
+# REGOLITH SHIELDING (ResearchDefinition)
+research_lifesup_10:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_Colonization
+  stage: 0
+  requirements:
+    - research_lifesup_11
+
+# COLONY CONSTRUCTION (ResearchDefinition)
+research_lifesup_11:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Biotech
+  researchSubType: SubBranch_Colonization
+  stage: 0
+  requirements:
+    - research_lifesup_9
+
+# ON-SITE 3D PRINTING (ResearchDefinition)
+research_lifesup_12:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_Colonization
+  stage: 0
+  requirements:
+    - research_lifesup_11
+
+# PERMANENT ORBITAL PRESENCE (ResearchDefinition)
+research_lifesup_13:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Biotech
+  researchSubType: SubBranch_Colonization
+  stage: 0
+  requirements:
+    - research_lifesup_8
+
+# IN-ORBIT PRODUCTION (ResearchDefinition)
+research_lifesup_14:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Biotech
+  researchSubType: SubBranch_Colonization
+  stage: 0
+  requirements:
+    - research_lifesup_13
+
+# ARTIFICIAL HIBERNATION (ResearchDefinition)
+research_lifesup_15:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 0
+  requirements:
+    - research_category_lifesup
+    - research_biotech_4
+
+# SUSPENDED ANIMATION (ResearchDefinition)
+research_lifesup_16:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 0
+  requirements:
+    - research_lifesup_15
+    - research_biotech_5
+
+# CONDOR (ResearchDefinition)
+research_lv2_chemadvanced:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 6480000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements:
+    - research_chem_main6
+    - research_lv_main3
+
+# TERATORN (ResearchDefinition)
+research_lv2_nukelarge:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 7200000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements:
+    - research_lv2_nukemid
+
+# MAGPIE (ResearchDefinition)
+research_lv2_nukemid:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 6480000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements:
+    - research_lv_main4
+
+# ALUMINIUM-ICE ROCKETS (ResearchDefinition)
+research_lv_alice:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 864000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements: []
+
+# EARLY LAUNCH SYSTEMS (ResearchDefinition)
+research_lv_main1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements:
+    - research_category_lv
+    - research_chem_main2
+
+# SUPERHEAVY LAUNCH (ResearchDefinition)
+research_lv_main2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements:
+    - research_lv_main1
+
+# REUSABLE LAUNCH VEHICLES (ResearchDefinition)
+research_lv_main3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements:
+    - research_lv_upgr1
+
+# NUCLEAR LAUNCH VEHICLES (ResearchDefinition)
+research_lv_main4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 5520000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements:
+    - research_lv_main2
+    - research_nukeprop_7
+
+# IMPROVED STACK ASSEMBLY (ResearchDefinition)
+research_lv_upgr1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements:
+    - research_lv_main1
+
+# OPTIMIZED HEAT SHIELDS (ResearchDefinition)
+research_lv_upgr2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 5520000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements:
+    - research_lv_main3
+
+# IMPROVED REUSABLE ROCKETS (ResearchDefinition)
+research_lv_upgr3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 5520000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements:
+    - research_lv_main3
+
+# ADVANCED PAYLOAD FAIRINGS (ResearchDefinition)
+research_lv_upgr4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 7200000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  requirements:
+    - research_lv_upgr3
+    - research_lv2_nukemid
+
+# CIRCUIT PRODUCTION IN SPACE (ResearchDefinition)
+research_mat_chips1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_mat_metal1
+
+# IMPROVED ELECTRONICS PRODUCTION (ResearchDefinition)
+research_mat_chips2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_mat_chips1
+
+# DIAMONDOIDS (ResearchDefinition)
+research_mat_diamondoid:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_mat_fibre3
+
+# SPACE-WORTHY FIBERS (ResearchDefinition)
+research_mat_fibre1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_category_mat
+
+# GRAPHENE (ResearchDefinition)
+research_mat_fibre2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_category_mat
+    - research_mat_fibre1
+
+# NANOTUBES (ResearchDefinition)
+research_mat_fibre3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_mat_fibre2
+
+# MEGA-SCALE CARBON ALLOTROPE APPLICATION (ResearchDefinition)
+research_mat_fibre4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_mat_fibre3
+
+# SPACE ALLOYS (ResearchDefinition)
+research_mat_metal1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_category_mat
+
+# VACUUM FORGING (ResearchDefinition)
+research_mat_metal2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_mat_metal1
+
+# ADVANCED ALLOYING TECHNIQUES (ResearchDefinition)
+research_mat_metal3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_mat_metal2
+
+# IMPROVED ALLOY PRODUCTION (ResearchDefinition)
+research_mat_metal4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_mat_metal3
+
+# IMPROVED REACTOR VESSELS (ResearchDefinition)
+research_mat_refractory:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 0
+  requirements:
+    - research_category_nukepower
+
+# HIGH-TEMPERATURE SUPERCONDUCTORS (ResearchDefinition)
+research_mat_superconductor1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Physics
+  researchSubType: SubBranch_Electromagnetism
+  stage: 0
+  requirements:
+    - research_category_electromag
+
+# ROOM-TEMPERATURE SUPERCONDUCTORS (ResearchDefinition)
+research_mat_superconductor2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Physics
+  researchSubType: SubBranch_Electromagnetism
+  stage: 0
+  requirements:
+    - research_mat_superconductor1
+
+# DEBRIS SHIELDS (ResearchDefinition)
+research_mat_upgr1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_category_mat
+
+# AEROGELS (ResearchDefinition)
+research_mat_upgr2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Engineering
+  researchSubType: SubBranch_Material
+  stage: 0
+  requirements:
+    - research_category_mat
+    - research_mat_upgr1
+
+# METAMATERIALS (ResearchDefinition)
+research_mat_upgr3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Engineering
+  researchSubType: SubBranch_Electromagnetism
+  stage: 0
+  requirements:
+    - research_category_mat
+    - research_electromag_7
+
+# IN-SITU RESOURCE UTILIZATION (ResearchDefinition)
+research_mine_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Engineering
+  researchSubType: SubBranch_Mining
+  stage: 0
+  requirements:
+    - research_category_mine
+
+# REGOLITH SIFTING (ResearchDefinition)
+research_mine_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Engineering
+  researchSubType: SubBranch_Mining
+  stage: 0
+  requirements:
+    - research_mine_1
+
+# VACUUM-OPTIMIZED BOREHEADS (ResearchDefinition)
+research_mine_3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Engineering
+  researchSubType: SubBranch_Mining
+  stage: 0
+  requirements:
+    - research_mine_1
+
+# HELIUM-3 EXTRACTION (ResearchDefinition)
+research_mine_4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Engineering
+  researchSubType: SubBranch_Mining
+  stage: 0
+  requirements:
+    - research_mine_2
+    - research_fusionpower_1
+
+# RADIOACTIVE ISOTOPE ISOLATION (ResearchDefinition)
+research_mine_5:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_Mining
+  stage: 0
+  requirements:
+    - research_mine_2
+
+# ADVANCED MINING METHODS (ResearchDefinition)
+research_mine_6:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_Mining
+  stage: 0
+  requirements:
+    - research_mine_3
+
+# IMPROVED HELIUM-3 MINING (ResearchDefinition)
+research_mine_7:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Engineering
+  researchSubType: SubBranch_Mining
+  stage: 0
+  requirements:
+    - research_mine_4
+
+# IMPROVED FISSILES MINING (ResearchDefinition)
+research_mine_8:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Engineering
+  researchSubType: SubBranch_Mining
+  stage: 0
+  requirements:
+    - research_mine_5
+
+# ORBITAL GAS EXTRACTOR (ResearchDefinition)
+research_mine_atmoscoop:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 5520000
+  researchType: Engineering
+  researchSubType: SubBranch_Colonization
+  stage: 0
+  requirements:
+    - research_lifesup_14
+
+# MOLTEN FISSION SYSTEMS (ResearchDefinition)
+research_nukepower_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 0
+  requirements:
+    - research_mat_refractory
+
+# GAS CORE FISSION (ResearchDefinition)
+research_nukepower_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 0
+  requirements:
+    - research_nukepower_1
+
+# HIGH TEMPERATURE NTR (ResearchDefinition)
+research_nukeprop_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 864000
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 0
+  requirements: []
+
+# HELIUM LOOP CYCLE (ResearchDefinition)
+research_nukeprop_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1152000
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 0
+  requirements: []
+
+# NUCLEAR THERMAL ELECTRIC ROCKET (ResearchDefinition)
+research_nukeprop_3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 0
+  requirements:
+    - research_nukeprop_5
+
+# MPD-BASED NTER (ResearchDefinition)
+research_nukeprop_4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1.0368E+07
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 0
+  requirements: []
+
+# LIQUID CORE (ResearchDefinition)
+research_nukeprop_5:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 0
+  requirements:
+    - research_category_nukeprop
+    - research_nukepower_1
+
+# ADVANCED LIQUID CORE (ResearchDefinition)
+research_nukeprop_6:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1.3824E+07
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 0
+  requirements: []
+
+# CLOSED-CYCLE GAS CORE (ResearchDefinition)
+research_nukeprop_7:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Physics
+  researchSubType: SubBranch_Nuclear
+  stage: 0
+  requirements:
+    - research_nukeprop_3
+    - research_nukepower_2
+
+# IMPROVED OPTICS (ResearchDefinition)
+research_observation_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Physics
+  researchSubType: SubBranch_Exploration
+  stage: 0
+  requirements:
+    - research_category_observation
+
+# RADAR ASTRONOMY (ResearchDefinition)
+research_observation_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1728000
+  researchType: Physics
+  researchSubType: SubBranch_Exploration
+  stage: 0
+  requirements: []
+
+# SPACE TELESCOPES (ResearchDefinition)
+research_observation_3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Physics
+  researchSubType: SubBranch_Exploration
+  stage: 0
+  requirements:
+    - research_observation_1
+
+# EXOPLANET DETECTION (ResearchDefinition)
+research_observation_4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Physics
+  researchSubType: SubBranch_Exploration
+  stage: 0
+  requirements:
+    - research_observation_3
+
+# CHEMICAL POWER REACTOR (ResearchDefinition)
+research_power_chem:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1296000
+  researchType: Physics
+  researchSubType: SubBranch_Power
+  stage: 0
+  requirements: []
+
+# GEOTHERMAL POWER TURBINE (ResearchDefinition)
+research_power_geo:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Physics
+  researchSubType: SubBranch_Power
+  stage: 0
+  requirements:
+    - research_category_power
+
+# POWERSAT (ResearchDefinition)
+research_power_powersat:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Physics
+  researchSubType: SubBranch_Power
+  stage: 0
+  requirements:
+    - research_category_power
+    - research_electromag_9
+
+# SOLAR CELL ARRAYS (ResearchDefinition)
+research_power_solar1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Physics
+  researchSubType: SubBranch_Power
+  stage: 0
+  requirements:
+    - research_category_power
+
+# IMPROVED SOLAR CELLS (ResearchDefinition)
+research_power_solar2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Physics
+  researchSubType: SubBranch_Power
+  stage: 0
+  requirements:
+    - research_power_solar1
+
+# WIND TURBINE (ResearchDefinition)
+research_power_wind:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Physics
+  researchSubType: SubBranch_Power
+  stage: 0
+  requirements:
+    - research_category_power
+
+# EXOSKELETONS (ResearchDefinition)
+research_robotics_crew1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 0
+  requirements:
+    - research_category_robotics
+    - research_mat_metal2
+
+# EXPERT SYSTEMS (ResearchDefinition)
+research_robotics_crew2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 0
+  requirements:
+    - research_category_robotics
+    - research_computing_ai3
+
+# CYBERNETICS (ResearchDefinition)
+research_robotics_crew3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Biotech
+  researchSubType: SubBranch_LifeSupport
+  stage: 0
+  requirements:
+    - research_computing_ai1
+    - research_robotics_crew1
+    - research_mat_fibre2
+
+# OPTIMIZED PAYLOAD BUS (ResearchDefinition)
+research_sails_1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 2
+  requirements:
+    - research_category_sails
+
+# REFLECTIVE MATERIALS (ResearchDefinition)
+research_sails_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 2
+  requirements:
+    - research_sails_1
+    - research_mat_fibre2
+
+# IMPROVED SAIL DEPLOYMENT (ResearchDefinition)
+research_sails_3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 2
+  requirements:
+    - research_sails_2
+
+# PLASMA MAGNET SAIL (ResearchDefinition)
+research_sails_4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 2
+  requirements:
+    - research_sails_3
+    - research_electromag_1
+
+# ARIANE (ResearchDefinition)
+research_sc_ariane:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 5520000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_hephaistos
+    - research_nukeprop_7
+
+# ATLAS (ResearchDefinition)
+research_sc_atlas:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 9120000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_sirius
+    - research_fusionprop_1
+
+# EXPANDED CARGO BAYS 1 (ResearchDefinition)
+research_sc_cargo1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_category_sc
+    - research_sc_helios
+
+# EXPANDED CARGO BAYS 2 (ResearchDefinition)
+research_sc_cargo2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_cargo1
+    - research_sc_hermes
+
+# EXPANDED CARGO BAYS 3 (ResearchDefinition)
+research_sc_cargo3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_cargo2
+    - research_sc_hephaistos
+
+# EXPANDED CARGO BAYS 4 (ResearchDefinition)
+research_sc_cargo4:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 7200000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_cargo3
+    - research_sc_nike
+
+# CRONOS (ResearchDefinition)
+research_sc_cronos:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 5520000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_hephaistos
+    - research_nukeprop_7
+
+# ATHENA (ResearchDefinition)
+research_sc_hecate:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_hermes
+    - research_electricprop_5
+
+# STRATOS (ResearchDefinition)
+research_sc_helios:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 144000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_category_sc
+
+# HEPHAISTOS (ResearchDefinition)
+research_sc_hephaistos:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4080000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_prometheus
+    - research_nukeprop_5
+
+# HERMES (ResearchDefinition)
+research_sc_hermes:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 864000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_helios
+
+# IRIS (ResearchDefinition)
+research_sc_iris:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_category_sc
+
+# NIKE (ResearchDefinition)
+research_sc_nike:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 6480000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_category_sc
+    - research_category_fusionprop
+
+# SELENE (ResearchDefinition)
+research_sc_orion:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 432000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_iris
+
+# PROMETHEUS (ResearchDefinition)
+research_sc_prometheus:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_category_sc
+    - research_category_nukeprop
+
+# SIRIUS (ResearchDefinition)
+research_sc_sirius:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 8160000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_nike
+    - research_fusionprop_3
+
+# ZEUS (ResearchDefinition)
+research_sc_zeus:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 9120000
+  researchType: Engineering
+  researchSubType: SubBranch_Spacecraft
+  stage: 0
+  requirements:
+    - research_sc_sirius
+    - research_fusionprop_1
+
+# MARS BACTERIA (ResearchDefinition)
+research_terraforming_1:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 2.7648E+07
+  researchType: Biotech
+  researchSubType: SubBranch_Terraforming
+  stage: 0
+  requirements: []
+
+# CARBON RELEASE (ResearchDefinition)
+research_terraforming_2:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 1200000
+  researchType: Biotech
+  researchSubType: SubBranch_Terraforming
+  stage: 0
+  requirements:
+    - research_category_terraforming
+
+# PHOTOSYNTHETIC MICROBES (ResearchDefinition)
+research_terraforming_3:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2.7648E+07
+  researchType: Biotech
+  researchSubType: SubBranch_Terraforming
+  stage: 0
+  requirements: []
+
+# ALBEDO MANIPULATION (ResearchDefinition)
+research_terraforming_4:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 2.7648E+07
+  researchType: Biotech
+  researchSubType: SubBranch_Terraforming
+  stage: 0
+  requirements: []
+
+# COMET REDIRECTION (ResearchDefinition)
+research_terraforming_5:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 5.5296E+07
+  researchType: Biotech
+  researchSubType: SubBranch_Terraforming
+  stage: 0
+  requirements: []
+
+# STELLAR MIRROR (ResearchDefinition)
+research_terraforming_6:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Biotech
+  researchSubType: SubBranch_Terraforming
+  stage: 0
+  requirements:
+    - research_terraforming_2
+
+# ARTIFICIAL MAGNETOSPHERE (ResearchDefinition)
+research_terraforming_magnet1:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_Terraforming
+  stage: 0
+  requirements:
+    - research_category_terraforming
+    - research_electromag_1
+    - research_mat_superconductor2
+

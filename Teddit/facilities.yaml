@@ -1,0 +1,46 @@
+# Facility patches and new facility definitions.
+# Keys are facility IDs (from dump/facilities.yaml).
+# If the ID exists in the game, fields are patched onto it.
+# If the ID does not exist, a new facility is created.
+#
+# ── Simple fields ─────────────────────────────────────────────────────────────
+#   maintenanceCostPerDay:                float  — daily upkeep cost
+#   energyConsumption:                    double — energy draw per unit per day
+#   needWorkersToWork:                    int    — crew required per enabled unit
+#   specialAbilityParameter:              float  — mining rate, crew capacity, etc.
+#   upkeepStackingValue:                  float  — additional upkeep per stacked unit
+#   timeToBuildInDays:                    float  — construction time in in-game days
+#   constructionEquipmentCountIsRequired: bool   — whether a Construction Equipment facility must be present
+#   price.buildCost:                      double — money cost to build (dot notation)
+#   energyProductionData.energyProduction:double — energy output per day
+#   resourceExplorationBonus:             float  — (GroundFacilityDescriptor only) exploration bonus
+#
+# ── Complex fields ────────────────────────────────────────────────────────────
+#   buildResources:   mapping — physical resources required to build: {resource_id: amount}
+#   resourcesToMine:  sequence — resources a Mining facility extracts: [resource_id, ...]
+#   refinerInput:     mapping — resources consumed per day (specialAbility: Refiner): {resource_id: ratePerDay}
+#   refinerOutput:    mapping — resources produced per day (specialAbility: Refiner): {resource_id: ratePerDay}
+#   byproducts:       sequence — side outputs: [{resource: id, rate: 1.0, state: Solid}]
+#                               state values: Solid | Liquid | Gas | Underground
+#
+# ── New-facility-only fields ──────────────────────────────────────────────────
+#   facilityType:      string — Module | Habitation | Power | Mining | Production |
+#                               LaunchFacility | Terraformation | Other | FacilitySegment
+#   possiblePlacement: string — Surface | Orbit | Both
+#   icon:              string — path to PNG/JPEG image, relative to mod folder
+#   name:              string — display name
+#   description:       string — tooltip description
+#   buildCost:         double — money cost (shorthand for price.buildCost on new facilities)
+#   isLocked:          bool   — hidden from build menu until unlocked
+#   canBeScrapped:     bool   — can be demolished (default true)
+#   canBeTurnedOff:    bool   — can be toggled off (default true)
+#   sortingShop:       int    — UI sort order, lower = earlier (default 999)
+#   upkeepStacking:    bool   — upkeep increases per additional unit
+#   specialAbility:    string — None | CrewCapacity | EnergyProduction | EnergyStorage |
+#                               Mining | Refiner | Lab | BuildSpacecraft | ConstructShip |
+#                               InstallationModule | ConstructionEquipment | CrewTransport |
+#                               SpaceMirrorOrShade | Probe | Bonus
+#   energyProduction:  double — base energy output per day
+#   solarPanels:       bool   — scales energy output by distance to sun
+#   windPower:         bool   — wind-based energy source
+#   geothermal:        bool   — geothermal energy source

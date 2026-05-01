@@ -1,0 +1,4073 @@
+# ASTEROID ENGINE (SpaceModuleDescriptor)
+build_asteroid_engine_module:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 10
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 900
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 5000
+    id_resource_plastic: 1000
+    id_resource_hel3: 1100
+    id_resource_alloy: 1500
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# HABITAT (GroundFacilityDescriptor)
+build_habitat:
+  facilityType: Habitation
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 0
+  energyConsumption: 1
+  needWorkersToWork: 0
+  specialAbility: CrewCapacity
+  specialAbilityParameter: 100
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 100
+    id_resource_supply: 20
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CITY (GroundFacilityDescriptor)
+build_habitatcity:
+  facilityType: Habitation
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 0
+  energyConsumption: 200
+  needWorkersToWork: 0
+  specialAbility: CrewCapacity
+  specialAbilityParameter: 300000
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 500
+    id_resource_glass: 500
+    id_resource_supply: 100
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# DOME HABITAT (GroundFacilityDescriptor)
+build_habitatdome:
+  facilityType: Habitation
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 0
+  energyConsumption: 10
+  needWorkersToWork: 0
+  specialAbility: CrewCapacity
+  specialAbilityParameter: 1000
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 300
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200
+    id_resource_glass: 100
+    id_resource_supply: 40
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# UNDERGROUND HABITAT (GroundFacilityDescriptor)
+build_habitatunder:
+  facilityType: Habitation
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 0
+  energyConsumption: 1
+  needWorkersToWork: 0
+  specialAbility: CrewCapacity
+  specialAbilityParameter: 100
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 300
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 20
+    id_resource_supply: 20
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# HEADQUARTERS (GroundFacilityDescriptor)
+build_hq:
+  facilityType: Other
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 100
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 12
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 1000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# RESEARCH LABORATORY (GroundFacilityDescriptor)
+build_lab:
+  facilityType: Other
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 2
+  needWorkersToWork: 20
+  specialAbility: Lab
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 100
+    id_resource_raremetal: 10
+    id_resource_chips: 10
+    id_resource_glass: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# OBSERVATORY  (GroundFacilityDescriptor)
+build_observatory:
+  facilityType: Other
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 1
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 40
+    id_resource_glass: 50
+    id_resource_chips: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# OUTPOST (GroundFacilityDescriptor)
+build_outpost:
+  facilityType: Habitation
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: CrewCapacity
+  specialAbilityParameter: 10
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 40
+    id_resource_supply: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CITY STATION (GroundFacilityDescriptor)
+build_space_0gcity:
+  facilityType: Habitation
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: CrewCapacity
+  specialAbilityParameter: 20000
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 1200
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 1000
+    id_resource_raremetal: 200
+    id_resource_supply: 100
+    id_resource_glass: 400
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ROTATING HABITAT (GroundFacilityDescriptor)
+build_space_0gcolony:
+  facilityType: Habitation
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: CrewCapacity
+  specialAbilityParameter: 100
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 120
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 200
+    id_resource_raremetal: 50
+    id_resource_supply: 20
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ROTATING STATION (GroundFacilityDescriptor)
+build_space_0gdome:
+  facilityType: Habitation
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: CrewCapacity
+  specialAbilityParameter: 1000
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 450
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 400
+    id_resource_raremetal: 100
+    id_resource_glass: 200
+    id_resource_supply: 40
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ORBITAL CONSTRUCTION (GroundFacilityDescriptor)
+build_space_construction:
+  facilityType: Production
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: ConstructionEquipment
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 15
+  constructionEquipmentCountIsRequired: false
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 100
+    id_resource_chips: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ORBITAL SHIPYARD (GroundFacilityDescriptor)
+build_space_drydock:
+  facilityType: Production
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: BuildSpacecraft
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 150
+    id_resource_plastic: 50
+    id_resource_chips: 25
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ORBITAL FUEL REFINERY (GroundFacilityDescriptor)
+build_space_fuel:
+  facilityType: Production
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 10
+    id_resource_raremetal: 30
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# TELESCOPE (GroundFacilityDescriptor)
+build_space_telescope:
+  facilityType: Other
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 30
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 10
+    id_resource_glass: 30
+    id_resource_chips: 5
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# PLANETARY MAGNETOSPHERE GENERATOR (GroundFacilityDescriptor)
+build_terraform_magnet:
+  facilityType: Terraformation
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 50
+  energyConsumption: 240
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: -0.6
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 1800
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 36000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ORBITAL MAGNETOSPHERE GENERATOR (GroundFacilityDescriptor)
+build_terraform_space_magnet:
+  facilityType: Terraformation
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 40
+  energyConsumption: 228
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: -0.72
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 1600
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 30000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ORBITAL MIRROR (GroundFacilityDescriptor)
+build_terraform_space_mirror:
+  facilityType: Terraformation
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: SpaceMirrorOrShade
+  specialAbilityParameter: 0.216
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 1600
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_plastic: 2000
+    id_resource_glass: 27000
+    id_resource_steel: 1000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ORBITAL SHADE (GroundFacilityDescriptor)
+build_terraform_space_shade:
+  facilityType: Terraformation
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: SpaceMirrorOrShade
+  specialAbilityParameter: -0.006
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 1600
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 13000
+    id_resource_plastic: 6000
+    id_resource_alloy: 1000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# VEHICLE ASSEMBLY (GroundFacilityDescriptor)
+build_veh_assembly:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 10
+  specialAbility: BuildSpacecraft
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 300
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200
+    id_resource_raremetal: 50
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_VEH_ASSEMBLYINTERSTELLARSHIP (GroundFacilityDescriptor)
+build_veh_assemblyInterstellarShip:
+  facilityType: Production
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: BuildSpacecraft
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200
+    id_resource_raremetal: 50
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CARBON RELEASE STATION (GroundFacilityDescriptor)
+build_carbon_deposition:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: Refiner
+  specialAbilityParameter: 1
+  upkeepStacking: true
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts:
+    - resource: id_resource_volatile
+      rate: 1
+      state: Gas
+
+# CO2 RELEASE STATION (GroundFacilityDescriptor)
+build_co2_deposition:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: true
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_co2
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# HEL 3 RELEASE STATION (GroundFacilityDescriptor)
+build_hel3_deposition:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: true
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_hel3
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# HYDROGEN RELEASE STATION (GroundFacilityDescriptor)
+build_hydrogen_deposition:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: true
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_hydrogen
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# METAL RELEASE STATION (GroundFacilityDescriptor)
+build_metal_deposition:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: true
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_metal
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# NITROGEN RELEASE STATION (GroundFacilityDescriptor)
+build_nitrogen_deposition:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: true
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_nitrogen
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# NOBLE GAS RELEASE STATION (GroundFacilityDescriptor)
+build_noblegas_deposition:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: true
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_noblegas
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# OXYGEN RELEASE STATION (GroundFacilityDescriptor)
+build_oxygen_deposition:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: true
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_oxygen
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# RARE METAL RELEASE STATION (GroundFacilityDescriptor)
+build_raremetal_deposition:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: true
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_raremetal
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# SILICON RELEASE STATION (GroundFacilityDescriptor)
+build_silicon_deposition:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: true
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_silicon
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# URAN RELEASE STATION (GroundFacilityDescriptor)
+build_uran_deposition:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: true
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_uran
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# DRIVE ASSEMBLY (1/3) (GroundFacilityDescriptor)
+build_interstellar_drive:
+  facilityType: FacilitySegment
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 450
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_alloy: 15000
+    id_resource_chips: 5000
+    id_resource_raremetal: 25000
+    id_resource_hel3: 8000
+    id_resource_steel: 20000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# HABITAT SEGMENT (1/8) (GroundFacilityDescriptor)
+build_interstellar_habitat:
+  facilityType: FacilitySegment
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_glass: 8000
+    id_resource_silicon: 10000
+    id_resource_steel: 15000
+    id_resource_plastic: 4000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# PREPARE THE HABITATS (GroundFacilityDescriptor)
+build_interstellar_HouseTheCrew:
+  facilityType: FacilitySegment
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: CrewCapacity
+  specialAbilityParameter: 2000
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_supply: 10000
+    id_resource_volatile: 5000
+    id_resource_water: 8000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# MAIN STRUCTURE (GroundFacilityDescriptor)
+build_interstellar_structure:
+  facilityType: FacilitySegment
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 1200
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 120000
+    id_resource_raremetal: 50000
+    id_resource_plastic: 35000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# INTERSTELLAR VEHICLE ASSEMBLY (GroundFacilityDescriptor)
+build_space_interstellarconstruction:
+  facilityType: Production
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 90
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_INTERSTELLAR_DRIVE2 (GroundFacilityDescriptor)
+build_interstellar_drive2:
+  facilityType: FacilitySegment
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 450
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_alloy: 400000
+    id_resource_chips: 20000
+    id_resource_raremetal: 800000
+    id_resource_hel3: 300000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_INTERSTELLAR_HABITAT2 (GroundFacilityDescriptor)
+build_interstellar_habitat2:
+  facilityType: FacilitySegment
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_glass: 600000
+    id_resource_silicon: 400000
+    id_resource_steel: 1000000
+    id_resource_volatile: 5000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_INTERSTELLAR_HOUSETHECREW2 (GroundFacilityDescriptor)
+build_interstellar_HouseTheCrew2:
+  facilityType: FacilitySegment
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_glass: 600000
+    id_resource_silicon: 400000
+    id_resource_steel: 1000000
+    id_resource_volatile: 5000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_INTERSTELLAR_STRUCTURE2 (GroundFacilityDescriptor)
+build_interstellar_structure2:
+  facilityType: FacilitySegment
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 1200
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 20000000
+    id_resource_raremetal: 800000
+    id_resource_plastic: 50000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_SPACE_INTERSTELLARCONSTRUCTION2 (GroundFacilityDescriptor)
+build_space_interstellarconstruction2:
+  facilityType: Module
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 90
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# SPACE ELEVATOR (GroundFacilityDescriptor)
+build_launch_elevator:
+  facilityType: LaunchFacility
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 100
+  energyConsumption: 4
+  needWorkersToWork: 50
+  specialAbility: Bonus
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 2200
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_plastic: 100000
+    id_resource_alloy: 10000
+    id_resource_steel: 40000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ELECTROMAGNETIC CATAPULT (GroundFacilityDescriptor)
+build_launch_magnetic_catapult:
+  facilityType: LaunchFacility
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 50
+  energyConsumption: 2.5
+  needWorkersToWork: 20
+  specialAbility: Bonus
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 800
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 500
+    id_resource_chips: 100
+    id_resource_raremetal: 300
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# MAGNETIC LAUNCH RAILS (GroundFacilityDescriptor)
+build_launch_magrails:
+  facilityType: LaunchFacility
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 50
+  energyConsumption: 2.5
+  needWorkersToWork: 20
+  specialAbility: Bonus
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 800
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 300
+    id_resource_chips: 200
+    id_resource_raremetal: 100
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# STATIONARY MASS DRIVER (GroundFacilityDescriptor)
+build_launch_massdriver:
+  facilityType: LaunchFacility
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 50
+  energyConsumption: 2.5
+  needWorkersToWork: 0
+  specialAbility: Bonus
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 800
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 300
+    id_resource_chips: 40
+    id_resource_raremetal: 50
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# LAUNCH PAD (GroundFacilityDescriptor)
+build_launch_pad:
+  facilityType: LaunchFacility
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 20
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Bonus
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 90
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 120
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ROTARY LAUNCHER (GroundFacilityDescriptor)
+build_launch_spin:
+  facilityType: LaunchFacility
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 50
+  energyConsumption: 1.5
+  needWorkersToWork: 20
+  specialAbility: Bonus
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 180
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 300
+    id_resource_chips: 20
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# EXOTIC ALLOY EXTRACTOR (GroundFacilityDescriptor)
+build_alloymine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_alloy
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CARBON MINE (GroundFacilityDescriptor)
+build_carbonmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_volatile
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CARBON MINE (GroundFacilityDescriptor)
+build_carbonmine_big:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 50
+  specialAbility: Mining
+  specialAbilityParameter: 10
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 1250
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_volatile
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CARBON DIOXIDE EXTRACTOR (GroundFacilityDescriptor)
+build_co2mine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_co2
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# MINING FACILITY (GroundFacilityDescriptor)
+build_earthmine:
+  facilityType: Other
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 100
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 10
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 100
+    id_resource_chips: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ELECTRONICS EXTRACTOR (GroundFacilityDescriptor)
+build_electronicsmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_chips
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# FUEL EXTRACTOR (GroundFacilityDescriptor)
+build_fuelmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_fuel
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# FUEL MINE (GroundFacilityDescriptor)
+build_fuelmine_big:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 100
+  specialAbility: Mining
+  specialAbilityParameter: 10
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 1250
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_fuel
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# GLASS EXTRACTOR (GroundFacilityDescriptor)
+build_glassmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_glass
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# HELIUM-3 EXTRACTOR (GroundFacilityDescriptor)
+build_he3mine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 1.25
+  needWorkersToWork: 20
+  specialAbility: Mining
+  specialAbilityParameter: 0.5
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 200
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_hel3
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_HE3MINE_BIG (GroundFacilityDescriptor)
+build_he3mine_big:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 50
+  specialAbility: Mining
+  specialAbilityParameter: 5
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 1250
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_hel3
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# HYDROGEN EXTRACTOR (GroundFacilityDescriptor)
+build_hydrogenmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_hydrogen
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# WATER ICE EXTRACTOR (GroundFacilityDescriptor)
+build_icemine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_water
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# WATER ICE EXTRACTOR (GroundFacilityDescriptor)
+build_icemine_big:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 50
+  specialAbility: Mining
+  specialAbilityParameter: 10
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 1250
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_water
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# METAL MINING BASE (GroundFacilityDescriptor)
+build_metalmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_metal
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# METAL MINING BASE (GroundFacilityDescriptor)
+build_metalmine_big:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 50
+  specialAbility: Mining
+  specialAbilityParameter: 10
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_metal
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# NITROGEN EXTRACTOR (GroundFacilityDescriptor)
+build_nitrogenmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_nitrogen
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# NOBLE GAS EXTRACTOR (GroundFacilityDescriptor)
+build_noblegasmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_noblegas
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# NOBLE GAS EXTRACTOR (GroundFacilityDescriptor)
+build_noblegasmine_big:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 50
+  specialAbility: Mining
+  specialAbilityParameter: 10
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_noblegas
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# OXYGEN EXTRACTOR (GroundFacilityDescriptor)
+build_oxygenmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_oxygen
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# POLYMERS EXTRACTOR (GroundFacilityDescriptor)
+build_plasticmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_plastic
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# RARE METAL EXTRACTORS (GroundFacilityDescriptor)
+build_raremine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_raremetal
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# RARE METAL EXTRACTORS (GroundFacilityDescriptor)
+build_raremine_big:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 50
+  specialAbility: Mining
+  specialAbilityParameter: 10
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 1250
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_raremetal
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# SILICON MINE (GroundFacilityDescriptor)
+build_siliconmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_silicon
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# SILICON MINE (GroundFacilityDescriptor)
+build_siliconmine_big:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 50
+  specialAbility: Mining
+  specialAbilityParameter: 10
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 1250
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_silicon
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ORBITAL GAS EXTRACTOR (GroundFacilityDescriptor)
+build_space_atmoscoop:
+  facilityType: Mining
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 1
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0.1
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 120
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 150
+    id_resource_plastic: 20
+    id_resource_chips: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# STEEL EXTRACTOR (GroundFacilityDescriptor)
+build_steelmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: None
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_steel
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# FISSILES MINE (GroundFacilityDescriptor)
+build_uranmine:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 1
+  needWorkersToWork: 10
+  specialAbility: Mining
+  specialAbilityParameter: 0.5
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_uran
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# FISSILES MINE (GroundFacilityDescriptor)
+build_uranmine_big:
+  facilityType: Mining
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 50
+  specialAbility: Mining
+  specialAbilityParameter: 5
+  upkeepStacking: false
+  upkeepStackingValue: 5
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 125
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_uran
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# MINING MODULE (SpaceModuleDescriptor)
+module_basemining:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 30
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Mining
+  specialAbilityParameter: 0.2
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 30
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 75
+    id_resource_chips: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_water
+    - id_resource_volatile
+    - id_resource_metal
+    - id_resource_raremetal
+    - id_resource_silicon
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CONSTRUCTION EQUIPMENT (SpaceModuleDescriptor)
+module_construction:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: ConstructionEquipment
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 30
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 50
+    id_resource_chips: 5
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# NUCLEAR DEVICE (SpaceModuleDescriptor)
+module_contractitem:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 10
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources: {}
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CREW COMPARTMENT TYPE-S (SpaceModuleDescriptor)
+module_crew_compartment:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: CrewTransport
+  specialAbilityParameter: 5
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 10
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 5
+    id_resource_metal: 20
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CREW COMPARTMENT TYPE-L (SpaceModuleDescriptor)
+module_crew_large:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: CrewTransport
+  specialAbilityParameter: 100
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 90
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 20
+    id_resource_plastic: 100
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CREW COMPARTMENT TYPE-M (SpaceModuleDescriptor)
+module_crew_medium:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: CrewTransport
+  specialAbilityParameter: 20
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 30
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 10
+    id_resource_plastic: 20
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# MOBILE REFINERY (SpaceModuleDescriptor)
+module_fuel:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 7
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 60
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 120
+    id_resource_chips: 20
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# GROUND PROBE (SpaceModuleDescriptor)
+module_ground_probe:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Probe
+  specialAbilityParameter: 10
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 50
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# MOBILE HABITAT (SpaceModuleDescriptor)
+module_habitat:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: CrewCapacity
+  specialAbilityParameter: 20
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 120
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 120
+    id_resource_chips: 40
+    id_resource_supply: 40
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# SPACE TELESCOPE (SpaceModuleDescriptor)
+module_hubel_telescope:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: InstallationModule
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 30
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 10
+    id_resource_glass: 30
+    id_resource_chips: 5
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# VOLATILE REFINING MODULE (SpaceModuleDescriptor)
+module_icemining:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Mining
+  specialAbilityParameter: 0.28
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 50
+    id_resource_chips: 5
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_water
+    - id_resource_volatile
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# METAL MINING MODULE (SpaceModuleDescriptor)
+module_metalmining:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Mining
+  specialAbilityParameter: 0.31
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 50
+    id_resource_chips: 5
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_metal
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# RADIOISOTOPE GENERATOR (SpaceModuleDescriptor)
+module_power:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 1
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 2
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 120
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_alloy: 70
+    id_resource_chips: 35
+    id_resource_uran: 10
+  energyProduction: 15
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# RARE METAL EXTRACTION MODULE (SpaceModuleDescriptor)
+module_raremining:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Mining
+  specialAbilityParameter: 0.16
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 50
+    id_resource_chips: 5
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine:
+    - id_resource_raremetal
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ORBITAL CONSTRUCTION (SpaceModuleDescriptor)
+module_space_construction_cargo:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: InstallationModule
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 100
+    id_resource_chips: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# PROBE (SpaceModuleDescriptor)
+module_space_probe:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Probe
+  specialAbilityParameter: 10
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 35
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 5
+    id_resource_chips: 1
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BATERYSTORAGETEST (GroundFacilityDescriptor)
+BateryStorageTest:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 5
+  solarPanels: true
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_ALLOYSMELTINGENERGYTEST (GroundFacilityDescriptor)
+build_alloysmeltingEnergyTest:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 0
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_ASTEROID_ENGINE_FACILITY (GroundFacilityDescriptor)
+build_asteroid_engine_facility:
+  facilityType: Other
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 180
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 300
+    id_resource_raremetal: 500
+    id_resource_hel3: 500
+    id_resource_alloy: 200
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_EARTHMINEENERGYTEST (GroundFacilityDescriptor)
+build_earthmineEnergyTest:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 100
+  energyConsumption: 15
+  needWorkersToWork: 0
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: true
+  upkeepStackingValue: 10
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 100
+    id_resource_chips: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_LAUNCH_ELEVATOR_TEST (GroundFacilityDescriptor)
+build_launch_elevator_Test:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 0
+  specialAbility: Bonus
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: false
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_LAUNCH_MAGRAILS_TEST (GroundFacilityDescriptor)
+build_launch_magrails_Test:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 0
+  specialAbility: Bonus
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: false
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_LAUNCH_MASSDRIVER_TEST (GroundFacilityDescriptor)
+build_launch_massdriver_test:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 5
+  needWorkersToWork: 0
+  specialAbility: Bonus
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: false
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_TESTLABATORY 1 SUBBRANCH_AGRICULTURE (GroundFacilityDescriptor)
+build_testLabatory 1 SubBranch_Agriculture:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 5
+  specialAbility: Lab
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BUILD_TESTLABATORYALL (GroundFacilityDescriptor)
+build_testLabatoryAll:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 2
+  needWorkersToWork: 5
+  specialAbility: Lab
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# COALPLANTTEST (GroundFacilityDescriptor)
+CoalPlantTest:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 10
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput:
+    id_resource_volatile: 1
+    id_resource_oxygen: 1
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# HYDROELEKTYKATEST (GroundFacilityDescriptor)
+HydroelektykaTest:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 5
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# MODULE_THERMOELECTRICTEST (SpaceModuleDescriptor)
+module_ThermoelectricTest:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: ConstructionEquipment
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 50
+    id_resource_chips: 5
+  energyProduction: 1
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# MODULE_THERMOELECTRICTEST2 (SpaceModuleDescriptor)
+module_ThermoelectricTest2:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: ConstructionEquipment
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 50
+    id_resource_chips: 5
+  energyProduction: 1
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# NUCLEARREACTOR (GroundFacilityDescriptor)
+NuclearReactor:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 10
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput:
+    id_resource_uran: 1
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# NUCLEARTERMALREACTOR (GroundFacilityDescriptor)
+NucleartermalReactor:
+  facilityType: Module
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+    id_resource_uran: 300
+  energyProduction: 10
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# SOLARPANEL (GroundFacilityDescriptor)
+SolarPanel:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 5
+  solarPanels: true
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# WINDPOWERTEST (GroundFacilityDescriptor)
+WindPowerTest:
+  facilityType: Module
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 5
+  solarPanels: false
+  windPower: true
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# BATTERIES (GroundFacilityDescriptor)
+build_power_battery:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_raremetal: 40
+    id_resource_steel: 30
+    id_resource_chips: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CARBON POWER PLANT (GroundFacilityDescriptor)
+build_power_carbon:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 200
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 800
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 730
+    id_resource_alloy: 70
+  energyProduction: 350
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput:
+    id_resource_volatile: 0.12
+    id_resource_oxygen: 0.32
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts:
+    - resource: id_resource_co2
+      rate: 0.44
+      state: Gas
+
+# CHEMICAL REACTOR (GroundFacilityDescriptor)
+build_power_chemical:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 25
+  energyConsumption: 0
+  needWorkersToWork: 100
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 800
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 400
+    id_resource_alloy: 300
+    id_resource_chips: 50
+  energyProduction: 400
+  solarPanels: false
+  windPower: false
+  geothermal: true
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# POWER PLANT (GroundFacilityDescriptor)
+build_power_fuel_big:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200000
+  energyProduction: 1300
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput:
+    id_resource_fuel: 40
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# FUSION REACTOR (GroundFacilityDescriptor)
+build_power_fusion:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 350
+  energyConsumption: 0
+  needWorkersToWork: 200
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 1200
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 300
+    id_resource_alloy: 550
+    id_resource_chips: 300
+  energyProduction: 5000
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput:
+    id_resource_hel3: 0.42
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# GEOTHERMAL POWER (GroundFacilityDescriptor)
+build_power_geothermal:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 25
+  energyConsumption: 0
+  needWorkersToWork: 100
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 800
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 400
+    id_resource_alloy: 250
+    id_resource_chips: 100
+  energyProduction: 400
+  solarPanels: false
+  windPower: false
+  geothermal: true
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# GEOTHERMAL POWER (GroundFacilityDescriptor)
+build_power_geothermal_big:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200000
+  energyProduction: 5000
+  solarPanels: false
+  windPower: false
+  geothermal: true
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# HYDROGEN POWER PLANT (GroundFacilityDescriptor)
+build_power_hydrogen:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 50
+  energyConsumption: 0
+  needWorkersToWork: 150
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 800
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 500
+    id_resource_alloy: 50
+    id_resource_chips: 70
+  energyProduction: 300
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput:
+    id_resource_hydrogen: 1.2
+    id_resource_oxygen: 0.6
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts:
+    - resource: id_resource_water
+      rate: 1.6
+      state: Liquid
+
+# NUCLEAR REACTOR (GroundFacilityDescriptor)
+build_power_nuke:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 20
+  energyConsumption: 0
+  needWorkersToWork: 200
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 1000
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 1300
+    id_resource_alloy: 200
+    id_resource_chips: 100
+  energyProduction: 500
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput:
+    id_resource_uran: 0.2
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# NUCLEAR REACTOR (GroundFacilityDescriptor)
+build_power_nuke_big:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 100000
+    id_resource_raremetal: 50000
+    id_resource_chips: 50000
+  energyProduction: 20000
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput:
+    id_resource_uran: 1
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# REMOTE POWER RECEIVER (GroundFacilityDescriptor)
+build_power_receiver:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 95
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 800
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_glass: 130
+    id_resource_steel: 50
+    id_resource_raremetal: 20
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ORBITAL POWER RECEIVER (GroundFacilityDescriptor)
+build_power_receiver_orbit:
+  facilityType: Power
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 95
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 800
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_glass: 130
+    id_resource_steel: 50
+    id_resource_raremetal: 20
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# SOLAR ARRAY (GroundFacilityDescriptor)
+build_power_solar:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 3
+  energyConsumption: 0
+  needWorkersToWork: 2
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_glass: 50
+    id_resource_steel: 10
+  energyProduction: 5
+  solarPanels: true
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# SOLAR ARRAY (GroundFacilityDescriptor)
+build_power_solar_big:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 50000
+    id_resource_silicon: 20000
+  energyProduction: 2000
+  solarPanels: true
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# REMOTE POWER EMITTER (GroundFacilityDescriptor)
+build_power_transfer:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 700
+  energyConsumption: 1000
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 1800
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_glass: 100
+    id_resource_chips: 20
+    id_resource_alloy: 80
+    id_resource_steel: 150
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ORBITAL POWER STATION (GroundFacilityDescriptor)
+build_power_transfer_orbit:
+  facilityType: Power
+  possiblePlacement: Orbit
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 200
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_glass: 120
+    id_resource_steel: 30
+  energyProduction: 20
+  solarPanels: true
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# WIND POWER (GroundFacilityDescriptor)
+build_power_wind:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 3
+  energyConsumption: 0
+  needWorkersToWork: 2
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 80
+  energyProduction: 5
+  solarPanels: false
+  windPower: true
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# WIND POWER (GroundFacilityDescriptor)
+build_power_wind_big:
+  facilityType: Power
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: EnergyProduction, EnergyStorage
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 60000
+  energyProduction: 1500
+  solarPanels: false
+  windPower: true
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ALLOY SMELTING (GroundFacilityDescriptor)
+build_alloysmelting:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 2.5
+  needWorkersToWork: 10
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ALLOY SMELTING (GroundFacilityDescriptor)
+build_alloysmelting_big:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 15
+  needWorkersToWork: 100
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 300000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CO2 ELECTROLYSIS (GroundFacilityDescriptor)
+build_co2_splitting:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 2.5
+  needWorkersToWork: 10
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 50
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# CONSUMER GOODS FACTORY (GroundFacilityDescriptor)
+build_consumergoods_big:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 1.5
+  needWorkersToWork: 0
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200000
+    id_resource_chips: 10000
+    id_resource_plastic: 40000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# OPEN AIR FARM (GroundFacilityDescriptor)
+build_earthfarm:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 50
+  energyConsumption: 20
+  needWorkersToWork: 100
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: true
+  upkeepStackingValue: 10
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200
+    id_resource_chips: 50
+    id_resource_glass: 100
+    id_resource_plastic: 200
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# HELIUM-3 FACTORY (GroundFacilityDescriptor)
+build_earthhe3:
+  facilityType: Other
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 100
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: true
+  upkeepStackingValue: 10
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 200
+    id_resource_chips: 20
+    id_resource_uran: 20
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# FISSILE EXTRACTION FACILITY (GroundFacilityDescriptor)
+build_earthnuke:
+  facilityType: Other
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 100
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: true
+  upkeepStackingValue: 10
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 200
+    id_resource_chips: 20
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ELECTROLYSIS PLANT (GroundFacilityDescriptor)
+build_electrolysis:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 2.5
+  needWorkersToWork: 10
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 50
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ELECTROLYSIS PLANT (GroundFacilityDescriptor)
+build_electrolysis_big:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 25
+  needWorkersToWork: 100
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 50000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ELECTRONICS FACTORY (GroundFacilityDescriptor)
+build_electronicsfactory:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 2
+  needWorkersToWork: 40
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200
+    id_resource_chips: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# ELECTRONICS FACTORY (GroundFacilityDescriptor)
+build_electronicsfactory_big:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 15
+  needWorkersToWork: 100
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200000
+    id_resource_chips: 10000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# EXOTIC ALLOY PRODUCTION (GroundFacilityDescriptor)
+build_exoticalloy:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 1.5
+  needWorkersToWork: 20
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 300
+    id_resource_chips: 20
+    id_resource_raremetal: 50
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# EXOTIC ALLOY PRODUCTION (GroundFacilityDescriptor)
+build_exoticalloy_big:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 15
+  needWorkersToWork: 100
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 300000
+    id_resource_chips: 20000
+    id_resource_raremetal: 50000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# HYDROPONIC FARM (GroundFacilityDescriptor)
+build_farm:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 0.5
+  needWorkersToWork: 5
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 50
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# FUEL REFINERY (GroundFacilityDescriptor)
+build_fuel:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 1
+  needWorkersToWork: 5
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 50
+    id_resource_raremetal: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# FUEL REFINERY (GroundFacilityDescriptor)
+build_fuel_big:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 10
+  needWorkersToWork: 50
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 50000
+    id_resource_raremetal: 10000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# GLASS KILN (GroundFacilityDescriptor)
+build_glass:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 2
+  needWorkersToWork: 10
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 300
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# GLASS KILN (GroundFacilityDescriptor)
+build_glass_big:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 20
+  needWorkersToWork: 100
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 300000
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# POLYMERS PRODUCTION (GroundFacilityDescriptor)
+build_polymerproduction:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 1.5
+  needWorkersToWork: 20
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 150
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+
+# POLYMERS FACTORY (GroundFacilityDescriptor)
+build_polymerproduction_big:
+  facilityType: Production
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 10
+  energyConsumption: 15
+  needWorkersToWork: 10
+  specialAbility: Refiner
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 200
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyInput: {}
+  resourcesToMine: []
+  refinerInput: {}
+  refinerOutput: {}
+  byproducts: []
+

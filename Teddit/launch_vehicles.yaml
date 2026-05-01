@@ -1,0 +1,15 @@
+# Launch vehicle patches.
+# Keys are launch vehicle IDs (from dump/launch_vehicles.yaml).
+#
+# ── Fields ────────────────────────────────────────────────────────────────────
+#   timeToBuildInDays:                    float  — construction time in in-game days
+#   constructionEquipmentCountIsRequired: bool   — whether Construction Equipment is required
+#   buildCost:                            double — money cost to build
+#   buildResources:                       mapping — physical resources required: {resource_id: amount}
+#   maxPayload:                           float  — max payload to surface (tonnes)
+#   maxFuelLoad:                          float  — max fuel load (tonnes)
+#   costLaunch:                           float  — fuel cost per launch
+#   exhaustV:                             float  — exhaust velocity (km/s)
+#   reusability:                          float  — 0 = expendable, 1 = fully reusable
+#   maintenanceCostPerDay:                float  — daily upkeep cost
+#   canSendHuman:                         bool   — whether humans can be launched
