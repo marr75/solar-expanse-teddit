@@ -1,4 +1,4 @@
-# solar-expanse-teddit
+# Teddit for Solar Expanse
 Teddit is a BepInEx plugin for Solar Expanse that allows you to edit spacecraft, resource, research, launch vehicle, and facility properties at runtime.
 ## How to Use
 The JSON files found within the /dump/ folder contain the entries for every patchable object in the game. The values there can be used as reference. This list is updated every time the game is ran.
