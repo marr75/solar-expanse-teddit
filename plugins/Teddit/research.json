@@ -1,0 +1,8 @@
+{
+  "_comment": "Research patches. Keys are research IDs from dump/research.json[].Id.",
+  "_fields": {
+    "workHourToComplete": "float — work-hours needed to complete the research",
+    "isLocked":           "bool  — locks the research (hidden/unavailable entirely)",
+    "isLockedForUI":      "bool  — hides the research from the UI tree only"
+  }
+}

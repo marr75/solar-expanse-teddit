@@ -1,0 +1,37 @@
+{
+  "_comment": "Body names must be UPPERCASE (they match ObjectInfo.ObjectName). Resource IDs come from dump.json.",
+  "_states": "Solid | Liquid | Gas | Underground",
+
+  "MARS": [
+    {
+      "resourceId":   "id_resource_carbon",
+      "state":        "Solid",
+      "amount":       100000,
+      "miningFactor": 0.5,
+      "forcePrimary": false,
+      "overwrite":    false
+    }
+  ],
+
+  "EARTH": [
+    {
+      "resourceId":   "id_resource_raremetal",
+      "state":        "Underground",
+      "amount":       50000000,
+      "miningFactor": 0.8,
+      "forcePrimary": false,
+      "overwrite":    false
+    }
+  ],
+
+  "_template": [
+    {
+      "resourceId":   "id_resource_CHANGEME",
+      "state":        "Solid",
+      "amount":       50000,
+      "miningFactor": 0.5,
+      "forcePrimary": false,
+      "overwrite":    false
+    }
+  ]
+}

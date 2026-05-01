@@ -1,0 +1,2264 @@
+[
+  {
+    "Id": "research_agriculture_1",
+    "Title": "SPACE FARMING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Biotech",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_biotech"
+    ]
+  },
+  {
+    "Id": "research_agriculture_2",
+    "Title": "REGOLITH ADAPTATION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Biotech",
+    "Stage": 0,
+    "Requirements": [
+      "research_agriculture_1"
+    ]
+  },
+  {
+    "Id": "research_agriculture_3",
+    "Title": "HYDROPONICS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Biotech",
+    "Stage": 0,
+    "Requirements": [
+      "research_agriculture_2"
+    ]
+  },
+  {
+    "Id": "research_agriculture_4",
+    "Title": "RADIOTROPHIC FUNGI",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Biotech",
+    "Stage": 0,
+    "Requirements": [
+      "research_agriculture_2"
+    ]
+  },
+  {
+    "Id": "research_agriculture_5",
+    "Title": "LOW-G GMO",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Biotech",
+    "Stage": 0,
+    "Requirements": [
+      "research_agriculture_3"
+    ]
+  },
+  {
+    "Id": "research_biotech_1",
+    "Title": "BIOREACTORS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Biotech",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_biotech"
+    ]
+  },
+  {
+    "Id": "research_biotech_2",
+    "Title": "KNALLGAS BACTERIA FARMS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Biotech",
+    "Stage": 0,
+    "Requirements": [
+      "research_biotech_1"
+    ]
+  },
+  {
+    "Id": "research_biotech_3",
+    "Title": "CLOSED-CYCLE ALGAE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Biotech",
+    "Stage": 0,
+    "Requirements": [
+      "research_biotech_2"
+    ]
+  },
+  {
+    "Id": "research_biotech_4",
+    "Title": "GENETIC ENGINEERING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Biotech",
+    "Stage": 0,
+    "Requirements": [
+      "research_biotech_1"
+    ]
+  },
+  {
+    "Id": "research_biotech_5",
+    "Title": "BIOLOGICAL MACHINES",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Biotech",
+    "Stage": 0,
+    "Requirements": [
+      "research_biotech_4"
+    ]
+  },
+  {
+    "Id": "research_category_agriculture",
+    "Title": "AGRICULTURE",
+    "IsLocked": true,
+    "IsLockedForUI": true,
+    "WorkHourToComplete": 288000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Agriculture",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_biotech",
+    "Title": "BIOTECH",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 288000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Biotech",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_chem",
+    "Title": "CHEMICAL PROPULSION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 288000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Chemical",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_computing",
+    "Title": "COMPUTING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Computing",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_electricprop",
+    "Title": "ELECTRIC PROPULSION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electroprop",
+    "Stage": 1,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_electromag",
+    "Title": "ELECTROMAGNETISM",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electromagnetism",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_fusionprop",
+    "Title": "FUSION PROPULSION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 5520000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Fusion",
+    "Stage": 2,
+    "Requirements": [
+      "research_electromag_3"
+    ]
+  },
+  {
+    "Id": "research_category_interstellar",
+    "Title": "INTERSTELLAR TRAVEL",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1.032E+07,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 2,
+    "Requirements": [
+      "research_sc_zeus",
+      "research_lifesup_14",
+      "research_mat_fibre4"
+    ]
+  },
+  {
+    "Id": "research_category_launch",
+    "Title": "LAUNCH FACILITY",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchFacility",
+    "Stage": 1,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_lifesup",
+    "Title": "LIFE SUPPORT",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 1,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_lv",
+    "Title": "LAUNCH VEHICLES",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 1,
+    "Requirements": [
+      "research_category_chem"
+    ]
+  },
+  {
+    "Id": "research_category_mat",
+    "Title": "MATERIALS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_mat2",
+    "Title": "ADVANCED MATERIALS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 144000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 2,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_mine",
+    "Title": "MINING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Mining",
+    "Stage": 1,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_nukepower",
+    "Title": "NUCLEAR POWER",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 1,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_nukeprop",
+    "Title": "NUCLEAR PROPULSION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 1,
+    "Requirements": [
+      "research_category_nukepower"
+    ]
+  },
+  {
+    "Id": "research_category_observation",
+    "Title": "OBSERVATION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Exploration",
+    "Stage": 2,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_power",
+    "Title": "POWER",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Power",
+    "Stage": 1,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_robotics",
+    "Title": "ROBOTICS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_lifesup",
+      "research_computing_proc2"
+    ]
+  },
+  {
+    "Id": "research_category_sails",
+    "Title": "SOLAR SAILS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 2,
+    "Requirements": [
+      "research_mat_fibre1"
+    ]
+  },
+  {
+    "Id": "research_category_sc",
+    "Title": "SPACECRAFT",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 1,
+    "Requirements": [
+      "research_lv_main1"
+    ]
+  },
+  {
+    "Id": "research_category_sc2",
+    "Title": "ADVANCED SPACECRAFT",
+    "IsLocked": true,
+    "IsLockedForUI": true,
+    "WorkHourToComplete": 72000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 2,
+    "Requirements": []
+  },
+  {
+    "Id": "research_category_terraforming",
+    "Title": "TERRAFORMING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 648000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Terraforming",
+    "Stage": 2,
+    "Requirements": []
+  },
+  {
+    "Id": "research_chem_main1",
+    "Title": "SOLID PROPELLANT ROCKETS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Chemical",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_chem"
+    ]
+  },
+  {
+    "Id": "research_chem_main2",
+    "Title": "KEROLOX",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Chemical",
+    "Stage": 0,
+    "Requirements": [
+      "research_chem_main1"
+    ]
+  },
+  {
+    "Id": "research_chem_main3",
+    "Title": "METHALOX",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Chemical",
+    "Stage": 0,
+    "Requirements": [
+      "research_chem_main2"
+    ]
+  },
+  {
+    "Id": "research_chem_main4",
+    "Title": "HYDROLOX",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Chemical",
+    "Stage": 0,
+    "Requirements": [
+      "research_chem_main3"
+    ]
+  },
+  {
+    "Id": "research_chem_main5",
+    "Title": "SOLID HYDROGEN",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Chemical",
+    "Stage": 0,
+    "Requirements": [
+      "research_chem_main4"
+    ]
+  },
+  {
+    "Id": "research_chem_main6",
+    "Title": "POLYNITROGEN FUEL",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 5520000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Chemical",
+    "Stage": 0,
+    "Requirements": [
+      "research_chem_main5"
+    ]
+  },
+  {
+    "Id": "research_computing_ai1",
+    "Title": "MACHINE LEARNING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2400000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Computing",
+    "Stage": 0,
+    "Requirements": [
+      "research_computing_proc2"
+    ]
+  },
+  {
+    "Id": "research_computing_ai2",
+    "Title": "NEURAL NETWORKS",
+    "IsLocked": true,
+    "IsLockedForUI": true,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Computing",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_computing_ai3",
+    "Title": "BASIC AI",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Computing",
+    "Stage": 0,
+    "Requirements": [
+      "research_computing_ai1"
+    ]
+  },
+  {
+    "Id": "research_computing_ai4",
+    "Title": "ADVANCED AI",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Computing",
+    "Stage": 0,
+    "Requirements": [
+      "research_computing_ai3"
+    ]
+  },
+  {
+    "Id": "research_computing_proc1",
+    "Title": "MICROPROCESSORS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Computing",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_computing"
+    ]
+  },
+  {
+    "Id": "research_computing_proc2",
+    "Title": "NANOPROCESSORS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Computing",
+    "Stage": 0,
+    "Requirements": [
+      "research_computing_proc1"
+    ]
+  },
+  {
+    "Id": "research_computing_proc3",
+    "Title": "THREE-DIMENSIONAL INTEGRATED CIRCUITS",
+    "IsLocked": true,
+    "IsLockedForUI": true,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Computing",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_computing_proc4",
+    "Title": "EARLY QPUS",
+    "IsLocked": true,
+    "IsLockedForUI": true,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Computing",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_computing_proc5",
+    "Title": "REVERSIBLE CIRCUITS",
+    "IsLocked": true,
+    "IsLockedForUI": true,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Computing",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_computing_proc6",
+    "Title": "QUANTUM COMPUTING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Computing",
+    "Stage": 0,
+    "Requirements": [
+      "research_computing_proc2"
+    ]
+  },
+  {
+    "Id": "research_electricprop_1",
+    "Title": "HALL THRUSTER",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electroprop",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_electricprop"
+    ]
+  },
+  {
+    "Id": "research_electricprop_2",
+    "Title": "ION ENGINE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1728000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electroprop",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_electricprop_3",
+    "Title": "ELECTRODELESS ION GENERATION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3456000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electroprop",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_electricprop_4",
+    "Title": "MULTI-STAGE GRID",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 6912000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electroprop",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_electricprop_5",
+    "Title": "MPD",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electroprop",
+    "Stage": 0,
+    "Requirements": [
+      "research_electricprop_1"
+    ]
+  },
+  {
+    "Id": "research_electricprop_6",
+    "Title": "OPTIMIZED SELF-FIELD",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electroprop",
+    "Stage": 0,
+    "Requirements": [
+      "research_electricprop_5"
+    ]
+  },
+  {
+    "Id": "research_electromag_1",
+    "Title": "SUPERCONDUCTING MAGNETS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electromagnetism",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_electromag",
+      "research_mat_superconductor1"
+    ]
+  },
+  {
+    "Id": "research_electromag_2",
+    "Title": "MAGNETIC FIELD CONTAINMENT",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Fusion",
+    "Stage": 0,
+    "Requirements": [
+      "research_fusionpower_1"
+    ]
+  },
+  {
+    "Id": "research_electromag_3",
+    "Title": "MAGNETIC NOZZLE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Fusion",
+    "Stage": 0,
+    "Requirements": [
+      "research_electromag_2"
+    ]
+  },
+  {
+    "Id": "research_electromag_5",
+    "Title": "PHASED-ARRAYS",
+    "IsLocked": true,
+    "IsLockedForUI": true,
+    "WorkHourToComplete": 864000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electromagnetism",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_electromag_7",
+    "Title": "ATOMIC MANIPULATION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electromagnetism",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_electromag"
+    ]
+  },
+  {
+    "Id": "research_electromag_8",
+    "Title": "LASERS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electromagnetism",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_electromag"
+    ]
+  },
+  {
+    "Id": "research_electromag_9",
+    "Title": "REMOTE POWER TRANSFER",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electromagnetism",
+    "Stage": 0,
+    "Requirements": [
+      "research_electromag_8"
+    ]
+  },
+  {
+    "Id": "research_fusionpower_1",
+    "Title": "FUSION THEORY",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Fusion",
+    "Stage": 2,
+    "Requirements": [
+      "research_category_nukepower",
+      "research_electromag_1"
+    ]
+  },
+  {
+    "Id": "research_fusionprop_1",
+    "Title": "MAGNETIC SPIN ALIGNMENT",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 8160000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Fusion",
+    "Stage": 2,
+    "Requirements": [
+      "research_fusionprop_3"
+    ]
+  },
+  {
+    "Id": "research_fusionprop_2",
+    "Title": "IMPROVED PLASMA CONTAINMENT",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 6480000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Fusion",
+    "Stage": 2,
+    "Requirements": [
+      "research_category_fusionprop"
+    ]
+  },
+  {
+    "Id": "research_fusionprop_3",
+    "Title": "FUEL INJECTION OPTIMIZATION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 7200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Fusion",
+    "Stage": 2,
+    "Requirements": [
+      "research_fusionprop_2"
+    ]
+  },
+  {
+    "Id": "research_fusionprop_4",
+    "Title": "ADVANCED FUSION PROPULSION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 9120000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Fusion",
+    "Stage": 2,
+    "Requirements": [
+      "research_fusionprop_1"
+    ]
+  },
+  {
+    "Id": "research_launch_elevator",
+    "Title": "SPACE ELEVATOR",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchFacility",
+    "Stage": 0,
+    "Requirements": [
+      "research_launch_magrail",
+      "research_mat_fibre4"
+    ]
+  },
+  {
+    "Id": "research_launch_magnetic_catapult",
+    "Title": "ELECTROMAGNETIC CATAPULT",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchFacility",
+    "Stage": 0,
+    "Requirements": [
+      "research_launch_massdriver",
+      "research_mat_superconductor2"
+    ]
+  },
+  {
+    "Id": "research_launch_magrail",
+    "Title": "MAGNETIC LAUNCH RAILS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchFacility",
+    "Stage": 0,
+    "Requirements": [
+      "research_launch_spin",
+      "research_electromag_1"
+    ]
+  },
+  {
+    "Id": "research_launch_massdriver",
+    "Title": "MASS DRIVER",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchFacility",
+    "Stage": 0,
+    "Requirements": [
+      "research_launch_spin",
+      "research_electromag_1"
+    ]
+  },
+  {
+    "Id": "research_launch_massengine",
+    "Title": "MASS DRIVER PROPULSION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 6480000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchFacility",
+    "Stage": 0,
+    "Requirements": [
+      "research_launch_massdriver",
+      "research_category_fusionprop"
+    ]
+  },
+  {
+    "Id": "research_launch_pad",
+    "Title": "LAUNCH PAD",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchFacility",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_launch"
+    ]
+  },
+  {
+    "Id": "research_launch_spin",
+    "Title": "SPIN-LAUNCH",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchFacility",
+    "Stage": 0,
+    "Requirements": [
+      "research_launch_pad"
+    ]
+  },
+  {
+    "Id": "research_lifesup_1",
+    "Title": "CREWED FLIGHT",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_lifesup"
+    ]
+  },
+  {
+    "Id": "research_lifesup_2",
+    "Title": "IMPROVED CAPSULE CONSTRUCTION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_1"
+    ]
+  },
+  {
+    "Id": "research_lifesup_4",
+    "Title": "STO TRANSPORTS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_2"
+    ]
+  },
+  {
+    "Id": "research_lifesup_5",
+    "Title": "IMPROVED RATION PACKING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_1"
+    ]
+  },
+  {
+    "Id": "research_lifesup_6",
+    "Title": "IMPROVED ATMOSPHERE RECYCLING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_5"
+    ]
+  },
+  {
+    "Id": "research_lifesup_8",
+    "Title": "SPIN-GRAV HABITATION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Colonization",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_11"
+    ]
+  },
+  {
+    "Id": "research_lifesup_9",
+    "Title": "PLANETARY HABITATS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Colonization",
+    "Stage": 1,
+    "Requirements": [
+      "research_category_lifesup"
+    ]
+  },
+  {
+    "Id": "research_lifesup_10",
+    "Title": "REGOLITH SHIELDING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Colonization",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_11"
+    ]
+  },
+  {
+    "Id": "research_lifesup_11",
+    "Title": "COLONY CONSTRUCTION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Colonization",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_9"
+    ]
+  },
+  {
+    "Id": "research_lifesup_12",
+    "Title": "ON-SITE 3D PRINTING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Colonization",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_11"
+    ]
+  },
+  {
+    "Id": "research_lifesup_13",
+    "Title": "PERMANENT ORBITAL PRESENCE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Colonization",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_8"
+    ]
+  },
+  {
+    "Id": "research_lifesup_14",
+    "Title": "IN-ORBIT PRODUCTION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Colonization",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_13"
+    ]
+  },
+  {
+    "Id": "research_lifesup_15",
+    "Title": "ARTIFICIAL HIBERNATION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_lifesup",
+      "research_biotech_4"
+    ]
+  },
+  {
+    "Id": "research_lifesup_16",
+    "Title": "SUSPENDED ANIMATION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_15",
+      "research_biotech_5"
+    ]
+  },
+  {
+    "Id": "research_lv2_chemadvanced",
+    "Title": "CONDOR",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 6480000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": [
+      "research_chem_main6",
+      "research_lv_main3"
+    ]
+  },
+  {
+    "Id": "research_lv2_nukelarge",
+    "Title": "TERATORN",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 7200000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": [
+      "research_lv2_nukemid"
+    ]
+  },
+  {
+    "Id": "research_lv2_nukemid",
+    "Title": "MAGPIE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 6480000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": [
+      "research_lv_main4"
+    ]
+  },
+  {
+    "Id": "research_lv_alice",
+    "Title": "ALUMINIUM-ICE ROCKETS",
+    "IsLocked": true,
+    "IsLockedForUI": true,
+    "WorkHourToComplete": 864000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_lv_main1",
+    "Title": "EARLY LAUNCH SYSTEMS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_lv",
+      "research_chem_main2"
+    ]
+  },
+  {
+    "Id": "research_lv_main2",
+    "Title": "SUPERHEAVY LAUNCH",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": [
+      "research_lv_main1"
+    ]
+  },
+  {
+    "Id": "research_lv_main3",
+    "Title": "REUSABLE LAUNCH VEHICLES",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": [
+      "research_lv_upgr1"
+    ]
+  },
+  {
+    "Id": "research_lv_main4",
+    "Title": "NUCLEAR LAUNCH VEHICLES",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 5520000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": [
+      "research_lv_main2",
+      "research_nukeprop_7"
+    ]
+  },
+  {
+    "Id": "research_lv_upgr1",
+    "Title": "IMPROVED STACK ASSEMBLY",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": [
+      "research_lv_main1"
+    ]
+  },
+  {
+    "Id": "research_lv_upgr2",
+    "Title": "OPTIMIZED HEAT SHIELDS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 5520000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": [
+      "research_lv_main3"
+    ]
+  },
+  {
+    "Id": "research_lv_upgr3",
+    "Title": "IMPROVED REUSABLE ROCKETS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 5520000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": [
+      "research_lv_main3"
+    ]
+  },
+  {
+    "Id": "research_lv_upgr4",
+    "Title": "ADVANCED PAYLOAD FAIRINGS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 7200000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_LaunchVehicle",
+    "Stage": 0,
+    "Requirements": [
+      "research_lv_upgr3",
+      "research_lv2_nukemid"
+    ]
+  },
+  {
+    "Id": "research_mat_chips1",
+    "Title": "CIRCUIT PRODUCTION IN SPACE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_mat_metal1"
+    ]
+  },
+  {
+    "Id": "research_mat_chips2",
+    "Title": "IMPROVED ELECTRONICS PRODUCTION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_mat_chips1"
+    ]
+  },
+  {
+    "Id": "research_mat_diamondoid",
+    "Title": "DIAMONDOIDS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_mat_fibre3"
+    ]
+  },
+  {
+    "Id": "research_mat_fibre1",
+    "Title": "SPACE-WORTHY FIBERS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_mat"
+    ]
+  },
+  {
+    "Id": "research_mat_fibre2",
+    "Title": "GRAPHENE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_mat",
+      "research_mat_fibre1"
+    ]
+  },
+  {
+    "Id": "research_mat_fibre3",
+    "Title": "NANOTUBES",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_mat_fibre2"
+    ]
+  },
+  {
+    "Id": "research_mat_fibre4",
+    "Title": "MEGA-SCALE CARBON ALLOTROPE APPLICATION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_mat_fibre3"
+    ]
+  },
+  {
+    "Id": "research_mat_metal1",
+    "Title": "SPACE ALLOYS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_mat"
+    ]
+  },
+  {
+    "Id": "research_mat_metal2",
+    "Title": "VACUUM FORGING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_mat_metal1"
+    ]
+  },
+  {
+    "Id": "research_mat_metal3",
+    "Title": "ADVANCED ALLOYING TECHNIQUES",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_mat_metal2"
+    ]
+  },
+  {
+    "Id": "research_mat_metal4",
+    "Title": "IMPROVED ALLOY PRODUCTION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_mat_metal3"
+    ]
+  },
+  {
+    "Id": "research_mat_refractory",
+    "Title": "IMPROVED REACTOR VESSELS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_nukepower"
+    ]
+  },
+  {
+    "Id": "research_mat_superconductor1",
+    "Title": "HIGH-TEMPERATURE SUPERCONDUCTORS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electromagnetism",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_electromag"
+    ]
+  },
+  {
+    "Id": "research_mat_superconductor2",
+    "Title": "ROOM-TEMPERATURE SUPERCONDUCTORS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Electromagnetism",
+    "Stage": 0,
+    "Requirements": [
+      "research_mat_superconductor1"
+    ]
+  },
+  {
+    "Id": "research_mat_upgr1",
+    "Title": "DEBRIS SHIELDS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_mat"
+    ]
+  },
+  {
+    "Id": "research_mat_upgr2",
+    "Title": "AEROGELS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Material",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_mat",
+      "research_mat_upgr1"
+    ]
+  },
+  {
+    "Id": "research_mat_upgr3",
+    "Title": "METAMATERIALS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Electromagnetism",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_mat",
+      "research_electromag_7"
+    ]
+  },
+  {
+    "Id": "research_mine_1",
+    "Title": "IN-SITU RESOURCE UTILIZATION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Mining",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_mine"
+    ]
+  },
+  {
+    "Id": "research_mine_2",
+    "Title": "REGOLITH SIFTING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Mining",
+    "Stage": 0,
+    "Requirements": [
+      "research_mine_1"
+    ]
+  },
+  {
+    "Id": "research_mine_3",
+    "Title": "VACUUM-OPTIMIZED BOREHEADS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Mining",
+    "Stage": 0,
+    "Requirements": [
+      "research_mine_1"
+    ]
+  },
+  {
+    "Id": "research_mine_4",
+    "Title": "HELIUM-3 EXTRACTION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Mining",
+    "Stage": 0,
+    "Requirements": [
+      "research_mine_2",
+      "research_fusionpower_1"
+    ]
+  },
+  {
+    "Id": "research_mine_5",
+    "Title": "RADIOACTIVE ISOTOPE ISOLATION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Mining",
+    "Stage": 0,
+    "Requirements": [
+      "research_mine_2"
+    ]
+  },
+  {
+    "Id": "research_mine_6",
+    "Title": "ADVANCED MINING METHODS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Mining",
+    "Stage": 0,
+    "Requirements": [
+      "research_mine_3"
+    ]
+  },
+  {
+    "Id": "research_mine_7",
+    "Title": "IMPROVED HELIUM-3 MINING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Mining",
+    "Stage": 0,
+    "Requirements": [
+      "research_mine_4"
+    ]
+  },
+  {
+    "Id": "research_mine_8",
+    "Title": "IMPROVED FISSILES MINING",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Mining",
+    "Stage": 0,
+    "Requirements": [
+      "research_mine_5"
+    ]
+  },
+  {
+    "Id": "research_mine_atmoscoop",
+    "Title": "ORBITAL GAS EXTRACTOR",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 5520000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Colonization",
+    "Stage": 0,
+    "Requirements": [
+      "research_lifesup_14"
+    ]
+  },
+  {
+    "Id": "research_nukepower_1",
+    "Title": "MOLTEN FISSION SYSTEMS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 0,
+    "Requirements": [
+      "research_mat_refractory"
+    ]
+  },
+  {
+    "Id": "research_nukepower_2",
+    "Title": "GAS CORE FISSION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 0,
+    "Requirements": [
+      "research_nukepower_1"
+    ]
+  },
+  {
+    "Id": "research_nukeprop_1",
+    "Title": "HIGH TEMPERATURE NTR",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 864000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_nukeprop_2",
+    "Title": "HELIUM LOOP CYCLE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1152000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_nukeprop_3",
+    "Title": "NUCLEAR THERMAL ELECTRIC ROCKET",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 0,
+    "Requirements": [
+      "research_nukeprop_5"
+    ]
+  },
+  {
+    "Id": "research_nukeprop_4",
+    "Title": "MPD-BASED NTER",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1.0368E+07,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_nukeprop_5",
+    "Title": "LIQUID CORE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_nukeprop",
+      "research_nukepower_1"
+    ]
+  },
+  {
+    "Id": "research_nukeprop_6",
+    "Title": "ADVANCED LIQUID CORE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1.3824E+07,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_nukeprop_7",
+    "Title": "CLOSED-CYCLE GAS CORE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Nuclear",
+    "Stage": 0,
+    "Requirements": [
+      "research_nukeprop_3",
+      "research_nukepower_2"
+    ]
+  },
+  {
+    "Id": "research_observation_1",
+    "Title": "IMPROVED OPTICS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Exploration",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_observation"
+    ]
+  },
+  {
+    "Id": "research_observation_2",
+    "Title": "RADAR ASTRONOMY",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1728000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Exploration",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_observation_3",
+    "Title": "SPACE TELESCOPES",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Exploration",
+    "Stage": 0,
+    "Requirements": [
+      "research_observation_1"
+    ]
+  },
+  {
+    "Id": "research_observation_4",
+    "Title": "EXOPLANET DETECTION",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Exploration",
+    "Stage": 0,
+    "Requirements": [
+      "research_observation_3"
+    ]
+  },
+  {
+    "Id": "research_power_chem",
+    "Title": "CHEMICAL POWER REACTOR",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1296000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Power",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_power_geo",
+    "Title": "GEOTHERMAL POWER TURBINE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Power",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_power"
+    ]
+  },
+  {
+    "Id": "research_power_powersat",
+    "Title": "POWERSAT",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Power",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_power",
+      "research_electromag_9"
+    ]
+  },
+  {
+    "Id": "research_power_solar1",
+    "Title": "SOLAR CELL ARRAYS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Power",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_power"
+    ]
+  },
+  {
+    "Id": "research_power_solar2",
+    "Title": "IMPROVED SOLAR CELLS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Power",
+    "Stage": 0,
+    "Requirements": [
+      "research_power_solar1"
+    ]
+  },
+  {
+    "Id": "research_power_wind",
+    "Title": "WIND TURBINE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Physics",
+    "ResearchSubType": "SubBranch_Power",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_power"
+    ]
+  },
+  {
+    "Id": "research_robotics_crew1",
+    "Title": "EXOSKELETONS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_robotics",
+      "research_mat_metal2"
+    ]
+  },
+  {
+    "Id": "research_robotics_crew2",
+    "Title": "EXPERT SYSTEMS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_robotics",
+      "research_computing_ai3"
+    ]
+  },
+  {
+    "Id": "research_robotics_crew3",
+    "Title": "CYBERNETICS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_LifeSupport",
+    "Stage": 0,
+    "Requirements": [
+      "research_computing_ai1",
+      "research_robotics_crew1",
+      "research_mat_fibre2"
+    ]
+  },
+  {
+    "Id": "research_sails_1",
+    "Title": "OPTIMIZED PAYLOAD BUS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 2,
+    "Requirements": [
+      "research_category_sails"
+    ]
+  },
+  {
+    "Id": "research_sails_2",
+    "Title": "REFLECTIVE MATERIALS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 2,
+    "Requirements": [
+      "research_sails_1",
+      "research_mat_fibre2"
+    ]
+  },
+  {
+    "Id": "research_sails_3",
+    "Title": "IMPROVED SAIL DEPLOYMENT",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 2,
+    "Requirements": [
+      "research_sails_2"
+    ]
+  },
+  {
+    "Id": "research_sails_4",
+    "Title": "PLASMA MAGNET SAIL",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 2,
+    "Requirements": [
+      "research_sails_3",
+      "research_electromag_1"
+    ]
+  },
+  {
+    "Id": "research_sc_ariane",
+    "Title": "ARIANE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 5520000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_hephaistos",
+      "research_nukeprop_7"
+    ]
+  },
+  {
+    "Id": "research_sc_atlas",
+    "Title": "ATLAS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 9120000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_sirius",
+      "research_fusionprop_1"
+    ]
+  },
+  {
+    "Id": "research_sc_cargo1",
+    "Title": "EXPANDED CARGO BAYS 1",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_sc",
+      "research_sc_helios"
+    ]
+  },
+  {
+    "Id": "research_sc_cargo2",
+    "Title": "EXPANDED CARGO BAYS 2",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_cargo1",
+      "research_sc_hermes"
+    ]
+  },
+  {
+    "Id": "research_sc_cargo3",
+    "Title": "EXPANDED CARGO BAYS 3",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4800000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_cargo2",
+      "research_sc_hephaistos"
+    ]
+  },
+  {
+    "Id": "research_sc_cargo4",
+    "Title": "EXPANDED CARGO BAYS 4",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 7200000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_cargo3",
+      "research_sc_nike"
+    ]
+  },
+  {
+    "Id": "research_sc_cronos",
+    "Title": "CRONOS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 5520000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_hephaistos",
+      "research_nukeprop_7"
+    ]
+  },
+  {
+    "Id": "research_sc_hecate",
+    "Title": "ATHENA",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_hermes",
+      "research_electricprop_5"
+    ]
+  },
+  {
+    "Id": "research_sc_helios",
+    "Title": "STRATOS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 144000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_sc"
+    ]
+  },
+  {
+    "Id": "research_sc_hephaistos",
+    "Title": "HEPHAISTOS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 4080000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_prometheus",
+      "research_nukeprop_5"
+    ]
+  },
+  {
+    "Id": "research_sc_hermes",
+    "Title": "HERMES",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 864000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_helios"
+    ]
+  },
+  {
+    "Id": "research_sc_iris",
+    "Title": "IRIS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_sc"
+    ]
+  },
+  {
+    "Id": "research_sc_nike",
+    "Title": "NIKE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 6480000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_sc",
+      "research_category_fusionprop"
+    ]
+  },
+  {
+    "Id": "research_sc_orion",
+    "Title": "SELENE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 432000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_iris"
+    ]
+  },
+  {
+    "Id": "research_sc_prometheus",
+    "Title": "PROMETHEUS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_sc",
+      "research_category_nukeprop"
+    ]
+  },
+  {
+    "Id": "research_sc_sirius",
+    "Title": "SIRIUS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 8160000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_nike",
+      "research_fusionprop_3"
+    ]
+  },
+  {
+    "Id": "research_sc_zeus",
+    "Title": "ZEUS",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 9120000.0,
+    "ResearchType": "Engineering",
+    "ResearchSubType": "SubBranch_Spacecraft",
+    "Stage": 0,
+    "Requirements": [
+      "research_sc_sirius",
+      "research_fusionprop_1"
+    ]
+  },
+  {
+    "Id": "research_terraforming_1",
+    "Title": "MARS BACTERIA",
+    "IsLocked": true,
+    "IsLockedForUI": true,
+    "WorkHourToComplete": 2.7648E+07,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Terraforming",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_terraforming_2",
+    "Title": "CARBON RELEASE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 1200000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Terraforming",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_terraforming"
+    ]
+  },
+  {
+    "Id": "research_terraforming_3",
+    "Title": "PHOTOSYNTHETIC MICROBES",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2.7648E+07,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Terraforming",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_terraforming_4",
+    "Title": "ALBEDO MANIPULATION",
+    "IsLocked": true,
+    "IsLockedForUI": true,
+    "WorkHourToComplete": 2.7648E+07,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Terraforming",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_terraforming_5",
+    "Title": "COMET REDIRECTION",
+    "IsLocked": true,
+    "IsLockedForUI": true,
+    "WorkHourToComplete": 5.5296E+07,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Terraforming",
+    "Stage": 0,
+    "Requirements": []
+  },
+  {
+    "Id": "research_terraforming_6",
+    "Title": "STELLAR MIRROR",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 2160000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Terraforming",
+    "Stage": 0,
+    "Requirements": [
+      "research_terraforming_2"
+    ]
+  },
+  {
+    "Id": "research_terraforming_magnet1",
+    "Title": "ARTIFICIAL MAGNETOSPHERE",
+    "IsLocked": false,
+    "IsLockedForUI": false,
+    "WorkHourToComplete": 3000000.0,
+    "ResearchType": "Biotech",
+    "ResearchSubType": "SubBranch_Terraforming",
+    "Stage": 0,
+    "Requirements": [
+      "research_category_terraforming",
+      "research_electromag_1",
+      "research_mat_superconductor2"
+    ]
+  }
+]
