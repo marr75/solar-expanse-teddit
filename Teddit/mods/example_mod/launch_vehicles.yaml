@@ -1,0 +1,50 @@
+# Launch vehicle patches and new entries.
+# Keys are launch vehicle IDs (from dump/launch_vehicles.yaml).
+# Unknown IDs create a new launch vehicle; known IDs patch an existing one.
+#
+# ── Fields (new entry) ───────────────────────────────────────────────────────
+#   name:                                 string — display name
+#   description:                          string — tooltip description
+#   icon:                                 path   — relative path to PNG/JPEG image
+#   isLocked:                             bool   — hidden from build UI until unlocked by research
+#   special:                              enum   — None / SeaDragon
+#   canSendHuman:                         bool   — whether crew can fly on this vehicle
+#   forCycleMission:                      bool   — used for cycle-mission logistics
+#   fakeForFacility:                      bool   — launch provided by a facility, not a real vehicle
+#   maxPayload:                           float  — max payload to orbit (tonnes)
+#   maxFuelLoad:                          float  — max propellant load (tonnes)
+#   costLaunch:                           float  — per-launch fuel/propellant cost
+#   exhaustV:                             float  — exhaust velocity (km/s)
+#   reusability:                          float  — 0 = expendable, 1 = fully reusable
+#   maintenanceCostPerDay:                float  — daily upkeep cost
+#   canBuyMaxPayload:                     float or null — gravity threshold below which LV can be built
+#   timeToBuildInDays:                    float  — construction time in in-game days
+#   constructionEquipmentCountIsRequired: bool   — whether Construction Equipment is required
+#   buildCost:                            double — money cost to build
+#   buildResources:                       mapping — {resource_id: amount}
+
+# ── New entries ───────────────────────────────────────────────────────────────
+
+test_lv_modded:
+  name: Modded Launch Vehicle
+  description: A small expendable launch vehicle added by the example mod. Unlocked from the start.
+  icon: cat.jpg
+  fuelType: id_resource_hydrogen
+  isLocked: false
+  special: None
+  canSendHuman: false
+  forCycleMission: false
+  fakeForFacility: false
+  maxPayload: 15
+  maxFuelLoad: 10000
+  costLaunch: 200
+  exhaustV: 4.4
+  reusability: 0
+  maintenanceCostPerDay: 5
+  canBuyMaxPayload: null
+  timeToBuildInDays: 50
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 60
+    id_resource_steel: 15

@@ -48,13 +48,17 @@
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 5916.6826171875
+      amount: 88182.0234375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
-    - resourceId: id_resource_metal
+    - resourceId: id_resource_water
       state: Solid
-      amount: 25121.744140625
+      amount: 6103.2626953125
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 911 AGAMEMNON
@@ -107,13 +111,17 @@
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 27378.470703125
+      amount: 6846.67578125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 94125.7890625
+      amount: 96361.4921875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 624 HEKTOR
@@ -166,13 +174,17 @@
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 41653.3984375
+      amount: 47224.61328125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 264800.75
+      amount: 80420.484375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 3317 PARIS
@@ -225,13 +237,17 @@
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 12126.6005859375
+      amount: 3199.701171875
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 43233.48828125
+      amount: 64448.90625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 1172 ANEAS
@@ -284,13 +300,17 @@
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 34532.47265625
+      amount: 28669.509765625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
-    - resourceId: id_resource_volatile
+    - resourceId: id_resource_silicon
       state: Solid
-      amount: 50806.06640625
+      amount: 22503.931640625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 588 ACHILLES
@@ -343,13 +363,17 @@
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 25748.75390625
+      amount: 7271.0009765625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 94679.890625
+      amount: 131367.75
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 617 PATROCLUS
@@ -402,13 +426,17 @@
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 33709.86328125
+      amount: 9811.099609375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 25874.048828125
+      amount: 66410.1640625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 3 JUNO
@@ -474,6 +502,8 @@
       state: Solid
       amount: 2500000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
 
 # MP3-87 NOSFER
@@ -526,13 +556,17 @@ MP3-87 NOSFER:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 46379.83984375
+      amount: 46099.453125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_water
+    - resourceId: id_resource_silicon
       state: Solid
-      amount: 16007.1640625
+      amount: 8972.5263671875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 9 METIS
@@ -598,6 +632,8 @@ MP3-87 NOSFER:
       state: Solid
       amount: 1721000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
 
 # EARTH
@@ -634,111 +670,155 @@ EARTH:
       state: Liquid
       amount: 15079780
       miningFactor: 0.1
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: true
     - resourceId: id_resource_metal
       state: Underground
       amount: 10000
       miningFactor: 0.5
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Underground
       amount: 1100000
       miningFactor: 0.1
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 7600000
       miningFactor: 0.4
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 103105
       miningFactor: 0.5
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 85921
       miningFactor: 0.08
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 1018420
       miningFactor: 0.01
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Underground
       amount: 23542
       miningFactor: 0.3
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Underground
       amount: 23542
       miningFactor: 0.1
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Underground
       amount: 292375
       miningFactor: 0.05
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Gas
       amount: 8373978
       miningFactor: 0.1
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Underground
       amount: 128500
       miningFactor: 0.05
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_fuel
       state: Underground
       amount: 8900
       miningFactor: 0.5
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_fuel
       state: Underground
       amount: 11425
       miningFactor: 0.1
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_fuel
       state: Underground
       amount: 21750
       miningFactor: 0.01
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_oxygen
       state: Gas
       amount: 2259992
       miningFactor: 0.1
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_co2
       state: Gas
       amount: 4367
       miningFactor: 0.1
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Gas
       amount: 236713
       miningFactor: 0.1
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
       amount: 636713
       miningFactor: 0.6
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Underground
       amount: 80600000
       miningFactor: 0.015
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 308797
       miningFactor: 0.3
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Gas
       amount: 100000
       miningFactor: 0.05
+      explorationLevel: 1
+      preliminaryExplored: true
       forcePrimary: false
 
 # EARTH [ORBIT]
@@ -788,23 +868,31 @@ EARTH [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 111023.1796875
+      amount: 57015.42578125
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 40179.44140625
+      amount: 53243.171875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 64658.90625
+      amount: 67005.203125
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 5426 SHARP
@@ -858,13 +946,17 @@ EARTH [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 63939.30078125
+      amount: 92627.40625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_metal
+    - resourceId: id_resource_water
       state: Solid
-      amount: 33285.76171875
+      amount: 8709.28515625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 10 HYGIEA
@@ -919,11 +1011,15 @@ EARTH [ORBIT]:
       state: Solid
       amount: 3700000
       miningFactor: 0.25
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Solid
       amount: 300000
       miningFactor: 0.02
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 18 MELPOMENE
@@ -987,13 +1083,17 @@ EARTH [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_silicon
       state: Solid
-      amount: 224047.46875
+      amount: 127840.546875
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_raremetal
+    - resourceId: id_resource_uran
       state: Solid
-      amount: 11341.0771484375
+      amount: 79060.5625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # TRITON
@@ -1003,31 +1103,43 @@ TRITON:
       state: Solid
       amount: 1712186
       miningFactor: 0.6
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 15000000
       miningFactor: 0.06
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Underground
       amount: 130000
       miningFactor: 0.23
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Underground
       amount: 3000000
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 3700000
       miningFactor: 0.022
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Gas
       amount: 767539
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 1 CERES
@@ -1082,36 +1194,50 @@ TRITON:
       state: Solid
       amount: 400045
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
       amount: 5085800
       miningFactor: 0.05
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 40000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 480000
       miningFactor: 0.08
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Underground
       amount: 200000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 850000
       miningFactor: 0.05
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 1859381
       miningFactor: 0.011
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # AMALTHEA
@@ -1121,16 +1247,22 @@ AMALTHEA:
       state: Underground
       amount: 69000
       miningFactor: 0.25
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
       amount: 1400000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Solid
       amount: 30000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 41 DAPHNE
@@ -1183,13 +1315,17 @@ AMALTHEA:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 60402.7421875
+      amount: 193972.765625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
-      amount: 42109.4765625
+      amount: 59188.8515625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # BG1-65 USHER
@@ -1253,18 +1389,24 @@ BG1-65 USHER:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 25841.130859375
+      amount: 39219.7578125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Solid
-      amount: 4057.7041015625
+      amount: 1626.05737304688
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Solid
-      amount: 18132.28515625
+      amount: 12791.71484375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: true
 
 # VENUS [ORBIT]
@@ -1314,23 +1456,31 @@ VENUS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 113098.9765625
+      amount: 81559.015625
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 18067.25390625
+      amount: 93568.5
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 46419.6328125
+      amount: 85924.703125
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # NEPTUNE
@@ -1340,26 +1490,36 @@ NEPTUNE:
       state: Gas
       amount: 198
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hydrogen
       state: Gas
       amount: 15817852
       miningFactor: 1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Gas
       amount: 3700739840
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Gas
       amount: 16739840
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Gas
       amount: 40739840
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 87 SYLVIA
@@ -1412,13 +1572,17 @@ NEPTUNE:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 596475.625
+      amount: 579253.90625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_water
+    - resourceId: id_resource_metal
       state: Solid
-      amount: 30311.6186523438
+      amount: 113075.91796875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # DEIMOS [ORBIT]
@@ -1468,23 +1632,31 @@ DEIMOS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 92428.484375
+      amount: 38313.50390625
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 8102.38818359375
+      amount: 24676.548828125
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 103838.9921875
+      amount: 20596.703125
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 1272 GEFION
@@ -1548,13 +1720,17 @@ DEIMOS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_silicon
       state: Solid
-      amount: 99152.6484375
+      amount: 120986.09375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_uran
+    - resourceId: id_resource_raremetal
       state: Solid
-      amount: 20290.876953125
+      amount: 5440.7724609375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # SUN
@@ -1604,23 +1780,31 @@ SUN:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 69339.4609375
+      amount: 12468.509765625
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 111878.0546875
+      amount: 25639.611328125
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 18916.53515625
+      amount: 113093.640625
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 21 LUTETIA
@@ -1676,31 +1860,43 @@ SUN:
       state: Solid
       amount: 75000
       miningFactor: 0.6
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 200000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
       amount: 90000
       miningFactor: 0.9
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
       amount: 500000
       miningFactor: 0.11
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
       amount: 10000
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 100000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 433 EROS
@@ -1766,11 +1962,15 @@ SUN:
       state: Solid
       amount: 120000
       miningFactor: 0.25
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Solid
       amount: 30000
       miningFactor: 0.05
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # PROTEUS
@@ -1780,16 +1980,22 @@ PROTEUS:
       state: Underground
       amount: 1700000
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Underground
       amount: 800000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Underground
       amount: 1500000
       miningFactor: 0.014
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: true
 
 # OBERON [ORBIT]
@@ -1839,23 +2045,31 @@ OBERON [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 31463.197265625
+      amount: 123913.9140625
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 38115.28125
+      amount: 25852.42578125
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 88866.609375
+      amount: 61714.06640625
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # MARS [ORBIT]
@@ -1905,23 +2119,31 @@ MARS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 54624.625
+      amount: 107657.078125
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 116330.8046875
+      amount: 83009.9296875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 50864.53515625
+      amount: 79574.8359375
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # MW89 GOAT
@@ -1985,13 +2207,17 @@ MW89 GOAT:
   currentDeposits:
     - resourceId: id_resource_silicon
       state: Solid
-      amount: 42516.609375
+      amount: 54445.61328125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 14261.5283203125
+      amount: 16495.060546875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 7088 ISHTAR
@@ -2057,11 +2283,15 @@ MW89 GOAT:
       state: Solid
       amount: 18000
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Solid
       amount: 8000
       miningFactor: 0.04
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # NEPTUNE [ORBIT]
@@ -2111,23 +2341,31 @@ NEPTUNE [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 102783.5546875
+      amount: 30838.173828125
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 20835.33984375
+      amount: 113851.8203125
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 7776.697265625
+      amount: 15629.734375
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # RHEA
@@ -2137,21 +2375,29 @@ RHEA:
       state: Solid
       amount: 150000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 12500000
       miningFactor: 0.04
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Underground
       amount: 1720000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 900000
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # PW4-13 RIDER
@@ -2204,13 +2450,17 @@ PW4-13 RIDER:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 9067.0048828125
+      amount: 12299.142578125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 23643.181640625
+      amount: 62811.1015625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # UMBRIEL [ORBIT]
@@ -2260,23 +2510,31 @@ UMBRIEL [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 81812.1875
+      amount: 44989.4921875
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 48641.12109375
+      amount: 28247.349609375
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 43062.27734375
+      amount: 39130.18359375
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 19 FORTUNA
@@ -2329,13 +2587,17 @@ UMBRIEL [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 121717.763671875
+      amount: 485376.9921875
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_metal
+    - resourceId: id_resource_silicon
       state: Solid
-      amount: 59939.82421875
+      amount: 104773.37890625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # TETHYS [ORBIT]
@@ -2385,23 +2647,31 @@ TETHYS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 97247.2890625
+      amount: 49344.109375
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 39608.0859375
+      amount: 49899.04296875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 18524.50390625
+      amount: 73916.6953125
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 65 CYBELE
@@ -2455,13 +2725,17 @@ TETHYS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 139996.640625
+      amount: 261171.015625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_metal
+    - resourceId: id_resource_uran
       state: Solid
-      amount: 72611.125
+      amount: 87530.46875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 2495 NOVIOMAGUM
@@ -2514,13 +2788,17 @@ TETHYS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 74571.65625
+      amount: 37271.04296875
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_metal
+    - resourceId: id_resource_water
       state: Solid
-      amount: 29193.94921875
+      amount: 38127.703125
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # TITAN
@@ -2530,41 +2808,57 @@ TITAN:
       state: Underground
       amount: 50000
       miningFactor: 0.7
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 16000000
       miningFactor: 0.04
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Underground
       amount: 2500
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Underground
       amount: 2500000
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Underground
       amount: 3100000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Gas
       amount: 10000000
       miningFactor: 0.9
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
       amount: 8581680
       miningFactor: 0.07
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_fuel
       state: Gas
       amount: 4225010
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 36 ATALANTE
@@ -2617,13 +2911,17 @@ TITAN:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 52969.359375
+      amount: 65390.50390625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_metal
+    - resourceId: id_resource_silicon
       state: Solid
-      amount: 79165.5703125
+      amount: 31078.623046875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # SATURN [ORBIT]
@@ -2673,23 +2971,31 @@ SATURN [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 11048.59765625
+      amount: 124516.375
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 96846.3359375
+      amount: 101754.796875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 90117.359375
+      amount: 43369.9765625
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # IAPETUS [ORBIT]
@@ -2739,23 +3045,31 @@ IAPETUS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 74680.53125
+      amount: 11827.6162109375
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 100869.4140625
+      amount: 9033.21875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 14509.416015625
+      amount: 120736.4453125
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # FL8-09 VARSOVIOM
@@ -2808,13 +3122,17 @@ FL8-09 VARSOVIOM:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 2764.19384765625
+      amount: 6163.10107421875
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 17411.029296875
+      amount: 50565.8515625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 99942 APOPHIS
@@ -2880,6 +3198,8 @@ FL8-09 VARSOVIOM:
       state: Solid
       amount: 9000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
 
 # JUPITER [ORBIT]
@@ -2929,23 +3249,31 @@ JUPITER [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 106822.34375
+      amount: 42749.3671875
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 100259.5078125
+      amount: 83674.3125
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 98733.34375
+      amount: 49409.62109375
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # TJ66-2145
@@ -2999,13 +3327,17 @@ TJ66-2145:
   currentDeposits:
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 30737.931640625
+      amount: 25586.083984375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 17380.11328125
+      amount: 10444.1962890625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 7 IRIS
@@ -3071,6 +3403,8 @@ TJ66-2145:
       state: Solid
       amount: 2000000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
 
 # 3753 CRUITHNE
@@ -3136,11 +3470,15 @@ TJ66-2145:
       state: Solid
       amount: 40000
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Solid
       amount: 16000
       miningFactor: 0.08
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 16 PSYCHE
@@ -3196,26 +3534,36 @@ TJ66-2145:
       state: Solid
       amount: 85000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 650000
       miningFactor: 0.08
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
       amount: 270
       miningFactor: 0.6
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
       amount: 1300000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Solid
       amount: 80000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # ZZ9-01 NEBULAVSKY
@@ -3268,13 +3616,17 @@ ZZ9-01 NEBULAVSKY:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 11738.2783203125
+      amount: 10568.3115234375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 3717.77587890625
+      amount: 30729.49609375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 098-Y PEPPIN
@@ -3327,13 +3679,17 @@ ZZ9-01 NEBULAVSKY:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 7935.43505859375
+      amount: 16845.79296875
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_silicon
+    - resourceId: id_resource_volatile
       state: Solid
-      amount: 8813.2958984375
+      amount: 7423.427734375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 6 HEBE
@@ -3399,11 +3755,15 @@ ZZ9-01 NEBULAVSKY:
       state: Solid
       amount: 885000
       miningFactor: 0.12
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
       amount: 800000
       miningFactor: 0.08
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # MIMAS
@@ -3413,21 +3773,29 @@ MIMAS:
       state: Solid
       amount: 600000
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 1400000
       miningFactor: 0.027
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 700000
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 1200000
       miningFactor: 0.022
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 1P HALLEY
@@ -3489,20 +3857,26 @@ MIMAS:
       rangeMin: 2000
       rangeMax: 16000
   currentDeposits:
-    - resourceId: id_resource_water
+    - resourceId: id_resource_volatile
       state: Solid
-      amount: 115405.2109375
+      amount: 86735.75
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Solid
-      amount: 14564.283203125
+      amount: 14449.44140625
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Solid
-      amount: 9724.5751953125
+      amount: 12027.98046875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: true
 
 # GANYMEDE [ORBIT]
@@ -3552,23 +3926,31 @@ GANYMEDE [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 52225.76171875
+      amount: 24692.603515625
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 8573.5234375
+      amount: 120985.2734375
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 96825.890625
+      amount: 80350.15625
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # TITANIA [ORBIT]
@@ -3618,23 +4000,31 @@ TITANIA [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 93609.8203125
+      amount: 82700.8203125
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 121872.5234375
+      amount: 45326.90234375
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 15041.44921875
+      amount: 13191.7060546875
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # DEIMOS
@@ -3644,11 +4034,15 @@ DEIMOS:
       state: Solid
       amount: 20000
       miningFactor: 0.15
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 100000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 2 PALLAS
@@ -3703,11 +4097,15 @@ DEIMOS:
       state: Solid
       amount: 3450000
       miningFactor: 0.25
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 1530000
       miningFactor: 0.07
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 2048 DWORNIK
@@ -3761,13 +4159,17 @@ DEIMOS:
   currentDeposits:
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 95968.40625
+      amount: 71501.3203125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Solid
-      amount: 63930.6953125
+      amount: 52367.93359375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # CHARON [ORBIT]
@@ -3817,23 +4219,31 @@ CHARON [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 82398.0625
+      amount: 121637.3359375
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 26809.30859375
+      amount: 115436.15625
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 82782.8515625
+      amount: 108523.46875
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # JUPITER
@@ -3843,21 +4253,29 @@ JUPITER:
       state: Gas
       amount: 186949824
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hydrogen
       state: Gas
       amount: 73152375800
       miningFactor: 1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Gas
       amount: 1027553000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Gas
       amount: 627553000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # CALLISTO
@@ -3867,31 +4285,43 @@ CALLISTO:
       state: Solid
       amount: 18278
       miningFactor: 0.4
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
       amount: 15600000
       miningFactor: 0.05
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Underground
       amount: 10000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Underground
       amount: 2000000
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Underground
       amount: 28000000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 45618280
       miningFactor: 0.02
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 11 PARTHENOPE
@@ -3955,13 +4385,17 @@ CALLISTO:
   currentDeposits:
     - resourceId: id_resource_silicon
       state: Solid
-      amount: 129707.59375
+      amount: 133875.34375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_volatile
+    - resourceId: id_resource_uran
       state: Solid
-      amount: 41245.01171875
+      amount: 69452.5078125
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # NEREID [ORBIT]
@@ -4011,23 +4445,31 @@ NEREID [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 5440.64111328125
+      amount: 50941.0390625
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 128760.6953125
+      amount: 23859.625
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 35672.95703125
+      amount: 55907.01171875
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # MARS
@@ -4037,66 +4479,92 @@ MARS:
       state: Solid
       amount: 69000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 2002813
       miningFactor: 0.08
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
       amount: 20000
       miningFactor: 0.7
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Underground
       amount: 200000
       miningFactor: 0.08
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Underground
       amount: 20000000
       miningFactor: 0.02
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Underground
       amount: 50000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 5000000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_oxygen
       state: Gas
       amount: 1468
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Gas
       amount: 18999
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_co2
       state: Gas
       amount: 964745
       miningFactor: 0.05
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Gas
       amount: 302
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 35000000
       miningFactor: 0.015
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_oxygen
       state: Underground
       amount: 500000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 216 KLEOPATRA
@@ -4150,13 +4618,17 @@ MARS:
   currentDeposits:
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 214243.65625
+      amount: 202754.046875
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 48397.6953125
+      amount: 16849.85546875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # HYPERION [ORBIT]
@@ -4206,23 +4678,31 @@ HYPERION [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 120280.5390625
+      amount: 46277.78515625
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 98282.3359375
+      amount: 95138.1171875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 100762.0546875
+      amount: 47338.48046875
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # URANUS [ORBIT]
@@ -4272,23 +4752,31 @@ URANUS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 40024.98046875
+      amount: 49878.6796875
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 57443.30078125
+      amount: 69433.1484375
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 90651.0234375
+      amount: 16634.1015625
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 76 FREIA
@@ -4341,13 +4829,17 @@ URANUS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 66733.1640625
+      amount: 34975.91796875
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_volatile
+    - resourceId: id_resource_nitrogen
       state: Solid
-      amount: 13087.1943359375
+      amount: 22265.3203125
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # EUROPA [ORBIT]
@@ -4397,23 +4889,31 @@ EUROPA [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 113488.0625
+      amount: 123492.9375
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 54750.078125
+      amount: 13754.4638671875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 31897.41015625
+      amount: 76914.4921875
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # PROTEUS [ORBIT]
@@ -4463,23 +4963,31 @@ PROTEUS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 88833
+      amount: 107926.6640625
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 28664.7109375
+      amount: 63069.375
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 95340.0625
+      amount: 129878.8203125
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # MERCURY [ORBIT]
@@ -4529,23 +5037,31 @@ MERCURY [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 48744.4765625
+      amount: 23732.5078125
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 39219.421875
+      amount: 13007.185546875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 103156.1640625
+      amount: 119491.4140625
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # CALLISTO [ORBIT]
@@ -4595,23 +5111,31 @@ CALLISTO [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 81295.3203125
+      amount: 101176.3515625
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 85618.3359375
+      amount: 99312.9609375
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 44915.6171875
+      amount: 46216.3203125
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # HYPERION
@@ -4621,16 +5145,22 @@ HYPERION:
       state: Solid
       amount: 510000
       miningFactor: 0.36
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 89000
       miningFactor: 0.07
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 2000000
       miningFactor: 0.025
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # AB2-38 DOVER
@@ -4683,13 +5213,17 @@ AB2-38 DOVER:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 33750.3515625
+      amount: 40796.72265625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_metal
+    - resourceId: id_resource_silicon
       state: Solid
-      amount: 17013.126953125
+      amount: 4884.8037109375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # TETHYS
@@ -4699,26 +5233,36 @@ TETHYS:
       state: Solid
       amount: 40000
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 6000000
       miningFactor: 0.04
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Underground
       amount: 520000
       miningFactor: 0.05
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: true
     - resourceId: id_resource_noblegas
       state: Underground
       amount: 10000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Underground
       amount: 4000000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 158 KORONIS
@@ -4782,13 +5326,17 @@ TETHYS:
   currentDeposits:
     - resourceId: id_resource_silicon
       state: Solid
-      amount: 206242.421875
+      amount: 183557.59375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 75969.3359375
+      amount: 33603.60546875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 4P FAYE
@@ -4852,18 +5400,24 @@ TETHYS:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 107725.8671875
+      amount: 49897.0390625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Solid
-      amount: 5946.9404296875
+      amount: 5211.30322265625
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Solid
-      amount: 38606.546875
+      amount: 18915.173828125
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: true
 
 # MERCURY
@@ -4873,56 +5427,78 @@ MERCURY:
       state: Underground
       amount: 38000
       miningFactor: 0.8
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Underground
       amount: 750000
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Underground
       amount: 22000000
       miningFactor: 0.07
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Underground
       amount: 40000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Underground
       amount: 605000
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Underground
       amount: 9000000
       miningFactor: 0.007
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Underground
       amount: 80000
       miningFactor: 0.15
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Underground
       amount: 2700000
       miningFactor: 0.08
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 500000
       miningFactor: 0.4
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 23178
       miningFactor: 0.05
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Underground
       amount: 7000000
       miningFactor: 0.022
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # TT-9025
@@ -4975,13 +5551,17 @@ TT-9025:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 16765.283203125
+      amount: 19863.4453125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 21405.5078125
+      amount: 59885.4921875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # UMBRIEL
@@ -4991,21 +5571,29 @@ UMBRIEL:
       state: Solid
       amount: 6200000
       miningFactor: 0.12
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Underground
       amount: 1800000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: true
     - resourceId: id_resource_silicon
       state: Underground
       amount: 2500000
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 1400000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 24 THEMIS
@@ -5058,13 +5646,17 @@ UMBRIEL:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 48310.19140625
+      amount: 135934.015625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 51072.0546875
+      amount: 35924.9453125
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # UT7-55 KUTNO
@@ -5117,13 +5709,17 @@ UT7-55 KUTNO:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 18842.08984375
+      amount: 17068.89453125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_silicon
+    - resourceId: id_resource_volatile
       state: Solid
-      amount: 6329.2197265625
+      amount: 26828.3046875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # DIONE [ORBIT]
@@ -5173,23 +5769,31 @@ DIONE [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 62305.45703125
+      amount: 122975.4609375
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 46771.80078125
+      amount: 67270.21875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 16370.21484375
+      amount: 132321.578125
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # TITAN [ORBIT]
@@ -5239,23 +5843,31 @@ TITAN [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 80492.8828125
+      amount: 117724.140625
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 87764.8046875
+      amount: 47627.7890625
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 130828.2578125
+      amount: 66437.984375
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # PUCK
@@ -5265,11 +5877,15 @@ PUCK:
       state: Underground
       amount: 810000
       miningFactor: 0.025
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Underground
       amount: 700000
       miningFactor: 0.04
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
 
 # 38 LEDA
@@ -5322,13 +5938,17 @@ PUCK:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 16142.728515625
+      amount: 122654.0703125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_water
+    - resourceId: id_resource_metal
       state: Solid
-      amount: 20981.19921875
+      amount: 35303.1640625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 8 FLORA
@@ -5392,13 +6012,17 @@ PUCK:
   currentDeposits:
     - resourceId: id_resource_silicon
       state: Solid
-      amount: 362505.46875
+      amount: 294182.890625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 167166.15234375
+      amount: 128763.955078125
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # PC0-01 KURAI
@@ -5451,13 +6075,17 @@ PC0-01 KURAI:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 21226.091796875
+      amount: 56301.45703125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_metal
+    - resourceId: id_resource_water
       state: Solid
-      amount: 4031.5166015625
+      amount: 15158.5537109375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # PHOBOS [ORBIT]
@@ -5507,23 +6135,31 @@ PHOBOS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 69261.4765625
+      amount: 32550.267578125
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 36577.61328125
+      amount: 112521.5859375
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 84570.1640625
+      amount: 81413.4765625
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # PLUTO
@@ -5578,31 +6214,43 @@ PLUTO:
       state: Underground
       amount: 900000
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Underground
       amount: 12000000
       miningFactor: 0.04
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Underground
       amount: 260000
       miningFactor: 0.02
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 710020
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 6894960
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Gas
       amount: 300000
       miningFactor: 0.001
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # URANUS
@@ -5612,26 +6260,36 @@ URANUS:
       state: Gas
       amount: 186
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hydrogen
       state: Gas
       amount: 15458068500
       miningFactor: 1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Gas
       amount: 2733626620
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Gas
       amount: 33626620
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Gas
       amount: 33626620
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # TITANIA
@@ -5641,16 +6299,22 @@ TITANIA:
       state: Solid
       amount: 640000
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 9200000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 4400000
       miningFactor: 0.04
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 1025 RIEMA
@@ -5704,13 +6368,17 @@ TITANIA:
   currentDeposits:
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 55319.01953125
+      amount: 94070.0234375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_uran
+    - resourceId: id_resource_metal
       state: Solid
-      amount: 93001.53125
+      amount: 35665.55859375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # VENUS
@@ -5720,41 +6388,57 @@ VENUS:
       state: Gas
       amount: 81071963
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Gas
       amount: 2519596
       miningFactor: 0.035
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 500000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Underground
       amount: 13000000
       miningFactor: 0.02
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Gas
       amount: 214362
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Underground
       amount: 1100000
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Underground
       amount: 3300000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Underground
       amount: 1100000
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 135 HERTHA
@@ -5808,13 +6492,17 @@ VENUS:
   currentDeposits:
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 196931.421875
+      amount: 123887.578125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_uran
+    - resourceId: id_resource_metal
       state: Solid
-      amount: 131093.8125
+      amount: 33347.0234375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # ENCELADUS
@@ -5824,26 +6512,36 @@ ENCELADUS:
       state: Solid
       amount: 55733
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 2100000
       miningFactor: 0.035
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 30000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Underground
       amount: 2200000
       miningFactor: 0.035
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Underground
       amount: 150000
       miningFactor: 0.05
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # IO
@@ -5853,31 +6551,43 @@ IO:
       state: Solid
       amount: 15000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
       amount: 250000
       miningFactor: 0.25
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
       amount: 5400000
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Solid
       amount: 140000
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Solid
       amount: 2100000
       miningFactor: 0.02
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Underground
       amount: 25000000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # AM55 TERRORA
@@ -5930,13 +6640,17 @@ AM55 TERRORA:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 59805.07421875
+      amount: 27653.96484375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 5058.453125
+      amount: 16596.1953125
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # IO [ORBIT]
@@ -5986,23 +6700,31 @@ IO [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 103123.515625
+      amount: 72087.5078125
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 11141.7421875
+      amount: 109353.84375
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 113890.1171875
+      amount: 20051.26171875
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # MIMAS [ORBIT]
@@ -6052,23 +6774,31 @@ MIMAS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 74397.875
+      amount: 72428.21875
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 7647.06103515625
+      amount: 100273.640625
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 87359.0859375
+      amount: 93953.7890625
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 25143 ITOKAWA
@@ -6134,11 +6864,15 @@ MIMAS [ORBIT]:
       state: Solid
       amount: 8000
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Solid
       amount: 4000
       miningFactor: 0.04
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # EX0-99 EXTINCTOR
@@ -6200,15 +6934,19 @@ EX0-99 EXTINCTOR:
       rangeMin: 5000
       rangeMax: 40000
   currentDeposits:
-    - resourceId: id_resource_metal
+    - resourceId: id_resource_silicon
       state: Solid
-      amount: 36259.46875
+      amount: 20202.50390625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_raremetal
+    - resourceId: id_resource_uran
       state: Solid
-      amount: 4775.583984375
+      amount: 6807.64208984375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 101955 BENNU
@@ -6274,11 +7012,15 @@ EX0-99 EXTINCTOR:
       state: Solid
       amount: 9000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 100
       miningFactor: 0.05
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 53 KALYPSO
@@ -6332,13 +7074,17 @@ EX0-99 EXTINCTOR:
   currentDeposits:
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 74331.6875
+      amount: 125664.5390625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 11358.2978515625
+      amount: 24877.9296875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 13 EGERIA
@@ -6391,13 +7137,17 @@ EX0-99 EXTINCTOR:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 128397.2578125
+      amount: 45539.015625
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_water
+    - resourceId: id_resource_metal
       state: Solid
-      amount: 13988.943359375
+      amount: 73762.09375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # OBERON
@@ -6407,21 +7157,29 @@ OBERON:
       state: Solid
       amount: 230000
       miningFactor: 0.18
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 1010000
       miningFactor: 0.21
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: true
     - resourceId: id_resource_water
       state: Underground
       amount: 3000000
       miningFactor: 0.025
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Underground
       amount: 10000000
       miningFactor: 0.035
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # DIONE
@@ -6431,21 +7189,29 @@ DIONE:
       state: Solid
       amount: 4634
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 8230000
       miningFactor: 0.035
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 100000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Underground
       amount: 3000000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # GANYMEDE
@@ -6455,26 +7221,36 @@ GANYMEDE:
       state: Solid
       amount: 61370
       miningFactor: 0.9
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
       amount: 38000000
       miningFactor: 0.028
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 43000
       miningFactor: 0.7
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 6100000
       miningFactor: 0.02
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Underground
       amount: 7000000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 1036 GANYMED
@@ -6540,11 +7316,15 @@ GANYMEDE:
       state: Solid
       amount: 100000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
       amount: 200000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 279 THULE
@@ -6597,13 +7377,17 @@ GANYMEDE:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 47577.7734375
+      amount: 35687.42578125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 232930.4375
+      amount: 17557.0859375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 12 VICTORIA
@@ -6667,13 +7451,17 @@ GANYMEDE:
   currentDeposits:
     - resourceId: id_resource_silicon
       state: Solid
-      amount: 196851.078125
+      amount: 228750.03125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_uran
+    - resourceId: id_resource_volatile
       state: Solid
-      amount: 42025.0859375
+      amount: 55368.97265625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 142 POLANA
@@ -6726,13 +7514,17 @@ GANYMEDE:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 254612.25
+      amount: 132263.859375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_water
+    - resourceId: id_resource_silicon
       state: Solid
-      amount: 38062.3046875
+      amount: 37762.796875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # PHOBOS
@@ -6742,16 +7534,22 @@ PHOBOS:
       state: Solid
       amount: 60000
       miningFactor: 0.15
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
       amount: 50000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 100000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 44 NYSA
@@ -6805,13 +7603,17 @@ PHOBOS:
   currentDeposits:
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 114706.5234375
+      amount: 198397.53125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
-    - resourceId: id_resource_water
+    - resourceId: id_resource_metal
       state: Solid
-      amount: 17526.333984375
+      amount: 27997.669921875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # CHARON
@@ -6821,21 +7623,29 @@ CHARON:
       state: Solid
       amount: 200000
       miningFactor: 0.7
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 200000
       miningFactor: 0.4
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 2000000
       miningFactor: 0.008
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Underground
       amount: 9000000
       miningFactor: 0.07
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 15 EUNOMIA
@@ -6899,13 +7709,17 @@ CHARON:
   currentDeposits:
     - resourceId: id_resource_silicon
       state: Solid
-      amount: 294251.640625
+      amount: 661013.75
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_raremetal
+    - resourceId: id_resource_uran
       state: Solid
-      amount: 103108.896484375
+      amount: 43632.685546875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 469219 KAMOʻOALEWA
@@ -6969,13 +7783,17 @@ CHARON:
   currentDeposits:
     - resourceId: id_resource_silicon
       state: Solid
-      amount: 41221.3203125
+      amount: 63084.46484375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
-    - resourceId: id_resource_uran
+    - resourceId: id_resource_raremetal
       state: Solid
-      amount: 5328.763671875
+      amount: 5336.9541015625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # PLUTO [ORBIT]
@@ -7025,23 +7843,31 @@ PLUTO [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 91009.515625
+      amount: 31297.71484375
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 90947.9140625
+      amount: 30807.248046875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 71401.6640625
+      amount: 91550.5390625
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # ARIEL [ORBIT]
@@ -7091,23 +7917,31 @@ ARIEL [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 89810.1484375
+      amount: 52515.484375
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 14501.0498046875
+      amount: 5356.73876953125
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 116249.9453125
+      amount: 6576.1064453125
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 2312 DUBOSHIN
@@ -7160,13 +7994,17 @@ ARIEL [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 72254.4765625
+      amount: 66736.2109375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_volatile
+    - resourceId: id_resource_silicon
       state: Solid
-      amount: 152303.65625
+      amount: 34519.58984375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 22 KALLIOPE
@@ -7220,13 +8058,17 @@ ARIEL [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 602019.0625
+      amount: 603090.46875
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_metal
+    - resourceId: id_resource_water
       state: Solid
-      amount: 164266.640625
+      amount: 62594.951171875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # DE8-42 SUNSET
@@ -7279,13 +8121,17 @@ DE8-42 SUNSET:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 16058.3193359375
+      amount: 12035.7734375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 66583.3671875
+      amount: 2661.99169921875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 59 ELPIS
@@ -7338,13 +8184,17 @@ DE8-42 SUNSET:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 244800.265625
+      amount: 110552.96875
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_water
+    - resourceId: id_resource_metal
       state: Solid
-      amount: 44454.1875
+      amount: 59734.9609375
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # RHEA [ORBIT]
@@ -7394,23 +8244,31 @@ RHEA [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 39299.0625
+      amount: 41035.546875
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 32556.419921875
+      amount: 75130.9296875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 32451.328125
+      amount: 123770.359375
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # KB5-98 KRIS
@@ -7474,13 +8332,17 @@ KB5-98 KRIS:
   currentDeposits:
     - resourceId: id_resource_silicon
       state: Solid
-      amount: 27198.83203125
+      amount: 54447.51953125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 16279.7548828125
+      amount: 19270.587890625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # ENCELADUS [ORBIT]
@@ -7530,23 +8392,31 @@ ENCELADUS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 74500.03125
+      amount: 94926.65625
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 31805.634765625
+      amount: 10800.396484375
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 117269.4453125
+      amount: 42571.41015625
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 93 MINERVA
@@ -7599,13 +8469,17 @@ ENCELADUS [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 666512.8125
+      amount: 46574.794921875
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
-      amount: 119503.28125
+      amount: 92504.033203125
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # NEREID
@@ -7615,11 +8489,15 @@ NEREID:
       state: Solid
       amount: 1800000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Underground
       amount: 1500000
       miningFactor: 0.02
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 368 HAIDEA
@@ -7672,13 +8550,17 @@ NEREID:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 10225.822265625
+      amount: 75908.6953125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 196525.828125
+      amount: 96882.625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # KH7-23 GERALDINO
@@ -7732,13 +8614,17 @@ KH7-23 GERALDINO:
   currentDeposits:
     - resourceId: id_resource_raremetal
       state: Solid
-      amount: 21442.091796875
+      amount: 53739.5078125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 8025.3984375
+      amount: 14504.69921875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # PUCK [ORBIT]
@@ -7788,23 +8674,31 @@ PUCK [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 119114.0390625
+      amount: 121455.4296875
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 114129.1953125
+      amount: 63080.33984375
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 72530.765625
+      amount: 35387.43359375
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 4 VESTA
@@ -7870,11 +8764,15 @@ PUCK [ORBIT]:
       state: Solid
       amount: 840000
       miningFactor: 0.07
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Solid
       amount: 4290000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
 
 # AMALTHEA [ORBIT]
@@ -7924,23 +8822,31 @@ AMALTHEA [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 75638.578125
+      amount: 105347.53125
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 6302.53173828125
+      amount: 94486.7734375
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 117078.484375
+      amount: 112056.5546875
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # EUROPA
@@ -7950,16 +8856,22 @@ EUROPA:
       state: Solid
       amount: 1622321
       miningFactor: 0.8
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Solid
       amount: 28000000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Underground
       amount: 1000000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 511 DAVIDA
@@ -8012,13 +8924,17 @@ EUROPA:
   currentDeposits:
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 33478.01953125
+      amount: 65964.0703125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_water
+    - resourceId: id_resource_metal
       state: Solid
-      amount: 33937.109375
+      amount: 10951.0732421875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # IAPETUS
@@ -8028,16 +8944,22 @@ IAPETUS:
       state: Solid
       amount: 12000
       miningFactor: 0.4
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 11000000
       miningFactor: 0.04
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Underground
       amount: 1450000
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: true
 
 # 2P ENCKE
@@ -8101,18 +9023,24 @@ IAPETUS:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 106671.4140625
+      amount: 90629.0703125
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Solid
-      amount: 5104.240234375
+      amount: 11133.642578125
       miningFactor: 0.2
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Solid
-      amount: 23611.59765625
+      amount: 23254.42578125
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: true
 
 # ARIEL
@@ -8122,16 +9050,22 @@ ARIEL:
       state: Solid
       amount: 700000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 2000000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Underground
       amount: 8000000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # TRITON [ORBIT]
@@ -8181,23 +9115,31 @@ TRITON [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 34240.6640625
+      amount: 84627.3671875
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 64653.9375
+      amount: 79585.7265625
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 116664.296875
+      amount: 33010.1171875
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 20 MASSALIA
@@ -8261,13 +9203,17 @@ TRITON [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_silicon
       state: Solid
-      amount: 138297.390625
+      amount: 184079.984375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
-    - resourceId: id_resource_volatile
+    - resourceId: id_resource_raremetal
       state: Solid
-      amount: 36949.203125
+      amount: 35604.37890625
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # SATURN
@@ -8277,21 +9223,29 @@ SATURN:
       state: Gas
       amount: 38790565900
       miningFactor: 1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_noblegas
       state: Gas
       amount: 40280964
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Solid
       amount: 809131260
       miningFactor: 0.05
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_nitrogen
       state: Gas
       amount: 509131260
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 267 TIRZA
@@ -8344,13 +9298,17 @@ SATURN:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 35100.11328125
+      amount: 63210.0859375
       miningFactor: 0.35
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 20196.93359375
+      amount: 190357.1875
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # 5 ASTRAEA
@@ -8416,6 +9374,8 @@ SATURN:
       state: Solid
       amount: 1200000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
 
 # LUNA [ORBIT]
@@ -8465,23 +9425,31 @@ LUNA [ORBIT]:
   currentDeposits:
     - resourceId: id_resource_water
       state: Solid
-      amount: 42948.37109375
+      amount: 16822.251953125
       miningFactor: 0.3
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: false
     - resourceId: id_resource_volatile
       state: Solid
-      amount: 124996.890625
+      amount: 87118.421875
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
-      amount: 133186.171875
+      amount: 12153.322265625
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_raremetal
       state: Solid
       amount: 0
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # LUNA
@@ -8491,36 +9459,50 @@ LUNA:
       state: Underground
       amount: 72700
       miningFactor: 1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_water
       state: Underground
       amount: 3000000
       miningFactor: 0.03
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_uran
       state: Underground
       amount: 350000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_hel3
       state: Underground
       amount: 400000
       miningFactor: 0.01
+      explorationLevel: 0
+      preliminaryExplored: true
       forcePrimary: true
     - resourceId: id_resource_silicon
       state: Solid
       amount: 6000000
       miningFactor: 0.1
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_silicon
       state: Underground
       amount: 20000000
       miningFactor: 0.015
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
     - resourceId: id_resource_metal
       state: Solid
       amount: 5000
       miningFactor: 0.5
+      explorationLevel: 0
+      preliminaryExplored: false
       forcePrimary: false
 
 # SOLAR ORBIT

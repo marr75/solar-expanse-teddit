@@ -1,0 +1,25 @@
+research_cat_biology:
+  name: Cat Biology
+  description: Understanding feline physiology in low-gravity environments enables the
+    construction of specialized habitat modules.
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  icon: cat.jpg
+  stage: 0
+  subStage: 40
+  showInTree: false
+  workHourToComplete: 600000
+  isLocked: false
+  isLockedForUI: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
+    - research_category_biotech
+  unlocks:
+    - action: UnlockFacility
+      id: id_facility_cat_habitat
+research_agriculture_1:
+  unlocks:
+    - action: UnlockFacility
+      id: build_farm
+    - action: UnlockFacility
+      id: id_facility_cat_habitat

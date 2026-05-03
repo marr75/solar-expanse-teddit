@@ -2,19 +2,25 @@
 # Body names must be UPPERCASE (they match ObjectInfo.ObjectName, e.g. MARS, EARTH, MOON).
 # Resource IDs come from dump/resources.yaml.
 #
-# ── Fields per entry ──────────────────────────────────────────────────────────
-#   resourceId:   string — resource ID (e.g. id_resource_raremetal)
-#   state:        string — Solid | Liquid | Gas | Underground
-#   amount:       number — deposit size in tonnes
-#   miningFactor: float  — extraction efficiency multiplier (0–1)
-#   forcePrimary: bool   — force this as the primary deposit for the body
-#   overwrite:    bool   — true: replace first matching deposit; false: always add new
+# Fields per entry:
+#   resourceId: string   resource ID, e.g. id_resource_raremetal
+#   state: string        Solid | Liquid | Gas | Underground
+#   amount: number       deposit size in tonnes
+#   miningFactor: float  extraction efficiency multiplier
+#   explorationLevel: number  0.0 to 1.0 discovered progress at game start
+#   preliminaryExplored: bool whether the deposit is visible before full exploration
+#   forcePrimary: bool   force this as the primary deposit for the body
+#   overwrite: bool
+#     true  = replace the first matching deposit and update its discovery state
+#     false = always add a new deposit, even if the type already exists
 #
-# ── Example ───────────────────────────────────────────────────────────────────
+# Example:
 # MARS:
 #   - resourceId: id_resource_raremetal
 #     state: Solid
 #     amount: 500000.0
 #     miningFactor: 0.5
+#     explorationLevel: 0.25
+#     preliminaryExplored: true
 #     forcePrimary: false
 #     overwrite: false

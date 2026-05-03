@@ -1,0 +1,28 @@
+# Deposit injections.
+# Keys are body names and must be UPPERCASE to match ObjectInfo.ObjectName,
+# for example: EARTH, MARS, MOON.
+# Resource IDs come from dump/resources.yaml.
+#
+# Each body maps to a sequence of deposit entries.
+# Supported fields per entry:
+#   resourceId:   string   resource ID, e.g. id_resource_raremetal
+#   state:        string   Solid | Liquid | Gas | Underground
+#   amount:       number   deposit size
+#   miningFactor: float    extraction efficiency multiplier
+#   explorationLevel: number  0.0 to 1.0 discovered progress at game start
+#   preliminaryExplored: bool whether the deposit is visible before full exploration
+#   forcePrimary: bool     whether the deposit should be marked primary
+#   overwrite:    bool
+#                 true  = replace the first matching existing deposit
+#                 false = always add a new deposit, even if the type already exists
+#
+# Example:
+# MARS:
+#   - resourceId: id_resource_raremetal
+#     state: Solid
+#     amount: 500000
+#     miningFactor: 0.5
+#     explorationLevel: 0.25
+#     preliminaryExplored: true
+#     forcePrimary: false
+#     overwrite: false

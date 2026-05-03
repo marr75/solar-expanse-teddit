@@ -1,5 +1,12 @@
 # SPACE ELEVATOR (LaunchVehicleType)
 id_LV_launch_elevator_Fake:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: build_launch_elevator
+  forCycleMission: false
+  fakeForFacility: true
   timeToBuildInDays: 110
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -11,10 +18,17 @@ id_LV_launch_elevator_Fake:
   exhaustV: 4.4
   reusability: 1
   maintenanceCostPerDay: 0
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # MAGNETIC LAUNCH RAILS (LaunchVehicleType)
 id_LV_launch_magrails_Fake:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: build_launch_magrails
+  forCycleMission: false
+  fakeForFacility: true
   timeToBuildInDays: 110
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -26,10 +40,17 @@ id_LV_launch_magrails_Fake:
   exhaustV: 4.4
   reusability: 1
   maintenanceCostPerDay: 0
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # STATIONARY MASS DRIVER (LaunchVehicleType)
 id_LV_launch_massdriver_Fake:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: build_launch_massdriver
+  forCycleMission: false
+  fakeForFacility: true
   timeToBuildInDays: 110
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -41,10 +62,17 @@ id_LV_launch_massdriver_Fake:
   exhaustV: 4.4
   reusability: 1
   maintenanceCostPerDay: 0
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # ROTARY LAUNCHER (LaunchVehicleType)
 id_LV_launch_spin_Fake:
+  isLocked: true
+  special: None
+  canSendHuman: false
+  fuelType: id_resource_fuel
+  iconRef: build_launch_spin
+  forCycleMission: false
+  fakeForFacility: true
   timeToBuildInDays: 110
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -56,10 +84,17 @@ id_LV_launch_spin_Fake:
   exhaustV: 4.4
   reusability: 1
   maintenanceCostPerDay: 0
-  canSendHuman: false
+  canBuyMaxPayload: null
 
 # ID_ROCKET_CHEAT (LaunchVehicleType)
 id_Rocket_Cheat:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: placeholder_icon
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 0
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -71,10 +106,17 @@ id_Rocket_Cheat:
   exhaustV: 4.4
   reusability: 0.1
   maintenanceCostPerDay: 0
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # ID_ROCKET_FORCYCLEMISION (LaunchVehicleType)
 id_Rocket_ForCycleMision:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: super_heavy
+  forCycleMission: true
+  fakeForFacility: false
   timeToBuildInDays: 110
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -87,10 +129,17 @@ id_Rocket_ForCycleMision:
   exhaustV: 4.4
   reusability: 1
   maintenanceCostPerDay: 20
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # AL-ICE ROCKET (LaunchVehicleType)
 id_Rocket_RocketType5:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: alox_normal
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 60
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -103,10 +152,17 @@ id_Rocket_RocketType5:
   exhaustV: 2.5
   reusability: 0
   maintenanceCostPerDay: 1
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # AL-ICE ROCKET (HEAVY) (LaunchVehicleType)
 id_Rocket_RocketType6:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: alox_heavy
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 120
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -119,10 +175,17 @@ id_Rocket_RocketType6:
   exhaustV: 2.5
   reusability: 0
   maintenanceCostPerDay: 1
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # FALCON (LaunchVehicleType)
 id_Rocket_RocketType3:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: falcon_medium
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 90
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -135,10 +198,17 @@ id_Rocket_RocketType3:
   exhaustV: 4.4
   reusability: 0.5
   maintenanceCostPerDay: 20
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # KESTREL (LaunchVehicleType)
 id_Rocket_RocketType2:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: kestrel
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 70
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -150,10 +220,17 @@ id_Rocket_RocketType2:
   exhaustV: 4.4
   reusability: 0
   maintenanceCostPerDay: 10
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # HAWK (LaunchVehicleType)
 id_Rocket_RocketType7:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: hawk
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 120
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -165,10 +242,17 @@ id_Rocket_RocketType7:
   exhaustV: 4.4
   reusability: 0
   maintenanceCostPerDay: 10
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # ALBATROSS (LaunchVehicleType)
 lv_chem_seadragon:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: placeholder_icon
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 180
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -180,10 +264,17 @@ lv_chem_seadragon:
   exhaustV: 4.4
   reusability: 0
   maintenanceCostPerDay: 20
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # SPARROW (LaunchVehicleType)
 id_Rocket_RocketType1:
+  isLocked: false
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: pelican
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -195,10 +286,17 @@ id_Rocket_RocketType1:
   exhaustV: 4.4
   reusability: 0
   maintenanceCostPerDay: 10
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # EAGLE (LaunchVehicleType)
 id_Rocket_RocketType4:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: super_heavy
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 110
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -211,10 +309,17 @@ id_Rocket_RocketType4:
   exhaustV: 4.4
   reusability: 0.1
   maintenanceCostPerDay: 20
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # CONDOR (LaunchVehicleType)
 lv_chemadvanced:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_fuel
+  iconRef: chemadvanced
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 160
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -228,10 +333,17 @@ lv_chemadvanced:
   exhaustV: 10
   reusability: 0.8
   maintenanceCostPerDay: 10
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # TERATORN (LaunchVehicleType)
 lv_nuke_large:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_hydrogen
+  iconRef: nuke_large
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 360
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -245,10 +357,17 @@ lv_nuke_large:
   exhaustV: 35
   reusability: 0.4
   maintenanceCostPerDay: 10
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # MAGPIE (LaunchVehicleType)
 lv_nuke_mid:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_hydrogen
+  iconRef: nuke_mid
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 180
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -262,10 +381,17 @@ lv_nuke_mid:
   exhaustV: 35
   reusability: 0.5
   maintenanceCostPerDay: 10
-  canSendHuman: true
+  canBuyMaxPayload: null
 
 # PELICAN (LaunchVehicleType)
 lv_nuke_small:
+  isLocked: true
+  special: None
+  canSendHuman: true
+  fuelType: id_resource_hydrogen
+  iconRef: nuke_small
+  forCycleMission: false
+  fakeForFacility: false
   timeToBuildInDays: 140
   constructionEquipmentCountIsRequired: true
   buildCost: 0
@@ -279,5 +405,5 @@ lv_nuke_small:
   exhaustV: 4.4
   reusability: 0.65
   maintenanceCostPerDay: 10
-  canSendHuman: true
+  canBuyMaxPayload: null
 

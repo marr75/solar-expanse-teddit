@@ -6,8 +6,14 @@ research_agriculture_1:
   researchType: Biotech
   researchSubType: SubBranch_Biotech
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_biotech
+  unlocks:
+    - action: UnlockFacility
+      id: build_farm
 
 # REGOLITH ADAPTATION (ResearchDefinition)
 research_agriculture_2:
@@ -17,8 +23,14 @@ research_agriculture_2:
   researchType: Biotech
   researchSubType: SubBranch_Biotech
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_agriculture_1
+  unlocks:
+    - action: UnlockBonus
+      id: II
 
 # HYDROPONICS (ResearchDefinition)
 research_agriculture_3:
@@ -28,8 +40,14 @@ research_agriculture_3:
   researchType: Biotech
   researchSubType: SubBranch_Biotech
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_agriculture_2
+  unlocks:
+    - action: UnlockBonus
+      id: III
 
 # RADIOTROPHIC FUNGI (ResearchDefinition)
 research_agriculture_4:
@@ -39,8 +57,14 @@ research_agriculture_4:
   researchType: Biotech
   researchSubType: SubBranch_Biotech
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_agriculture_2
+  unlocks:
+    - action: UnlockBonus
+      id: IV
 
 # LOW-G GMO (ResearchDefinition)
 research_agriculture_5:
@@ -50,8 +74,14 @@ research_agriculture_5:
   researchType: Biotech
   researchSubType: SubBranch_Biotech
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_agriculture_3
+  unlocks:
+    - action: UnlockBonus
+      id: III
 
 # BIOREACTORS (ResearchDefinition)
 research_biotech_1:
@@ -61,7 +91,10 @@ research_biotech_1:
   researchType: Biotech
   researchSubType: SubBranch_Biotech
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_biotech
 
 # KNALLGAS BACTERIA FARMS (ResearchDefinition)
@@ -72,8 +105,14 @@ research_biotech_2:
   researchType: Biotech
   researchSubType: SubBranch_Biotech
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_biotech_1
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # CLOSED-CYCLE ALGAE (ResearchDefinition)
 research_biotech_3:
@@ -83,8 +122,14 @@ research_biotech_3:
   researchType: Biotech
   researchSubType: SubBranch_Biotech
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_biotech_2
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # GENETIC ENGINEERING (ResearchDefinition)
 research_biotech_4:
@@ -94,7 +139,10 @@ research_biotech_4:
   researchType: Biotech
   researchSubType: SubBranch_Biotech
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_biotech_1
 
 # BIOLOGICAL MACHINES (ResearchDefinition)
@@ -105,7 +153,10 @@ research_biotech_5:
   researchType: Biotech
   researchSubType: SubBranch_Biotech
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_biotech_4
 
 # AGRICULTURE (ResearchDefinition)
@@ -116,7 +167,9 @@ research_category_agriculture:
   researchType: Biotech
   researchSubType: SubBranch_Agriculture
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
 
 # BIOTECH (ResearchDefinition)
 research_category_biotech:
@@ -126,7 +179,9 @@ research_category_biotech:
   researchType: Biotech
   researchSubType: SubBranch_Biotech
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
 
 # CHEMICAL PROPULSION (ResearchDefinition)
 research_category_chem:
@@ -136,7 +191,9 @@ research_category_chem:
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
 
 # COMPUTING (ResearchDefinition)
 research_category_computing:
@@ -146,7 +203,9 @@ research_category_computing:
   researchType: Physics
   researchSubType: SubBranch_Computing
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
 
 # ELECTRIC PROPULSION (ResearchDefinition)
 research_category_electricprop:
@@ -156,7 +215,9 @@ research_category_electricprop:
   researchType: Physics
   researchSubType: SubBranch_Electroprop
   stage: 1
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
 
 # ELECTROMAGNETISM (ResearchDefinition)
 research_category_electromag:
@@ -166,7 +227,9 @@ research_category_electromag:
   researchType: Physics
   researchSubType: SubBranch_Electromagnetism
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
 
 # FUSION PROPULSION (ResearchDefinition)
 research_category_fusionprop:
@@ -176,7 +239,10 @@ research_category_fusionprop:
   researchType: Physics
   researchSubType: SubBranch_Fusion
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_electromag_3
 
 # INTERSTELLAR TRAVEL (ResearchDefinition)
@@ -187,10 +253,16 @@ research_category_interstellar:
   researchType: Biotech
   researchSubType: SubBranch_Spacecraft
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sc_zeus
     - research_lifesup_14
     - research_mat_fibre4
+  unlocks:
+    - action: UnlockFacility
+      id: build_space_interstellarconstruction
 
 # LAUNCH FACILITY (ResearchDefinition)
 research_category_launch:
@@ -200,7 +272,9 @@ research_category_launch:
   researchType: Engineering
   researchSubType: SubBranch_LaunchFacility
   stage: 1
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
 
 # LIFE SUPPORT (ResearchDefinition)
 research_category_lifesup:
@@ -210,7 +284,9 @@ research_category_lifesup:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 1
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
 
 # LAUNCH VEHICLES (ResearchDefinition)
 research_category_lv:
@@ -220,7 +296,10 @@ research_category_lv:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 1
-  requirements:
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_chem
 
 # MATERIALS (ResearchDefinition)
@@ -231,7 +310,14 @@ research_category_mat:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockFacility
+      id: build_alloysmelting
+    - action: UnlockFacility
+      id: build_glass
 
 # ADVANCED MATERIALS (ResearchDefinition)
 research_category_mat2:
@@ -241,7 +327,9 @@ research_category_mat2:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 2
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
 
 # MINING (ResearchDefinition)
 research_category_mine:
@@ -251,7 +339,9 @@ research_category_mine:
   researchType: Engineering
   researchSubType: SubBranch_Mining
   stage: 1
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
 
 # NUCLEAR POWER (ResearchDefinition)
 research_category_nukepower:
@@ -261,7 +351,12 @@ research_category_nukepower:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 1
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockFacility
+      id: build_power_nuke
 
 # NUCLEAR PROPULSION (ResearchDefinition)
 research_category_nukeprop:
@@ -271,7 +366,10 @@ research_category_nukeprop:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 1
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_nukepower
 
 # OBSERVATION (ResearchDefinition)
@@ -282,7 +380,9 @@ research_category_observation:
   researchType: Physics
   researchSubType: SubBranch_Exploration
   stage: 2
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
 
 # POWER (ResearchDefinition)
 research_category_power:
@@ -292,7 +392,9 @@ research_category_power:
   researchType: Physics
   researchSubType: SubBranch_Power
   stage: 1
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
 
 # ROBOTICS (ResearchDefinition)
 research_category_robotics:
@@ -302,9 +404,15 @@ research_category_robotics:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_lifesup
     - research_computing_proc2
+  unlocks:
+    - action: UnlockBonus
+      id: IV
 
 # SOLAR SAILS (ResearchDefinition)
 research_category_sails:
@@ -314,8 +422,14 @@ research_category_sails:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mat_fibre1
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_sail_small
 
 # SPACECRAFT (ResearchDefinition)
 research_category_sc:
@@ -325,7 +439,10 @@ research_category_sc:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 1
-  requirements:
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lv_main1
 
 # ADVANCED SPACECRAFT (ResearchDefinition)
@@ -336,7 +453,9 @@ research_category_sc2:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 2
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
 
 # TERRAFORMING (ResearchDefinition)
 research_category_terraforming:
@@ -346,7 +465,9 @@ research_category_terraforming:
   researchType: Biotech
   researchSubType: SubBranch_Terraforming
   stage: 2
-  requirements: []
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
 
 # SOLID PROPELLANT ROCKETS (ResearchDefinition)
 research_chem_main1:
@@ -356,7 +477,10 @@ research_chem_main1:
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_chem
 
 # KEROLOX (ResearchDefinition)
@@ -367,8 +491,14 @@ research_chem_main2:
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_chem_main1
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # METHALOX (ResearchDefinition)
 research_chem_main3:
@@ -378,8 +508,14 @@ research_chem_main3:
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_chem_main2
+  unlocks:
+    - action: UnlockBonus
+      id: II
 
 # HYDROLOX (ResearchDefinition)
 research_chem_main4:
@@ -389,8 +525,16 @@ research_chem_main4:
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_chem_main3
+  unlocks:
+    - action: UnlockBonus
+      id: III
+    - action: UnlockBonus
+      id: III
 
 # SOLID HYDROGEN (ResearchDefinition)
 research_chem_main5:
@@ -400,8 +544,16 @@ research_chem_main5:
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_chem_main4
+  unlocks:
+    - action: UnlockBonus
+      id: IV
+    - action: UnlockBonus
+      id: IV
 
 # POLYNITROGEN FUEL (ResearchDefinition)
 research_chem_main6:
@@ -411,8 +563,16 @@ research_chem_main6:
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_chem_main5
+  unlocks:
+    - action: UnlockBonus
+      id: VI
+    - action: UnlockBonus
+      id: V
 
 # MACHINE LEARNING (ResearchDefinition)
 research_computing_ai1:
@@ -422,8 +582,14 @@ research_computing_ai1:
   researchType: Physics
   researchSubType: SubBranch_Computing
   stage: 0
-  requirements:
+  subStage: -80
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_computing_proc2
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # NEURAL NETWORKS (ResearchDefinition)
 research_computing_ai2:
@@ -433,7 +599,12 @@ research_computing_ai2:
   researchType: Physics
   researchSubType: SubBranch_Computing
   stage: 0
-  requirements: []
+  subStage: -70
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: II
 
 # BASIC AI (ResearchDefinition)
 research_computing_ai3:
@@ -443,8 +614,14 @@ research_computing_ai3:
   researchType: Physics
   researchSubType: SubBranch_Computing
   stage: 0
-  requirements:
+  subStage: -60
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_computing_ai1
+  unlocks:
+    - action: UnlockBonus
+      id: III
 
 # ADVANCED AI (ResearchDefinition)
 research_computing_ai4:
@@ -454,8 +631,14 @@ research_computing_ai4:
   researchType: Physics
   researchSubType: SubBranch_Computing
   stage: 0
-  requirements:
+  subStage: -50
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_computing_ai3
+  unlocks:
+    - action: UnlockBonus
+      id: IV
 
 # MICROPROCESSORS (ResearchDefinition)
 research_computing_proc1:
@@ -465,7 +648,10 @@ research_computing_proc1:
   researchType: Physics
   researchSubType: SubBranch_Computing
   stage: 0
-  requirements:
+  subStage: -100
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_computing
 
 # NANOPROCESSORS (ResearchDefinition)
@@ -476,8 +662,14 @@ research_computing_proc2:
   researchType: Physics
   researchSubType: SubBranch_Computing
   stage: 0
-  requirements:
+  subStage: 10
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_computing_proc1
+  unlocks:
+    - action: UnlockBonus
+      id: V
 
 # THREE-DIMENSIONAL INTEGRATED CIRCUITS (ResearchDefinition)
 research_computing_proc3:
@@ -487,7 +679,12 @@ research_computing_proc3:
   researchType: Physics
   researchSubType: SubBranch_Computing
   stage: 0
-  requirements: []
+  subStage: 20
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: VI
 
 # EARLY QPUS (ResearchDefinition)
 research_computing_proc4:
@@ -497,7 +694,12 @@ research_computing_proc4:
   researchType: Physics
   researchSubType: SubBranch_Computing
   stage: 0
-  requirements: []
+  subStage: 30
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: VII
 
 # REVERSIBLE CIRCUITS (ResearchDefinition)
 research_computing_proc5:
@@ -507,7 +709,12 @@ research_computing_proc5:
   researchType: Physics
   researchSubType: SubBranch_Computing
   stage: 0
-  requirements: []
+  subStage: 40
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: IX
 
 # QUANTUM COMPUTING (ResearchDefinition)
 research_computing_proc6:
@@ -517,8 +724,14 @@ research_computing_proc6:
   researchType: Physics
   researchSubType: SubBranch_Computing
   stage: 0
-  requirements:
+  subStage: 50
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_computing_proc2
+  unlocks:
+    - action: UnlockBonus
+      id: VIII
 
 # HALL THRUSTER (ResearchDefinition)
 research_electricprop_1:
@@ -528,8 +741,14 @@ research_electricprop_1:
   researchType: Physics
   researchSubType: SubBranch_Electroprop
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_electricprop
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # ION ENGINE (ResearchDefinition)
 research_electricprop_2:
@@ -539,7 +758,12 @@ research_electricprop_2:
   researchType: Physics
   researchSubType: SubBranch_Electroprop
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: II
 
 # ELECTRODELESS ION GENERATION (ResearchDefinition)
 research_electricprop_3:
@@ -549,7 +773,12 @@ research_electricprop_3:
   researchType: Physics
   researchSubType: SubBranch_Electroprop
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: V
 
 # MULTI-STAGE GRID (ResearchDefinition)
 research_electricprop_4:
@@ -559,7 +788,12 @@ research_electricprop_4:
   researchType: Physics
   researchSubType: SubBranch_Electroprop
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: III
 
 # MPD (ResearchDefinition)
 research_electricprop_5:
@@ -569,8 +803,14 @@ research_electricprop_5:
   researchType: Physics
   researchSubType: SubBranch_Electroprop
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_electricprop_1
+  unlocks:
+    - action: UnlockBonus
+      id: VII
 
 # OPTIMIZED SELF-FIELD (ResearchDefinition)
 research_electricprop_6:
@@ -580,8 +820,14 @@ research_electricprop_6:
   researchType: Physics
   researchSubType: SubBranch_Electroprop
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_electricprop_5
+  unlocks:
+    - action: UnlockBonus
+      id: VI
 
 # SUPERCONDUCTING MAGNETS (ResearchDefinition)
 research_electromag_1:
@@ -591,7 +837,10 @@ research_electromag_1:
   researchType: Physics
   researchSubType: SubBranch_Electromagnetism
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_electromag
     - research_mat_superconductor1
 
@@ -603,8 +852,14 @@ research_electromag_2:
   researchType: Physics
   researchSubType: SubBranch_Fusion
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_fusionpower_1
+  unlocks:
+    - action: UnlockFacility
+      id: build_power_fusion
 
 # MAGNETIC NOZZLE (ResearchDefinition)
 research_electromag_3:
@@ -614,7 +869,10 @@ research_electromag_3:
   researchType: Physics
   researchSubType: SubBranch_Fusion
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_electromag_2
 
 # PHASED-ARRAYS (ResearchDefinition)
@@ -625,7 +883,9 @@ research_electromag_5:
   researchType: Physics
   researchSubType: SubBranch_Electromagnetism
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
 
 # ATOMIC MANIPULATION (ResearchDefinition)
 research_electromag_7:
@@ -635,7 +895,10 @@ research_electromag_7:
   researchType: Physics
   researchSubType: SubBranch_Electromagnetism
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_electromag
 
 # LASERS (ResearchDefinition)
@@ -646,7 +909,10 @@ research_electromag_8:
   researchType: Physics
   researchSubType: SubBranch_Electromagnetism
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_electromag
 
 # REMOTE POWER TRANSFER (ResearchDefinition)
@@ -657,8 +923,16 @@ research_electromag_9:
   researchType: Physics
   researchSubType: SubBranch_Electromagnetism
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_electromag_8
+  unlocks:
+    - action: UnlockFacility
+      id: build_power_receiver
+    - action: UnlockFacility
+      id: build_power_transfer
 
 # FUSION THEORY (ResearchDefinition)
 research_fusionpower_1:
@@ -668,9 +942,15 @@ research_fusionpower_1:
   researchType: Physics
   researchSubType: SubBranch_Fusion
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_nukepower
     - research_electromag_1
+  unlocks:
+    - action: UnlockContract
+      id: contract_general_fusionpower
 
 # MAGNETIC SPIN ALIGNMENT (ResearchDefinition)
 research_fusionprop_1:
@@ -680,8 +960,16 @@ research_fusionprop_1:
   researchType: Physics
   researchSubType: SubBranch_Fusion
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_fusionprop_3
+  unlocks:
+    - action: UnlockBonus
+      id: I
+    - action: UnlockBonus
+      id: I
 
 # IMPROVED PLASMA CONTAINMENT (ResearchDefinition)
 research_fusionprop_2:
@@ -691,8 +979,16 @@ research_fusionprop_2:
   researchType: Physics
   researchSubType: SubBranch_Fusion
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_fusionprop
+  unlocks:
+    - action: UnlockBonus
+      id: II
+    - action: UnlockBonus
+      id: II
 
 # FUEL INJECTION OPTIMIZATION (ResearchDefinition)
 research_fusionprop_3:
@@ -702,8 +998,16 @@ research_fusionprop_3:
   researchType: Physics
   researchSubType: SubBranch_Fusion
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_fusionprop_2
+  unlocks:
+    - action: UnlockBonus
+      id: III
+    - action: UnlockBonus
+      id: III
 
 # ADVANCED FUSION PROPULSION (ResearchDefinition)
 research_fusionprop_4:
@@ -713,8 +1017,16 @@ research_fusionprop_4:
   researchType: Physics
   researchSubType: SubBranch_Fusion
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_fusionprop_1
+  unlocks:
+    - action: UnlockBonus
+      id: III
+    - action: UnlockBonus
+      id: III
 
 # SPACE ELEVATOR (ResearchDefinition)
 research_launch_elevator:
@@ -724,9 +1036,15 @@ research_launch_elevator:
   researchType: Engineering
   researchSubType: SubBranch_LaunchFacility
   stage: 0
-  requirements:
+  subStage: 100
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_launch_magrail
     - research_mat_fibre4
+  unlocks:
+    - action: UnlockFacility
+      id: build_launch_elevator
 
 # ELECTROMAGNETIC CATAPULT (ResearchDefinition)
 research_launch_magnetic_catapult:
@@ -736,9 +1054,15 @@ research_launch_magnetic_catapult:
   researchType: Engineering
   researchSubType: SubBranch_LaunchFacility
   stage: 0
-  requirements:
+  subStage: -37
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_launch_massdriver
     - research_mat_superconductor2
+  unlocks:
+    - action: UnlockFacility
+      id: build_launch_magnetic_catapult
 
 # MAGNETIC LAUNCH RAILS (ResearchDefinition)
 research_launch_magrail:
@@ -748,9 +1072,15 @@ research_launch_magrail:
   researchType: Engineering
   researchSubType: SubBranch_LaunchFacility
   stage: 0
-  requirements:
+  subStage: -60
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_launch_spin
     - research_electromag_1
+  unlocks:
+    - action: UnlockFacility
+      id: build_launch_magrails
 
 # MASS DRIVER (ResearchDefinition)
 research_launch_massdriver:
@@ -760,9 +1090,15 @@ research_launch_massdriver:
   researchType: Engineering
   researchSubType: SubBranch_LaunchFacility
   stage: 0
-  requirements:
+  subStage: -40
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_launch_spin
     - research_electromag_1
+  unlocks:
+    - action: UnlockFacility
+      id: build_launch_massdriver
 
 # MASS DRIVER PROPULSION (ResearchDefinition)
 research_launch_massengine:
@@ -772,9 +1108,17 @@ research_launch_massengine:
   researchType: Engineering
   researchSubType: SubBranch_LaunchFacility
   stage: 0
-  requirements:
+  subStage: -35
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_launch_massdriver
     - research_category_fusionprop
+  unlocks:
+    - action: UnlockFacility
+      id: build_asteroid_engine_module
+    - action: UnlockContract
+      id: contract_asteroid_pulling
 
 # LAUNCH PAD (ResearchDefinition)
 research_launch_pad:
@@ -784,8 +1128,14 @@ research_launch_pad:
   researchType: Engineering
   researchSubType: SubBranch_LaunchFacility
   stage: 0
-  requirements:
+  subStage: -100
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_launch
+  unlocks:
+    - action: UnlockFacility
+      id: build_launch_pad
 
 # SPIN-LAUNCH (ResearchDefinition)
 research_launch_spin:
@@ -795,8 +1145,14 @@ research_launch_spin:
   researchType: Engineering
   researchSubType: SubBranch_LaunchFacility
   stage: 0
-  requirements:
+  subStage: -80
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_launch_pad
+  unlocks:
+    - action: UnlockFacility
+      id: build_launch_spin
 
 # CREWED FLIGHT (ResearchDefinition)
 research_lifesup_1:
@@ -806,8 +1162,14 @@ research_lifesup_1:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_lifesup
+  unlocks:
+    - action: UnlockFacility
+      id: module_crew_compartment
 
 # IMPROVED CAPSULE CONSTRUCTION (ResearchDefinition)
 research_lifesup_2:
@@ -817,8 +1179,16 @@ research_lifesup_2:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_1
+  unlocks:
+    - action: UnlockBonus
+      id: I
+    - action: UnlockFacility
+      id: module_crew_medium
 
 # STO TRANSPORTS (ResearchDefinition)
 research_lifesup_4:
@@ -828,8 +1198,14 @@ research_lifesup_4:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_2
+  unlocks:
+    - action: UnlockFacility
+      id: module_crew_large
 
 # IMPROVED RATION PACKING (ResearchDefinition)
 research_lifesup_5:
@@ -839,8 +1215,14 @@ research_lifesup_5:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_1
+  unlocks:
+    - action: UnlockBonus
+      id: II
 
 # IMPROVED ATMOSPHERE RECYCLING (ResearchDefinition)
 research_lifesup_6:
@@ -850,8 +1232,14 @@ research_lifesup_6:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_5
+  unlocks:
+    - action: UnlockBonus
+      id: III
 
 # SPIN-GRAV HABITATION (ResearchDefinition)
 research_lifesup_8:
@@ -861,8 +1249,14 @@ research_lifesup_8:
   researchType: Biotech
   researchSubType: SubBranch_Colonization
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_11
+  unlocks:
+    - action: UnlockFacility
+      id: build_space_0gcolony
 
 # PLANETARY HABITATS (ResearchDefinition)
 research_lifesup_9:
@@ -872,8 +1266,16 @@ research_lifesup_9:
   researchType: Biotech
   researchSubType: SubBranch_Colonization
   stage: 1
-  requirements:
+  subStage: -1
+  showInTree: true
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_lifesup
+  unlocks:
+    - action: UnlockFacility
+      id: build_outpost
+    - action: UnlockFacility
+      id: build_habitat
 
 # REGOLITH SHIELDING (ResearchDefinition)
 research_lifesup_10:
@@ -883,8 +1285,14 @@ research_lifesup_10:
   researchType: Biotech
   researchSubType: SubBranch_Colonization
   stage: 0
-  requirements:
+  subStage: -80
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_11
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # COLONY CONSTRUCTION (ResearchDefinition)
 research_lifesup_11:
@@ -894,8 +1302,14 @@ research_lifesup_11:
   researchType: Biotech
   researchSubType: SubBranch_Colonization
   stage: 0
-  requirements:
+  subStage: -100
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_9
+  unlocks:
+    - action: UnlockFacility
+      id: build_habitatunder
 
 # ON-SITE 3D PRINTING (ResearchDefinition)
 research_lifesup_12:
@@ -905,8 +1319,18 @@ research_lifesup_12:
   researchType: Biotech
   researchSubType: SubBranch_Colonization
   stage: 0
-  requirements:
+  subStage: -60
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_11
+  unlocks:
+    - action: UnlockBonus
+      id: II
+    - action: UnlockFacility
+      id: build_habitatdome
+    - action: UnlockFacility
+      id: build_habitatcity
 
 # PERMANENT ORBITAL PRESENCE (ResearchDefinition)
 research_lifesup_13:
@@ -916,8 +1340,14 @@ research_lifesup_13:
   researchType: Biotech
   researchSubType: SubBranch_Colonization
   stage: 0
-  requirements:
+  subStage: 60
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_8
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # IN-ORBIT PRODUCTION (ResearchDefinition)
 research_lifesup_14:
@@ -927,8 +1357,18 @@ research_lifesup_14:
   researchType: Biotech
   researchSubType: SubBranch_Colonization
   stage: 0
-  requirements:
+  subStage: 80
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_13
+  unlocks:
+    - action: UnlockBonus
+      id: I
+    - action: UnlockFacility
+      id: build_space_0gdome
+    - action: UnlockFacility
+      id: build_space_0gcity
 
 # ARTIFICIAL HIBERNATION (ResearchDefinition)
 research_lifesup_15:
@@ -938,9 +1378,15 @@ research_lifesup_15:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_lifesup
     - research_biotech_4
+  unlocks:
+    - action: UnlockBonus
+      id: V
 
 # SUSPENDED ANIMATION (ResearchDefinition)
 research_lifesup_16:
@@ -950,9 +1396,15 @@ research_lifesup_16:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_15
     - research_biotech_5
+  unlocks:
+    - action: UnlockBonus
+      id: VI
 
 # CONDOR (ResearchDefinition)
 research_lv2_chemadvanced:
@@ -962,9 +1414,15 @@ research_lv2_chemadvanced:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements:
+  subStage: 20
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_chem_main6
     - research_lv_main3
+  unlocks:
+    - action: UnlockVehicleType
+      id: lv_chemadvanced
 
 # TERATORN (ResearchDefinition)
 research_lv2_nukelarge:
@@ -974,8 +1432,14 @@ research_lv2_nukelarge:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements:
+  subStage: 40
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lv2_nukemid
+  unlocks:
+    - action: UnlockVehicleType
+      id: lv_nuke_large
 
 # MAGPIE (ResearchDefinition)
 research_lv2_nukemid:
@@ -985,8 +1449,14 @@ research_lv2_nukemid:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements:
+  subStage: 10
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lv_main4
+  unlocks:
+    - action: UnlockVehicleType
+      id: lv_nuke_mid
 
 # ALUMINIUM-ICE ROCKETS (ResearchDefinition)
 research_lv_alice:
@@ -996,7 +1466,14 @@ research_lv_alice:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockVehicleType
+      id: id_Rocket_RocketType5
+    - action: UnlockVehicleType
+      id: id_Rocket_RocketType6
 
 # EARLY LAUNCH SYSTEMS (ResearchDefinition)
 research_lv_main1:
@@ -1006,7 +1483,10 @@ research_lv_main1:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_lv
     - research_chem_main2
 
@@ -1018,8 +1498,14 @@ research_lv_main2:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lv_main1
+  unlocks:
+    - action: UnlockVehicleType
+      id: id_Rocket_RocketType7
 
 # REUSABLE LAUNCH VEHICLES (ResearchDefinition)
 research_lv_main3:
@@ -1029,8 +1515,16 @@ research_lv_main3:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lv_upgr1
+  unlocks:
+    - action: UnlockVehicleType
+      id: id_Rocket_RocketType3
+    - action: UnlockVehicleType
+      id: id_Rocket_RocketType4
 
 # NUCLEAR LAUNCH VEHICLES (ResearchDefinition)
 research_lv_main4:
@@ -1040,9 +1534,15 @@ research_lv_main4:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements:
+  subStage: -10
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lv_main2
     - research_nukeprop_7
+  unlocks:
+    - action: UnlockVehicleType
+      id: lv_nuke_small
 
 # IMPROVED STACK ASSEMBLY (ResearchDefinition)
 research_lv_upgr1:
@@ -1052,8 +1552,14 @@ research_lv_upgr1:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lv_main1
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # OPTIMIZED HEAT SHIELDS (ResearchDefinition)
 research_lv_upgr2:
@@ -1063,8 +1569,14 @@ research_lv_upgr2:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lv_main3
+  unlocks:
+    - action: UnlockBonus
+      id: V
 
 # IMPROVED REUSABLE ROCKETS (ResearchDefinition)
 research_lv_upgr3:
@@ -1074,8 +1586,16 @@ research_lv_upgr3:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lv_main3
+  unlocks:
+    - action: UnlockBonus
+      id: V
+    - action: UnlockBonus
+      id: I
 
 # ADVANCED PAYLOAD FAIRINGS (ResearchDefinition)
 research_lv_upgr4:
@@ -1085,9 +1605,15 @@ research_lv_upgr4:
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: research_lv_upgr3
+  requirementsResearch:
     - research_lv_upgr3
     - research_lv2_nukemid
+  unlocks:
+    - action: UnlockBonus
+      id: V
 
 # CIRCUIT PRODUCTION IN SPACE (ResearchDefinition)
 research_mat_chips1:
@@ -1097,8 +1623,14 @@ research_mat_chips1:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mat_metal1
+  unlocks:
+    - action: UnlockFacility
+      id: build_electronicsfactory
 
 # IMPROVED ELECTRONICS PRODUCTION (ResearchDefinition)
 research_mat_chips2:
@@ -1108,7 +1640,10 @@ research_mat_chips2:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mat_chips1
 
 # DIAMONDOIDS (ResearchDefinition)
@@ -1119,7 +1654,10 @@ research_mat_diamondoid:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: 80
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mat_fibre3
 
 # SPACE-WORTHY FIBERS (ResearchDefinition)
@@ -1130,8 +1668,14 @@ research_mat_fibre1:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_mat
+  unlocks:
+    - action: UnlockFacility
+      id: build_polymerproduction
 
 # GRAPHENE (ResearchDefinition)
 research_mat_fibre2:
@@ -1141,9 +1685,17 @@ research_mat_fibre2:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: 40
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_mat
     - research_mat_fibre1
+  unlocks:
+    - action: UnlockBonus
+      id: I
+    - action: UnlockBonus
+      id: I
 
 # NANOTUBES (ResearchDefinition)
 research_mat_fibre3:
@@ -1153,8 +1705,16 @@ research_mat_fibre3:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: 60
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mat_fibre2
+  unlocks:
+    - action: UnlockBonus
+      id: II
+    - action: UnlockBonus
+      id: II
 
 # MEGA-SCALE CARBON ALLOTROPE APPLICATION (ResearchDefinition)
 research_mat_fibre4:
@@ -1164,7 +1724,10 @@ research_mat_fibre4:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: 100
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mat_fibre3
 
 # SPACE ALLOYS (ResearchDefinition)
@@ -1175,7 +1738,10 @@ research_mat_metal1:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_mat
 
 # VACUUM FORGING (ResearchDefinition)
@@ -1186,8 +1752,14 @@ research_mat_metal2:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mat_metal1
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # ADVANCED ALLOYING TECHNIQUES (ResearchDefinition)
 research_mat_metal3:
@@ -1197,8 +1769,14 @@ research_mat_metal3:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: -100
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mat_metal2
+  unlocks:
+    - action: UnlockFacility
+      id: build_exoticalloy
 
 # IMPROVED ALLOY PRODUCTION (ResearchDefinition)
 research_mat_metal4:
@@ -1208,7 +1786,10 @@ research_mat_metal4:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: -100
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mat_metal3
 
 # IMPROVED REACTOR VESSELS (ResearchDefinition)
@@ -1219,7 +1800,10 @@ research_mat_refractory:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_nukepower
 
 # HIGH-TEMPERATURE SUPERCONDUCTORS (ResearchDefinition)
@@ -1230,8 +1814,14 @@ research_mat_superconductor1:
   researchType: Physics
   researchSubType: SubBranch_Electromagnetism
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_electromag
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # ROOM-TEMPERATURE SUPERCONDUCTORS (ResearchDefinition)
 research_mat_superconductor2:
@@ -1241,8 +1831,14 @@ research_mat_superconductor2:
   researchType: Physics
   researchSubType: SubBranch_Electromagnetism
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mat_superconductor1
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # DEBRIS SHIELDS (ResearchDefinition)
 research_mat_upgr1:
@@ -1252,8 +1848,14 @@ research_mat_upgr1:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_mat
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # AEROGELS (ResearchDefinition)
 research_mat_upgr2:
@@ -1263,7 +1865,10 @@ research_mat_upgr2:
   researchType: Engineering
   researchSubType: SubBranch_Material
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_mat
     - research_mat_upgr1
 
@@ -1275,9 +1880,15 @@ research_mat_upgr3:
   researchType: Engineering
   researchSubType: SubBranch_Electromagnetism
   stage: 0
-  requirements:
+  subStage: -50
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_mat
     - research_electromag_7
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # IN-SITU RESOURCE UTILIZATION (ResearchDefinition)
 research_mine_1:
@@ -1287,8 +1898,20 @@ research_mine_1:
   researchType: Engineering
   researchSubType: SubBranch_Mining
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_mine
+  unlocks:
+    - action: UnlockFacility
+      id: build_metalmine
+    - action: UnlockFacility
+      id: build_icemine
+    - action: UnlockFacility
+      id: build_raremine
+    - action: UnlockFacility
+      id: build_carbonmine
 
 # REGOLITH SIFTING (ResearchDefinition)
 research_mine_2:
@@ -1298,8 +1921,14 @@ research_mine_2:
   researchType: Engineering
   researchSubType: SubBranch_Mining
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mine_1
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # VACUUM-OPTIMIZED BOREHEADS (ResearchDefinition)
 research_mine_3:
@@ -1309,8 +1938,14 @@ research_mine_3:
   researchType: Engineering
   researchSubType: SubBranch_Mining
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mine_1
+  unlocks:
+    - action: UnlockBonus
+      id: II
 
 # HELIUM-3 EXTRACTION (ResearchDefinition)
 research_mine_4:
@@ -1320,9 +1955,15 @@ research_mine_4:
   researchType: Engineering
   researchSubType: SubBranch_Mining
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mine_2
     - research_fusionpower_1
+  unlocks:
+    - action: UnlockFacility
+      id: build_he3mine
 
 # RADIOACTIVE ISOTOPE ISOLATION (ResearchDefinition)
 research_mine_5:
@@ -1332,8 +1973,14 @@ research_mine_5:
   researchType: Engineering
   researchSubType: SubBranch_Mining
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mine_2
+  unlocks:
+    - action: UnlockFacility
+      id: build_uranmine
 
 # ADVANCED MINING METHODS (ResearchDefinition)
 research_mine_6:
@@ -1343,8 +1990,14 @@ research_mine_6:
   researchType: Engineering
   researchSubType: SubBranch_Mining
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mine_3
+  unlocks:
+    - action: UnlockBonus
+      id: IV
 
 # IMPROVED HELIUM-3 MINING (ResearchDefinition)
 research_mine_7:
@@ -1354,8 +2007,14 @@ research_mine_7:
   researchType: Engineering
   researchSubType: SubBranch_Mining
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mine_4
+  unlocks:
+    - action: UnlockBonus
+      id: IV
 
 # IMPROVED FISSILES MINING (ResearchDefinition)
 research_mine_8:
@@ -1365,8 +2024,14 @@ research_mine_8:
   researchType: Engineering
   researchSubType: SubBranch_Mining
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mine_5
+  unlocks:
+    - action: UnlockBonus
+      id: IV
 
 # ORBITAL GAS EXTRACTOR (ResearchDefinition)
 research_mine_atmoscoop:
@@ -1376,8 +2041,14 @@ research_mine_atmoscoop:
   researchType: Engineering
   researchSubType: SubBranch_Colonization
   stage: 0
-  requirements:
+  subStage: 20
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_lifesup_14
+  unlocks:
+    - action: UnlockFacility
+      id: build_space_atmoscoop
 
 # MOLTEN FISSION SYSTEMS (ResearchDefinition)
 research_nukepower_1:
@@ -1387,8 +2058,14 @@ research_nukepower_1:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_mat_refractory
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # GAS CORE FISSION (ResearchDefinition)
 research_nukepower_2:
@@ -1398,8 +2075,14 @@ research_nukepower_2:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_nukepower_1
+  unlocks:
+    - action: UnlockBonus
+      id: II
 
 # HIGH TEMPERATURE NTR (ResearchDefinition)
 research_nukeprop_1:
@@ -1409,7 +2092,14 @@ research_nukeprop_1:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: I
+    - action: UnlockBonus
+      id: VII
 
 # HELIUM LOOP CYCLE (ResearchDefinition)
 research_nukeprop_2:
@@ -1419,7 +2109,12 @@ research_nukeprop_2:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: II
 
 # NUCLEAR THERMAL ELECTRIC ROCKET (ResearchDefinition)
 research_nukeprop_3:
@@ -1429,8 +2124,14 @@ research_nukeprop_3:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_nukeprop_5
+  unlocks:
+    - action: UnlockBonus
+      id: III
 
 # MPD-BASED NTER (ResearchDefinition)
 research_nukeprop_4:
@@ -1440,7 +2141,12 @@ research_nukeprop_4:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: IV
 
 # LIQUID CORE (ResearchDefinition)
 research_nukeprop_5:
@@ -1450,9 +2156,17 @@ research_nukeprop_5:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_nukeprop
     - research_nukepower_1
+  unlocks:
+    - action: UnlockBonus
+      id: V
+    - action: UnlockBonus
+      id: VIII
 
 # ADVANCED LIQUID CORE (ResearchDefinition)
 research_nukeprop_6:
@@ -1462,7 +2176,14 @@ research_nukeprop_6:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: VI
+    - action: UnlockBonus
+      id: IX
 
 # CLOSED-CYCLE GAS CORE (ResearchDefinition)
 research_nukeprop_7:
@@ -1472,9 +2193,17 @@ research_nukeprop_7:
   researchType: Physics
   researchSubType: SubBranch_Nuclear
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_nukeprop_3
     - research_nukepower_2
+  unlocks:
+    - action: UnlockBonus
+      id: VI
+    - action: UnlockBonus
+      id: IX
 
 # IMPROVED OPTICS (ResearchDefinition)
 research_observation_1:
@@ -1484,8 +2213,14 @@ research_observation_1:
   researchType: Physics
   researchSubType: SubBranch_Exploration
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_observation
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # RADAR ASTRONOMY (ResearchDefinition)
 research_observation_2:
@@ -1495,7 +2230,12 @@ research_observation_2:
   researchType: Physics
   researchSubType: SubBranch_Exploration
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockBonus
+      id: II
 
 # SPACE TELESCOPES (ResearchDefinition)
 research_observation_3:
@@ -1505,8 +2245,14 @@ research_observation_3:
   researchType: Physics
   researchSubType: SubBranch_Exploration
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_observation_1
+  unlocks:
+    - action: UnlockFacility
+      id: build_space_telescope
 
 # EXOPLANET DETECTION (ResearchDefinition)
 research_observation_4:
@@ -1516,7 +2262,10 @@ research_observation_4:
   researchType: Physics
   researchSubType: SubBranch_Exploration
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_observation_3
 
 # CHEMICAL POWER REACTOR (ResearchDefinition)
@@ -1527,7 +2276,12 @@ research_power_chem:
   researchType: Physics
   researchSubType: SubBranch_Power
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: UnlockFacility
+      id: build_power_chemical
 
 # GEOTHERMAL POWER TURBINE (ResearchDefinition)
 research_power_geo:
@@ -1537,8 +2291,14 @@ research_power_geo:
   researchType: Physics
   researchSubType: SubBranch_Power
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_power
+  unlocks:
+    - action: UnlockFacility
+      id: build_power_geothermal
 
 # POWERSAT (ResearchDefinition)
 research_power_powersat:
@@ -1548,9 +2308,17 @@ research_power_powersat:
   researchType: Physics
   researchSubType: SubBranch_Power
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_power
     - research_electromag_9
+  unlocks:
+    - action: UnlockFacility
+      id: build_power_transfer_orbit
+    - action: UnlockFacility
+      id: build_power_receiver_orbit
 
 # SOLAR CELL ARRAYS (ResearchDefinition)
 research_power_solar1:
@@ -1560,8 +2328,14 @@ research_power_solar1:
   researchType: Physics
   researchSubType: SubBranch_Power
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_power
+  unlocks:
+    - action: UnlockFacility
+      id: build_power_solar
 
 # IMPROVED SOLAR CELLS (ResearchDefinition)
 research_power_solar2:
@@ -1571,8 +2345,14 @@ research_power_solar2:
   researchType: Physics
   researchSubType: SubBranch_Power
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_power_solar1
+  unlocks:
+    - action: UnlockBonus
+      id: III
 
 # WIND TURBINE (ResearchDefinition)
 research_power_wind:
@@ -1582,8 +2362,14 @@ research_power_wind:
   researchType: Physics
   researchSubType: SubBranch_Power
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_power
+  unlocks:
+    - action: UnlockFacility
+      id: build_power_wind
 
 # EXOSKELETONS (ResearchDefinition)
 research_robotics_crew1:
@@ -1593,9 +2379,15 @@ research_robotics_crew1:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_robotics
     - research_mat_metal2
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # EXPERT SYSTEMS (ResearchDefinition)
 research_robotics_crew2:
@@ -1605,9 +2397,17 @@ research_robotics_crew2:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_robotics
     - research_computing_ai3
+  unlocks:
+    - action: UnlockBonus
+      id: III
+    - action: UnlockBonus
+      id: II
 
 # CYBERNETICS (ResearchDefinition)
 research_robotics_crew3:
@@ -1617,10 +2417,16 @@ research_robotics_crew3:
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_computing_ai1
     - research_robotics_crew1
     - research_mat_fibre2
+  unlocks:
+    - action: UnlockBonus
+      id: II
 
 # OPTIMIZED PAYLOAD BUS (ResearchDefinition)
 research_sails_1:
@@ -1630,8 +2436,14 @@ research_sails_1:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_sails
+  unlocks:
+    - action: UnlockBonus
+      id: I
 
 # REFLECTIVE MATERIALS (ResearchDefinition)
 research_sails_2:
@@ -1641,9 +2453,15 @@ research_sails_2:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sails_1
     - research_mat_fibre2
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_sail_mid
 
 # IMPROVED SAIL DEPLOYMENT (ResearchDefinition)
 research_sails_3:
@@ -1653,8 +2471,16 @@ research_sails_3:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sails_2
+  unlocks:
+    - action: UnlockBonus
+      id: I
+    - action: UnlockBonus
+      id: I
 
 # PLASMA MAGNET SAIL (ResearchDefinition)
 research_sails_4:
@@ -1664,9 +2490,15 @@ research_sails_4:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 2
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sails_3
     - research_electromag_1
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_sail_long
 
 # ARIANE (ResearchDefinition)
 research_sc_ariane:
@@ -1676,9 +2508,15 @@ research_sc_ariane:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: -80
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sc_hephaistos
     - research_nukeprop_7
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_nuke_large
 
 # ATLAS (ResearchDefinition)
 research_sc_atlas:
@@ -1688,9 +2526,15 @@ research_sc_atlas:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: 100
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sc_sirius
     - research_fusionprop_1
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_asteroid_puller
 
 # EXPANDED CARGO BAYS 1 (ResearchDefinition)
 research_sc_cargo1:
@@ -1700,7 +2544,10 @@ research_sc_cargo1:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: 80
+  showInTree: false
+  newViewResearchTreeParent: research_category_sc
+  requirementsResearch:
     - research_category_sc
     - research_sc_helios
 
@@ -1712,7 +2559,10 @@ research_sc_cargo2:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: 80
+  showInTree: false
+  newViewResearchTreeParent: research_sc_cargo1
+  requirementsResearch:
     - research_sc_cargo1
     - research_sc_hermes
 
@@ -1724,7 +2574,10 @@ research_sc_cargo3:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: 80
+  showInTree: false
+  newViewResearchTreeParent: research_sc_cargo2
+  requirementsResearch:
     - research_sc_cargo2
     - research_sc_hephaistos
 
@@ -1736,7 +2589,10 @@ research_sc_cargo4:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: 80
+  showInTree: false
+  newViewResearchTreeParent: research_sc_cargo3
+  requirementsResearch:
     - research_sc_cargo3
     - research_sc_nike
 
@@ -1748,9 +2604,15 @@ research_sc_cronos:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: -75
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sc_hephaistos
     - research_nukeprop_7
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_nuke_nolv
 
 # ATHENA (ResearchDefinition)
 research_sc_hecate:
@@ -1760,9 +2622,15 @@ research_sc_hecate:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: 100
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sc_hermes
     - research_electricprop_5
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_electric_mid
 
 # STRATOS (ResearchDefinition)
 research_sc_helios:
@@ -1772,8 +2640,14 @@ research_sc_helios:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: -80
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_sc
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_chem_large
 
 # HEPHAISTOS (ResearchDefinition)
 research_sc_hephaistos:
@@ -1783,9 +2657,15 @@ research_sc_hephaistos:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: -100
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sc_prometheus
     - research_nukeprop_5
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_nuke_mid
 
 # HERMES (ResearchDefinition)
 research_sc_hermes:
@@ -1795,8 +2675,14 @@ research_sc_hermes:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: -60
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sc_helios
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_electric_small
 
 # IRIS (ResearchDefinition)
 research_sc_iris:
@@ -1806,8 +2692,14 @@ research_sc_iris:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: -100
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_sc
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_chem_small
 
 # NIKE (ResearchDefinition)
 research_sc_nike:
@@ -1817,9 +2709,15 @@ research_sc_nike:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: -40
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_sc
     - research_category_fusionprop
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_fusion_small
 
 # SELENE (ResearchDefinition)
 research_sc_orion:
@@ -1829,8 +2727,14 @@ research_sc_orion:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: -90
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sc_iris
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_chem_mid2
 
 # PROMETHEUS (ResearchDefinition)
 research_sc_prometheus:
@@ -1840,9 +2744,15 @@ research_sc_prometheus:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: 50
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_sc
     - research_category_nukeprop
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_nuke_small
 
 # SIRIUS (ResearchDefinition)
 research_sc_sirius:
@@ -1852,9 +2762,15 @@ research_sc_sirius:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: -10
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sc_nike
     - research_fusionprop_3
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_fusion_mid
 
 # ZEUS (ResearchDefinition)
 research_sc_zeus:
@@ -1864,9 +2780,15 @@ research_sc_zeus:
   researchType: Engineering
   researchSubType: SubBranch_Spacecraft
   stage: 0
-  requirements:
+  subStage: 80
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_sc_sirius
     - research_fusionprop_1
+  unlocks:
+    - action: UnlockSpacecraftType
+      id: spacecraft_fusion_large
 
 # MARS BACTERIA (ResearchDefinition)
 research_terraforming_1:
@@ -1876,7 +2798,9 @@ research_terraforming_1:
   researchType: Biotech
   researchSubType: SubBranch_Terraforming
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
 
 # CARBON RELEASE (ResearchDefinition)
 research_terraforming_2:
@@ -1886,8 +2810,18 @@ research_terraforming_2:
   researchType: Biotech
   researchSubType: SubBranch_Terraforming
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_terraforming
+  unlocks:
+    - action: UnlockFacility
+      id: build_power_carbon
+    - action: UnlockFacility
+      id: build_co2_splitting
+    - action: UnlockFacility
+      id: build_power_hydrogen
 
 # PHOTOSYNTHETIC MICROBES (ResearchDefinition)
 research_terraforming_3:
@@ -1897,7 +2831,9 @@ research_terraforming_3:
   researchType: Biotech
   researchSubType: SubBranch_Terraforming
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
 
 # ALBEDO MANIPULATION (ResearchDefinition)
 research_terraforming_4:
@@ -1907,7 +2843,9 @@ research_terraforming_4:
   researchType: Biotech
   researchSubType: SubBranch_Terraforming
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
 
 # COMET REDIRECTION (ResearchDefinition)
 research_terraforming_5:
@@ -1917,7 +2855,9 @@ research_terraforming_5:
   researchType: Biotech
   researchSubType: SubBranch_Terraforming
   stage: 0
-  requirements: []
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
 
 # STELLAR MIRROR (ResearchDefinition)
 research_terraforming_6:
@@ -1927,8 +2867,16 @@ research_terraforming_6:
   researchType: Biotech
   researchSubType: SubBranch_Terraforming
   stage: 0
-  requirements:
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_terraforming_2
+  unlocks:
+    - action: UnlockFacility
+      id: build_terraform_space_mirror
+    - action: UnlockFacility
+      id: build_terraform_space_shade
 
 # ARTIFICIAL MAGNETOSPHERE (ResearchDefinition)
 research_terraforming_magnet1:
@@ -1938,8 +2886,16 @@ research_terraforming_magnet1:
   researchType: Biotech
   researchSubType: SubBranch_Terraforming
   stage: 0
-  requirements:
+  subStage: -20
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
     - research_category_terraforming
     - research_electromag_1
     - research_mat_superconductor2
+  unlocks:
+    - action: UnlockFacility
+      id: build_terraform_magnet
+    - action: UnlockFacility
+      id: build_terraform_space_magnet
 

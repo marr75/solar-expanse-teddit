@@ -1,24 +1,67 @@
-# Spacecraft patches.
+# Spacecraft patches and new entries.
 # Keys are spacecraft type IDs (from dump/spacecraft.yaml).
+# Unknown IDs create a new spacecraft; known IDs patch an existing one.
 #
-# ── Fields ────────────────────────────────────────────────────────────────────
+# ── Fields (new entry) ───────────────────────────────────────────────────────
+#   name:                                 string — display name
+#   description:                          string — tooltip description
+#   icon:                                 path   — relative path to PNG/JPEG image
+#   engineType:                           enum   — chemical / electric / nuclear / fusion / solar / none / special
 #   orbitSC:                              bool   — true = orbital only (cannot land)
-#   timeToBuildInDays:                    float  — construction time in in-game days
-#   constructionEquipmentCountIsRequired: bool   — whether Construction Equipment is required
-#   buildCost:                            double — money cost to build
-#   buildResources:                       mapping — physical resources required: {resource_id: amount}
-#   cargoCapacity:                        float  — cargo capacity in tonnes
-#   fuelCapacity:                         float  — fuel tank size in tonnes
+#   isLocked:                             bool   — hidden from build UI until unlocked by research
+#   needLaunchVehicleToGoToMoon:          bool   — requires a launch vehicle for moon missions
+#   canByBuildByUser:                     bool   — whether the player can construct this
+#   buildOnlyLowOrbit:                    bool   — can only be built in low orbit
+#   solarSC:                              bool   — solar sail spacecraft
+#   reusability:                          float  — 0 = expendable, 1 = fully reusable
+#   mass:                                 float  — dry mass (tonnes)
 #   thrust:                               float  — engine thrust (kN)
 #   exhaustV:                             float  — exhaust velocity (km/s)
-#   mass:                                 float  — dry mass (tonnes)
+#   cargoCapacity:                        float  — cargo capacity (tonnes)
+#   fuelCapacity:                         float  — fuel tank size (tonnes)
 #   maxLifeSupport:                       float  — max crew life-support days
 #   availableDeltaV:                      float  — total delta-V (km/s)
 #   maintenanceCostPerDay:                float  — daily upkeep cost
 #   maxPayload:                           float or null — max payload to surface; null = unlimited
+#   timeToBuildInDays:                    float  — construction time in in-game days
+#   constructionEquipmentCountIsRequired: bool   — whether Construction Equipment is required
+#   buildCost:                            double — money cost to build
+#   buildResources:                       mapping — {resource_id: amount}
+
+# ── Patch existing entries ────────────────────────────────────────────────────
 
 spacecraft_chem_small:
   buildResources:
     id_resource_steel: 40
     id_resource_chips: 20
   cargoCapacity: 200
+
+# ── New entries ───────────────────────────────────────────────────────────────
+
+test_spacecraft_modded:
+  cloneFrom: spacecraft_chem_small
+  name: Modded Rocket
+  description: A basic chemical rocket added by the example mod. Unlocked from the start.
+  icon: cat.jpg
+  engineType: chemical
+  fuelType: id_resource_steel
+  isLocked: false
+  orbitSC: false
+  needLaunchVehicleToGoToMoon: true
+  canByBuildByUser: true
+  reusability: 0
+  mass: 2
+  thrust: 25000
+  exhaustV: 3.7
+  cargoCapacity: 5
+  fuelCapacity: 30
+  maxLifeSupport: 0
+  availableDeltaV: 100
+  maintenanceCostPerDay: 12
+  maxPayload: null
+  timeToBuildInDays: 30
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 25
+    id_resource_chips: 10
