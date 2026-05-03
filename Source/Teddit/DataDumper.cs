@@ -61,8 +61,26 @@ namespace Teddit
             int count = 0;
             foreach (var res in allSO.AllResourceDefinitions.List)
             {
-                sb.AppendLine($"- id: {YamlScalar(res.ID)}");
-                sb.AppendLine($"  translationKey: {YamlScalar(res.IDToTranslate)}");
+                if (res == null) continue;
+                string name = res.ID;
+                try { name = res.Name; } catch { }
+                sb.AppendLine($"# {name}");
+                sb.AppendLine($"{YamlKey(res.ID)}:");
+                sb.AppendLine($"  resourceType: {YamlScalar(res.ResourceType.ToString())}");
+                sb.AppendLine($"  showOnUI: {FormatBool(res.ShowOnUI)}");
+                sb.AppendLine($"  canBeLeftOnObject: {FormatBool(res.CanBeLeftOnObject)}");
+                sb.AppendLine($"  marketClearingPriceBase: {FormatDouble(res.MarketClearingPriceBase)}");
+                sb.AppendLine($"  priceChangeMultiplier: {FormatDouble(res.PriceChangeMultiplier)}");
+                sb.AppendLine($"  startingSummedPreviousTradesQuantity: {FormatFloat(res.StartingSummedPreviousTradesQuantity)}");
+                sb.AppendLine($"  startingPreviousTradesCount: {FormatFloat(res.StartingPreviousTradesCount)}");
+                sb.AppendLine($"  toSortMarketOffer: {res.ToSortMarketOffer}");
+                sb.AppendLine($"  showInMarket: {FormatBool(allSO.AllResourceDefinitions.ListResourceDefinitionInMarketPlaceOffer.Contains(res))}");
+                string iconRef = FacilityCreator.GetSpriteReference(res.Sprite);
+                if (!string.IsNullOrEmpty(iconRef))
+                    sb.AppendLine($"  iconRef: {YamlScalar(iconRef)}");
+                AppendResourceTerraformationInfo(sb, "  terraformationInfo", res.TerraformationInfo);
+                AppendAnimationCurve(sb, "  toxicityCurve", res.ToxicityCurve);
+                sb.AppendLine();
                 count++;
             }
             File.WriteAllText(Path.Combine(dir, "resources.yaml"), sb.ToString());
@@ -582,6 +600,40 @@ namespace Teddit
         }
 
         // ── YAML emit helpers ─────────────────────────────────────────────────
+
+        static void AppendResourceTerraformationInfo(StringBuilder sb, string keyWithIndent, ResourceDefinition.TerraformationInfoDef info)
+        {
+            sb.AppendLine($"{keyWithIndent}:");
+            string indent = new string(' ', keyWithIndent.Length - keyWithIndent.TrimStart().Length + 2);
+            sb.AppendLine($"{indent}resourceOpticalDepthParameter: {FormatDouble(info.resourceOpticalDepthParameter)}");
+            sb.AppendLine($"{indent}resourceHeatCapacity: {FormatDouble(info.resourceHeatCapacity)}");
+            sb.AppendLine($"{indent}vaporizationLatentHeat: {FormatDouble(info.vaporizationLatentHeat)}");
+            sb.AppendLine($"{indent}baseTemperatureBoiling: {FormatDouble(info.baseTemperatureBoiling)}");
+            sb.AppendLine($"{indent}temperatureMelting: {FormatDouble(info.temperatureMelting)}");
+            sb.AppendLine($"{indent}pressureTriplePoint: {FormatDouble(info.pressureTriplePoint)}");
+        }
+
+        static void AppendAnimationCurve(StringBuilder sb, string keyWithIndent, AnimationCurve curve)
+        {
+            if (curve == null || curve.keys == null || curve.keys.Length == 0)
+                return;
+
+            sb.AppendLine($"{keyWithIndent}:");
+            string indent = new string(' ', keyWithIndent.Length - keyWithIndent.TrimStart().Length + 2);
+            sb.AppendLine($"{indent}preWrapMode: {YamlScalar(curve.preWrapMode.ToString())}");
+            sb.AppendLine($"{indent}postWrapMode: {YamlScalar(curve.postWrapMode.ToString())}");
+            sb.AppendLine($"{indent}keys:");
+            foreach (var frame in curve.keys)
+            {
+                sb.AppendLine($"{indent}  - time: {FormatFloat(frame.time)}");
+                sb.AppendLine($"{indent}    value: {FormatFloat(frame.value)}");
+                sb.AppendLine($"{indent}    inTangent: {FormatFloat(frame.inTangent)}");
+                sb.AppendLine($"{indent}    outTangent: {FormatFloat(frame.outTangent)}");
+                sb.AppendLine($"{indent}    weightedMode: {YamlScalar(frame.weightedMode.ToString())}");
+                sb.AppendLine($"{indent}    inWeight: {FormatFloat(frame.inWeight)}");
+                sb.AppendLine($"{indent}    outWeight: {FormatFloat(frame.outWeight)}");
+            }
+        }
 
         static T FindFieldValue<T>(object target, string fieldName) where T : class
         {

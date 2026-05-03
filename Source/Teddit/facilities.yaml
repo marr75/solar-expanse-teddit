@@ -45,6 +45,7 @@
 #   icon:              path to PNG/JPEG image, relative to the mod folder unless absolute
 #   name:              display name injected into localization
 #   description:       tooltip description injected into localization
+#   capabilities:      extra facility-info text injected as ID + "_Capabilities"
 #   isLocked:          bool   hidden from build menu until unlocked
 #   canBeScrapped:     bool   whether the facility can be demolished
 #   canBeTurnedOff:    bool   whether the facility can be disabled

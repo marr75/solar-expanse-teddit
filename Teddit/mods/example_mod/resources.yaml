@@ -1,0 +1,14 @@
+id_resource_catnip:
+  cloneFrom: id_resource_alloy
+  resourceType: Normal
+  icon: cat.jpg
+  name: Catnip
+  description: A premium feline stimulant with alarming strategic importance.
+  marketClearingPriceBase: 1200.0
+  priceChangeMultiplier: 1.1
+  startingSummedPreviousTradesQuantity: 1000.0
+  startingPreviousTradesCount: 5.0
+  toSortMarketOffer: 30
+  showOnUI: true
+  canBeLeftOnObject: true
+  showInMarket: true

@@ -18,6 +18,11 @@
 #     - action: UnlockSpacecraftType
 #       id: spacecraft_chem_small
 #
+#   replaceUnlocks: true
+#     true  = replace the research's full unlock set with the list above
+#     false = append the listed unlocks to the research's existing unlocks
+#             while de-duplicating matching entries
+#
 # Supported unlock actions:
 #   UnlockFacility
 #   UnlockSpacecraftType

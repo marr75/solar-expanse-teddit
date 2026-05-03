@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Data.ScriptableObject;
 using Game.CompanyScripts;
+using Game.ObjectInfoDataScripts;
 using Game.ObjectInfoDataScripts.CustomFacilitiesAndModules;
 using Game.UI.Windows.Elements.SpaceCraftConstructElements;
 using Language;
@@ -99,26 +100,40 @@ namespace Teddit
                 };
             }
 
-            string name        = GetVal<string>(def, "name",        null);
-            string description = GetVal<string>(def, "description", null);
-            if (!string.IsNullOrEmpty(name) || !string.IsNullOrEmpty(description))
-                InjectTranslations(id, name, description);
+            string name         = GetVal<string>(def, "name",         null);
+            string description  = GetVal<string>(def, "description",  null);
+            string capabilities = GetVal<string>(def, "capabilities", null);
+            if (!string.IsNullOrEmpty(name) || !string.IsNullOrEmpty(description) || !string.IsNullOrEmpty(capabilities))
+                InjectTranslations(id, name, description, capabilities);
 
             string facilityItemClassName = GetVal<string>(def, "facilityItemClass", null);
             bool hasLabData = def.ContainsKey("labBonusToResearchInPerHour") || def.ContainsKey("labResearchSubTypeId") || def.ContainsKey("labIdToBonus");
+            bool hasResourcesToMine = def.ContainsKey("resourcesToMine");
             if (string.Equals(facilityItemClassName, "LabFacility", StringComparison.OrdinalIgnoreCase)
                 || desc.specialAbilityFacilityNew == ESpecialAbilityFacilityNew.Lab
                 || hasLabData)
             {
                 SetField(desc, "facilityItemClass", typeof(LabFacility));
+                if (desc.bonusData == null) desc.bonusData = new BonusData();
                 if (desc.labData == null) desc.labData = new LabData();
                 if (def.TryGetValue("labBonusToResearchInPerHour", out tok) && tok.Type != JTokenType.Null)
                     desc.labData.bonusToResearchInPerHour = tok.Value<int>();
+                desc.labData.idResearchSubType = string.Empty;
+                desc.labData.idToBonus = Array.Empty<string>();
                 if (def.TryGetValue("labResearchSubTypeId", out tok))
-                    desc.labData.idResearchSubType = tok.Type == JTokenType.Null ? null : tok.Value<string>();
+                    desc.labData.idResearchSubType = tok.Type == JTokenType.Null ? string.Empty : (tok.Value<string>() ?? string.Empty);
                 if (def.TryGetValue("labIdToBonus", out tok) && tok.Type == JTokenType.Array)
                     desc.labData.idToBonus = ((JArray)tok).Select(x => x.Value<string>()).Where(x => !string.IsNullOrEmpty(x)).ToArray();
             }
+            else if (string.Equals(facilityItemClassName, "MiningFacility", StringComparison.OrdinalIgnoreCase)
+                || desc.specialAbilityFacilityNew == ESpecialAbilityFacilityNew.Mining
+                || hasResourcesToMine)
+            {
+                SetField(desc, "facilityItemClass", typeof(MiningFacility));
+            }
+
+            if (desc.bonusData == null)
+                desc.bonusData = new BonusData();
 
             // Complex fields (buildResources, resourcesToMine, refinerInput/Output, byproducts)
             ScriptableObjectPatcher.ApplyFacilityComplexFields(desc, def, id);
@@ -142,7 +157,7 @@ namespace Teddit
 
         // ── TMP sprite registration ───────────────────────────────────────────────
 
-        static void RegisterSpriteWithTMP(string spriteName, Texture2D tex)
+        internal static void RegisterSpriteWithTMP(string spriteName, Texture2D tex)
         {
             try
             {
@@ -232,6 +247,82 @@ namespace Teddit
             catch (Exception ex)
             {
                 Plugin.Log.LogWarning($"[FacilityCreator] TMP sprite registration failed for {spriteName}: {ex.Message}");
+            }
+        }
+
+        internal static void EnsureSpriteRegisteredWithTMP(Sprite sprite, string spriteNameOverride = null)
+        {
+            if (sprite == null) return;
+            string spriteName = string.IsNullOrEmpty(spriteNameOverride) ? sprite.name : spriteNameOverride;
+            if (string.IsNullOrEmpty(spriteName)) return;
+
+            var existingAssets = Resources.FindObjectsOfTypeAll<TMP_SpriteAsset>();
+            foreach (var asset in existingAssets)
+            {
+                if (asset == null) continue;
+                try
+                {
+                    var chars = asset.spriteCharacterTable;
+                    if (chars == null) continue;
+                    foreach (var ch in chars)
+                    {
+                        if (ch != null && string.Equals(ch.name, spriteName, StringComparison.OrdinalIgnoreCase))
+                            return;
+                    }
+                }
+                catch
+                {
+                    // Ignore broken/partial assets and keep scanning.
+                }
+            }
+
+            Texture2D tex = ExtractTexture(sprite, spriteName);
+            if (tex != null)
+                RegisterSpriteWithTMP(spriteName, tex);
+        }
+
+        static Texture2D ExtractTexture(Sprite sprite, string textureName)
+        {
+            try
+            {
+                Rect rect = sprite.rect;
+                Texture2D source = sprite.texture;
+                int width = Mathf.RoundToInt(rect.width);
+                int height = Mathf.RoundToInt(rect.height);
+                if (source == null || width <= 0 || height <= 0)
+                    return null;
+
+                var tex = new Texture2D(width, height, TextureFormat.ARGB32, mipChain: false);
+                tex.name = textureName;
+
+                try
+                {
+                    Color[] pixels = source.GetPixels(
+                        Mathf.RoundToInt(rect.x),
+                        Mathf.RoundToInt(rect.y),
+                        width,
+                        height);
+                    tex.SetPixels(pixels);
+                    tex.Apply();
+                    return tex;
+                }
+                catch
+                {
+                    var rt = RenderTexture.GetTemporary(width, height, 0, RenderTextureFormat.ARGB32);
+                    var prev = RenderTexture.active;
+                    Graphics.Blit(source, rt);
+                    RenderTexture.active = rt;
+                    tex.ReadPixels(new Rect(rect.x, rect.y, width, height), 0, 0);
+                    tex.Apply();
+                    RenderTexture.active = prev;
+                    RenderTexture.ReleaseTemporary(rt);
+                    return tex;
+                }
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[FacilityCreator] Failed to extract sprite texture '{textureName}': {ex.Message}");
+                return null;
             }
         }
 
@@ -385,7 +476,7 @@ namespace Teddit
             return "UNKNOWN";
         }
 
-        internal static void InjectTranslations(string id, string name, string description)
+        internal static void InjectTranslations(string id, string name, string description, string capabilities = null)
         {
             try
             {
@@ -401,9 +492,12 @@ namespace Teddit
                     var dictRaw = dictFI.GetValue(lang);
                     if (!(dictRaw is Dictionary<string, string>)) continue;
                     var dict = (Dictionary<string, string>)dictRaw;
-                    if (!string.IsNullOrEmpty(name))        dict[id]               = name;
-                    if (!string.IsNullOrEmpty(description)) dict[id + "_Description"] = description;
+                    if (!string.IsNullOrEmpty(name))         dict[id] = name;
+                    if (!string.IsNullOrEmpty(description))  dict[id + "_Description"] = description;
+                    if (!string.IsNullOrEmpty(capabilities)) dict[id + FacilityBaseDescriptor.CapabilitiesString] = capabilities;
                 }
+
+                le?.InvokeTranslationChanged();
             }
             catch (Exception ex)
             {

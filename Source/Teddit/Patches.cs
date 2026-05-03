@@ -1,12 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using CustomUpdate;
 using Data.ScriptableObject;
+using Extensions;
+using Game.Info;
+using Game.UI;
+using Game.UI.Windows.Elements.ChoseFacilityElements;
+using Game.UI.Windows.Windows;
 using Game.VisualizationScripts;
 using HarmonyLib;
 using Manager;
+using ScriptableObjectScripts;
+using TMPro;
+using UnityEngine;
 
 namespace Teddit
 {
@@ -107,6 +116,10 @@ namespace Teddit
         {
             string label = Path.GetFileName(dir);
 
+            var resourcePatches = PatchConfig.Load(Path.Combine(dir, "resources.yaml"));
+            try { ScriptableObjectPatcher.RunResources(resourcePatches, dir); }
+            catch (Exception ex) { Plugin.Log.LogError($"[ResourcePatcher:{label}] {ex}"); }
+
             var facilityPatches = PatchConfig.Load(Path.Combine(dir, "facilities.yaml"));
             try { ScriptableObjectPatcher.RunFacilities(facilityPatches, dir); }
             catch (Exception ex) { Plugin.Log.LogError($"[FacilityPatcher:{label}] {ex}"); }
@@ -177,6 +190,211 @@ namespace Teddit
             {
                 Plugin.Log.LogWarning($"[VehicleFix] Failed to retarget ObjectOnOrbit markers for '{spacecraftType.ID}': {ex.Message}");
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(ResourceDefinition), "get_IconString")]
+    static class PatchResourceDefinitionGetIconString
+    {
+        static void Postfix(ResourceDefinition __instance, ref string __result)
+        {
+            if (ResourceCreator.UsesNamedSprite(__instance))
+                __result = ResourceCreator.GetIconString(__instance);
+        }
+    }
+
+    [HarmonyPatch(typeof(ResourceDefinition), "get_IconWithLinkString")]
+    static class PatchResourceDefinitionGetIconWithLinkString
+    {
+        static void Postfix(ResourceDefinition __instance, ref string __result)
+        {
+            if (ResourceCreator.UsesNamedSprite(__instance))
+                __result = ResourceCreator.GetIconWithLinkString(__instance);
+        }
+    }
+
+    [HarmonyPatch(typeof(MyIDScriptableObject), "GetText")]
+    static class PatchMyIDScriptableObjectGetText
+    {
+        static void Postfix(MyIDScriptableObject __instance, bool longText, bool firstIcon, string _highLightColor, bool colorIcon, string _highLightColorSprite, bool addSpace, ref string __result)
+        {
+            var resource = __instance as ResourceDefinition;
+            if (resource == null || !ResourceCreator.UsesNamedSprite(resource))
+                return;
+
+            __result = ResourceCreator.FormatResourceLink(resource, longText, firstIcon, _highLightColor, colorIcon, _highLightColorSprite, addSpace);
+        }
+    }
+
+    [HarmonyPatch]
+    static class PatchMyExtensionsTupleToString
+    {
+        static MethodBase TargetMethod()
+        {
+            var t = AccessTools.TypeByName("Extensions.MyExtensions");
+            return AccessTools.Method(t, "ToString", new[] { typeof(ValueTuple<ResourceDefinition, double>), typeof(string), typeof(double) });
+        }
+
+        static void Postfix(ValueTuple<ResourceDefinition, double> rb, string format, double multiplier, ref string __result)
+        {
+            if (!ResourceCreator.UsesNamedSprite(rb.Item1))
+                return;
+            __result = ResourceCreator.FormatResourceAmount(rb.Item1, rb.Item2, multiplier);
+        }
+    }
+
+    [HarmonyPatch(typeof(global::DropDownEnum), "SetOptionsAwake")]
+    static class PatchDropDownEnumSetOptionsAwake
+    {
+        static readonly FieldInfo _dropDownTypeFi = typeof(global::DropDownEnum).GetField("dropDownType", BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _shortTextFi = typeof(global::DropDownEnum).GetField("shortText", BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _emptyTextAllFi = typeof(global::DropDownEnum).GetField("emptyTextAll", BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly PropertyInfo _allResourcesPi = typeof(global::DropDownEnum).GetProperty("AllResourceDefinitions", BindingFlags.NonPublic | BindingFlags.Instance);
+
+        static void Postfix(global::DropDownEnum __instance)
+        {
+            if (_dropDownTypeFi == null || _allResourcesPi == null || __instance.dropDown == null)
+                return;
+            if (!string.Equals(_dropDownTypeFi.GetValue(__instance)?.ToString(), "resorce", StringComparison.OrdinalIgnoreCase))
+                return;
+
+            var resources = _allResourcesPi.GetValue(__instance, null) as List<ResourceDefinition>;
+            if (resources == null || resources.Count != __instance.dropDown.options.Count)
+                return;
+
+            bool shortText = _shortTextFi != null && (bool)_shortTextFi.GetValue(__instance);
+            bool emptyTextAll = _emptyTextAllFi != null && (bool)_emptyTextAllFi.GetValue(__instance);
+            for (int i = 0; i < resources.Count; i++)
+            {
+                var rd = resources[i];
+                if (rd == null || __instance.dropDown.options[i] == null)
+                    continue;
+                if (rd.ID == "id_resource_empty")
+                {
+                    __instance.dropDown.options[i].text = emptyTextAll ? Language.LEManager.Get("DropDownEnum.ALL") : Language.LEManager.Get("id_resource_empty");
+                    continue;
+                }
+                __instance.dropDown.options[i].text = shortText
+                    ? ResourceCreator.GetIconString(rd)
+                    : ResourceCreator.GetIconString(rd) + " " + Language.LEManager.Get(rd.ID);
+            }
+            __instance.dropDown.RefreshShownValue();
+        }
+    }
+
+    [HarmonyPatch(typeof(Game.UI.Windows.Elements.MarketOfferElements.OfferUIRow), "SetData")]
+    static class PatchOfferUIRowSetData
+    {
+        static readonly FieldInfo _rdTextFi = typeof(Game.UI.Windows.Elements.MarketOfferElements.OfferUIRow).GetField("rdText", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+        static void Postfix(Game.UI.Windows.Elements.MarketOfferElements.OfferUIRow __instance)
+        {
+            var offer = __instance.Offer;
+            if (offer?.Rd == null) return;
+            var rdText = _rdTextFi?.GetValue(__instance) as TextMeshProUGUI;
+            if (rdText != null)
+                rdText.text = ResourceCreator.GetIconString(offer.Rd);
+        }
+    }
+
+    [HarmonyPatch(typeof(GroundFacilityDescriptor), "get_SpecialCapabilities")]
+    static class PatchGroundFacilityDescriptorGetSpecialCapabilities
+    {
+        static void Postfix(GroundFacilityDescriptor __instance, ref string __result)
+        {
+            if (__instance == null)
+                return;
+
+            if (string.IsNullOrEmpty(__result))
+            {
+                string customCapabilities = Language.LEManager.Get(__instance.ID + FacilityBaseDescriptor.CapabilitiesString, "");
+                if (!string.IsNullOrEmpty(customCapabilities))
+                    __result = customCapabilities;
+            }
+
+            if (string.IsNullOrEmpty(__result) || __instance.energyProductionData?.input == null || __instance.energyProductionData.input.Length == 0)
+                return;
+
+            foreach (var item in __instance.energyProductionData.input)
+            {
+                if (item?.resource == null || !ResourceCreator.UsesNamedSprite(item.resource))
+                    continue;
+                string oldIcon = $"<sprite index={item.resource.IdSpritAttlastextMeshPro}>";
+                string newIcon = ResourceCreator.GetIconString(item.resource);
+                __result = __result.Replace(oldIcon, newIcon);
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(UIRowFacility), "GetTooltipString")]
+    static class PatchChoseFacilityRowTooltip
+    {
+        static readonly FieldInfo _rowDataField = typeof(UIRowFacility)
+            .GetField("curentRowFacilityData", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _isDisabledField = typeof(UIRowFacility)
+            .GetField("isDisabled", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+        static void Postfix(UIRowFacility __instance, ref string __result)
+        {
+            var rowData = _rowDataField?.GetValue(__instance) as RowFacilityData;
+            var descriptor = rowData?.FacilityDescriptor;
+            if (descriptor == null)
+                return;
+
+            ObjectInfo currentObject = null;
+            try
+            {
+                currentObject = SerializedMonoBehaviourSingleton<UIManager>.Instance
+                    .GetWindow<ChoseFacilityWindow>()?.ObjectInfoCurrent;
+            }
+            catch
+            {
+                // Leave null; FacilityBaseDescriptor.Tooltip tolerates it.
+            }
+
+            string baseTooltip = descriptor.Tooltip(MonoBehaviourSingleton<GameManager>.Instance.Player, currentObject);
+            if (string.IsNullOrWhiteSpace(__result))
+            {
+                __result = baseTooltip;
+                return;
+            }
+
+            bool isDisabled = _isDisabledField != null && (bool)_isDisabledField.GetValue(__instance);
+            if (!isDisabled)
+                return;
+
+            if (!string.Equals(__result, baseTooltip, StringComparison.Ordinal))
+                __result = baseTooltip + "\n\n" + __result;
+        }
+
+        static Exception Finalizer(UIRowFacility __instance, Exception __exception, ref string __result)
+        {
+            if (__exception == null)
+                return null;
+
+            var rowData = _rowDataField?.GetValue(__instance) as RowFacilityData;
+            var descriptor = rowData?.FacilityDescriptor;
+            string id = descriptor?.ID ?? "<unknown>";
+            Plugin.Log.LogError($"[TooltipFix] Facility tooltip crashed for '{id}': {__exception}");
+
+            if (descriptor == null)
+            {
+                __result = Language.LEManager.Get("ToolTip_empty");
+                return null;
+            }
+
+            string name = Language.LEManager.Get(id, id).ToUpper();
+            string description = Language.LEManager.Get(id + "_Description", string.Empty) ?? string.Empty;
+            string capabilities = Language.LEManager.Get(id + FacilityBaseDescriptor.CapabilitiesString, string.Empty) ?? string.Empty;
+
+            __result = descriptor.TooltipStart
+                + "<size=14><font=\"Oxanium-Medium SDF\"><b><color=white>" + name + "</color></b></font></size>\n\n"
+                + description;
+
+            if (!string.IsNullOrWhiteSpace(capabilities))
+                __result += "\n\n" + capabilities;
+
+            return null;
         }
     }
 }

@@ -63,6 +63,10 @@
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
   </ItemGroup>
 
   <!-- YamlDotNet — bundled with the mod (PrivateAssets=all → copied to output dir) -->
@@ -93,6 +97,9 @@
     <Copy SourceFiles="$(MSBuildProjectDirectory)\facilities.yaml"
           DestinationFolder="$(PluginDir)"
           Condition="!Exists('$(PluginDir)\facilities.yaml')" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\resources.yaml"
+          DestinationFolder="$(PluginDir)"
+          Condition="!Exists('$(PluginDir)\resources.yaml')" />
     <Copy SourceFiles="$(MSBuildProjectDirectory)\spacecraft.yaml"
           DestinationFolder="$(PluginDir)"
           Condition="!Exists('$(PluginDir)\spacecraft.yaml')" />

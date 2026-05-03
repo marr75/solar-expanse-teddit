@@ -65,3 +65,31 @@ test_spacecraft_modded:
   buildResources:
     id_resource_steel: 25
     id_resource_chips: 10
+
+test_spacecraft_modded_mk2:
+  cloneFrom: spacecraft_chem_small
+  name: Modded Rocket Mk2
+  description: A second test spacecraft used for research unlock validation.
+  icon: cat.jpg
+  engineType: chemical
+  fuelType: id_resource_steel
+  isLocked: false
+  orbitSC: false
+  needLaunchVehicleToGoToMoon: true
+  canByBuildByUser: true
+  reusability: 0
+  mass: 3
+  thrust: 32000
+  exhaustV: 3.9
+  cargoCapacity: 8
+  fuelCapacity: 40
+  maxLifeSupport: 0
+  availableDeltaV: 120
+  maintenanceCostPerDay: 16
+  maxPayload: null
+  timeToBuildInDays: 40
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 35
+    id_resource_chips: 15

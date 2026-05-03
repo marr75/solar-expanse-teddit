@@ -57,7 +57,7 @@ id_facility_cat_lab:
   possiblePlacement: Surface
   icon: cat.jpg
   name: Cat Research Lab
-  description: Tiny paws, rigorous methods, suspiciously strong peer review.
+  description: Big discovery require bigger lab. Boost research by 10%.
   maintenanceCostPerDay: 4.0
   energyConsumption: 3.0
   needWorkersToWork: 5
@@ -76,7 +76,60 @@ id_facility_cat_lab:
   labBonusToResearchInPerHour: 4
   labIdToBonus:
     - All
+
+id_facility_catnip_drill:
+  facilityType: Mining
+  possiblePlacement: Surface
+  icon: cat.jpg
+  name: Catnip Drill
+  description: An aggressively overengineered extraction rig for concentrated catnip veins.
+  maintenanceCostPerDay: 6.0
+  energyConsumption: 4.0
+  needWorkersToWork: 8
+  isLocked: false
+  sortingShop: 58
+  specialAbility: Mining
+  facilityItemClass: MiningFacility
+  specialAbilityParameter: 1.5
+  timeToBuildInDays: 45.0
+  constructionEquipmentCountIsRequired: true
+  buildCost: 7500.0
+  buildResources:
+    id_resource_steel: 80
+    id_resource_glass: 20
+    id_resource_chips: 12
+  resourcesToMine:
+    - id_resource_catnip
 build_outpost:
   buildResources:
     id_resource_steel: 50
     id_resource_glass: 20
+    
+id_facility_Research_Complex:
+  facilityType: Other
+  possiblePlacement: Surface
+  name: Research Complex
+  description: Big discovery require bigger lab.
+  capabilities: Grants +10 research per hour to all research projects.
+  maintenanceCostPerDay: 100
+  energyConsumption: 100
+  needWorkersToWork: 200
+  isLocked: false
+  specialAbility: Lab
+  specialAbilityParameter: 1
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  blockStacking: false
+  iconRef: build_city
+  timeToBuildInDays: 300
+  constructionEquipmentCountIsRequired: true
+  facilityItemClass: LabFacility
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 1000
+    id_resource_raremetal: 100
+    id_resource_chips: 100
+    id_resource_glass: 100
+  labBonusToResearchInPerHour: 10
+  labIdToBonus:
+    - All

@@ -1,48 +1,576 @@
-- id: id_resource_empty
-  translationKey: id_resource_empty
-- id: id_resource_alloy
-  translationKey: id_resource_alloy
-- id: id_resource_antimatter
-  translationKey: id_resource_antimatter
-- id: id_resource_chips
-  translationKey: id_resource_chips
-- id: id_resource_co2
-  translationKey: id_resource_co2
-- id: id_resource_consumergoods
-  translationKey: id_resource_consumergoods
-- id: id_resource_energy
-  translationKey: id_resource_energy
-- id: id_resource_fuel
-  translationKey: id_resource_fuel
-- id: id_resource_glass
-  translationKey: id_resource_glass
-- id: id_resource_hel3
-  translationKey: id_resource_hel3
-- id: id_resource_human
-  translationKey: id_resource_human
-- id: id_resource_hydrogen
-  translationKey: id_resource_hydrogen
-- id: id_resource_metal
-  translationKey: id_resource_metal
-- id: id_resource_nitrogen
-  translationKey: id_resource_nitrogen
-- id: id_resource_noblegas
-  translationKey: id_resource_noblegas
-- id: id_resource_oxygen
-  translationKey: id_resource_oxygen
-- id: id_resource_plastic
-  translationKey: id_resource_plastic
-- id: id_resource_raremetal
-  translationKey: id_resource_raremetal
-- id: id_resource_silicon
-  translationKey: id_resource_silicon
-- id: id_resource_steel
-  translationKey: id_resource_steel
-- id: id_resource_supply
-  translationKey: id_resource_supply
-- id: id_resource_uran
-  translationKey: id_resource_uran
-- id: id_resource_volatile
-  translationKey: id_resource_volatile
-- id: id_resource_water
-  translationKey: id_resource_water
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>EMPTY</color></b></font></size>
+id_resource_empty:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 0
+  priceChangeMultiplier: 1
+  startingSummedPreviousTradesQuantity: 0
+  startingPreviousTradesCount: 0
+  toSortMarketOffer: 0
+  showInMarket: false
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 1
+    vaporizationLatentHeat: 1
+    baseTemperatureBoiling: 1
+    temperatureMelting: 1
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>EXOTIC ALLOYS</color></b></font></size>
+id_resource_alloy:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 4000
+  priceChangeMultiplier: 2.1
+  startingSummedPreviousTradesQuantity: 600
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 7
+  showInMarket: true
+  iconRef: solar_expanse_icons_13
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 440
+    vaporizationLatentHeat: 370000
+    baseTemperatureBoiling: 3120
+    temperatureMelting: 1609
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>ANTIMATTER</color></b></font></size>
+id_resource_antimatter:
+  resourceType: Normal
+  showOnUI: false
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 1000000
+  priceChangeMultiplier: 1
+  startingSummedPreviousTradesQuantity: 1
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 0
+  showInMarket: false
+  iconRef: solar_expanse_icons_19
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 1
+    vaporizationLatentHeat: 1
+    baseTemperatureBoiling: 1
+    temperatureMelting: 1
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>ELECTRONICS</color></b></font></size>
+id_resource_chips:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 3250
+  priceChangeMultiplier: 1.8
+  startingSummedPreviousTradesQuantity: 800
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 12
+  showInMarket: true
+  iconRef: solar_expanse_icons_10
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 440
+    vaporizationLatentHeat: 382000
+    baseTemperatureBoiling: 3330
+    temperatureMelting: 1537
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>CARBON DIOXIDE</color></b></font></size>
+id_resource_co2:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: true
+  marketClearingPriceBase: 400
+  priceChangeMultiplier: 1.8
+  startingSummedPreviousTradesQuantity: 2500
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 4
+  showInMarket: true
+  iconRef: solar_expanse_icons_21
+  terraformationInfo:
+    resourceOpticalDepthParameter: 0.04
+    resourceHeatCapacity: 844
+    vaporizationLatentHeat: 25200
+    baseTemperatureBoiling: 217
+    temperatureMelting: 216
+    pressureTriplePoint: 5.11
+  toxicityCurve:
+    preWrapMode: ClampForever
+    postWrapMode: ClampForever
+    keys:
+      - time: 0.005
+        value: 0
+        inTangent: 1.169591
+        outTangent: 0.08156978
+        weightedMode: None
+        inWeight: 0
+        outWeight: 0.2967693
+      - time: 0.86
+        value: 1
+        inTangent: 0.03969148
+        outTangent: 5.176793
+        weightedMode: None
+        inWeight: 0.2560651
+        outWeight: 0.3333333
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>CONSUMER GOODS</color></b></font></size>
+id_resource_consumergoods:
+  resourceType: Normal
+  showOnUI: false
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 5000
+  priceChangeMultiplier: 1
+  startingSummedPreviousTradesQuantity: 0
+  startingPreviousTradesCount: 0
+  toSortMarketOffer: 1
+  showInMarket: false
+  iconRef: solar_expanse_icons_20
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 1
+    vaporizationLatentHeat: 1
+    baseTemperatureBoiling: 1
+    temperatureMelting: 1
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>ENERGY</color></b></font></size>
+id_resource_energy:
+  resourceType: Energy
+  showOnUI: true
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 11.5
+  priceChangeMultiplier: 2
+  startingSummedPreviousTradesQuantity: 80000
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 11
+  showInMarket: false
+  iconRef: solar_expanse_icons_8
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 1
+    vaporizationLatentHeat: 1
+    baseTemperatureBoiling: 1
+    temperatureMelting: 1
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>FUEL</color></b></font></size>
+id_resource_fuel:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 70
+  priceChangeMultiplier: 1.9
+  startingSummedPreviousTradesQuantity: 35000
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 22
+  showInMarket: true
+  iconRef: solar_expanse_icons_5
+  terraformationInfo:
+    resourceOpticalDepthParameter: 0.0001
+    resourceHeatCapacity: 1000
+    vaporizationLatentHeat: 8190
+    baseTemperatureBoiling: 88
+    temperatureMelting: 65
+    pressureTriplePoint: 0.15
+  toxicityCurve:
+    preWrapMode: ClampForever
+    postWrapMode: ClampForever
+    keys:
+      - time: 0.01
+        value: 0
+        inTangent: 0.1051717
+        outTangent: 0.1051717
+        weightedMode: None
+        inWeight: 0.3333333
+        outWeight: 0.2401075
+      - time: 1
+        value: 1
+        inTangent: 0.2452499
+        outTangent: 0.2452499
+        weightedMode: None
+        inWeight: 0.2316745
+        outWeight: 0.3333333
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>GLASS</color></b></font></size>
+id_resource_glass:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 400
+  priceChangeMultiplier: 2
+  startingSummedPreviousTradesQuantity: 10000
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 10
+  showInMarket: true
+  iconRef: solar_expanse_icons_14
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 800
+    vaporizationLatentHeat: 35000
+    baseTemperatureBoiling: 2300
+    temperatureMelting: 1500
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>HELIUM-3</color></b></font></size>
+id_resource_hel3:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 10000
+  priceChangeMultiplier: 1.8
+  startingSummedPreviousTradesQuantity: 50
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 2
+  showInMarket: true
+  iconRef: solar_expanse_icons_6
+  terraformationInfo:
+    resourceOpticalDepthParameter: 0.0001
+    resourceHeatCapacity: 1
+    vaporizationLatentHeat: 26
+    baseTemperatureBoiling: 3.1968
+    temperatureMelting: 0.3
+    pressureTriplePoint: 0.001
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>HUMAN</color></b></font></size>
+id_resource_human:
+  resourceType: Human
+  showOnUI: true
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 200
+  priceChangeMultiplier: 2
+  startingSummedPreviousTradesQuantity: 2000
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 18
+  showInMarket: true
+  iconRef: solar_expanse_icons_18
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 1
+    vaporizationLatentHeat: 1
+    baseTemperatureBoiling: 1
+    temperatureMelting: 1
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>HYDROGEN</color></b></font></size>
+id_resource_hydrogen:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: true
+  marketClearingPriceBase: 100
+  priceChangeMultiplier: 2
+  startingSummedPreviousTradesQuantity: 2500
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 6
+  showInMarket: true
+  iconRef: solar_expanse_icons_15
+  terraformationInfo:
+    resourceOpticalDepthParameter: 0.0001
+    resourceHeatCapacity: 14320
+    vaporizationLatentHeat: 449
+    baseTemperatureBoiling: 20
+    temperatureMelting: 14
+    pressureTriplePoint: 0.0695
+  toxicityCurve:
+    preWrapMode: ClampForever
+    postWrapMode: ClampForever
+    keys:
+      - time: 0.01
+        value: -0.006256104
+        inTangent: 0.08375318
+        outTangent: 0.08375318
+        weightedMode: None
+        inWeight: 0.3333333
+        outWeight: 0.226207
+      - time: 1
+        value: 1
+        inTangent: 0.1335784
+        outTangent: 0.1335784
+        weightedMode: None
+        inWeight: 0.236308
+        outWeight: 0.3333333
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>METAL</color></b></font></size>
+id_resource_metal:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: true
+  marketClearingPriceBase: 200
+  priceChangeMultiplier: 1.8
+  startingSummedPreviousTradesQuantity: 5000
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 21
+  showInMarket: true
+  iconRef: solar_expanse_icons_1
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 449
+    vaporizationLatentHeat: 340000
+    baseTemperatureBoiling: 3135
+    temperatureMelting: 1811
+    pressureTriplePoint: 1E-07
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>NITROGEN</color></b></font></size>
+id_resource_nitrogen:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: true
+  marketClearingPriceBase: 100
+  priceChangeMultiplier: 2
+  startingSummedPreviousTradesQuantity: 2500
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 5
+  showInMarket: true
+  iconRef: solar_expanse_icons_22
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1E-06
+    resourceHeatCapacity: 1040
+    vaporizationLatentHeat: 5560
+    baseTemperatureBoiling: 77
+    temperatureMelting: 63
+    pressureTriplePoint: 0.123
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>NOBLE GAS</color></b></font></size>
+id_resource_noblegas:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: true
+  marketClearingPriceBase: 2000
+  priceChangeMultiplier: 1.95
+  startingSummedPreviousTradesQuantity: 1000
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 14
+  showInMarket: true
+  iconRef: solar_expanse_icons_17
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 312
+    vaporizationLatentHeat: 6430
+    baseTemperatureBoiling: 87
+    temperatureMelting: 83
+    pressureTriplePoint: 0.681
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>OXYGEN</color></b></font></size>
+id_resource_oxygen:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: true
+  marketClearingPriceBase: 50
+  priceChangeMultiplier: 2
+  startingSummedPreviousTradesQuantity: 2500
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 3
+  showInMarket: true
+  iconRef: solar_expanse_icons_16
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1E-06
+    resourceHeatCapacity: 918
+    vaporizationLatentHeat: 6820
+    baseTemperatureBoiling: 90
+    temperatureMelting: 54
+    pressureTriplePoint: 0.15
+  toxicityCurve:
+    preWrapMode: ClampForever
+    postWrapMode: ClampForever
+    keys:
+      - time: 0.23
+        value: 0
+        inTangent: 0.1545471
+        outTangent: 0.1545471
+        weightedMode: None
+        inWeight: 0.3333333
+        outWeight: 0.2069357
+      - time: 1
+        value: 1
+        inTangent: 0.1609028
+        outTangent: 0.1609028
+        weightedMode: None
+        inWeight: 0.01620116
+        outWeight: 0.3333333
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>POLYMERS</color></b></font></size>
+id_resource_plastic:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 1600
+  priceChangeMultiplier: 2.1
+  startingSummedPreviousTradesQuantity: 1000
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 9
+  showInMarket: true
+  iconRef: solar_expanse_icons_9
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 1
+    vaporizationLatentHeat: 12000
+    baseTemperatureBoiling: 620
+    temperatureMelting: 403
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>RARE METAL</color></b></font></size>
+id_resource_raremetal:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: true
+  marketClearingPriceBase: 800
+  priceChangeMultiplier: 2.1
+  startingSummedPreviousTradesQuantity: 600
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 17
+  showInMarket: true
+  iconRef: solar_expanse_icons_2
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 129
+    vaporizationLatentHeat: 342000
+    baseTemperatureBoiling: 3130
+    temperatureMelting: 1337
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>SILICON</color></b></font></size>
+id_resource_silicon:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: true
+  marketClearingPriceBase: 200
+  priceChangeMultiplier: 1.8
+  startingSummedPreviousTradesQuantity: 40000
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 13
+  showInMarket: true
+  iconRef: solar_expanse_icons_3
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 705
+    vaporizationLatentHeat: 359000
+    baseTemperatureBoiling: 3538
+    temperatureMelting: 1687
+    pressureTriplePoint: 1E-05
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>ALLOYS</color></b></font></size>
+id_resource_steel:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 300
+  priceChangeMultiplier: 1.8
+  startingSummedPreviousTradesQuantity: 2500
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 20
+  showInMarket: true
+  iconRef: solar_expanse_icons_11
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 490
+    vaporizationLatentHeat: 340000
+    baseTemperatureBoiling: 3400
+    temperatureMelting: 1723
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>SUPPLIES</color></b></font></size>
+id_resource_supply:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: false
+  marketClearingPriceBase: 750
+  priceChangeMultiplier: 1.8
+  startingSummedPreviousTradesQuantity: 4000
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 19
+  showInMarket: true
+  iconRef: solar_expanse_icons_7
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 1
+    vaporizationLatentHeat: 1
+    baseTemperatureBoiling: 1
+    temperatureMelting: 1
+    pressureTriplePoint: 1
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>FISSILES</color></b></font></size>
+id_resource_uran:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: true
+  marketClearingPriceBase: 1000
+  priceChangeMultiplier: 2.1
+  startingSummedPreviousTradesQuantity: 300
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 8
+  showInMarket: true
+  iconRef: solar_expanse_icons_4
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 116
+    vaporizationLatentHeat: 417000
+    baseTemperatureBoiling: 4404
+    temperatureMelting: 1405
+    pressureTriplePoint: 1E-05
+  toxicityCurve:
+    preWrapMode: ClampForever
+    postWrapMode: ClampForever
+    keys:
+      - time: 0
+        value: 1
+        inTangent: 0
+        outTangent: 0
+        weightedMode: None
+        inWeight: 0
+        outWeight: 0
+      - time: 0.05
+        value: 1
+        inTangent: 0
+        outTangent: -2.974969
+        weightedMode: None
+        inWeight: 0.3333333
+        outWeight: 0.06293549
+      - time: 1
+        value: 0
+        inTangent: -0.107878
+        outTangent: 0
+        weightedMode: None
+        inWeight: 0.2848458
+        outWeight: 0
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>CARBON</color></b></font></size>
+id_resource_volatile:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: true
+  marketClearingPriceBase: 800
+  priceChangeMultiplier: 1.8
+  startingSummedPreviousTradesQuantity: 5000
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 16
+  showInMarket: true
+  iconRef: solar_expanse_icons_12
+  terraformationInfo:
+    resourceOpticalDepthParameter: 1
+    resourceHeatCapacity: 710
+    vaporizationLatentHeat: 710000
+    baseTemperatureBoiling: 4188
+    temperatureMelting: 3925
+    pressureTriplePoint: 0.99
+
+# <size=14><font="Oxanium-Medium SDF"><b><color=white>WATER</color></b></font></size>
+id_resource_water:
+  resourceType: Normal
+  showOnUI: true
+  canBeLeftOnObject: true
+  marketClearingPriceBase: 50
+  priceChangeMultiplier: 1.8
+  startingSummedPreviousTradesQuantity: 30000
+  startingPreviousTradesCount: 1
+  toSortMarketOffer: 15
+  showInMarket: true
+  iconRef: solar_expanse_icons_0
+  terraformationInfo:
+    resourceOpticalDepthParameter: 0.002
+    resourceHeatCapacity: 1860
+    vaporizationLatentHeat: 50000
+    baseTemperatureBoiling: 373
+    temperatureMelting: 220
+    pressureTriplePoint: 0.00611
+

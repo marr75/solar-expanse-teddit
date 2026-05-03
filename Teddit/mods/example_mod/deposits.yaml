@@ -11,6 +11,12 @@ EARTH:
     miningFactor: 0.8
     forcePrimary: false
     overwrite: false
+  - resourceId: id_resource_catnip
+    state: Solid
+    amount: 42000000.0
+    miningFactor: 0.7
+    forcePrimary: false
+    overwrite: false
 MARS:
   - resourceId: id_resource_hel3
     state: Underground
@@ -24,4 +30,3 @@ MARS:
     miningFactor: 0.8
     forcePrimary: true
     overwrite: false
-

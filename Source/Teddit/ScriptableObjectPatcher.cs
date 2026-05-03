@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Data.ScriptableObject;
+using Game.ObjectInfoDataScripts;
 using Game.ObjectInfoDataScripts.CustomFacilitiesAndModules;
 using Game.UI.Windows.Elements.ObjectInfoElements;
 using Game.UI.Windows.Elements.SpaceCraftConstructElements;
@@ -67,6 +68,7 @@ namespace Teddit
     ///   workHourToComplete / isLocked / isLockedForUI
     ///   requirementsResearch  ["research_id", ...]          prerequisite research that must be completed first
     ///   unlocks               [{action, id}, ...]           items this research unlocks on completion
+    ///   replaceUnlocks        bool                          true = replace the entire unlock set, false = append to existing
     ///                           action: UnlockFacility | UnlockSpacecraftType | UnlockVehicleType | UnlockResearch
     ///                           id: the string ID of the item to unlock
     /// </summary>
@@ -93,9 +95,57 @@ namespace Teddit
             "buildResources", "resourcesToMine", "refinerInput", "refinerOutput", "byproducts",
             "labBonusToResearchInPerHour", "labResearchSubTypeId", "labIdToBonus",
             // Creation-only keys that aren't real field names on the descriptor
-            "icon", "iconRef", "name", "description", "facilityType", "possiblePlacement",
+            "icon", "iconRef", "name", "description", "capabilities", "facilityType", "possiblePlacement",
             "specialAbility", "energyProduction", "solarPanels", "windPower", "geothermal", "buildCost", "facilityItemClass",
         };
+
+        static readonly HashSet<string> _complexResourceKeys = new HashSet<string>
+        {
+            "icon", "iconRef", "name", "description", "showInMarket", "cloneFrom",
+            "terraformationInfo", "toxicityCurve",
+        };
+
+        public static void RunResources(Dictionary<string, Dictionary<string, JToken>> config, string modDir)
+        {
+            if (config.Count == 0) return;
+
+            var allSO = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance;
+            if (allSO == null) { Plugin.Log.LogError("[ResourcePatcher] AllScriptableObjectManager null"); return; }
+
+            int patched = 0, created = 0, skipped = 0;
+            foreach (var kv in config)
+            {
+                if (kv.Key.StartsWith("_")) continue;
+
+                var resource = allSO.AllResourceDefinitions.GetByID(kv.Key);
+                if (resource == null)
+                {
+                    try
+                    {
+                        ResourceCreator.CreateAndInjectResource(kv.Key, kv.Value, modDir);
+                        created++;
+                    }
+                    catch (Exception ex)
+                    {
+                        Plugin.Log.LogError($"[ResourcePatcher] Failed to create '{kv.Key}': {ex}");
+                        skipped++;
+                    }
+                    continue;
+                }
+
+                var simpleFields = kv.Value
+                    .Where(f => !_complexResourceKeys.Contains(f.Key))
+                    .ToDictionary(f => f.Key, f => f.Value);
+
+                ApplyFields(resource, simpleFields, "[ResourcePatcher]", kv.Key);
+                ResourceCreator.ApplyComplexFields(resource, kv.Value, kv.Key, modDir);
+                patched++;
+            }
+
+            ResourceCreator.RefreshAllResourceLists(allSO.AllResourceDefinitions);
+            if (patched > 0 || created > 0)
+                Plugin.Log.LogInfo($"[ResourcePatcher] Done — patched: {patched}, created: {created}, skipped: {skipped}");
+        }
 
         public static void RunFacilities(Dictionary<string, Dictionary<string, JToken>> config, string modDir)
         {
@@ -154,6 +204,15 @@ namespace Teddit
                     var spriteFi = FindField(descriptor.GetType(), "sprite");
                     spriteFi?.SetValue(descriptor, sprite);
                 }
+            }
+
+            if (fields.ContainsKey("name") || fields.ContainsKey("description") || fields.ContainsKey("capabilities"))
+            {
+                string name = FacilityCreator.GetVal<string>(fields, "name", null);
+                string description = FacilityCreator.GetVal<string>(fields, "description", null);
+                string capabilities = FacilityCreator.GetVal<string>(fields, "capabilities", null);
+                if (!string.IsNullOrEmpty(name) || !string.IsNullOrEmpty(description) || !string.IsNullOrEmpty(capabilities))
+                    FacilityCreator.InjectTranslations(id, name, description, capabilities);
             }
 
             // ── buildResources: { "resource_id": amount } ─────────────────────────
@@ -234,11 +293,16 @@ namespace Teddit
                 if (groundDescriptor.labData == null)
                     groundDescriptor.labData = new LabData();
 
+                if (groundDescriptor.labData.idResearchSubType == null)
+                    groundDescriptor.labData.idResearchSubType = string.Empty;
+                if (groundDescriptor.labData.idToBonus == null)
+                    groundDescriptor.labData.idToBonus = Array.Empty<string>();
+
                 if (fields.TryGetValue("labBonusToResearchInPerHour", out tok) && tok.Type != JTokenType.Null)
                     groundDescriptor.labData.bonusToResearchInPerHour = tok.Value<int>();
 
                 if (fields.TryGetValue("labResearchSubTypeId", out tok))
-                    groundDescriptor.labData.idResearchSubType = tok.Type == JTokenType.Null ? null : tok.Value<string>();
+                    groundDescriptor.labData.idResearchSubType = tok.Type == JTokenType.Null ? string.Empty : (tok.Value<string>() ?? string.Empty);
 
                 if (fields.TryGetValue("labIdToBonus", out tok) && tok.Type == JTokenType.Array)
                     groundDescriptor.labData.idToBonus = ((JArray)tok).Select(x => x.Value<string>()).Where(x => !string.IsNullOrEmpty(x)).ToArray();
@@ -258,6 +322,12 @@ namespace Teddit
                 {
                     Warn(prefix, id, $"unsupported facilityItemClass '{className}'");
                 }
+            }
+            else if ((descriptor.specialAbilityFacilityNew == ESpecialAbilityFacilityNew.Mining || fields.ContainsKey("resourcesToMine"))
+                && descriptor is GroundFacilityDescriptor)
+            {
+                var fi = FindField(descriptor.GetType(), "facilityItemClass");
+                fi?.SetValue(descriptor, typeof(MiningFacility));
             }
         }
 
@@ -563,7 +633,7 @@ namespace Teddit
 
         static readonly HashSet<string> _complexResearchKeys = new HashSet<string>
         {
-            "requirementsResearch", "unlocks", "newViewResearchTreeParent",
+            "requirementsResearch", "unlocks", "newViewResearchTreeParent", "replaceUnlocks",
             // creation-only / sprite keys that aren't plain fields on ResearchDefinition
             "researchType", "researchSubType", "name", "description", "icon",
         };
@@ -687,20 +757,101 @@ namespace Teddit
                     udObjects.Add(ud);
                 }
 
-                if (udObjects.Count > 0)
-                {
-                    var unlockDataFi    = FindField(rd.GetType(), "unlockData");
-                    var unlockDataListFi = FindField(rd.GetType(), "unlockDataList");
-                    unlockDataFi?.SetValue(rd, udObjects[0]);
-                    if (unlockDataListFi != null)
-                    {
-                        var arr = Array.CreateInstance(udType, udObjects.Count);
-                        for (int i = 0; i < udObjects.Count; i++) arr.SetValue(udObjects[i], i);
-                        unlockDataListFi.SetValue(rd, arr);
-                    }
-                    Plugin.Log.LogDebug($"{prefix} {id}.unlocks = {udObjects.Count} entries");
-                }
+                bool replaceUnlocks = fields.TryGetValue("replaceUnlocks", out var replaceTok)
+                    && replaceTok.Type != JTokenType.Null
+                    && replaceTok.Value<bool>();
+
+                var finalUnlocks = replaceUnlocks
+                    ? udObjects
+                    : MergeResearchUnlocks(rd, udObjects, udType);
+
+                SetResearchUnlocks(rd, finalUnlocks, udType, actionFi);
+                Plugin.Log.LogDebug($"{prefix} {id}.unlocks = {finalUnlocks.Count} entries (replace={replaceUnlocks})");
             }
+        }
+
+        static List<object> MergeResearchUnlocks(ResearchDefinition rd, List<object> additions, Type udType)
+        {
+            var merged = new List<object>();
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+
+            foreach (var existing in EnumerateResearchUnlocks(rd))
+            {
+                if (existing == null || !udType.IsInstanceOfType(existing)) continue;
+                string key = BuildResearchUnlockKey(existing);
+                if (seen.Add(key))
+                    merged.Add(existing);
+            }
+
+            foreach (var added in additions)
+            {
+                if (added == null) continue;
+                string key = BuildResearchUnlockKey(added);
+                if (seen.Add(key))
+                    merged.Add(added);
+            }
+
+            return merged;
+        }
+
+        static IEnumerable<object> EnumerateResearchUnlocks(ResearchDefinition rd)
+        {
+            if (rd.unlockData != null)
+                yield return rd.unlockData;
+
+            if (rd.unlockDataList == null)
+                yield break;
+
+            foreach (var unlock in rd.unlockDataList)
+                if (unlock != null)
+                    yield return unlock;
+        }
+
+        static void SetResearchUnlocks(ResearchDefinition rd, List<object> unlocks, Type udType, FieldInfo actionFi)
+        {
+            var unlockDataFi = FindField(rd.GetType(), "unlockData");
+            var unlockDataListFi = FindField(rd.GetType(), "unlockDataList");
+
+            if (unlocks == null || unlocks.Count == 0)
+            {
+                object emptyUnlock = Activator.CreateInstance(udType);
+                if (actionFi != null)
+                    actionFi.SetValue(emptyUnlock, Enum.ToObject(actionFi.FieldType, 0));
+
+                unlockDataFi?.SetValue(rd, emptyUnlock);
+                unlockDataListFi?.SetValue(rd, Array.CreateInstance(udType, 0));
+                return;
+            }
+
+            unlockDataFi?.SetValue(rd, unlocks[0]);
+
+            Array extras = Array.CreateInstance(udType, Math.Max(0, unlocks.Count - 1));
+            for (int i = 1; i < unlocks.Count; i++)
+                extras.SetValue(unlocks[i], i - 1);
+            unlockDataListFi?.SetValue(rd, extras);
+        }
+
+        static string BuildResearchUnlockKey(object unlock)
+        {
+            if (unlock == null) return string.Empty;
+
+            Type type = unlock.GetType();
+            string action = type.GetField("actionUnlock", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                ?.GetValue(unlock)?.ToString() ?? string.Empty;
+            string parameter1 = type.GetField("parameter1", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                ?.GetValue(unlock)?.ToString() ?? string.Empty;
+            string parameter2 = type.GetField("parameter2", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                ?.GetValue(unlock)?.ToString() ?? string.Empty;
+            string bonus = type.GetField("bonus", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                ?.GetValue(unlock)?.ToString() ?? string.Empty;
+            string bonusParameter = type.GetField("bonusParameter", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                ?.GetValue(unlock)?.ToString() ?? string.Empty;
+            string unlockUi = type.GetField("unlockUIElement", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                ?.GetValue(unlock)?.ToString() ?? string.Empty;
+            string unlockEndGame = type.GetField("unlockEndGame", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                ?.GetValue(unlock)?.ToString() ?? string.Empty;
+
+            return string.Join("|", action, parameter1, parameter2, bonus, bonusParameter, unlockUi, unlockEndGame);
         }
 
         // ── Price field handler (shared by spacecraft + launch vehicles) ─────────
