@@ -1,6 +1,6 @@
 # Teddit
 
-A YAML-driven modding framework for [Solar Expanse](https://store.steampowered.com/app/2688880/Solar_Expanse/).
+A YAML-driven modding framework for [Solar Expanse](https://store.steampowered.com/app/1369700/Solar_Expanse__Space_Exploration_Manager/).
 
 Teddit lets you add and patch game content entirely through YAML files. Drop a mod folder into the `mods/` directory and the framework loads it automatically at runtime.
 
