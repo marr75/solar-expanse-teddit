@@ -1,3 +1,5 @@
+enabled: true
+
 # Facility patches and new facility definitions.
 # Keys are facility IDs (from dump/facilities.yaml).
 # If the ID exists in the game, fields are patched onto it.
@@ -44,3 +46,4 @@
 #   solarPanels:       bool   — scales energy output by distance to sun
 #   windPower:         bool   — wind-based energy source
 #   geothermal:        bool   — geothermal energy source
+

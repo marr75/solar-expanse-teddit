@@ -1,6 +1,3 @@
-module_fuel:
-  needWorkersToWork: 200
-
 id_facility_cat_habitat:
   facilityType: Habitation
   possiblePlacement: Both
@@ -77,6 +74,29 @@ id_facility_cat_lab:
   labIdToBonus:
     - All
 
+id_facility_catnip_generator:
+  facilityType: Power
+  possiblePlacement: Both
+  icon: cat.jpg
+  name: Catnip Generator
+  description: Burns catnip to produce electricity. Consumes 1 unit of catnip per day and outputs 8 MW of power.
+  maintenanceCostPerDay: 4.0
+  energyConsumption: 0.0
+  needWorkersToWork: 2
+  isLocked: false
+  sortingShop: 57
+  specialAbility: EnergyProduction, EnergyStorage
+  facilityItemClass: EnergyProductionFacility
+  energyProduction: 8.0
+  timeToBuildInDays: 20.0
+  constructionEquipmentCountIsRequired: false
+  buildCost: 3500.0
+  buildResources:
+    id_resource_steel: 30
+    id_resource_chips: 6
+  energyInput:
+    id_resource_catnip: 1.0
+
 id_facility_catnip_drill:
   facilityType: Mining
   possiblePlacement: Surface
@@ -104,32 +124,3 @@ build_outpost:
   buildResources:
     id_resource_steel: 50
     id_resource_glass: 20
-    
-id_facility_Research_Complex:
-  facilityType: Other
-  possiblePlacement: Surface
-  name: Research Complex
-  description: Big discovery require bigger lab.
-  capabilities: Grants +10 research per hour to all research projects.
-  maintenanceCostPerDay: 100
-  energyConsumption: 100
-  needWorkersToWork: 200
-  isLocked: false
-  specialAbility: Lab
-  specialAbilityParameter: 1
-  upkeepStacking: false
-  upkeepStackingValue: 0
-  blockStacking: false
-  iconRef: build_city
-  timeToBuildInDays: 300
-  constructionEquipmentCountIsRequired: true
-  facilityItemClass: LabFacility
-  buildCost: 0
-  buildResources:
-    id_resource_steel: 1000
-    id_resource_raremetal: 100
-    id_resource_chips: 100
-    id_resource_glass: 100
-  labBonusToResearchInPerHour: 10
-  labIdToBonus:
-    - All

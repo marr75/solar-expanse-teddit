@@ -24,8 +24,8 @@ namespace Teddit
     internal class DepositConfig
     {
         // key = ObjectName (uppercase body name)
-        public Dictionary<string, List<DepositEntry>> Bodies { get; private set; }
-            = new Dictionary<string, List<DepositEntry>>();
+        public Dictionary<string, DepositBodyConfig> Bodies { get; private set; }
+            = new Dictionary<string, DepositBodyConfig>();
 
         public static DepositConfig Load(string path)
         {
@@ -36,24 +36,24 @@ namespace Teddit
             }
 
             var config = new DepositConfig();
-            var raw = YamlHelper.LoadDeposits(path);
+            var raw = YamlHelper.LoadRawMap(path);
             if (raw == null) return config;
 
             foreach (var kv in raw)
             {
-                if (kv.Key.StartsWith("_")) continue;
-                if (kv.Value.Type != JTokenType.Array) continue;
+                string key = kv.Key?.ToString() ?? "";
+                if (key.StartsWith("_")) continue;
 
-                var entries = kv.Value.ToObject<List<DepositEntry>>();
-                if (entries != null && entries.Count > 0)
-                    config.Bodies[kv.Key.ToUpperInvariant()] = entries;
+                var body = ParseBodyConfig(YamlHelper.ToJToken(kv.Value));
+                if (body != null)
+                    config.Bodies[key.ToUpperInvariant()] = body;
             }
 
             Plugin.Log.LogInfo($"[DepositConfig] Loaded {config.Bodies.Count} body overrides.");
             return config;
         }
 
-        public List<DepositEntry> GetDepositsFor(string objectName)
+        public DepositBodyConfig GetBodyConfigFor(string objectName)
         {
             // ObjectName is always uppercase; try exact match first, then case-insensitive
             if (Bodies.TryGetValue(objectName, out var list))
@@ -63,6 +63,48 @@ namespace Teddit
                     return kv.Value;
             return null;
         }
+
+        static DepositBodyConfig ParseBodyConfig(JToken token)
+        {
+            if (token == null)
+                return null;
+
+            if (token.Type == JTokenType.Array)
+            {
+                var entries = token.ToObject<List<DepositEntry>>();
+                if (entries == null || entries.Count == 0)
+                    return null;
+
+                return new DepositBodyConfig
+                {
+                    Overwrite = entries.Exists(e => e != null && e.Overwrite),
+                    Deposits = entries
+                };
+            }
+
+            if (token.Type == JTokenType.Object)
+            {
+                var obj = (JObject)token;
+                var entriesTok = obj["deposits"];
+                var entries = entriesTok != null && entriesTok.Type == JTokenType.Array
+                    ? entriesTok.ToObject<List<DepositEntry>>()
+                    : new List<DepositEntry>();
+
+                return new DepositBodyConfig
+                {
+                    Overwrite = obj["overwrite"]?.Value<bool>() ?? false,
+                    Deposits = entries ?? new List<DepositEntry>()
+                };
+            }
+
+            return null;
+        }
+    }
+
+    internal sealed class DepositBodyConfig
+    {
+        public bool Overwrite { get; set; }
+        public List<DepositEntry> Deposits { get; set; } = new List<DepositEntry>();
     }
 
     internal class DepositEntry

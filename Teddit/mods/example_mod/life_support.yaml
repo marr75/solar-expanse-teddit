@@ -1,0 +1,10 @@
+humanLifeSupport:
+  byproducts:
+    - resource: id_resource_co2
+      rate: 0.25
+      target: Deposit
+      state: Gas
+    - resource: id_resource_water
+      rate: 0.05
+      target: Storage
+

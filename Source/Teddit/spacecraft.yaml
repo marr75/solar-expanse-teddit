@@ -1,3 +1,5 @@
+enabled: true
+
 # Spacecraft patches and new spacecraft definitions.
 # Keys are spacecraft IDs from dump/spacecraft.yaml.
 # Existing IDs are patched in place. Unknown IDs are created as new spacecraft.
@@ -53,3 +55,4 @@
 # spacecraft_chem_small:
 #   cargoCapacity: 200
 #   maintenanceCostPerDay: 4
+

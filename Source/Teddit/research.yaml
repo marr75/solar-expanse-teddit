@@ -1,3 +1,5 @@
+enabled: true
+
 # Research definition patches.
 # Keys are research IDs from dump/research.yaml.
 # Existing IDs are patched in place.
@@ -38,3 +40,4 @@
 #   workHourToComplete: 1200
 #   requirementsResearch:
 #     - research_basic_industry
+

@@ -1,0 +1,6 @@
+NASA:
+  aiConfig.costMultiplier.money: 0.01
+  aiConfig.costMultiplier.time: 0.01
+  takeOffersFromOtherAIs: true
+CNSA:
+  takeOffersFromOtherAIs: true

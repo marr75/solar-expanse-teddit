@@ -1,7 +1,18 @@
-research_agriculture_1:
-  replaceUnlocks: true
+research_catnip_biotech:
+  name: Catnip Bioreactors
+  description: Specialized biotech for cultivating and stabilizing high-yield catnip strains.
+  icon: cat.jpg
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3600000
+  stage: 0
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: research_category_biotech
+  requirementsResearch:
+    - research_category_biotech
   unlocks:
-    - action: UnlockSpacecraftType
-      id: test_spacecraft_modded
-    - action: UnlockSpacecraftType
-      id: test_spacecraft_modded_mk2
+    - action: UnlockFacility
+      id: id_facility_cat_habitat

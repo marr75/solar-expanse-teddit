@@ -1,8 +1,29 @@
+enabled: true
+
 # Deposit injections.
 # Body names must be UPPERCASE (they match ObjectInfo.ObjectName, e.g. MARS, EARTH, MOON).
 # Resource IDs come from dump/resources.yaml.
 #
-# Fields per entry:
+# Body formats:
+#   1. Simple list (append/additive behavior):
+#      MARS:
+#        - resourceId: id_resource_raremetal
+#          state: Solid
+#          amount: 500000
+#
+#   2. Body overwrite object (new-game only):
+#      MARS:
+#        overwrite: true
+#        deposits:
+#          - resourceId: id_resource_raremetal
+#            state: Solid
+#            amount: 500000
+#
+# If body overwrite is enabled, Teddit deletes all existing deposits on that body and
+# reseeds only the listed ones. To stay save-compatible, this full-body replacement only
+# runs when starting a fresh game from start-game data. On loaded saves it is skipped.
+#
+# Fields per deposit entry:
 #   resourceId: string   resource ID, e.g. id_resource_raremetal
 #   state: string        Solid | Liquid | Gas | Underground
 #   amount: number       deposit size in tonnes
@@ -11,16 +32,5 @@
 #   preliminaryExplored: bool whether the deposit is visible before full exploration
 #   forcePrimary: bool   force this as the primary deposit for the body
 #   overwrite: bool
-#     true  = replace the first matching deposit and update its discovery state
-#     false = always add a new deposit, even if the type already exists
-#
-# Example:
-# MARS:
-#   - resourceId: id_resource_raremetal
-#     state: Solid
-#     amount: 500000.0
-#     miningFactor: 0.5
-#     explorationLevel: 0.25
-#     preliminaryExplored: true
-#     forcePrimary: false
-#     overwrite: false
+#     legacy compatibility flag; if present on any entry, Teddit treats the whole body as
+#     overwrite=true. Prefer the body-level overwrite format above.

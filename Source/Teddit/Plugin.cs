@@ -5,11 +5,12 @@ using HarmonyLib;
 
 namespace Teddit
 {
-    [BepInPlugin("com.teddit.teddit", "Teddit", "1.0.0")]
+    [BepInPlugin("com.teddit.teddit", "Teddit", "1.4.0")]
     public class Plugin : BaseUnityPlugin
     {
         internal static ManualLogSource Log;
         internal static string PluginDir;
+        internal static string Version;
 
         // Set to false once you have dump.json.
         internal const bool DumpOnLoad = true;
@@ -18,7 +19,8 @@ namespace Teddit
         {
             Log = Logger;
             PluginDir = Path.GetDirectoryName(Info.Location);
-            Log.LogInfo("Teddit loaded.");
+            Version = Info.Metadata.Version.ToString();
+            Log.LogInfo($"Teddit v{Version} loaded.");
             new Harmony("com.teddit.teddit").PatchAll();
         }
     }

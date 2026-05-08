@@ -11,6 +11,7 @@ using Game.Info;
 using Game.ObjectInfoDataScripts.CustomFacilitiesAndModules;
 using Game.UI.Windows.Elements.ObjectInfoElements;
 using Game.UI.Windows.Elements.SpaceCraftConstructElements;
+using Language;
 using Manager;
 using ScriptableObjectScripts;
 using UnityEngine;
@@ -43,6 +44,7 @@ namespace Teddit
             if (oim == null) throw new System.NullReferenceException("ObjectInfoManager.Instance is null");
 
             DumpResources(allSO, dumpDir);
+            DumpCompanies(allSO, dumpDir);
             DumpBodies(oim, dumpDir);
             DumpDeposits(oim, dumpDir);
             DumpFacilities(allSO, dumpDir);
@@ -88,6 +90,76 @@ namespace Teddit
         }
 
         // ── Bodies ────────────────────────────────────────────────────────────
+
+        static void DumpCompanies(AllScriptableObjectManager allSO, string dir)
+        {
+            var sb = new StringBuilder();
+            int count = 0;
+            foreach (var company in allSO.AllCompanyDefinitions.List)
+            {
+                if (company == null) continue;
+
+                string name = company.ID;
+                try { name = LEManager.Get(company.localeID); } catch { }
+
+                sb.AppendLine($"# {name}");
+                sb.AppendLine($"{YamlKey(company.ID)}:");
+                sb.AppendLine($"  isWorldGovernment: {FormatBool(company.IsWorldGovernment)}");
+                sb.AppendLine($"  mainObject: {YamlScalar(company.MainObject != null ? (company.MainObject.Object != null ? company.MainObject.Object.ObjectName : company.MainObject.ID.ToString()) : null)}");
+                sb.AppendLine($"  onInMenu: {FormatBool(company.ONInMenu)}");
+                sb.AppendLine($"  skipCosts: {FormatBool(company.SkipCosts)}");
+
+                string logoRef = FacilityCreator.GetSpriteReference(company.LogoImage);
+                if (!string.IsNullOrEmpty(logoRef))
+                    sb.AppendLine($"  logoImageRef: {YamlScalar(logoRef)}");
+                string logoLargeRef = FacilityCreator.GetSpriteReference(company.LogoImageLarge);
+                if (!string.IsNullOrEmpty(logoLargeRef))
+                    sb.AppendLine($"  logoImageLargeRef: {YamlScalar(logoLargeRef)}");
+
+                if (company.PopulationConfig != null)
+                {
+                    sb.AppendLine("  populationConfig:");
+                    sb.AppendLine($"    housingExpectancyModifier: {company.PopulationConfig.housingExpectancyModifier}");
+                    sb.AppendLine($"    foodDemandMultiplier: {FormatFloat(company.PopulationConfig.foodDemandMultiplier)}");
+                    sb.AppendLine($"    populationParameter: {FormatFloat(company.PopulationConfig.populationParameter)}");
+                    sb.AppendLine($"    minPopulationSize: {company.PopulationConfig.minPopulationSize}");
+                    sb.AppendLine($"    minConsumptionRate: {FormatFloat(company.PopulationConfig.minConsumptionRate)}");
+                }
+
+                if (company.MarketConfig != null)
+                {
+                    sb.AppendLine("  marketConfig:");
+                    sb.AppendLine($"    requiredMoneyMarginMultiplier: {FormatFloat(company.MarketConfig.requiredMoneyMarginMultiplier)}");
+                    sb.AppendLine($"    futureResourceStorageMultiplier: {FormatFloat(company.MarketConfig.futureResourceStorageMultiplier)}");
+                }
+
+                if (company.AIConfig != null)
+                {
+                    sb.AppendLine("  aiConfig:");
+                    AppendCompanyCost(sb, "    costMultiplier", company.AIConfig.costMultiplier);
+                    sb.AppendLine($"    costCalcType: {YamlScalar(company.AIConfig.costCalcType.ToString())}");
+                    sb.AppendLine($"    makeOfferTimeThreshold: {FormatFloat(company.AIConfig.makeOfferTimeThreshold)}");
+                    sb.AppendLine($"    makeOfferMinEndTime: {FormatFloat(company.AIConfig.makeOfferMinEndTime)}");
+                    sb.AppendLine($"    makeOfferMaxEndTime: {FormatFloat(company.AIConfig.makeOfferMaxEndTime)}");
+                    sb.AppendLine($"    makeOfferEndTimeMultiplier: {FormatFloat(company.AIConfig.makeOfferEndTimeMultiplier)}");
+                    AppendCompanyCost(sb, "    makeOfferUnitCostMultiplier", company.AIConfig.makeOfferUnitCostMultiplier);
+                    sb.AppendLine($"    takeOffersFromOtherAIs: {FormatBool(company.AIConfig.takeOffersFromOtherAIs)}");
+                    sb.AppendLine($"    takeOfferOnlyInstant: {FormatBool(company.AIConfig.takeOfferOnlyInstant)}");
+                    sb.AppendLine($"    takeOfferTimeThreshold: {FormatFloat(company.AIConfig.takeOfferTimeThreshold)}");
+                    AppendCompanyCost(sb, "    takeOfferBuyUnitCostMultiplier", company.AIConfig.takeOfferBuyUnitCostMultiplier);
+                    AppendCompanyCost(sb, "    takeOfferSellUnitCostMultiplier", company.AIConfig.takeOfferSellUnitCostMultiplier);
+                    sb.AppendLine($"    cachePlanMissionResults: {FormatBool(company.AIConfig.cachePlanMissionResults)}");
+                    sb.AppendLine($"    cacheAsyncResults: {FormatBool(company.AIConfig.cacheAsyncResults)}");
+                    sb.AppendLine($"    includeUnlockableSpacecraftAndLVsForFlights: {FormatBool(company.AIConfig.includeUnlockableSpacecraftAndLVsForFlights)}");
+                }
+
+                sb.AppendLine();
+                count++;
+            }
+
+            File.WriteAllText(Path.Combine(dir, "companies.yaml"), sb.ToString());
+            Plugin.Log.LogInfo($"[DataDumper] companies.yaml â€” {count} entries");
+        }
 
         static void DumpBodies(ObjectInfoManager oim, string dir)
         {
@@ -285,6 +357,23 @@ namespace Teddit
                         sb.AppendLine($"  labResearchSubTypeId: {YamlScalar(gfd.labData.idResearchSubType)}");
                         AppendStringList(sb, "  labIdToBonus", gfd.labData.idToBonus?.ToList() ?? new List<string>());
                     }
+                }
+                else if (fd is SpaceModuleDescriptor smd)
+                {
+                    sb.AppendLine($"  mass: {FormatDouble(smd.Mass)}");
+                    sb.AppendLine($"  canBeLoadAsCargo: {FormatBool(smd.CanBeLoadAsCargo)}");
+                    sb.AppendLine($"  buildOnOrbitSpaceModuleAllow: {FormatBool(smd.BuildOnOrbitSpaceModuleAllow)}");
+                    sb.AppendLine($"  timeToDestroyInDay: {FormatNullableFloat(smd.TimeToDestroyInDay)}");
+                    sb.AppendLine($"  spaceModuleType: {YamlScalar(smd.SpaceModuleType.ToString())}");
+                    sb.AppendLine($"  typeSubObjectInfo: {YamlScalar(smd.TypeSubObjectInfo.ToString())}");
+                    sb.AppendLine($"  isLockedCreate: {FormatBool(smd.isLockedCreate)}");
+                    sb.AppendLine($"  isSpaceConstructionOnOrbit: {FormatBool(smd.isSpaceConstructionOnOrbit)}");
+                    if (smd.facilityOrModuleToInstall != null)
+                        sb.AppendLine($"  facilityOrModuleToInstall: {YamlScalar(smd.facilityOrModuleToInstall.ID)}");
+                    if (smd.isSpaceConstructionOnOrbitSpaceCraftToCreate != null)
+                        sb.AppendLine($"  isSpaceConstructionOnOrbitSpaceCraftToCreate: {YamlScalar(smd.isSpaceConstructionOnOrbitSpaceCraftToCreate.ID)}");
+                    if (smd.isSpaceConstructionOnOrbitLaunchVehicleCanUse != null)
+                        sb.AppendLine($"  isSpaceConstructionOnOrbitLaunchVehicleCanUse: {YamlScalar(smd.isSpaceConstructionOnOrbitLaunchVehicleCanUse.ID)}");
                 }
 
                 // ResourcesToMine
@@ -697,6 +786,16 @@ namespace Teddit
         {
             if (v == null) return "null";
             return FormatDouble(v.Value);
+        }
+
+        static void AppendCompanyCost(StringBuilder sb, string keyWithIndent, AI.CompanyCost cost)
+        {
+            sb.AppendLine($"{keyWithIndent}:");
+            string indent = keyWithIndent.Length - keyWithIndent.TrimStart().Length == 0
+                ? "  "
+                : new string(' ', keyWithIndent.Length - keyWithIndent.TrimStart().Length + 2);
+            sb.AppendLine($"{indent}money: {FormatDouble(cost.Money)}");
+            sb.AppendLine($"{indent}time: {FormatDouble(cost.Time)}");
         }
 
         /// <summary>Appends a dict as YAML mapping. Skips empty/null values.</summary>

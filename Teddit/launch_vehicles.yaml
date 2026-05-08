@@ -1,5 +1,9 @@
+enabled: true
+
 # Launch vehicle patches.
 # Keys are launch vehicle IDs (from dump/launch_vehicles.yaml).
+# New launch vehicles borrow donor prefab/model data, including the 3D preview, via:
+#   cloneFrom: launch_vehicle_id
 #
 # ── Fields ────────────────────────────────────────────────────────────────────
 #   timeToBuildInDays:                    float  — construction time in in-game days
@@ -13,3 +17,4 @@
 #   reusability:                          float  — 0 = expendable, 1 = fully reusable
 #   maintenanceCostPerDay:                float  — daily upkeep cost
 #   canSendHuman:                         bool   — whether humans can be launched
+

@@ -24,6 +24,14 @@ build_asteroid_engine_module:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 500
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: Engine
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # HABITAT (GroundFacilityDescriptor)
 build_habitat:
@@ -2124,6 +2132,14 @@ module_basemining:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 15
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: Engine
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
   resourcesToMine:
     - id_resource_water
     - id_resource_volatile
@@ -2155,6 +2171,14 @@ module_construction:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 5
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: PowerSupply
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # NUCLEAR DEVICE (SpaceModuleDescriptor)
 module_contractitem:
@@ -2177,6 +2201,14 @@ module_contractitem:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 5
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: false
+  timeToDestroyInDay: null
+  spaceModuleType: None
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # CREW COMPARTMENT TYPE-S (SpaceModuleDescriptor)
 module_crew_compartment:
@@ -2202,6 +2234,14 @@ module_crew_compartment:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 5
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: PowerSupply
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # CREW COMPARTMENT TYPE-L (SpaceModuleDescriptor)
 module_crew_large:
@@ -2227,6 +2267,14 @@ module_crew_large:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 60
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: PowerSupply
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # CREW COMPARTMENT TYPE-M (SpaceModuleDescriptor)
 module_crew_medium:
@@ -2252,6 +2300,14 @@ module_crew_medium:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 15
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: PowerSupply
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # MOBILE REFINERY (SpaceModuleDescriptor)
 module_fuel:
@@ -2277,6 +2333,14 @@ module_fuel:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 25
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: Engine
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
   refinerInput:
     id_resource_water: 0.04
   refinerOutput:
@@ -2305,6 +2369,14 @@ module_ground_probe:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 1
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: Engine
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # MOBILE HABITAT (SpaceModuleDescriptor)
 module_habitat:
@@ -2331,6 +2403,14 @@ module_habitat:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 80
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: PowerSupply
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # SPACE TELESCOPE (SpaceModuleDescriptor)
 module_hubel_telescope:
@@ -2357,6 +2437,15 @@ module_hubel_telescope:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 2
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: false
+  timeToDestroyInDay: null
+  spaceModuleType: None
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
+  facilityOrModuleToInstall: build_space_telescope
 
 # VOLATILE REFINING MODULE (SpaceModuleDescriptor)
 module_icemining:
@@ -2382,6 +2471,14 @@ module_icemining:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 5
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: Engine
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
   resourcesToMine:
     - id_resource_water
     - id_resource_volatile
@@ -2410,6 +2507,14 @@ module_metalmining:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 5
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: Engine
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
   resourcesToMine:
     - id_resource_metal
 
@@ -2438,6 +2543,14 @@ module_power:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 5
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: PowerSupply
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # RARE METAL EXTRACTION MODULE (SpaceModuleDescriptor)
 module_raremining:
@@ -2463,6 +2576,14 @@ module_raremining:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 5
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: Engine
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
   resourcesToMine:
     - id_resource_raremetal
 
@@ -2490,6 +2611,15 @@ module_space_construction_cargo:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 50
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: false
+  timeToDestroyInDay: null
+  spaceModuleType: None
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
+  facilityOrModuleToInstall: build_space_construction
 
 # PROBE (SpaceModuleDescriptor)
 module_space_probe:
@@ -2515,6 +2645,14 @@ module_space_probe:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 1
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: Engine
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # BATERYSTORAGETEST (GroundFacilityDescriptor)
 BateryStorageTest:
@@ -2829,6 +2967,14 @@ module_ThermoelectricTest:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 5
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: PowerSupply
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # MODULE_THERMOELECTRICTEST2 (SpaceModuleDescriptor)
 module_ThermoelectricTest2:
@@ -2854,6 +3000,14 @@ module_ThermoelectricTest2:
   solarPanels: false
   windPower: false
   geothermal: false
+  mass: 5
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: PowerSupply
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 
 # NUCLEARREACTOR (GroundFacilityDescriptor)
 NuclearReactor:

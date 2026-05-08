@@ -1,0 +1,210 @@
+# id_company_Solex
+Solex:
+  isWorldGovernment: false
+  mainObject: EARTH
+  onInMenu: false
+  skipCosts: false
+  logoImageRef: solex_round_small
+  logoImageLargeRef: solex_round
+  populationConfig:
+    housingExpectancyModifier: 100
+    foodDemandMultiplier: 1.2
+    populationParameter: 0.01
+    minPopulationSize: 100
+    minConsumptionRate: 0.0002678572
+  marketConfig:
+    requiredMoneyMarginMultiplier: 0.5
+    futureResourceStorageMultiplier: 0.2
+  aiConfig:
+    costMultiplier:
+      money: 1
+      time: 1
+    costCalcType: Sum
+    makeOfferTimeThreshold: 365
+    makeOfferMinEndTime: 100
+    makeOfferMaxEndTime: 1000
+    makeOfferEndTimeMultiplier: 1.5
+    makeOfferUnitCostMultiplier:
+      money: 1.5
+      time: 1.5
+    takeOffersFromOtherAIs: false
+    takeOfferOnlyInstant: true
+    takeOfferTimeThreshold: 100000
+    takeOfferBuyUnitCostMultiplier:
+      money: 0.899999976158142
+      time: 0.899999976158142
+    takeOfferSellUnitCostMultiplier:
+      money: 1.10000002384186
+      time: 1.10000002384186
+    cachePlanMissionResults: true
+    cacheAsyncResults: false
+    includeUnlockableSpacecraftAndLVsForFlights: true
+
+# id_company_NASA
+NASA:
+  isWorldGovernment: false
+  mainObject: EARTH
+  onInMenu: true
+  skipCosts: false
+  logoImageRef: nasa_round_small
+  logoImageLargeRef: nasa_round
+  populationConfig:
+    housingExpectancyModifier: 100
+    foodDemandMultiplier: 1.2
+    populationParameter: 0.01
+    minPopulationSize: 100
+    minConsumptionRate: 0.0002678572
+  marketConfig:
+    requiredMoneyMarginMultiplier: 0.5
+    futureResourceStorageMultiplier: 0.2
+  aiConfig:
+    costMultiplier:
+      money: 1
+      time: 100
+    costCalcType: Sum
+    makeOfferTimeThreshold: 1000000
+    makeOfferMinEndTime: 100
+    makeOfferMaxEndTime: 1000
+    makeOfferEndTimeMultiplier: 1.5
+    makeOfferUnitCostMultiplier:
+      money: 1.5
+      time: 1.5
+    takeOffersFromOtherAIs: false
+    takeOfferOnlyInstant: true
+    takeOfferTimeThreshold: 100000
+    takeOfferBuyUnitCostMultiplier:
+      money: 0.899999976158142
+      time: 0.899999976158142
+    takeOfferSellUnitCostMultiplier:
+      money: 1.10000002384186
+      time: 1.10000002384186
+    cachePlanMissionResults: true
+    cacheAsyncResults: false
+    includeUnlockableSpacecraftAndLVsForFlights: true
+
+# id_company_CNSA
+CNSA:
+  isWorldGovernment: false
+  mainObject: EARTH
+  onInMenu: true
+  skipCosts: false
+  logoImageRef: cnsa_round_small
+  logoImageLargeRef: cnsa_round
+  populationConfig:
+    housingExpectancyModifier: 100
+    foodDemandMultiplier: 1.2
+    populationParameter: 0.01
+    minPopulationSize: 100
+    minConsumptionRate: 0.0002678572
+  marketConfig:
+    requiredMoneyMarginMultiplier: 0.5
+    futureResourceStorageMultiplier: 0.2
+  aiConfig:
+    costMultiplier:
+      money: 1
+      time: 10000
+    costCalcType: Sum
+    makeOfferTimeThreshold: 365
+    makeOfferMinEndTime: 100
+    makeOfferMaxEndTime: 1000
+    makeOfferEndTimeMultiplier: 1.5
+    makeOfferUnitCostMultiplier:
+      money: 1.5
+      time: 1.5
+    takeOffersFromOtherAIs: false
+    takeOfferOnlyInstant: true
+    takeOfferTimeThreshold: 100000
+    takeOfferBuyUnitCostMultiplier:
+      money: 0.899999976158142
+      time: 0.899999976158142
+    takeOfferSellUnitCostMultiplier:
+      money: 1.10000002384186
+      time: 1.10000002384186
+    cachePlanMissionResults: true
+    cacheAsyncResults: false
+    includeUnlockableSpacecraftAndLVsForFlights: true
+
+# id_company_ESA
+ESA:
+  isWorldGovernment: false
+  mainObject: EARTH
+  onInMenu: false
+  skipCosts: false
+  logoImageRef: esa_round_small
+  logoImageLargeRef: esa_round
+  populationConfig:
+    housingExpectancyModifier: 100
+    foodDemandMultiplier: 1.2
+    populationParameter: 0.01
+    minPopulationSize: 100
+    minConsumptionRate: 0.0002678572
+  marketConfig:
+    requiredMoneyMarginMultiplier: 0.5
+    futureResourceStorageMultiplier: 0.2
+  aiConfig:
+    costMultiplier:
+      money: 1
+      time: 1000
+    costCalcType: Sum
+    makeOfferTimeThreshold: 365
+    makeOfferMinEndTime: 100
+    makeOfferMaxEndTime: 1000
+    makeOfferEndTimeMultiplier: 1.5
+    makeOfferUnitCostMultiplier:
+      money: 1.5
+      time: 1.5
+    takeOffersFromOtherAIs: false
+    takeOfferOnlyInstant: true
+    takeOfferTimeThreshold: 100000
+    takeOfferBuyUnitCostMultiplier:
+      money: 0.899999976158142
+      time: 0.899999976158142
+    takeOfferSellUnitCostMultiplier:
+      money: 1.10000002384186
+      time: 1.10000002384186
+    cachePlanMissionResults: true
+    cacheAsyncResults: false
+    includeUnlockableSpacecraftAndLVsForFlights: true
+
+# id_company_Roscosmos
+Roscosmos:
+  isWorldGovernment: false
+  mainObject: EARTH
+  onInMenu: false
+  skipCosts: false
+  logoImageRef: roscosmos_round_small
+  logoImageLargeRef: roscosmos_round
+  populationConfig:
+    housingExpectancyModifier: 100
+    foodDemandMultiplier: 1.2
+    populationParameter: 0.01
+    minPopulationSize: 100
+    minConsumptionRate: 0.0002678572
+  marketConfig:
+    requiredMoneyMarginMultiplier: 0.5
+    futureResourceStorageMultiplier: 0.2
+  aiConfig:
+    costMultiplier:
+      money: 1
+      time: 1000
+    costCalcType: Max
+    makeOfferTimeThreshold: 365
+    makeOfferMinEndTime: 100
+    makeOfferMaxEndTime: 1000
+    makeOfferEndTimeMultiplier: 1.5
+    makeOfferUnitCostMultiplier:
+      money: 1.5
+      time: 1.5
+    takeOffersFromOtherAIs: false
+    takeOfferOnlyInstant: true
+    takeOfferTimeThreshold: 100000
+    takeOfferBuyUnitCostMultiplier:
+      money: 0.899999976158142
+      time: 0.899999976158142
+    takeOfferSellUnitCostMultiplier:
+      money: 1.10000002384186
+      time: 1.10000002384186
+    cachePlanMissionResults: true
+    cacheAsyncResults: false
+    includeUnlockableSpacecraftAndLVsForFlights: true
+

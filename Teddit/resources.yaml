@@ -1,3 +1,5 @@
+enabled: true
+
 # Resource patches and new resource definitions.
 # Keys are resource IDs from dump/resources.yaml.
 # Existing IDs are patched in place. Unknown IDs are created as new resources.
@@ -35,3 +37,4 @@
 #   showOnUI: true
 #   canBeLeftOnObject: true
 #   showInMarket: true
+

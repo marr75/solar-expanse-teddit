@@ -9,6 +9,13 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="AIOverhaul.cs" />
+    <Compile Remove="CompanyCreator.cs" />
+    <Compile Remove="CompanyPatches.cs" />
+    <Compile Remove="CorporationSelectPatch.cs" />
+  </ItemGroup>
+
   <!-- BepInEx + Harmony (in game folder after first launch) -->
   <ItemGroup>
     <Reference Include="BepInEx">
@@ -43,6 +50,10 @@
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="BehaviorDesigner.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\BehaviorDesigner.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>false</Private>
@@ -65,6 +76,10 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.UIModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>
@@ -100,12 +115,18 @@
     <Copy SourceFiles="$(MSBuildProjectDirectory)\resources.yaml"
           DestinationFolder="$(PluginDir)"
           Condition="!Exists('$(PluginDir)\resources.yaml')" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\companies.yaml"
+          DestinationFolder="$(PluginDir)"
+          Condition="!Exists('$(PluginDir)\companies.yaml')" />
     <Copy SourceFiles="$(MSBuildProjectDirectory)\spacecraft.yaml"
           DestinationFolder="$(PluginDir)"
           Condition="!Exists('$(PluginDir)\spacecraft.yaml')" />
     <Copy SourceFiles="$(MSBuildProjectDirectory)\deposits.yaml"
           DestinationFolder="$(PluginDir)"
           Condition="!Exists('$(PluginDir)\deposits.yaml')" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\life_support.yaml"
+          DestinationFolder="$(PluginDir)"
+          Condition="!Exists('$(PluginDir)\life_support.yaml')" />
     <Copy SourceFiles="$(MSBuildProjectDirectory)\launch_vehicles.yaml"
           DestinationFolder="$(PluginDir)"
           Condition="!Exists('$(PluginDir)\launch_vehicles.yaml')" />

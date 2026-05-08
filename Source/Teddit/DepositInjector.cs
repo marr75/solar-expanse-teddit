@@ -4,6 +4,7 @@ using Game.Info;
 using Game.ObjectInfoDataScripts;
 using Game.UI.Windows.Elements.ObjectInfoElements;
 using Manager;
+using System.Collections.Generic;
 
 namespace Teddit
 {
@@ -14,14 +15,30 @@ namespace Teddit
             var allSO = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance;
             if (allSO == null) { Plugin.Log.LogError("[DepositInjector] AllScriptableObjectManager is null"); return; }
 
+            bool isNewGameStart = MonoBehaviourSingleton<GameManager>.Instance != null &&
+                                  GameManager.InitFromStartGameConfigurationOrFromSaveFile;
+
             int added = 0, overwritten = 0, skipped = 0;
 
             foreach (var oi in oim.allObjectInfos)
             {
-                var entries = config.GetDepositsFor(oi.ObjectName);
-                if (entries == null || entries.Count == 0) continue;
+                var bodyConfig = config.GetBodyConfigFor(oi.ObjectName);
+                if (bodyConfig == null || bodyConfig.Deposits == null || bodyConfig.Deposits.Count == 0) continue;
 
-                foreach (var entry in entries)
+                if (bodyConfig.Overwrite)
+                {
+                    if (!isNewGameStart)
+                    {
+                        Plugin.Log.LogInfo($"[DepositInjector] Skipping full overwrite for {oi.ObjectName} on loaded save.");
+                        skipped += bodyConfig.Deposits.Count;
+                        continue;
+                    }
+
+                    ClearAllDeposits(oi);
+                    Plugin.Log.LogDebug($"[DepositInjector] Cleared all existing deposits on {oi.ObjectName} before reseeding.");
+                }
+
+                foreach (var entry in bodyConfig.Deposits)
                 {
                     var resource = allSO.AllResourceDefinitions.GetByID(entry.ResourceId);
                     if (resource == null)
@@ -38,7 +55,7 @@ namespace Teddit
                         continue;
                     }
 
-                    if (entry.Overwrite)
+                    if (!bodyConfig.Overwrite && entry.Overwrite)
                     {
                         var existing = oi.ListRowResourcesData?
                             .FirstOrDefault(d => d.ResourcesType?.ID == entry.ResourceId && d.ResourceState == state);
@@ -69,6 +86,16 @@ namespace Teddit
             }
 
             Plugin.Log.LogInfo($"[DepositInjector] Done - added: {added}, overwritten: {overwritten}, skipped: {skipped}");
+        }
+
+        static void ClearAllDeposits(ObjectInfo oi)
+        {
+            if (oi?.ListRowResourcesData == null || oi.ListRowResourcesData.Count == 0)
+                return;
+
+            var existing = new List<RowResourcesData>(oi.ListRowResourcesData);
+            foreach (var deposit in existing)
+                oi.RemoveDeposit(deposit);
         }
 
         static bool InitialFullyExplored(DepositEntry entry)

@@ -33,6 +33,14 @@ namespace Teddit
     ///   price.buildCost                        double  money cost to build (dot notation)
     ///   blockStacking                          bool    true = keep separate facility instances, false = merge/stack
     ///   facilityItemClass                      string   runtime facility class name for new facilities (e.g. LabFacility)
+    ///   mass                                   float    module cargo mass (SpaceModuleDescriptor only)
+    ///   canBeLoadAsCargo                       bool     whether the module can be moved as cargo
+    ///   buildOnOrbitSpaceModuleAllow           bool     whether the module can be placed in orbit build contexts
+    ///   timeToDestroyInDay                     float?   optional timed self-destruction for modules
+    ///   spaceModuleType                        enum     module subtype classification
+    ///   typeSubObjectInfo                      enum     sub-object type for rendered module attachments
+    ///   isLockedCreate                         bool     internal create-lock flag used by some modules
+    ///   isSpaceConstructionOnOrbit             bool     whether this module constructs ships on orbit
     ///
     ///   Complex fields (object graphs, handled separately):
     ///   buildResources   { "resource_id": amount }          physical resources required to build
@@ -40,6 +48,9 @@ namespace Teddit
     ///   refinerInput     { "resource_id": ratePerDay }      resources consumed per day (Refiner ability)
     ///   refinerOutput    { "resource_id": ratePerDay }      resources produced per day (Refiner ability)
     ///   byproducts       [{"resource":"id","rate":1.0,"state":"Solid"}]  side outputs (Solid/Liquid/Gas/Underground)
+    ///   facilityOrModuleToInstall             "facility_id" target installed by an InstallationModule
+    ///   isSpaceConstructionOnOrbitSpaceCraftToCreate "spacecraft_id" ship created by an orbital construction module
+    ///   isSpaceConstructionOnOrbitLaunchVehicleCanUse "launch_vehicle_id" LV required/used by orbital construction module
     ///   labBonusToResearchInPerHour  int                    flat research points per hour from a Lab facility
     ///   labResearchSubTypeId         string                 optional ResearchSubType ID filter for the lab
     ///   labIdToBonus                 ["id"|"All", ...]     optional exact research IDs the lab applies to
@@ -93,7 +104,9 @@ namespace Teddit
         static readonly HashSet<string> _complexFacilityKeys = new HashSet<string>
         {
             "buildResources", "resourcesToMine", "refinerInput", "refinerOutput", "byproducts",
+            "energyInput",
             "labBonusToResearchInPerHour", "labResearchSubTypeId", "labIdToBonus",
+            "facilityOrModuleToInstall", "isSpaceConstructionOnOrbitSpaceCraftToCreate", "isSpaceConstructionOnOrbitLaunchVehicleCanUse",
             // Creation-only keys that aren't real field names on the descriptor
             "icon", "iconRef", "name", "description", "capabilities", "facilityType", "possiblePlacement",
             "specialAbility", "energyProduction", "solarPanels", "windPower", "geothermal", "buildCost", "facilityItemClass",
@@ -104,6 +117,34 @@ namespace Teddit
             "icon", "iconRef", "name", "description", "showInMarket", "cloneFrom",
             "terraformationInfo", "toxicityCurve",
         };
+
+        public static void RunCompanies(Dictionary<string, Dictionary<string, JToken>> config, string modDir)
+        {
+            if (config.Count == 0) return;
+
+            var allSO = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance;
+            if (allSO == null) { Plugin.Log.LogError("[CompanyPatcher] AllScriptableObjectManager null"); return; }
+
+            int patched = 0, skipped = 0;
+            foreach (var kv in config)
+            {
+                if (kv.Key.StartsWith("_")) continue;
+
+                var company = allSO.AllCompanyDefinitions.GetByID(kv.Key);
+                if (company == null)
+                {
+                    Plugin.Log.LogDebug($"[CompanyPatcher] '{kv.Key}' not found in game data - skipping.");
+                    skipped++;
+                    continue;
+                }
+
+                ApplyFields(company, kv.Value, "[CompanyPatcher]", kv.Key);
+                patched++;
+            }
+
+            if (patched > 0 || skipped > 0)
+                Plugin.Log.LogInfo($"[CompanyPatcher] Done - patched: {patched}, skipped: {skipped}");
+        }
 
         public static void RunResources(Dictionary<string, Dictionary<string, JToken>> config, string modDir)
         {
@@ -143,7 +184,7 @@ namespace Teddit
             }
 
             ResourceCreator.RefreshAllResourceLists(allSO.AllResourceDefinitions);
-            if (patched > 0 || created > 0)
+            if (patched > 0 || skipped > 0)
                 Plugin.Log.LogInfo($"[ResourcePatcher] Done — patched: {patched}, created: {created}, skipped: {skipped}");
         }
 
@@ -184,7 +225,7 @@ namespace Teddit
                 ApplyFacilityComplexFields(descriptor, kv.Value, kv.Key);
                 patched++;
             }
-            if (patched > 0 || created > 0)
+            if (patched > 0 || skipped > 0)
                 Plugin.Log.LogInfo($"[FacilityPatcher] Done — patched: {patched}, created: {created}, skipped: {skipped}");
         }
 
@@ -286,6 +327,13 @@ namespace Teddit
                 }
             }
 
+            // ── energyInput: { "resource_id": ratePerDay } ───────────────────────
+            if (fields.TryGetValue("energyInput", out tok) && tok.Type == JTokenType.Object)
+            {
+                try { ApplyEnergyInput(descriptor, (JObject)tok, allSO, prefix, id); }
+                catch (Exception ex) { Plugin.Log.LogError($"{prefix} {id}: energyInput setup failed — {ex.Message}"); }
+            }
+
             // labData / research output
             if (descriptor is GroundFacilityDescriptor groundDescriptor &&
                 (fields.ContainsKey("labBonusToResearchInPerHour") || fields.ContainsKey("labResearchSubTypeId") || fields.ContainsKey("labIdToBonus")))
@@ -313,10 +361,11 @@ namespace Teddit
             if (fields.TryGetValue("facilityItemClass", out tok) && tok.Type != JTokenType.Null)
             {
                 string className = tok.Value<string>();
-                if (string.Equals(className, "LabFacility", StringComparison.OrdinalIgnoreCase))
+                Type resolvedType = ResolveItemClassType(className);
+                if (resolvedType != null)
                 {
                     var fi = FindField(descriptor.GetType(), "facilityItemClass");
-                    fi?.SetValue(descriptor, typeof(LabFacility));
+                    fi?.SetValue(descriptor, resolvedType);
                 }
                 else
                 {
@@ -328,6 +377,54 @@ namespace Teddit
             {
                 var fi = FindField(descriptor.GetType(), "facilityItemClass");
                 fi?.SetValue(descriptor, typeof(MiningFacility));
+            }
+
+            if (descriptor is SpaceModuleDescriptor moduleDescriptor)
+            {
+                if (fields.TryGetValue("facilityOrModuleToInstall", out tok))
+                {
+                    if (tok.Type == JTokenType.Null)
+                    {
+                        moduleDescriptor.facilityOrModuleToInstall = null;
+                    }
+                    else
+                    {
+                        string targetId = tok.Value<string>();
+                        var target = allSO.AllFacility.GetByID(targetId);
+                        if (target == null) Warn(prefix, id, $"unknown facility '{targetId}' in facilityOrModuleToInstall");
+                        else moduleDescriptor.facilityOrModuleToInstall = target;
+                    }
+                }
+
+                if (fields.TryGetValue("isSpaceConstructionOnOrbitSpaceCraftToCreate", out tok))
+                {
+                    if (tok.Type == JTokenType.Null)
+                    {
+                        moduleDescriptor.isSpaceConstructionOnOrbitSpaceCraftToCreate = null;
+                    }
+                    else
+                    {
+                        string scId = tok.Value<string>();
+                        var sc = allSO.AllSpacecraftType.GetByID(scId);
+                        if (sc == null) Warn(prefix, id, $"unknown spacecraft '{scId}' in isSpaceConstructionOnOrbitSpaceCraftToCreate");
+                        else moduleDescriptor.isSpaceConstructionOnOrbitSpaceCraftToCreate = sc;
+                    }
+                }
+
+                if (fields.TryGetValue("isSpaceConstructionOnOrbitLaunchVehicleCanUse", out tok))
+                {
+                    if (tok.Type == JTokenType.Null)
+                    {
+                        moduleDescriptor.isSpaceConstructionOnOrbitLaunchVehicleCanUse = null;
+                    }
+                    else
+                    {
+                        string lvId = tok.Value<string>();
+                        var lv = allSO.AllLaunchVehicleType.GetByID(lvId);
+                        if (lv == null) Warn(prefix, id, $"unknown launch vehicle '{lvId}' in isSpaceConstructionOnOrbitLaunchVehicleCanUse");
+                        else moduleDescriptor.isSpaceConstructionOnOrbitLaunchVehicleCanUse = lv;
+                    }
+                }
             }
         }
 
@@ -421,6 +518,80 @@ namespace Teddit
             }
 
             refinerFi.SetValue(descriptor, refinerInst);
+        }
+
+        /// <summary>
+        /// Resolves a facilityItemClass name to its runtime <see cref="Type"/>.
+        /// Handles all known class names and falls back to a name-search across the game assembly.
+        /// </summary>
+        internal static Type ResolveItemClassType(string className)
+        {
+            if (string.IsNullOrEmpty(className)) return null;
+            // Fast path for known types
+            switch (className)
+            {
+                case "LabFacility":              return typeof(LabFacility);
+                case "MiningFacility":           return typeof(MiningFacility);
+            }
+            // Search the game assembly by simple class name for everything else
+            // (EnergyProductionFacility, EnergyProductionModule, ObservatoryFacility, etc.)
+            foreach (var t in typeof(LabFacility).Assembly.GetTypes())
+                if (t.Name == className) return t;
+            return null;
+        }
+
+        /// <summary>
+        /// Applies an <c>energyInput: { resource_id: ratePerDay }</c> block to
+        /// <c>EnergyProductionData.input</c> on the given descriptor.
+        /// Creates <c>energyProductionData</c> if it is currently null.
+        /// </summary>
+        static void ApplyEnergyInput(FacilityBaseDescriptor descriptor, JObject tok,
+                                     AllScriptableObjectManager allSO, string prefix, string id)
+        {
+            var epdFi = FindField(descriptor.GetType(), "energyProductionData");
+            if (epdFi == null) { Warn(prefix, id, "energyProductionData field not found"); return; }
+
+            object epd = epdFi.GetValue(descriptor);
+            if (epd == null)
+            {
+                epd = Activator.CreateInstance(epdFi.FieldType);
+                epdFi.SetValue(descriptor, epd);
+            }
+
+            var inputFi = epd.GetType().GetField("input",
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (inputFi == null) { Warn(prefix, id, "EnergyProductionData.input field not found"); return; }
+
+            // Determine the element type of the collection
+            Type collectionType = inputFi.FieldType;
+            Type itemType = collectionType.IsArray
+                ? collectionType.GetElementType()
+                : (collectionType.IsGenericType ? collectionType.GetGenericArguments()[0] : null);
+
+            if (itemType == null)
+            {
+                // Fallback: search for a type in the same assembly that has both 'resource' and 'ratePerDay'
+                foreach (var t in epd.GetType().Assembly.GetTypes())
+                    if (t.GetField("resource") != null && t.GetField("ratePerDay") != null)
+                    { itemType = t; break; }
+            }
+            if (itemType == null) { Warn(prefix, id, "could not determine energyInput item type"); return; }
+
+            var resourceFi = itemType.GetField("resource",   BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            var rateFi     = itemType.GetField("ratePerDay", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (resourceFi == null || rateFi == null)
+            {
+                Warn(prefix, id, "energyInput item type missing 'resource' or 'ratePerDay' fields");
+                return;
+            }
+
+            object collection = BuildRefinerCollection(collectionType, itemType, tok, allSO,
+                                                       "energyInput", prefix, id, resourceFi, rateFi);
+            if (collection == null) { Warn(prefix, id, "could not build energyInput collection"); return; }
+
+            inputFi.SetValue(epd, collection);
+            epdFi.SetValue(descriptor, epd); // write back in case EnergyProductionData is a value type
+            Plugin.Log.LogDebug($"{prefix} {id}.energyInput set");
         }
 
         static MemberInfo FindRefinerStorageMember(Type refinerType, string memberName)
@@ -645,12 +816,18 @@ namespace Teddit
             var allSO = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance;
             if (allSO == null) { Plugin.Log.LogError("[ResearchPatcher] AllScriptableObjectManager null"); return; }
 
-            int patched = 0, created = 0, skipped = 0;
+            int patched = 0, skipped = 0;
             foreach (var kv in config)
             {
                 if (kv.Key.StartsWith("_")) continue;
 
                 var rd = allSO.AllResearchDefinition.GetByID(kv.Key);
+                if (rd == null)
+                {
+                    Plugin.Log.LogDebug($"[ResearchPatcher] '{kv.Key}' not found in game data - new-entry injection is disabled, skipping.");
+                    skipped++;
+                    continue;
+                }
                 if (rd == null)
                 {
                     // New-research injection is temporarily disabled — skip unknown IDs.
@@ -666,11 +843,9 @@ namespace Teddit
                 ApplyResearchComplexFields(rd, kv.Value, kv.Key, allSO, modDir);
                 patched++;
             }
-            if (patched > 0 || created > 0)
-                Plugin.Log.LogInfo($"[ResearchPatcher] Done — patched: {patched}, created: {created}, skipped: {skipped}");
+            if (patched > 0 || skipped > 0)
+                Plugin.Log.LogInfo($"[ResearchPatcher] Done - patched: {patched}, skipped: {skipped}");
 
-            if (created > 0)
-                ResearchCreator.RebuildResearchTree();
         }
 
         internal static void ApplyResearchComplexFields(ResearchDefinition rd, Dictionary<string, JToken> fields, string id, AllScriptableObjectManager allSO, string modDir = null)
@@ -897,29 +1072,7 @@ namespace Teddit
             {
                 try
                 {
-                    int dot = kv.Key.IndexOf('.');
-                    if (dot >= 0)
-                    {
-                        string parentName = kv.Key.Substring(0, dot);
-                        string childName  = kv.Key.Substring(dot + 1);
-
-                        var parentFi = FindField(target.GetType(), parentName);
-                        if (parentFi == null) { Warn(prefix, id, $"field '{parentName}' not found on {target.GetType().Name}"); continue; }
-
-                        var parentObj = parentFi.GetValue(target);
-                        if (parentObj == null) { Warn(prefix, id, $"'{parentName}' is null"); continue; }
-
-                        var childFi = FindField(parentObj.GetType(), childName);
-                        if (childFi == null) { Warn(prefix, id, $"field '{childName}' not found on {parentObj.GetType().Name}"); continue; }
-
-                        SetPrimitive(childFi, parentObj, kv.Value, prefix, id);
-                    }
-                    else
-                    {
-                        var fi = FindField(target.GetType(), kv.Key);
-                        if (fi == null) { Warn(prefix, id, $"field '{kv.Key}' not found on {target.GetType().Name}"); continue; }
-                        SetPrimitive(fi, target, kv.Value, prefix, id);
-                    }
+                    SetFieldPath(target, kv.Key, kv.Value, prefix, id);
 
                     Plugin.Log.LogDebug($"{prefix} {id}.{kv.Key} = {kv.Value}");
                 }
@@ -927,6 +1080,58 @@ namespace Teddit
                 {
                     Plugin.Log.LogError($"{prefix} Error setting '{kv.Key}' on '{id}': {ex.Message}");
                 }
+            }
+        }
+
+        static void SetFieldPath(object target, string path, JToken value, string prefix, string id)
+        {
+            var parts = path.Split('.');
+            if (parts.Length == 0)
+                return;
+
+            if (parts.Length == 1)
+            {
+                var fi = FindField(target.GetType(), parts[0]);
+                if (fi == null) { Warn(prefix, id, $"field '{parts[0]}' not found on {target.GetType().Name}"); return; }
+                SetPrimitive(fi, target, value, prefix, id);
+                return;
+            }
+
+            var owners = new List<object> { target };
+            var fields = new List<FieldInfo>();
+            object currentObj = target;
+
+            for (int i = 0; i < parts.Length; i++)
+            {
+                var fi = FindField(currentObj.GetType(), parts[i]);
+                if (fi == null)
+                {
+                    Warn(prefix, id, $"field '{parts[i]}' not found on {currentObj.GetType().Name}");
+                    return;
+                }
+
+                fields.Add(fi);
+                if (i == parts.Length - 1)
+                    break;
+
+                var nextObj = fi.GetValue(currentObj);
+                if (nextObj == null)
+                {
+                    Warn(prefix, id, $"'{string.Join(".", parts.Take(i + 1))}' is null");
+                    return;
+                }
+
+                owners.Add(nextObj);
+                currentObj = nextObj;
+            }
+
+            object leafOwner = owners[owners.Count - 1];
+            FieldInfo leafField = fields[fields.Count - 1];
+            SetPrimitive(leafField, leafOwner, value, prefix, id);
+
+            for (int i = fields.Count - 2; i >= 0; i--)
+            {
+                fields[i].SetValue(owners[i], owners[i + 1]);
             }
         }
 

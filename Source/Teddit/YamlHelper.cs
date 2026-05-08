@@ -16,6 +16,14 @@ namespace Teddit
         private static readonly IDeserializer _deserializer =
             new DeserializerBuilder().Build();
 
+        internal static Dictionary<object, object> LoadRawMap(string path)
+        {
+            if (!File.Exists(path))
+                return null;
+
+            return _deserializer.Deserialize<Dictionary<object, object>>(File.ReadAllText(path));
+        }
+
         /// <summary>
         /// Reads a YAML file and returns a flat string-keyed dictionary of field maps.
         /// Top-level keys that start with '#' or '_' are skipped (comment/template keys).
@@ -30,7 +38,7 @@ namespace Teddit
                 return result;
             }
 
-            var raw = _deserializer.Deserialize<Dictionary<object, object>>(File.ReadAllText(path));
+            var raw = LoadRawMap(path);
             if (raw == null) return result;
 
             foreach (var kv in raw)
@@ -69,7 +77,7 @@ namespace Teddit
                 return result;
             }
 
-            var raw = _deserializer.Deserialize<Dictionary<object, object>>(File.ReadAllText(path));
+            var raw = LoadRawMap(path);
             if (raw == null) return result;
 
             foreach (var kv in raw)

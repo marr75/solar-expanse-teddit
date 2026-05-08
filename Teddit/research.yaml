@@ -1,3 +1,5 @@
+enabled: true
+
 # Research definition patches.
 # Keys are research IDs (from dump/research.yaml).
 #
@@ -6,3 +8,4 @@
 #   isLockedForUI:      bool   — hidden from the UI entirely
 #   workHourToComplete: float  — total work-hours required to complete
 #   stage:              int    — research era/stage (0-based)
+

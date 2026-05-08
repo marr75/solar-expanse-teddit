@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Data.ScriptableObject;
 using Game.CompanyScripts;
+using Game.Info;
 using Game.ObjectInfoDataScripts;
 using Game.ObjectInfoDataScripts.CustomFacilitiesAndModules;
 using Game.UI.Windows.Elements.SpaceCraftConstructElements;
@@ -25,12 +26,20 @@ namespace Teddit
             { "_defaultLanguage", "_defaultLaungage", "defaultLanguage", "defaultLaungage" };
 
         /// <summary>
-        /// Creates a new GroundFacilityDescriptor from a field dict and injects it into AllFacility.
+        /// Creates a new facility descriptor from a field dict and injects it into AllFacility.
+        /// facilityType: Module creates a SpaceModuleDescriptor; everything else uses GroundFacilityDescriptor.
         /// Called by ScriptableObjectPatcher.RunFacilities when an ID is not found in the game's list.
         /// </summary>
         internal static void CreateAndInjectFacility(string id, Dictionary<string, JToken> def, string modDir)
         {
-            var desc = ScriptableObject.CreateInstance<GroundFacilityDescriptor>();
+            string ftStr = GetVal<string>(def, "facilityType", "Other");
+            FacilityBaseDescriptor.EFacilityType ft;
+            bool parsedFacilityType = Enum.TryParse(ftStr, out ft);
+            bool createModule = parsedFacilityType && ft == FacilityBaseDescriptor.EFacilityType.Module;
+
+            var desc = createModule
+                ? (FacilityBaseDescriptor)ScriptableObject.CreateInstance<SpaceModuleDescriptor>()
+                : ScriptableObject.CreateInstance<GroundFacilityDescriptor>();
             desc.name = id;
             SetField(desc, "id", id);
 
@@ -66,9 +75,7 @@ namespace Teddit
             if (def.TryGetValue("timeToBuildInDays",               out tok)) SetField(desc, "timeToBuildInDays", tok.Value<float>());
             if (def.TryGetValue("constructionEquipmentCountIsRequired", out tok)) SetField(desc, "constructionEquipmentCountIsRequired", tok.Value<bool>());
 
-            string ftStr = GetVal<string>(def, "facilityType", "Other");
-            FacilityBaseDescriptor.EFacilityType ft;
-            if (Enum.TryParse(ftStr, out ft))
+            if (parsedFacilityType)
                 SetField(desc, "facilityType", ft);
             else
                 Plugin.Log.LogWarning($"[FacilityCreator] Unknown facilityType '{ftStr}' for {id}");
@@ -83,13 +90,36 @@ namespace Teddit
                 catch { Plugin.Log.LogWarning($"[FacilityCreator] Unknown specialAbility '{specialStr}' for {id}"); }
             }
             if (def.TryGetValue("specialAbilityParameter", out tok)) desc.specialAbilityParameter = tok.Value<float>();
-            if (def.TryGetValue("resourceExplorationBonus", out tok)) desc.resourceExplorationBonus = tok.Value<float>();
+            var groundDesc = desc as GroundFacilityDescriptor;
+            if (groundDesc != null && def.TryGetValue("resourceExplorationBonus", out tok))
+                groundDesc.resourceExplorationBonus = tok.Value<float>();
+            var moduleDesc = desc as SpaceModuleDescriptor;
+            if (moduleDesc != null)
+            {
+                if (def.TryGetValue("mass", out tok)) SetField(moduleDesc, "mass", tok.Value<float>());
+                if (def.TryGetValue("canBeLoadAsCargo", out tok)) SetField(moduleDesc, "canBeLoadAsCargo", tok.Value<bool>());
+                if (def.TryGetValue("buildOnOrbitSpaceModuleAllow", out tok)) SetField(moduleDesc, "buildOnOrbitSpaceModuleAllow", tok.Value<bool>());
+                if (def.TryGetValue("timeToDestroyInDay", out tok)) SetField(moduleDesc, "timeToDestroyInDay", tok.Type == JTokenType.Null ? (float?)null : tok.Value<float>());
+                if (def.TryGetValue("spaceModuleType", out tok))
+                {
+                    try { SetField(moduleDesc, "spaceModuleType", Enum.Parse(typeof(ESpaceModuleType), tok.Value<string>(), ignoreCase: true)); }
+                    catch { Plugin.Log.LogWarning($"[FacilityCreator] Unknown spaceModuleType '{tok.Value<string>()}' for {id}"); }
+                }
+                if (def.TryGetValue("typeSubObjectInfo", out tok))
+                {
+                    try { SetField(moduleDesc, "typeSubObjectInfo", Enum.Parse(typeof(SubObjectInfo.ETypeSubObjectInfo), tok.Value<string>(), ignoreCase: true)); }
+                    catch { Plugin.Log.LogWarning($"[FacilityCreator] Unknown typeSubObjectInfo '{tok.Value<string>()}' for {id}"); }
+                }
+                if (def.TryGetValue("isLockedCreate", out tok)) moduleDesc.isLockedCreate = tok.Value<bool>();
+                if (def.TryGetValue("isSpaceConstructionOnOrbit", out tok)) moduleDesc.isSpaceConstructionOnOrbit = tok.Value<bool>();
+            }
 
             double energyProd = GetVal<double>(def, "energyProduction", 0.0);
             bool solar = GetVal<bool>(def, "solarPanels", false);
             bool wind  = GetVal<bool>(def, "windPower",   false);
             bool geo   = GetVal<bool>(def, "geothermal",  false);
-            if (energyProd > 0.0 || solar || wind || geo)
+            bool hasEnergyInput = def.ContainsKey("energyInput");
+            if (energyProd > 0.0 || solar || wind || geo || hasEnergyInput)
             {
                 desc.energyProductionData = new EnergyProductionData
                 {
@@ -109,31 +139,39 @@ namespace Teddit
             string facilityItemClassName = GetVal<string>(def, "facilityItemClass", null);
             bool hasLabData = def.ContainsKey("labBonusToResearchInPerHour") || def.ContainsKey("labResearchSubTypeId") || def.ContainsKey("labIdToBonus");
             bool hasResourcesToMine = def.ContainsKey("resourcesToMine");
-            if (string.Equals(facilityItemClassName, "LabFacility", StringComparison.OrdinalIgnoreCase)
+            if (groundDesc != null && (string.Equals(facilityItemClassName, "LabFacility", StringComparison.OrdinalIgnoreCase)
                 || desc.specialAbilityFacilityNew == ESpecialAbilityFacilityNew.Lab
-                || hasLabData)
+                || hasLabData))
             {
                 SetField(desc, "facilityItemClass", typeof(LabFacility));
-                if (desc.bonusData == null) desc.bonusData = new BonusData();
-                if (desc.labData == null) desc.labData = new LabData();
+                if (groundDesc.bonusData == null) groundDesc.bonusData = new BonusData();
+                if (groundDesc.labData == null) groundDesc.labData = new LabData();
                 if (def.TryGetValue("labBonusToResearchInPerHour", out tok) && tok.Type != JTokenType.Null)
-                    desc.labData.bonusToResearchInPerHour = tok.Value<int>();
-                desc.labData.idResearchSubType = string.Empty;
-                desc.labData.idToBonus = Array.Empty<string>();
+                    groundDesc.labData.bonusToResearchInPerHour = tok.Value<int>();
+                groundDesc.labData.idResearchSubType = string.Empty;
+                groundDesc.labData.idToBonus = Array.Empty<string>();
                 if (def.TryGetValue("labResearchSubTypeId", out tok))
-                    desc.labData.idResearchSubType = tok.Type == JTokenType.Null ? string.Empty : (tok.Value<string>() ?? string.Empty);
+                    groundDesc.labData.idResearchSubType = tok.Type == JTokenType.Null ? string.Empty : (tok.Value<string>() ?? string.Empty);
                 if (def.TryGetValue("labIdToBonus", out tok) && tok.Type == JTokenType.Array)
-                    desc.labData.idToBonus = ((JArray)tok).Select(x => x.Value<string>()).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                    groundDesc.labData.idToBonus = ((JArray)tok).Select(x => x.Value<string>()).Where(x => !string.IsNullOrEmpty(x)).ToArray();
             }
-            else if (string.Equals(facilityItemClassName, "MiningFacility", StringComparison.OrdinalIgnoreCase)
+            else if (groundDesc != null && (string.Equals(facilityItemClassName, "MiningFacility", StringComparison.OrdinalIgnoreCase)
                 || desc.specialAbilityFacilityNew == ESpecialAbilityFacilityNew.Mining
-                || hasResourcesToMine)
+                || hasResourcesToMine))
             {
                 SetField(desc, "facilityItemClass", typeof(MiningFacility));
             }
+            else if (!string.IsNullOrEmpty(facilityItemClassName))
+            {
+                Type resolvedType = ScriptableObjectPatcher.ResolveItemClassType(facilityItemClassName);
+                if (resolvedType != null)
+                    SetField(desc, "facilityItemClass", resolvedType);
+                else
+                    Plugin.Log.LogWarning($"[FacilityCreator] Unknown facilityItemClass '{facilityItemClassName}' for {id}");
+            }
 
-            if (desc.bonusData == null)
-                desc.bonusData = new BonusData();
+            if (groundDesc != null && groundDesc.bonusData == null)
+                groundDesc.bonusData = new BonusData();
 
             // Complex fields (buildResources, resourcesToMine, refinerInput/Output, byproducts)
             ScriptableObjectPatcher.ApplyFacilityComplexFields(desc, def, id);

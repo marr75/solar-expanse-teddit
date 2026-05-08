@@ -14,11 +14,14 @@ namespace Teddit
     internal static class ResearchCreator
     {
         /// <summary>
-        /// Populated by the ResearchTreeCreateUIPostfix Harmony patch the first time
-        /// ResearchTree.CreateUI() runs.  Used by RebuildResearchTree() to re-invoke it
-        /// after new entries are injected.
+        /// Cached by the ResearchTree.CreateUI patch. Kept only for diagnostics and any
+        /// future tree-specific work; new-node injection no longer mutates the live tree.
         /// </summary>
         internal static object _researchTreeInstance;
+
+        static bool _treeBootstrapApplied;
+        static bool _treeRebuildRequested;
+        static readonly HashSet<string> _createdResearchIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         static readonly string[] CurrentLangCandidates =
             { "_currentLaungage", "_currentLanguage", "currentLaungage", "currentLanguage" };
@@ -93,6 +96,8 @@ namespace Teddit
             catch (Exception ex) { Plugin.Log.LogWarning($"[ResearchCreator] AllMyIDScriptableObjects.Add failed: {ex.Message}"); }
 
             Plugin.Log.LogInfo($"[ResearchCreator] + {id} (type:{rtId}, stage:{FacilityCreator.GetVal<int>(def, "stage", 1)})");
+            _createdResearchIds.Add(id);
+            _treeRebuildRequested = true;
         }
 
         // ── Helpers ───────────────────────────────────────────────────────────────
@@ -153,6 +158,381 @@ namespace Teddit
             {
                 Plugin.Log.LogWarning($"[ResearchCreator] Translation injection failed for {id}: {ex.Message}");
             }
+        }
+
+        /// <summary>
+        /// Ensures research.yaml files have been applied before the vanilla research tree
+        /// performs its first full CreateUI() pass. This lets the stock tree builder see
+        /// modded nodes naturally, which keeps branch lines and stage layout intact.
+        /// </summary>
+        internal static void EnsureResearchLoadedBeforeCreateUI()
+        {
+            if (_treeBootstrapApplied)
+                return;
+
+            _treeBootstrapApplied = true;
+
+            try
+            {
+                var dirs = new List<string> { Plugin.PluginDir };
+                string modsFolder = Path.Combine(Plugin.PluginDir, "mods");
+                if (Directory.Exists(modsFolder))
+                {
+                    var subDirs = Directory.GetDirectories(modsFolder);
+                    Array.Sort(subDirs, StringComparer.OrdinalIgnoreCase);
+                    dirs.AddRange(subDirs);
+                }
+
+                int applied = 0;
+                foreach (var dir in dirs)
+                {
+                    var config = PatchConfig.Load(Path.Combine(dir, "research.yaml"));
+                    if (config.Count == 0)
+                        continue;
+
+                    ScriptableObjectPatcher.RunResearch(config, dir);
+                    applied++;
+                }
+
+                Plugin.Log.LogInfo($"[ResearchCreator] CreateUI bootstrap applied from {applied} research config file(s).");
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogError($"[ResearchCreator] CreateUI bootstrap failed: {ex}");
+            }
+        }
+
+        internal static void RebuildTreeIfNeeded(object treeInstance)
+        {
+            if (!_treeRebuildRequested || treeInstance == null)
+                return;
+
+            try
+            {
+                var treeType = treeInstance.GetType();
+                var initFi = ScriptableObjectPatcher.FindField(treeType, "initAllElement");
+                initFi?.SetValue(treeInstance, false);
+
+                treeType.GetMethod("CreateUI", BindingFlags.NonPublic | BindingFlags.Instance)
+                    ?.Invoke(treeInstance, null);
+                treeType.GetMethod("SetData", BindingFlags.Public | BindingFlags.Instance)
+                    ?.Invoke(treeInstance, new object[] { null });
+                treeType.GetMethod("InitAllElement", BindingFlags.Public | BindingFlags.Instance)
+                    ?.Invoke(treeInstance, null);
+
+                _treeRebuildRequested = false;
+                Plugin.Log.LogInfo("[ResearchCreator] Rebuilt research tree UI after adding new node(s).");
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[ResearchCreator] RebuildTreeIfNeeded failed: {ex.Message}\n{ex.StackTrace}");
+            }
+        }
+
+        internal static void LogTreeStatus(object treeInstance)
+        {
+            if (treeInstance == null || _createdResearchIds.Count == 0)
+                return;
+
+            try
+            {
+                var treeType = treeInstance.GetType();
+                var listSpawnFi = ScriptableObjectPatcher.FindField(treeType, "listSpawnRD");
+                var listSpawnRD = listSpawnFi?.GetValue(treeInstance) as List<ResearchDefinition>;
+                if (listSpawnRD == null)
+                    return;
+
+                var allSO = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance;
+                foreach (var id in _createdResearchIds)
+                {
+                    var rd = allSO?.AllResearchDefinition?.GetByID(id);
+                    if (rd == null)
+                    {
+                        Plugin.Log.LogInfo($"[ResearchCreator] TreeStatus {id}: missing from AllResearchDefinition at CreateUI time.");
+                        continue;
+                    }
+
+                    var parent = rd.newViewResearchTreeParent;
+                    var root = ResearchDefinition.GetRoot(rd);
+                    bool spawned = listSpawnRD.Contains(rd);
+                    bool parentSpawned = parent != null && listSpawnRD.Contains(parent);
+                    bool rootSpawned = root != null && listSpawnRD.Contains(root);
+                    bool sameSubtypeWithParent = parent != null && rd.ResearchSubType == parent.ResearchSubType;
+                    bool requiresParent = false;
+                    if (parent != null && rd.RequirementsResearch != null)
+                    {
+                        foreach (var req in rd.RequirementsResearch)
+                        {
+                            if (req == parent)
+                            {
+                                requiresParent = true;
+                                break;
+                            }
+                        }
+                    }
+                    bool visibleAsChild = !rd.ShowInTree;
+
+                    Plugin.Log.LogInfo(
+                        $"[ResearchCreator] TreeStatus {id}: spawned={spawned}, showInTree={rd.ShowInTree}, " +
+                        $"parent={parent?.ID ?? "null"} parentSpawned={parentSpawned}, " +
+                        $"root={root?.ID ?? "null"} rootSpawned={rootSpawned}, " +
+                        $"sameSubtypeWithParent={sameSubtypeWithParent}, requiresParent={requiresParent}, " +
+                        $"reqCount={(rd.RequirementsResearch == null ? -1 : rd.RequirementsResearch.Length)}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[ResearchCreator] LogTreeStatus failed: {ex.Message}");
+            }
+        }
+
+        internal static void AppendPendingEntries(object treeInstance)
+        {
+            const string prefix = "[ResearchCreator]";
+            try
+            {
+                var treeType = treeInstance.GetType();
+                var listSpawnFi = ScriptableObjectPatcher.FindField(treeType, "listSpawnRD");
+                var listSpawnRD = listSpawnFi?.GetValue(treeInstance) as List<ResearchDefinition>;
+                if (listSpawnRD == null)
+                {
+                    Plugin.Log.LogWarning($"{prefix} AppendPendingEntries: listSpawnRD not found.");
+                    return;
+                }
+
+                var allSO = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance;
+                var unspawned = new List<ResearchDefinition>();
+                foreach (var id in _createdResearchIds)
+                {
+                    var rd = allSO.AllResearchDefinition.GetByID(id);
+                    if (rd != null && !listSpawnRD.Contains(rd))
+                        unspawned.Add(rd);
+                }
+                if (unspawned.Count == 0)
+                    return;
+
+                Type stageElemType = typeof(ResearchDefinition).Assembly.GetType("ResearchTreeTypeStageUIElement")
+                    ?? typeof(ResearchDefinition).Assembly.GetType("Game.UI.Windows.Windows.ResearchTree.ResearchTreeTypeStageUIElement");
+                if (stageElemType == null)
+                {
+                    Plugin.Log.LogWarning($"{prefix} AppendPendingEntries: stage element type not found.");
+                    return;
+                }
+
+                var setDataMI = stageElemType.GetMethod("SetData", BindingFlags.Public | BindingFlags.Instance);
+                var spawnParentNextStageFi = ScriptableObjectPatcher.FindField(stageElemType, "spawnParentNextStage");
+                var listSubElementFi = ScriptableObjectPatcher.FindField(stageElemType, "listSubElement");
+                var researchTreeTypeStageUIFi = ScriptableObjectPatcher.FindField(stageElemType, "researchTreeTypeStageUI");
+                var researchDefinitionPi = stageElemType.GetProperty("ResearchDefinition", BindingFlags.Public | BindingFlags.Instance);
+                var lineHorizontalListFi = ScriptableObjectPatcher.FindField(stageElemType, "lineHorizontalList");
+                var lineHorizontal1Fi = ScriptableObjectPatcher.FindField(stageElemType, "lineHorizontal1");
+                var getResearchMainMI = treeType.GetMethod("GetResearchTreeElementMainUI", BindingFlags.Public | BindingFlags.Instance);
+                if (setDataMI == null || spawnParentNextStageFi == null || listSubElementFi == null ||
+                    researchTreeTypeStageUIFi == null || getResearchMainMI == null ||
+                    lineHorizontalListFi == null || lineHorizontal1Fi == null || researchDefinitionPi == null)
+                {
+                    Plugin.Log.LogWarning($"{prefix} AppendPendingEntries: required members missing.");
+                    return;
+                }
+
+                var spawnParentFi = ScriptableObjectPatcher.FindField(stageElemType, "spawnParent");
+                var researchElementFi = ScriptableObjectPatcher.FindField(stageElemType, "researchElement");
+                var onDeInitMI = stageElemType.GetMethod("OnDeInit", BindingFlags.Public | BindingFlags.Instance);
+                var myInitMI = stageElemType.GetMethod("MyInit", BindingFlags.Public | BindingFlags.Instance);
+                if (spawnParentFi == null || researchElementFi == null)
+                {
+                    Plugin.Log.LogWarning($"{prefix} AppendPendingEntries: subtree rebuild members missing.");
+                    return;
+                }
+
+                int rebuilt = 0;
+                var rebuiltParents = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+                foreach (var rd in unspawned)
+                {
+                    var parent = rd.newViewResearchTreeParent;
+                    if (parent == null)
+                    {
+                        Plugin.Log.LogWarning($"{prefix} {rd.ID}: no newViewResearchTreeParent, cannot append.");
+                        continue;
+                    }
+
+                    var existingNode = getResearchMainMI.Invoke(treeInstance, new object[] { rd }) as MonoBehaviour;
+                    if (existingNode != null)
+                        continue;
+
+                    var parentNode = getResearchMainMI.Invoke(treeInstance, new object[] { parent }) as MonoBehaviour;
+                    if (parentNode == null)
+                    {
+                        Plugin.Log.LogWarning($"{prefix} {rd.ID}: parent node '{parent.ID}' not found in visible tree.");
+                        continue;
+                    }
+
+                    var parentStageElem = parentNode.GetComponentInParent(stageElemType) as MonoBehaviour;
+                    if (parentStageElem == null)
+                    {
+                        Plugin.Log.LogWarning($"{prefix} {rd.ID}: parent stage element not found.");
+                        continue;
+                    }
+
+                    var parentStageUI = researchTreeTypeStageUIFi.GetValue(parentStageElem);
+                    var parentRd = researchDefinitionPi.GetValue(parentStageElem, null) as ResearchDefinition;
+                    if (parentStageUI == null || parentRd == null)
+                    {
+                        Plugin.Log.LogWarning($"{prefix} {rd.ID}: missing parent stage data for subtree rebuild.");
+                        continue;
+                    }
+
+                    string parentId = parentRd.ID ?? parent.ID;
+                    if (!rebuiltParents.Add(parentId))
+                        continue;
+
+                    RemoveSpawnedSubtreeEntries(parentStageElem, listSpawnRD, listSubElementFi, researchDefinitionPi);
+                    ClearStageElementRecursive(
+                        parentStageElem,
+                        stageElemType,
+                        listSubElementFi,
+                        spawnParentFi,
+                        spawnParentNextStageFi,
+                        researchElementFi,
+                        lineHorizontalListFi,
+                        lineHorizontal1Fi,
+                        onDeInitMI);
+
+                    setDataMI.Invoke(parentStageElem, new object[] { parentRd, parentStageUI });
+                    myInitMI?.Invoke(parentStageElem, null);
+
+                    rebuilt++;
+                    Plugin.Log.LogInfo($"{prefix} Rebuilt subtree under '{parentId}' to include '{rd.ID}'.");
+                }
+
+                if (rebuilt > 0)
+                {
+                    treeType.GetMethod("SetCorrectHighAfterSpawn", BindingFlags.Public | BindingFlags.Instance)
+                        ?.Invoke(treeInstance, new object[] { true });
+                    treeType.GetMethod("HorizontalLayoutRebuild", BindingFlags.Public | BindingFlags.Instance)
+                        ?.Invoke(treeInstance, null);
+                    treeType.GetMethod("SetCorrectHighAfterSpawn", BindingFlags.Public | BindingFlags.Instance)
+                        ?.Invoke(treeInstance, new object[] { false });
+                    treeType.GetMethod("UpdateLookUI", BindingFlags.Public | BindingFlags.Instance)
+                        ?.Invoke(treeInstance, new object[] { false });
+                    _treeRebuildRequested = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[ResearchCreator] AppendPendingEntries failed: {ex.Message}\n{ex.StackTrace}");
+            }
+        }
+
+        static void RemoveSpawnedSubtreeEntries(
+            MonoBehaviour stageElem,
+            List<ResearchDefinition> listSpawnRD,
+            FieldInfo listSubElementFi,
+            PropertyInfo researchDefinitionPi)
+        {
+            var defs = new List<ResearchDefinition>();
+            CollectSubtreeDefinitions(stageElem, listSubElementFi, researchDefinitionPi, defs);
+            foreach (var def in defs)
+                listSpawnRD.Remove(def);
+        }
+
+        static void CollectSubtreeDefinitions(
+            MonoBehaviour stageElem,
+            FieldInfo listSubElementFi,
+            PropertyInfo researchDefinitionPi,
+            List<ResearchDefinition> defs)
+        {
+            if (stageElem == null)
+                return;
+
+            var rd = researchDefinitionPi.GetValue(stageElem, null) as ResearchDefinition;
+            if (rd != null && !defs.Contains(rd))
+                defs.Add(rd);
+
+            var listSubElement = listSubElementFi.GetValue(stageElem) as System.Collections.IList;
+            if (listSubElement == null)
+                return;
+
+            foreach (var child in listSubElement)
+            {
+                if (child is MonoBehaviour childStage)
+                    CollectSubtreeDefinitions(childStage, listSubElementFi, researchDefinitionPi, defs);
+            }
+        }
+
+        static void ClearStageElementRecursive(
+            MonoBehaviour stageElem,
+            Type stageElemType,
+            FieldInfo listSubElementFi,
+            FieldInfo spawnParentFi,
+            FieldInfo spawnParentNextStageFi,
+            FieldInfo researchElementFi,
+            FieldInfo lineHorizontalListFi,
+            FieldInfo lineHorizontal1Fi,
+            MethodInfo onDeInitMI)
+        {
+            if (stageElem == null)
+                return;
+
+            var listSubElement = listSubElementFi.GetValue(stageElem) as System.Collections.IList;
+            if (listSubElement != null)
+            {
+                for (int i = listSubElement.Count - 1; i >= 0; i--)
+                {
+                    if (listSubElement[i] is MonoBehaviour childStage)
+                    {
+                        ClearStageElementRecursive(
+                            childStage,
+                            stageElemType,
+                            listSubElementFi,
+                            spawnParentFi,
+                            spawnParentNextStageFi,
+                            researchElementFi,
+                            lineHorizontalListFi,
+                            lineHorizontal1Fi,
+                            onDeInitMI);
+                        UnityEngine.Object.Destroy(childStage.gameObject);
+                    }
+                    listSubElement.RemoveAt(i);
+                }
+            }
+
+            onDeInitMI?.Invoke(stageElem, null);
+
+            var researchElement = researchElementFi.GetValue(stageElem) as MonoBehaviour;
+            if (researchElement != null)
+                UnityEngine.Object.Destroy(researchElement.gameObject);
+            researchElementFi.SetValue(stageElem, null);
+
+            var spawnParent = spawnParentFi.GetValue(stageElem) as Transform;
+            DestroyAllChildren(spawnParent);
+
+            var spawnParentNextStage = spawnParentNextStageFi.GetValue(stageElem) as Transform;
+            DestroyAllChildren(spawnParentNextStage);
+
+            var lineList = lineHorizontalListFi.GetValue(stageElem) as System.Collections.IList;
+            if (lineList != null)
+            {
+                for (int i = lineList.Count - 1; i >= 0; i--)
+                {
+                    if (lineList[i] is RectTransform oldLine && oldLine != null)
+                        UnityEngine.Object.Destroy(oldLine.gameObject);
+                    lineList.RemoveAt(i);
+                }
+            }
+
+            var lineHorizontal1 = lineHorizontal1Fi.GetValue(stageElem) as RectTransform;
+            if (lineHorizontal1 != null)
+                DestroyAllChildren(lineHorizontal1);
+        }
+
+        static void DestroyAllChildren(Transform parent)
+        {
+            if (parent == null)
+                return;
+
+            for (int i = parent.childCount - 1; i >= 0; i--)
+                UnityEngine.Object.Destroy(parent.GetChild(i).gameObject);
         }
 
         /// <summary>
@@ -273,10 +653,16 @@ namespace Teddit
                 {
                     treeType.GetMethod("SetCorrectHighAfterSpawn",
                         BindingFlags.Public | BindingFlags.Instance)
-                        ?.Invoke(treeInstance, null);
+                        ?.Invoke(treeInstance, new object[] { true });
                     treeType.GetMethod("HorizontalLayoutRebuild",
                         BindingFlags.Public | BindingFlags.Instance)
                         ?.Invoke(treeInstance, null);
+                    treeType.GetMethod("SetCorrectHighAfterSpawn",
+                        BindingFlags.Public | BindingFlags.Instance)
+                        ?.Invoke(treeInstance, new object[] { false });
+                    treeType.GetMethod("UpdateLookUI",
+                        BindingFlags.Public | BindingFlags.Instance)
+                        ?.Invoke(treeInstance, new object[] { false });
                 }
             }
             catch (Exception ex)
@@ -297,7 +683,7 @@ namespace Teddit
                 Plugin.Log.LogInfo("[ResearchCreator] ResearchTree not yet shown — new entries will be injected when the tree is first opened.");
                 return;
             }
-            SpawnPendingEntries(_researchTreeInstance);
+            AppendPendingEntries(_researchTreeInstance);
         }
     }
 }

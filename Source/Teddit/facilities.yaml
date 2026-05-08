@@ -1,3 +1,5 @@
+enabled: true
+
 # Facility patches and new facility definitions.
 # Keys are facility IDs from dump/facilities.yaml.
 # If the ID already exists in the game, Teddit patches that descriptor.
@@ -21,6 +23,14 @@
 #   energyProductionData.energyProduction:double  direct nested form for power output
 #   resourceExplorationBonus:             float   GroundFacilityDescriptor only; adds exploration power
 #   facilityItemClass:                    string  runtime facility class name, e.g. LabFacility
+#   mass:                                 float   SpaceModuleDescriptor only; cargo mass of the module
+#   canBeLoadAsCargo:                     bool    SpaceModuleDescriptor only; whether the module can be moved by vehicle
+#   buildOnOrbitSpaceModuleAllow:         bool    SpaceModuleDescriptor only; whether the module is allowed in orbit build contexts
+#   timeToDestroyInDay:                   float?  SpaceModuleDescriptor only; optional timed self-destruction
+#   spaceModuleType:                      enum    SpaceModuleDescriptor only; module subtype
+#   typeSubObjectInfo:                    enum    SpaceModuleDescriptor only; sub-object rendering type
+#   isLockedCreate:                       bool    SpaceModuleDescriptor only; internal create-lock flag
+#   isSpaceConstructionOnOrbit:           bool    SpaceModuleDescriptor only; this module constructs a ship on orbit
 #
 # Complex fields:
 #   buildCost:         double                       shorthand money cost field
@@ -35,11 +45,17 @@
 #   labBonusToResearchInPerHour: int               LabFacility only; flat research points per hour
 #   labResearchSubTypeId:       string|null        optional ResearchSubType ID filter
 #   labIdToBonus:               [id, ...]          optional exact research IDs, or ["All"]
+#   facilityOrModuleToInstall:  facility_id        SpaceModuleDescriptor only; target installed by an InstallationModule
+#   isSpaceConstructionOnOrbitSpaceCraftToCreate: spacecraft_id
+#                                                 SpaceModuleDescriptor only; spacecraft created by an orbital construction module
+#   isSpaceConstructionOnOrbitLaunchVehicleCanUse: launch_vehicle_id
+#                                                 SpaceModuleDescriptor only; launch vehicle associated with that orbital construction module
 #
 # New-facility fields:
 #   facilityType:      Module | Habitation | Power | Mining | Production |
 #                      LaunchFacility | Terraformation | Other | FacilitySegment
 #   possiblePlacement: Surface | Orbit | Both
+#   facilityType: Module creates a real SpaceModuleDescriptor rather than a ground facility.
 #   iconRef:           base-game 2D sprite name from dump/facilities.yaml, dump/spacecraft.yaml,
 #                      or dump/launch_vehicles.yaml; use this to reuse built-in icons
 #   icon:              path to PNG/JPEG image, relative to the mod folder unless absolute
@@ -72,6 +88,13 @@
 #   refinerInput/refinerOutput use the same mapping shape as the dump.
 #   Do not use a list of {resource, rate, state}; refinery IO does not store state.
 #
+# Module notes:
+#   A movable module is a SpaceModuleDescriptor.
+#   The base cargo mass is `mass`.
+#   Whether a module installs a facility/module is controlled by:
+#     specialAbility: InstallationModule
+#     facilityOrModuleToInstall: some_facility_id
+#
 # Example:
 # build_fuel:
 #   maintenanceCostPerDay: 12
@@ -89,3 +112,4 @@
 #   labBonusToResearchInPerHour: 4
 #   labIdToBonus:
 #     - All
+
