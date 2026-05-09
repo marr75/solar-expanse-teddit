@@ -169,6 +169,7 @@ namespace Teddit
             {
                 sb.AppendLine($"# {oi.ObjectName}");
                 sb.AppendLine($"{YamlKey(oi.ObjectName)}:");
+                sb.AppendLine($"  objectTypes: {YamlScalar(oi.objectTypes.ToString())}");
 
                 var sub = oi.objectSubType;
                 if (sub != null)
@@ -654,38 +655,120 @@ namespace Teddit
         static readonly Type      _udType              = typeof(ResearchDefinition).Assembly.GetType("Game.CompanyScripts.UnlockData");
         static readonly FieldInfo _udActionFi          = _udType?.GetField("actionUnlock", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         static readonly FieldInfo _udParam1Fi          = _udType?.GetField("parameter1",   BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udParam2Fi          = _udType?.GetField("parameter2",   BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udBonusFi           = _udType?.GetField("bonus", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udBonusParamFi      = _udType?.GetField("bonusParameter", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udIdsFi             = _udType?.GetField("id_ComponentOrOther", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udIdsShowUiFi       = _udType?.GetField("id_ComponentOrOtherBoolShowUI", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udUnlockUiFi        = _udType?.GetField("unlockUIElement", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udUnlockEndGameFi   = _udType?.GetField("unlockEndGame", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udUnlockContractAdvanceFi = _udType?.GetField("unlockContractAdvance", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udStartGameEpochFi  = _udType?.GetField("startGameEpoch", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udAsteroidFi        = _udType?.GetField("idObjectInfoAsteroid", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udAllowPullFi       = _udType?.GetField("idObjectInfoAllowPullToOrbit", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
         static void AppendResearchUnlocks(StringBuilder sb, ResearchDefinition rd)
         {
-            var entries = new List<(string action, string id)>();
-
             object single = _rdUnlockDataFi?.GetValue(rd);
-            if (single != null)
-            {
-                string p1 = _udParam1Fi?.GetValue(single) as string;
-                if (!string.IsNullOrEmpty(p1))
-                    entries.Add((_udActionFi?.GetValue(single)?.ToString() ?? "UnlockFacility", p1));
-            }
-
             object listObj = _rdUnlockDataListFi?.GetValue(rd);
+            var entries = new List<object>();
+            if (single != null)
+                entries.Add(single);
             if (listObj is Array arr)
+                entries.AddRange(arr.Cast<object>().Where(item => item != null));
+            if (entries.Count == 0) return;
+
+            sb.AppendLine("  unlocks:");
+            foreach (var entry in entries)
+                AppendUnlockData(sb, entry);
+        }
+
+        static void AppendUnlockData(StringBuilder sb, object entry)
+        {
+            string action = _udActionFi?.GetValue(entry)?.ToString() ?? "None";
+            string p1 = _udParam1Fi?.GetValue(entry) as string;
+            string p2 = _udParam2Fi?.GetValue(entry) as string;
+
+            sb.AppendLine($"    - action: {YamlScalar(action)}");
+
+            if (!string.IsNullOrEmpty(p1))
+                sb.AppendLine($"      id: {YamlScalar(p1)}");
+            if (!string.IsNullOrEmpty(p2))
+                sb.AppendLine($"      parameter2: {YamlScalar(p2)}");
+
+            if (string.Equals(action, "UnlockBonus", StringComparison.OrdinalIgnoreCase))
             {
-                foreach (var item in arr)
+                string bonus = _udBonusFi?.GetValue(entry)?.ToString();
+                if (!string.IsNullOrEmpty(bonus))
+                    sb.AppendLine($"      bonus: {YamlScalar(bonus)}");
+
+                object bonusParam = _udBonusParamFi?.GetValue(entry);
+                if (bonusParam is float f)
+                    sb.AppendLine($"      bonusParameter: {FormatFloat(f)}");
+                else if (bonusParam is double d)
+                    sb.AppendLine($"      bonusParameter: {FormatDouble(d)}");
+
+                if (_udIdsFi?.GetValue(entry) is string[] ids && ids.Length > 0)
                 {
-                    if (item == null) continue;
-                    string p1 = _udParam1Fi?.GetValue(item) as string;
-                    if (!string.IsNullOrEmpty(p1))
-                        entries.Add((_udActionFi?.GetValue(item)?.ToString() ?? "UnlockFacility", p1));
+                    sb.AppendLine("      targets:");
+                    foreach (var id in ids.Where(x => !string.IsNullOrEmpty(x)))
+                        sb.AppendLine($"        - {YamlScalar(id)}");
+                }
+
+                if (_udIdsShowUiFi?.GetValue(entry) is System.Collections.IEnumerable rawVisibility)
+                {
+                    var visibility = new List<(string id, string show)>();
+                    foreach (var item in rawVisibility)
+                    {
+                        if (item == null) continue;
+                        var itemType = item.GetType();
+                        var f1 = itemType.GetField("Item1", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                        var f2 = itemType.GetField("Item2", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                        string id = f1?.GetValue(item) as string;
+                        object showObj = f2?.GetValue(item);
+                        if (!string.IsNullOrEmpty(id) && showObj != null)
+                            visibility.Add((id, showObj.ToString().ToLowerInvariant()));
+                    }
+                    if (visibility.Count > 0)
+                    {
+                        sb.AppendLine("      targetVisibility:");
+                        foreach (var (id, show) in visibility)
+                        {
+                            sb.AppendLine($"        - id: {YamlScalar(id)}");
+                            sb.AppendLine($"          showOnUI: {show}");
+                        }
+                    }
                 }
             }
 
-            if (entries.Count == 0) return;
-            sb.AppendLine("  unlocks:");
-            foreach (var (action, id) in entries)
+            var uiUnlock = _udUnlockUiFi?.GetValue(entry);
+            if (HasNonDefaultEnumValue(uiUnlock))
+                sb.AppendLine($"      unlockUIElement: {YamlScalar(uiUnlock.ToString())}");
+
+            var endGameUnlock = _udUnlockEndGameFi?.GetValue(entry);
+            if (HasNonDefaultEnumValue(endGameUnlock))
+                sb.AppendLine($"      unlockEndGame: {YamlScalar(endGameUnlock.ToString())}");
+
+            var contractAdvance = _udUnlockContractAdvanceFi?.GetValue(entry);
+            if (HasNonDefaultEnumValue(contractAdvance))
+                sb.AppendLine($"      unlockContractAdvance: {YamlScalar(contractAdvance.ToString())}");
+
+            object epoch = _udStartGameEpochFi?.GetValue(entry);
+            if (epoch != null)
             {
-                sb.AppendLine($"    - action: {YamlScalar(action)}");
-                sb.AppendLine($"      id: {YamlScalar(id)}");
+                var idProp = epoch.GetType().GetProperty("ID", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                string epochId = idProp?.GetValue(epoch) as string;
+                if (!string.IsNullOrEmpty(epochId))
+                    sb.AppendLine($"      startGameEpoch: {YamlScalar(epochId)}");
             }
+
+            object asteroidId = _udAsteroidFi?.GetValue(entry);
+            if (asteroidId is int asteroidInt && asteroidInt >= 0)
+                sb.AppendLine($"      idObjectInfoAsteroid: {asteroidInt}");
+
+            object allowPullId = _udAllowPullFi?.GetValue(entry);
+            if (allowPullId is int allowPullInt && allowPullInt >= 0)
+                sb.AppendLine($"      idObjectInfoAllowPullToOrbit: {allowPullInt}");
         }
 
         // ── YAML emit helpers ─────────────────────────────────────────────────
@@ -786,6 +869,18 @@ namespace Teddit
         {
             if (v == null) return "null";
             return FormatDouble(v.Value);
+        }
+
+        static bool HasNonDefaultEnumValue(object value)
+        {
+            if (value == null)
+                return false;
+
+            Type type = value.GetType();
+            if (!type.IsEnum)
+                return true;
+
+            return Convert.ToInt32(value) != 0;
         }
 
         static void AppendCompanyCost(StringBuilder sb, string keyWithIndent, AI.CompanyCost cost)

@@ -31,6 +31,10 @@ research_agriculture_2:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: ProductionEfficiency
+      bonusParameter: 15
+      targets:
+        - build_farm
 
 # HYDROPONICS (ResearchDefinition)
 research_agriculture_3:
@@ -48,6 +52,10 @@ research_agriculture_3:
   unlocks:
     - action: UnlockBonus
       id: III
+      bonus: ProductionEfficiency
+      bonusParameter: 25
+      targets:
+        - build_farm
 
 # RADIOTROPHIC FUNGI (ResearchDefinition)
 research_agriculture_4:
@@ -65,6 +73,11 @@ research_agriculture_4:
   unlocks:
     - action: UnlockBonus
       id: IV
+      bonus: BuildCost
+      bonusParameter: -20
+      targets:
+        - build_outpost
+        - build_habitat
 
 # LOW-G GMO (ResearchDefinition)
 research_agriculture_5:
@@ -82,6 +95,10 @@ research_agriculture_5:
   unlocks:
     - action: UnlockBonus
       id: III
+      bonus: ProductionEfficiency
+      bonusParameter: 25
+      targets:
+        - build_farm
 
 # BIOREACTORS (ResearchDefinition)
 research_biotech_1:
@@ -96,6 +113,12 @@ research_biotech_1:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_category_biotech
+  unlocks:
+    - action: UnlockBonus
+      bonus: ProductionEfficiency
+      bonusParameter: 5
+      targets:
+        - build_farm
 
 # KNALLGAS BACTERIA FARMS (ResearchDefinition)
 research_biotech_2:
@@ -113,6 +136,10 @@ research_biotech_2:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: ProductionEfficiency
+      bonusParameter: 10
+      targets:
+        - build_farm
 
 # CLOSED-CYCLE ALGAE (ResearchDefinition)
 research_biotech_3:
@@ -130,6 +157,15 @@ research_biotech_3:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: LifeSupportConsumption
+      bonusParameter: 10
+      targets:
+        - All
+    - action: UnlockBonus
+      bonus: LifeSupportConsumptionOnShip
+      bonusParameter: 10
+      targets:
+        - All
 
 # GENETIC ENGINEERING (ResearchDefinition)
 research_biotech_4:
@@ -144,6 +180,17 @@ research_biotech_4:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_biotech_1
+  unlocks:
+    - action: UnlockBonus
+      bonus: LifeSupportConsumption
+      bonusParameter: 5
+      targets:
+        - All
+    - action: UnlockBonus
+      bonus: ReduceCrewRequirements
+      bonusParameter: 5
+      targets:
+        - All
 
 # BIOLOGICAL MACHINES (ResearchDefinition)
 research_biotech_5:
@@ -158,6 +205,12 @@ research_biotech_5:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_biotech_4
+  unlocks:
+    - action: UnlockBonus
+      bonus: ProductionEfficiency
+      bonusParameter: 10
+      targets:
+        - build_farm
 
 # AGRICULTURE (ResearchDefinition)
 research_category_agriculture:
@@ -170,6 +223,8 @@ research_category_agriculture:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # BIOTECH (ResearchDefinition)
 research_category_biotech:
@@ -182,6 +237,8 @@ research_category_biotech:
   subStage: -1
   showInTree: true
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # CHEMICAL PROPULSION (ResearchDefinition)
 research_category_chem:
@@ -194,6 +251,8 @@ research_category_chem:
   subStage: -1
   showInTree: true
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # COMPUTING (ResearchDefinition)
 research_category_computing:
@@ -206,6 +265,8 @@ research_category_computing:
   subStage: -1
   showInTree: true
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # ELECTRIC PROPULSION (ResearchDefinition)
 research_category_electricprop:
@@ -218,6 +279,8 @@ research_category_electricprop:
   subStage: -1
   showInTree: true
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # ELECTROMAGNETISM (ResearchDefinition)
 research_category_electromag:
@@ -230,6 +293,8 @@ research_category_electromag:
   subStage: -1
   showInTree: true
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # FUSION PROPULSION (ResearchDefinition)
 research_category_fusionprop:
@@ -244,6 +309,8 @@ research_category_fusionprop:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_electromag_3
+  unlocks:
+    - action: None
 
 # INTERSTELLAR TRAVEL (ResearchDefinition)
 research_category_interstellar:
@@ -275,6 +342,8 @@ research_category_launch:
   subStage: -1
   showInTree: true
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # LIFE SUPPORT (ResearchDefinition)
 research_category_lifesup:
@@ -287,6 +356,8 @@ research_category_lifesup:
   subStage: -1
   showInTree: true
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # LAUNCH VEHICLES (ResearchDefinition)
 research_category_lv:
@@ -301,6 +372,8 @@ research_category_lv:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_category_chem
+  unlocks:
+    - action: None
 
 # MATERIALS (ResearchDefinition)
 research_category_mat:
@@ -330,6 +403,8 @@ research_category_mat2:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # MINING (ResearchDefinition)
 research_category_mine:
@@ -342,6 +417,8 @@ research_category_mine:
   subStage: -1
   showInTree: true
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # NUCLEAR POWER (ResearchDefinition)
 research_category_nukepower:
@@ -371,6 +448,8 @@ research_category_nukeprop:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_category_nukepower
+  unlocks:
+    - action: None
 
 # OBSERVATION (ResearchDefinition)
 research_category_observation:
@@ -383,6 +462,8 @@ research_category_observation:
   subStage: -1
   showInTree: true
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # POWER (ResearchDefinition)
 research_category_power:
@@ -395,6 +476,8 @@ research_category_power:
   subStage: -1
   showInTree: true
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # ROBOTICS (ResearchDefinition)
 research_category_robotics:
@@ -413,6 +496,10 @@ research_category_robotics:
   unlocks:
     - action: UnlockBonus
       id: IV
+      bonus: ReduceCrewRequirements
+      bonusParameter: 5
+      targets:
+        - All
 
 # SOLAR SAILS (ResearchDefinition)
 research_category_sails:
@@ -444,6 +531,8 @@ research_category_sc:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_lv_main1
+  unlocks:
+    - action: None
 
 # ADVANCED SPACECRAFT (ResearchDefinition)
 research_category_sc2:
@@ -456,6 +545,8 @@ research_category_sc2:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # TERRAFORMING (ResearchDefinition)
 research_category_terraforming:
@@ -468,6 +559,8 @@ research_category_terraforming:
   subStage: -1
   showInTree: true
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # SOLID PROPELLANT ROCKETS (ResearchDefinition)
 research_chem_main1:
@@ -482,6 +575,8 @@ research_chem_main1:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_category_chem
+  unlocks:
+    - action: None
 
 # KEROLOX (ResearchDefinition)
 research_chem_main2:
@@ -499,6 +594,10 @@ research_chem_main2:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: ComponentExhaustV
+      bonusParameter: 5
+      targets:
+        - eng_chem
 
 # METHALOX (ResearchDefinition)
 research_chem_main3:
@@ -516,6 +615,10 @@ research_chem_main3:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: ComponentExhaustV
+      bonusParameter: 6
+      targets:
+        - eng_chem
 
 # HYDROLOX (ResearchDefinition)
 research_chem_main4:
@@ -533,8 +636,26 @@ research_chem_main4:
   unlocks:
     - action: UnlockBonus
       id: III
+      bonus: ComponentExhaustV
+      bonusParameter: 20
+      targets:
+        - eng_chem
+        - eng_chemsmall
+        - eng_chemhelios
+        - eng_chemorion
+      targetVisibility:
+        - id: eng_chemsmall
+          showOnUI: false
+        - id: eng_chemhelios
+          showOnUI: false
+        - id: eng_chemorion
+          showOnUI: false
     - action: UnlockBonus
       id: III
+      bonus: LaunchCost
+      bonusParameter: 10
+      targets:
+        - LV
 
 # SOLID HYDROGEN (ResearchDefinition)
 research_chem_main5:
@@ -552,8 +673,26 @@ research_chem_main5:
   unlocks:
     - action: UnlockBonus
       id: IV
+      bonus: ComponentExhaustV
+      bonusParameter: 25
+      targets:
+        - eng_chem
+        - eng_chemsmall
+        - eng_chemhelios
+        - eng_chemorion
+      targetVisibility:
+        - id: eng_chemsmall
+          showOnUI: false
+        - id: eng_chemhelios
+          showOnUI: false
+        - id: eng_chemorion
+          showOnUI: false
     - action: UnlockBonus
       id: IV
+      bonus: LaunchCost
+      bonusParameter: 10
+      targets:
+        - LV
 
 # POLYNITROGEN FUEL (ResearchDefinition)
 research_chem_main6:
@@ -571,8 +710,26 @@ research_chem_main6:
   unlocks:
     - action: UnlockBonus
       id: VI
+      bonus: LaunchCost
+      bonusParameter: 20
+      targets:
+        - LV
     - action: UnlockBonus
       id: V
+      bonus: ComponentExhaustV
+      bonusParameter: 10
+      targets:
+        - eng_chem
+        - eng_chemsmall
+        - eng_chemhelios
+        - eng_chemorion
+      targetVisibility:
+        - id: eng_chemsmall
+          showOnUI: false
+        - id: eng_chemhelios
+          showOnUI: false
+        - id: eng_chemorion
+          showOnUI: false
 
 # MACHINE LEARNING (ResearchDefinition)
 research_computing_ai1:
@@ -590,6 +747,8 @@ research_computing_ai1:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: ResearchProduction
+      bonusParameter: 4
 
 # NEURAL NETWORKS (ResearchDefinition)
 research_computing_ai2:
@@ -605,6 +764,8 @@ research_computing_ai2:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: ResearchProduction
+      bonusParameter: 0
 
 # BASIC AI (ResearchDefinition)
 research_computing_ai3:
@@ -622,6 +783,8 @@ research_computing_ai3:
   unlocks:
     - action: UnlockBonus
       id: III
+      bonus: ResearchProduction
+      bonusParameter: 5
 
 # ADVANCED AI (ResearchDefinition)
 research_computing_ai4:
@@ -639,6 +802,8 @@ research_computing_ai4:
   unlocks:
     - action: UnlockBonus
       id: IV
+      bonus: ResearchProduction
+      bonusParameter: 8
 
 # MICROPROCESSORS (ResearchDefinition)
 research_computing_proc1:
@@ -653,6 +818,8 @@ research_computing_proc1:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_category_computing
+  unlocks:
+    - action: None
 
 # NANOPROCESSORS (ResearchDefinition)
 research_computing_proc2:
@@ -670,6 +837,13 @@ research_computing_proc2:
   unlocks:
     - action: UnlockBonus
       id: V
+      bonus: ResearchProduction
+      bonusParameter: 4
+    - action: UnlockBonus
+      bonus: MaintenanceReduce
+      bonusParameter: 25
+      targets:
+        - build_lab
 
 # THREE-DIMENSIONAL INTEGRATED CIRCUITS (ResearchDefinition)
 research_computing_proc3:
@@ -685,6 +859,8 @@ research_computing_proc3:
   unlocks:
     - action: UnlockBonus
       id: VI
+      bonus: ResearchProduction
+      bonusParameter: 0
 
 # EARLY QPUS (ResearchDefinition)
 research_computing_proc4:
@@ -700,6 +876,8 @@ research_computing_proc4:
   unlocks:
     - action: UnlockBonus
       id: VII
+      bonus: ResearchProduction
+      bonusParameter: 0
 
 # REVERSIBLE CIRCUITS (ResearchDefinition)
 research_computing_proc5:
@@ -715,6 +893,8 @@ research_computing_proc5:
   unlocks:
     - action: UnlockBonus
       id: IX
+      bonus: ResearchProduction
+      bonusParameter: 0
 
 # QUANTUM COMPUTING (ResearchDefinition)
 research_computing_proc6:
@@ -732,6 +912,8 @@ research_computing_proc6:
   unlocks:
     - action: UnlockBonus
       id: VIII
+      bonus: ResearchProduction
+      bonusParameter: 8
 
 # HALL THRUSTER (ResearchDefinition)
 research_electricprop_1:
@@ -749,6 +931,17 @@ research_electricprop_1:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: ComponentExhaustV
+      bonusParameter: 35
+      targets:
+        - eng_electric
+        - eng_electricmpd
+        - eng_electrichermes
+      targetVisibility:
+        - id: eng_electricmpd
+          showOnUI: false
+        - id: eng_electrichermes
+          showOnUI: false
 
 # ION ENGINE (ResearchDefinition)
 research_electricprop_2:
@@ -764,6 +957,17 @@ research_electricprop_2:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: ComponentExhaustV
+      bonusParameter: 25
+      targets:
+        - eng_electric
+        - eng_electrichermes
+        - eng_electricmpd
+      targetVisibility:
+        - id: eng_electricmpd
+          showOnUI: false
+        - id: eng_electrichermes
+          showOnUI: false
 
 # ELECTRODELESS ION GENERATION (ResearchDefinition)
 research_electricprop_3:
@@ -779,6 +983,17 @@ research_electricprop_3:
   unlocks:
     - action: UnlockBonus
       id: V
+      bonus: ComponentThrust
+      bonusParameter: 50
+      targets:
+        - eng_electric
+        - eng_electrichermes
+        - eng_electricmpd
+      targetVisibility:
+        - id: eng_electricmpd
+          showOnUI: false
+        - id: eng_electrichermes
+          showOnUI: false
 
 # MULTI-STAGE GRID (ResearchDefinition)
 research_electricprop_4:
@@ -794,6 +1009,17 @@ research_electricprop_4:
   unlocks:
     - action: UnlockBonus
       id: III
+      bonus: ComponentExhaustV
+      bonusParameter: 25
+      targets:
+        - eng_electric
+        - eng_electrichermes
+        - eng_electricmpd
+      targetVisibility:
+        - id: eng_electricmpd
+          showOnUI: false
+        - id: eng_electrichermes
+          showOnUI: false
 
 # MPD (ResearchDefinition)
 research_electricprop_5:
@@ -811,6 +1037,29 @@ research_electricprop_5:
   unlocks:
     - action: UnlockBonus
       id: VII
+      bonus: ComponentExhaustV
+      bonusParameter: 50
+      targets:
+        - eng_electric
+        - eng_electrichermes
+        - eng_electricmpd
+      targetVisibility:
+        - id: eng_electricmpd
+          showOnUI: false
+        - id: eng_electrichermes
+          showOnUI: false
+    - action: UnlockBonus
+      bonus: ComponentThrust
+      bonusParameter: 10
+      targets:
+        - eng_electric
+        - eng_electrichermes
+        - eng_electricmpd
+      targetVisibility:
+        - id: eng_electrichermes
+          showOnUI: false
+        - id: eng_electricmpd
+          showOnUI: false
 
 # OPTIMIZED SELF-FIELD (ResearchDefinition)
 research_electricprop_6:
@@ -828,6 +1077,29 @@ research_electricprop_6:
   unlocks:
     - action: UnlockBonus
       id: VI
+      bonus: ComponentExhaustV
+      bonusParameter: 40
+      targets:
+        - eng_electric
+        - eng_electrichermes
+        - eng_electricmpd
+      targetVisibility:
+        - id: eng_electricmpd
+          showOnUI: false
+        - id: eng_electrichermes
+          showOnUI: false
+    - action: UnlockBonus
+      bonus: ComponentThrust
+      bonusParameter: 50
+      targets:
+        - eng_electric
+        - eng_electrichermes
+        - eng_electricmpd
+      targetVisibility:
+        - id: eng_electricmpd
+          showOnUI: false
+        - id: eng_electrichermes
+          showOnUI: false
 
 # SUPERCONDUCTING MAGNETS (ResearchDefinition)
 research_electromag_1:
@@ -843,6 +1115,12 @@ research_electromag_1:
   requirementsResearch:
     - research_category_electromag
     - research_mat_superconductor1
+  unlocks:
+    - action: UnlockBonus
+      bonus: MaintenanceReduce
+      bonusParameter: 10
+      targets:
+        - Facility
 
 # MAGNETIC FIELD CONTAINMENT (ResearchDefinition)
 research_electromag_2:
@@ -874,6 +1152,8 @@ research_electromag_3:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_electromag_2
+  unlocks:
+    - action: None
 
 # PHASED-ARRAYS (ResearchDefinition)
 research_electromag_5:
@@ -886,6 +1166,8 @@ research_electromag_5:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # ATOMIC MANIPULATION (ResearchDefinition)
 research_electromag_7:
@@ -900,6 +1182,12 @@ research_electromag_7:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_category_electromag
+  unlocks:
+    - action: UnlockBonus
+      bonus: ProductionEfficiency
+      bonusParameter: 20
+      targets:
+        - build_exoticalloy
 
 # LASERS (ResearchDefinition)
 research_electromag_8:
@@ -914,6 +1202,8 @@ research_electromag_8:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_category_electromag
+  unlocks:
+    - action: None
 
 # REMOTE POWER TRANSFER (ResearchDefinition)
 research_electromag_9:
@@ -968,8 +1258,30 @@ research_fusionprop_1:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: ComponentExhaustV
+      bonusParameter: 250
+      targets:
+        - eng_fusion
+        - eng_fusionnike
+        - eng_fusionsirius
+      targetVisibility:
+        - id: eng_fusionnike
+          showOnUI: false
+        - id: eng_fusionsirius
+          showOnUI: false
     - action: UnlockBonus
       id: I
+      bonus: ComponentThrust
+      bonusParameter: 50
+      targets:
+        - eng_fusion
+        - eng_fusionnike
+        - eng_fusionsirius
+      targetVisibility:
+        - id: eng_fusionnike
+          showOnUI: false
+        - id: eng_fusionsirius
+          showOnUI: false
 
 # IMPROVED PLASMA CONTAINMENT (ResearchDefinition)
 research_fusionprop_2:
@@ -987,8 +1299,24 @@ research_fusionprop_2:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: ComponentExhaustV
+      bonusParameter: 150
+      targets:
+        - eng_fusion
+        - eng_fusionnike
+      targetVisibility:
+        - id: eng_fusionnike
+          showOnUI: false
     - action: UnlockBonus
       id: II
+      bonus: ComponentThrust
+      bonusParameter: 25
+      targets:
+        - eng_fusion
+        - eng_fusionnike
+      targetVisibility:
+        - id: eng_fusionnike
+          showOnUI: false
 
 # FUEL INJECTION OPTIMIZATION (ResearchDefinition)
 research_fusionprop_3:
@@ -1006,8 +1334,30 @@ research_fusionprop_3:
   unlocks:
     - action: UnlockBonus
       id: III
+      bonus: ComponentExhaustV
+      bonusParameter: 100
+      targets:
+        - eng_fusion
+        - eng_fusionnike
+        - eng_fusionsirius
+      targetVisibility:
+        - id: eng_fusionnike
+          showOnUI: false
+        - id: eng_fusionsirius
+          showOnUI: false
     - action: UnlockBonus
       id: III
+      bonus: ComponentThrust
+      bonusParameter: 25
+      targets:
+        - eng_fusion
+        - eng_fusionnike
+        - eng_fusionsirius
+      targetVisibility:
+        - id: eng_fusionnike
+          showOnUI: false
+        - id: eng_fusionsirius
+          showOnUI: false
 
 # ADVANCED FUSION PROPULSION (ResearchDefinition)
 research_fusionprop_4:
@@ -1025,8 +1375,47 @@ research_fusionprop_4:
   unlocks:
     - action: UnlockBonus
       id: III
+      bonus: ComponentExhaustV
+      bonusParameter: 20
+      targets:
+        - eng_fusion
+        - eng_fusionnike
+        - eng_fusionsirius
+        - eng_fusionzeus
+        - eng_fusionatlas
+      targetVisibility:
+        - id: eng_fusionnike
+          showOnUI: false
+        - id: eng_fusionsirius
+          showOnUI: false
+        - id: eng_fusionzeus
+          showOnUI: false
+        - id: eng_fusionatlas
+          showOnUI: false
     - action: UnlockBonus
       id: III
+      bonus: ComponentThrust
+      bonusParameter: 20
+      targets:
+        - eng_fusion
+        - eng_fusionnike
+        - eng_fusionsirius
+        - eng_fusionzeus
+        - eng_fusionatlas
+      targetVisibility:
+        - id: eng_fusionnike
+          showOnUI: false
+        - id: eng_fusionsirius
+          showOnUI: false
+        - id: eng_fusionzeus
+          showOnUI: false
+        - id: eng_fusionatlas
+          showOnUI: false
+    - action: UnlockBonus
+      bonus: PowerProduction
+      bonusParameter: 25
+      targets:
+        - build_power_fusion
 
 # SPACE ELEVATOR (ResearchDefinition)
 research_launch_elevator:
@@ -1187,6 +1576,12 @@ research_lifesup_2:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: BuildCost
+      bonusParameter: -40
+      targets:
+        - module_crew_compartment
+        - module_crew_medium
+        - module_crew_large
     - action: UnlockFacility
       id: module_crew_medium
 
@@ -1223,6 +1618,13 @@ research_lifesup_5:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: LifeSupportConsumption
+      bonusParameter: 15
+      targets:
+        - All
+    - action: UnlockBonus
+      bonus: LifeSupportConsumptionOnShip
+      bonusParameter: 15
 
 # IMPROVED ATMOSPHERE RECYCLING (ResearchDefinition)
 research_lifesup_6:
@@ -1240,6 +1642,10 @@ research_lifesup_6:
   unlocks:
     - action: UnlockBonus
       id: III
+      bonus: LifeSupportConsumption
+      bonusParameter: 15
+      targets:
+        - All
 
 # SPIN-GRAV HABITATION (ResearchDefinition)
 research_lifesup_8:
@@ -1293,6 +1699,13 @@ research_lifesup_10:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: BuildCost
+      bonusParameter: -35
+      targets:
+        - build_outpost
+        - build_habitat
+        - build_habitatdome
+        - build_habitatcity
 
 # COLONY CONSTRUCTION (ResearchDefinition)
 research_lifesup_11:
@@ -1327,6 +1740,10 @@ research_lifesup_12:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: BuildSpeed
+      bonusParameter: 25
+      targets:
+        - Facility
     - action: UnlockFacility
       id: build_habitatdome
     - action: UnlockFacility
@@ -1348,6 +1765,16 @@ research_lifesup_13:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: BuildCost
+      bonusParameter: 40
+      targets:
+        - build_space_construction
+        - module_space_construction_cargo
+        - module_0ghabitat
+        - build_space_fuel
+      targetVisibility:
+        - id: module_space_construction_cargo
+          showOnUI: false
 
 # IN-ORBIT PRODUCTION (ResearchDefinition)
 research_lifesup_14:
@@ -1365,6 +1792,10 @@ research_lifesup_14:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: BuildCost
+      bonusParameter: 30
+      targets:
+        - build_space_drydock
     - action: UnlockFacility
       id: build_space_0gdome
     - action: UnlockFacility
@@ -1387,6 +1818,10 @@ research_lifesup_15:
   unlocks:
     - action: UnlockBonus
       id: V
+      bonus: LifeSupportConsumptionOnShip
+      bonusParameter: 25
+      targets:
+        - All
 
 # SUSPENDED ANIMATION (ResearchDefinition)
 research_lifesup_16:
@@ -1405,6 +1840,10 @@ research_lifesup_16:
   unlocks:
     - action: UnlockBonus
       id: VI
+      bonus: LifeSupportConsumptionOnShip
+      bonusParameter: 30
+      targets:
+        - All
 
 # CONDOR (ResearchDefinition)
 research_lv2_chemadvanced:
@@ -1489,6 +1928,8 @@ research_lv_main1:
   requirementsResearch:
     - research_category_lv
     - research_chem_main2
+  unlocks:
+    - action: None
 
 # SUPERHEAVY LAUNCH (ResearchDefinition)
 research_lv_main2:
@@ -1560,6 +2001,10 @@ research_lv_upgr1:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: BuildCost
+      bonusParameter: 20
+      targets:
+        - LV
 
 # OPTIMIZED HEAT SHIELDS (ResearchDefinition)
 research_lv_upgr2:
@@ -1577,6 +2022,10 @@ research_lv_upgr2:
   unlocks:
     - action: UnlockBonus
       id: V
+      bonus: MaintenanceReduce
+      bonusParameter: 40
+      targets:
+        - LV
 
 # IMPROVED REUSABLE ROCKETS (ResearchDefinition)
 research_lv_upgr3:
@@ -1594,8 +2043,18 @@ research_lv_upgr3:
   unlocks:
     - action: UnlockBonus
       id: V
+      bonus: BuildCost
+      bonusParameter: 25
+      targets:
+        - id_Rocket_RocketType3
+        - id_Rocket_RocketType4
     - action: UnlockBonus
       id: I
+      bonus: BuildSpeed
+      bonusParameter: 25
+      targets:
+        - id_Rocket_RocketType3
+        - id_Rocket_RocketType4
 
 # ADVANCED PAYLOAD FAIRINGS (ResearchDefinition)
 research_lv_upgr4:
@@ -1614,6 +2073,13 @@ research_lv_upgr4:
   unlocks:
     - action: UnlockBonus
       id: V
+      bonus: MaxPayloadOnCurrentObject
+      bonusParameter: 25
+      targets:
+        - lv_nuke_small
+        - lv_nuke_mid
+        - lv_nuke_large
+        - lv_chemadvanced
 
 # CIRCUIT PRODUCTION IN SPACE (ResearchDefinition)
 research_mat_chips1:
@@ -1645,6 +2111,12 @@ research_mat_chips2:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_mat_chips1
+  unlocks:
+    - action: UnlockBonus
+      bonus: ProductionEfficiency
+      bonusParameter: 25
+      targets:
+        - build_electronicsfactory
 
 # DIAMONDOIDS (ResearchDefinition)
 research_mat_diamondoid:
@@ -1659,6 +2131,12 @@ research_mat_diamondoid:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_mat_fibre3
+  unlocks:
+    - action: UnlockBonus
+      bonus: BuildCost
+      bonusParameter: 10
+      targets:
+        - Facility
 
 # SPACE-WORTHY FIBERS (ResearchDefinition)
 research_mat_fibre1:
@@ -1694,8 +2172,16 @@ research_mat_fibre2:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: ProductionEfficiency
+      bonusParameter: 10
+      targets:
+        - build_polymerproduction
     - action: UnlockBonus
       id: I
+      bonus: PowerProduction
+      bonusParameter: 50
+      targets:
+        - build_power_wind
 
 # NANOTUBES (ResearchDefinition)
 research_mat_fibre3:
@@ -1713,8 +2199,16 @@ research_mat_fibre3:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: ProductionEfficiency
+      bonusParameter: 10
+      targets:
+        - build_polymerproduction
     - action: UnlockBonus
       id: II
+      bonus: PowerProduction
+      bonusParameter: 50
+      targets:
+        - build_power_wind
 
 # MEGA-SCALE CARBON ALLOTROPE APPLICATION (ResearchDefinition)
 research_mat_fibre4:
@@ -1729,6 +2223,17 @@ research_mat_fibre4:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_mat_fibre3
+  unlocks:
+    - action: UnlockBonus
+      bonus: BuildSpeed
+      bonusParameter: 10
+      targets:
+        - Facility
+    - action: UnlockBonus
+      bonus: ProductionEfficiency
+      bonusParameter: 30
+      targets:
+        - build_polymerproduction
 
 # SPACE ALLOYS (ResearchDefinition)
 research_mat_metal1:
@@ -1743,6 +2248,12 @@ research_mat_metal1:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_category_mat
+  unlocks:
+    - action: UnlockBonus
+      bonus: ProductionEfficiency
+      bonusParameter: 5
+      targets:
+        - build_alloysmelting
 
 # VACUUM FORGING (ResearchDefinition)
 research_mat_metal2:
@@ -1760,6 +2271,10 @@ research_mat_metal2:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: ProductionEfficiency
+      bonusParameter: 10
+      targets:
+        - build_alloysmelting
 
 # ADVANCED ALLOYING TECHNIQUES (ResearchDefinition)
 research_mat_metal3:
@@ -1791,6 +2306,13 @@ research_mat_metal4:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_mat_metal3
+  unlocks:
+    - action: UnlockBonus
+      bonus: ProductionEfficiency
+      bonusParameter: 10
+      targets:
+        - build_exoticalloy
+        - build_alloysmelting
 
 # IMPROVED REACTOR VESSELS (ResearchDefinition)
 research_mat_refractory:
@@ -1805,6 +2327,8 @@ research_mat_refractory:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_category_nukepower
+  unlocks:
+    - action: None
 
 # HIGH-TEMPERATURE SUPERCONDUCTORS (ResearchDefinition)
 research_mat_superconductor1:
@@ -1822,6 +2346,10 @@ research_mat_superconductor1:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: PowerProduction
+      bonusParameter: 10
+      targets:
+        - All
 
 # ROOM-TEMPERATURE SUPERCONDUCTORS (ResearchDefinition)
 research_mat_superconductor2:
@@ -1839,6 +2367,10 @@ research_mat_superconductor2:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: MaintenanceReduce
+      bonusParameter: 20
+      targets:
+        - Facility
 
 # DEBRIS SHIELDS (ResearchDefinition)
 research_mat_upgr1:
@@ -1856,6 +2388,14 @@ research_mat_upgr1:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: SCMassBase
+      bonusParameter: 10
+      targets:
+        - spacecraft_chem_large
+        - spacecraft_electric_small
+        - spacecraft_nuke_small
+        - spacecraft_electric_mid
+        - spacecraft_chem_mid2
 
 # AEROGELS (ResearchDefinition)
 research_mat_upgr2:
@@ -1871,6 +2411,12 @@ research_mat_upgr2:
   requirementsResearch:
     - research_category_mat
     - research_mat_upgr1
+  unlocks:
+    - action: UnlockBonus
+      bonus: MaintenanceReduce
+      bonusParameter: 25
+      targets:
+        - SC
 
 # METAMATERIALS (ResearchDefinition)
 research_mat_upgr3:
@@ -1889,6 +2435,10 @@ research_mat_upgr3:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: PowerProduction
+      bonusParameter: 25
+      targets:
+        - build_power_solar
 
 # IN-SITU RESOURCE UTILIZATION (ResearchDefinition)
 research_mine_1:
@@ -1929,6 +2479,10 @@ research_mine_2:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: MiningEfficiency
+      bonusParameter: 25
+      targets:
+        - All
 
 # VACUUM-OPTIMIZED BOREHEADS (ResearchDefinition)
 research_mine_3:
@@ -1946,6 +2500,10 @@ research_mine_3:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: MiningEfficiency
+      bonusParameter: 25
+      targets:
+        - All
 
 # HELIUM-3 EXTRACTION (ResearchDefinition)
 research_mine_4:
@@ -1998,6 +2556,10 @@ research_mine_6:
   unlocks:
     - action: UnlockBonus
       id: IV
+      bonus: MiningEfficiency
+      bonusParameter: 25
+      targets:
+        - All
 
 # IMPROVED HELIUM-3 MINING (ResearchDefinition)
 research_mine_7:
@@ -2015,6 +2577,10 @@ research_mine_7:
   unlocks:
     - action: UnlockBonus
       id: IV
+      bonus: MiningEfficiency
+      bonusParameter: 75
+      targets:
+        - build_he3mine
 
 # IMPROVED FISSILES MINING (ResearchDefinition)
 research_mine_8:
@@ -2032,6 +2598,10 @@ research_mine_8:
   unlocks:
     - action: UnlockBonus
       id: IV
+      bonus: MiningEfficiency
+      bonusParameter: 25
+      targets:
+        - build_uranmine
 
 # ORBITAL GAS EXTRACTOR (ResearchDefinition)
 research_mine_atmoscoop:
@@ -2066,6 +2636,10 @@ research_nukepower_1:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: PowerProduction
+      bonusParameter: 50
+      targets:
+        - build_power_nuke
 
 # GAS CORE FISSION (ResearchDefinition)
 research_nukepower_2:
@@ -2083,6 +2657,10 @@ research_nukepower_2:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: PowerProduction
+      bonusParameter: 50
+      targets:
+        - build_power_nuke
 
 # HIGH TEMPERATURE NTR (ResearchDefinition)
 research_nukeprop_1:
@@ -2098,8 +2676,29 @@ research_nukeprop_1:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: ComponentExhaustV
+      bonusParameter: 25
+      targets:
+        - eng_nuke
+        - eng_nukeprometheus
+      targetVisibility:
+        - id: eng_nukenter
+          showOnUI: false
+        - id: eng_nukeprometheus
+          showOnUI: false
     - action: UnlockBonus
       id: VII
+      bonus: ComponentThrust
+      bonusParameter: 10
+      targets:
+        - eng_nuke
+        - eng_nukenter
+        - eng_nukeprometheus
+      targetVisibility:
+        - id: eng_nukenter
+          showOnUI: false
+        - id: eng_nukeprometheus
+          showOnUI: false
 
 # HELIUM LOOP CYCLE (ResearchDefinition)
 research_nukeprop_2:
@@ -2115,6 +2714,17 @@ research_nukeprop_2:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: ComponentExhaustV
+      bonusParameter: 25
+      targets:
+        - eng_nuke
+        - eng_nukeprometheus
+        - eng_nukenter
+      targetVisibility:
+        - id: eng_nukenter
+          showOnUI: false
+        - id: eng_nukeprometheus
+          showOnUI: false
 
 # NUCLEAR THERMAL ELECTRIC ROCKET (ResearchDefinition)
 research_nukeprop_3:
@@ -2132,6 +2742,17 @@ research_nukeprop_3:
   unlocks:
     - action: UnlockBonus
       id: III
+      bonus: ComponentExhaustV
+      bonusParameter: 100
+      targets:
+        - eng_nuke
+        - eng_nukenter
+        - eng_nukeprometheus
+      targetVisibility:
+        - id: eng_nukenter
+          showOnUI: false
+        - id: eng_nukeprometheus
+          showOnUI: false
 
 # MPD-BASED NTER (ResearchDefinition)
 research_nukeprop_4:
@@ -2147,6 +2768,20 @@ research_nukeprop_4:
   unlocks:
     - action: UnlockBonus
       id: IV
+      bonus: ComponentExhaustV
+      bonusParameter: 50
+      targets:
+        - eng_nuke
+        - eng_nukenter
+        - eng_nukeprometheus
+        - eng_nukeariane
+      targetVisibility:
+        - id: eng_nukenter
+          showOnUI: false
+        - id: eng_nukeprometheus
+          showOnUI: false
+        - id: eng_nukeariane
+          showOnUI: false
 
 # LIQUID CORE (ResearchDefinition)
 research_nukeprop_5:
@@ -2165,8 +2800,29 @@ research_nukeprop_5:
   unlocks:
     - action: UnlockBonus
       id: V
+      bonus: ComponentExhaustV
+      bonusParameter: 100
+      targets:
+        - eng_nuke
+        - eng_nukeprometheus
+      targetVisibility:
+        - id: eng_nukenter
+          showOnUI: false
+        - id: eng_nukeprometheus
+          showOnUI: false
     - action: UnlockBonus
       id: VIII
+      bonus: ComponentThrust
+      bonusParameter: 35
+      targets:
+        - eng_nuke
+        - eng_nukenter
+        - eng_nukeprometheus
+      targetVisibility:
+        - id: eng_nukenter
+          showOnUI: false
+        - id: eng_nukeprometheus
+          showOnUI: false
 
 # ADVANCED LIQUID CORE (ResearchDefinition)
 research_nukeprop_6:
@@ -2182,8 +2838,30 @@ research_nukeprop_6:
   unlocks:
     - action: UnlockBonus
       id: VI
+      bonus: ComponentExhaustV
+      bonusParameter: 50
+      targets:
+        - eng_nuke
+        - eng_nukenter
+        - eng_nukeprometheus
+      targetVisibility:
+        - id: eng_nukenter
+          showOnUI: false
+        - id: eng_nukeprometheus
+          showOnUI: false
     - action: UnlockBonus
       id: IX
+      bonus: ComponentThrust
+      bonusParameter: 10
+      targets:
+        - eng_nuke
+        - eng_nukenter
+        - eng_nukeprometheus
+      targetVisibility:
+        - id: eng_nukenter
+          showOnUI: false
+        - id: eng_nukeprometheus
+          showOnUI: false
 
 # CLOSED-CYCLE GAS CORE (ResearchDefinition)
 research_nukeprop_7:
@@ -2202,8 +2880,30 @@ research_nukeprop_7:
   unlocks:
     - action: UnlockBonus
       id: VI
+      bonus: ComponentExhaustV
+      bonusParameter: 75
+      targets:
+        - eng_nuke
+        - eng_nukenter
+        - eng_nukeprometheus
+      targetVisibility:
+        - id: eng_nukenter
+          showOnUI: false
+        - id: eng_nukeprometheus
+          showOnUI: false
     - action: UnlockBonus
       id: IX
+      bonus: ComponentThrust
+      bonusParameter: 50
+      targets:
+        - eng_nuke
+        - eng_nukenter
+        - eng_nukeprometheus
+      targetVisibility:
+        - id: eng_nukenter
+          showOnUI: false
+        - id: eng_nukeprometheus
+          showOnUI: false
 
 # IMPROVED OPTICS (ResearchDefinition)
 research_observation_1:
@@ -2221,6 +2921,8 @@ research_observation_1:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: ObservationSpeed
+      bonusParameter: 30
 
 # RADAR ASTRONOMY (ResearchDefinition)
 research_observation_2:
@@ -2236,6 +2938,8 @@ research_observation_2:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: ObservationSpeed
+      bonusParameter: 30
 
 # SPACE TELESCOPES (ResearchDefinition)
 research_observation_3:
@@ -2267,6 +2971,10 @@ research_observation_4:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_observation_3
+  unlocks:
+    - action: UnlockUIElement
+      unlockUIElement: ExoplanetSurveyResearchTab
+      startGameEpoch: StartGameEpoch_TheExpansion
 
 # CHEMICAL POWER REACTOR (ResearchDefinition)
 research_power_chem:
@@ -2353,6 +3061,10 @@ research_power_solar2:
   unlocks:
     - action: UnlockBonus
       id: III
+      bonus: PowerProduction
+      bonusParameter: 50
+      targets:
+        - build_power_solar
 
 # WIND TURBINE (ResearchDefinition)
 research_power_wind:
@@ -2388,6 +3100,15 @@ research_robotics_crew1:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: ReduceCrewRequirements
+      bonusParameter: 5
+      targets:
+        - All
+    - action: UnlockBonus
+      bonus: MiningEfficiency
+      bonusParameter: 5
+      targets:
+        - All
 
 # EXPERT SYSTEMS (ResearchDefinition)
 research_robotics_crew2:
@@ -2406,8 +3127,16 @@ research_robotics_crew2:
   unlocks:
     - action: UnlockBonus
       id: III
+      bonus: ReduceCrewRequirements
+      bonusParameter: 10
+      targets:
+        - All
     - action: UnlockBonus
       id: II
+      bonus: MaintenanceReduce
+      bonusParameter: 20
+      targets:
+        - Facility
 
 # CYBERNETICS (ResearchDefinition)
 research_robotics_crew3:
@@ -2427,6 +3156,10 @@ research_robotics_crew3:
   unlocks:
     - action: UnlockBonus
       id: II
+      bonus: ReduceCrewRequirements
+      bonusParameter: 10
+      targets:
+        - All
 
 # OPTIMIZED PAYLOAD BUS (ResearchDefinition)
 research_sails_1:
@@ -2444,6 +3177,10 @@ research_sails_1:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: ComponentCargoCapacity
+      bonusParameter: 100
+      targets:
+        - cargo_solar_small
 
 # REFLECTIVE MATERIALS (ResearchDefinition)
 research_sails_2:
@@ -2479,8 +3216,18 @@ research_sails_3:
   unlocks:
     - action: UnlockBonus
       id: I
+      bonus: BuildCost
+      bonusParameter: 20
+      targets:
+        - spacecraft_sail_small
+        - spacecraft_sail_mid
     - action: UnlockBonus
       id: I
+      bonus: SolarSCParameter
+      bonusParameter: 50
+      targets:
+        - spacecraft_sail_small
+        - spacecraft_sail_mid
 
 # PLASMA MAGNET SAIL (ResearchDefinition)
 research_sails_4:
@@ -2550,6 +3297,13 @@ research_sc_cargo1:
   requirementsResearch:
     - research_category_sc
     - research_sc_helios
+  unlocks:
+    - action: UnlockBonus
+      bonus: SCCargoCapacityBase
+      bonusParameter: 50
+      targets:
+        - spacecraft_chem_mid2
+        - spacecraft_chem_large
 
 # EXPANDED CARGO BAYS 2 (ResearchDefinition)
 research_sc_cargo2:
@@ -2565,6 +3319,14 @@ research_sc_cargo2:
   requirementsResearch:
     - research_sc_cargo1
     - research_sc_hermes
+  unlocks:
+    - action: UnlockBonus
+      bonus: SCCargoCapacityBase
+      bonusParameter: 20
+      targets:
+        - spacecraft_electric_small
+        - spacecraft_electric_mid
+        - spacecraft_nuke_small
 
 # EXPANDED CARGO BAYS 3 (ResearchDefinition)
 research_sc_cargo3:
@@ -2580,6 +3342,14 @@ research_sc_cargo3:
   requirementsResearch:
     - research_sc_cargo2
     - research_sc_hephaistos
+  unlocks:
+    - action: UnlockBonus
+      bonus: SCCargoCapacityBase
+      bonusParameter: 20
+      targets:
+        - spacecraft_nuke_mid
+        - spacecraft_nuke_large
+        - spacecraft_nuke_nolv
 
 # EXPANDED CARGO BAYS 4 (ResearchDefinition)
 research_sc_cargo4:
@@ -2595,6 +3365,14 @@ research_sc_cargo4:
   requirementsResearch:
     - research_sc_cargo3
     - research_sc_nike
+  unlocks:
+    - action: UnlockBonus
+      bonus: SCCargoCapacityBase
+      bonusParameter: 20
+      targets:
+        - spacecraft_fusion_small
+        - spacecraft_fusion_mid
+        - spacecraft_fusion_large
 
 # CRONOS (ResearchDefinition)
 research_sc_cronos:
@@ -2801,6 +3579,8 @@ research_terraforming_1:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # CARBON RELEASE (ResearchDefinition)
 research_terraforming_2:
@@ -2834,6 +3614,8 @@ research_terraforming_3:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # ALBEDO MANIPULATION (ResearchDefinition)
 research_terraforming_4:
@@ -2846,6 +3628,8 @@ research_terraforming_4:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # COMET REDIRECTION (ResearchDefinition)
 research_terraforming_5:
@@ -2858,6 +3642,8 @@ research_terraforming_5:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
+  unlocks:
+    - action: None
 
 # STELLAR MIRROR (ResearchDefinition)
 research_terraforming_6:

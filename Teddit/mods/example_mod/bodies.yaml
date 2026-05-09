@@ -1,0 +1,5 @@
+PHOBOS:
+  removeOrbit: true
+
+DEIMOS:
+  removeOrbit: true

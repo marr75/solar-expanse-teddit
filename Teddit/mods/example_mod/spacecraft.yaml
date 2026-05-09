@@ -31,6 +31,8 @@
 # ── Patch existing entries ────────────────────────────────────────────────────
 
 spacecraft_chem_small:
+  name: Iris (Modded)
+  thrust: 100
   buildResources:
     id_resource_steel: 40
     id_resource_chips: 20

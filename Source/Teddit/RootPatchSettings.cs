@@ -13,6 +13,7 @@ namespace Teddit
         public bool LaunchVehiclesEnabled = true;
         public bool ResearchEnabled = true;
         public bool DepositsEnabled = true;
+        public bool BodiesEnabled = true;
         public bool LifeSupportEnabled = false;
 
         public static RootPatchSettings Load(string pluginDir)
@@ -26,6 +27,7 @@ namespace Teddit
                 LaunchVehiclesEnabled = ReadTopLevelEnabled(Path.Combine(pluginDir, "launch_vehicles.yaml"), true),
                 ResearchEnabled = ReadTopLevelEnabled(Path.Combine(pluginDir, "research.yaml"), true),
                 DepositsEnabled = ReadTopLevelEnabled(Path.Combine(pluginDir, "deposits.yaml"), true),
+                BodiesEnabled = ReadTopLevelEnabled(Path.Combine(pluginDir, "bodies.yaml"), true),
                 LifeSupportEnabled = ReadLifeSupportEnabled(Path.Combine(pluginDir, "life_support.yaml"), false)
             };
 
@@ -33,7 +35,7 @@ namespace Teddit
                 $"[RootPatchSettings] resources={settings.ResourcesEnabled}, companies={settings.CompaniesEnabled}, facilities={settings.FacilitiesEnabled}, " +
                 $"spacecraft={settings.SpacecraftEnabled}, launchVehicles={settings.LaunchVehiclesEnabled}, " +
                 $"research={settings.ResearchEnabled}, deposits={settings.DepositsEnabled}, " +
-                $"lifeSupport={settings.LifeSupportEnabled}");
+                $"bodies={settings.BodiesEnabled}, lifeSupport={settings.LifeSupportEnabled}");
 
             return settings;
         }

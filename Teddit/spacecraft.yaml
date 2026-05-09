@@ -19,3 +19,4 @@ enabled: true
 #   maintenanceCostPerDay:                float  — daily upkeep cost
 #   maxPayload:                           float or null — max payload to surface; null = unlimited
 
+

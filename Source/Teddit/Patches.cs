@@ -197,6 +197,13 @@ namespace Teddit
                 catch (Exception ex) { Plugin.Log.LogError($"[DepositInjector:{label}] {ex}"); }
             }
 
+            if (rootSettings.BodiesEnabled)
+            {
+                var bodyPatches = PatchConfig.Load(Path.Combine(dir, "bodies.yaml"));
+                try { BodyPatcher.Run(bodyPatches, oi); }
+                catch (Exception ex) { Plugin.Log.LogError($"[BodyPatcher:{label}] {ex}"); }
+            }
+
             if (rootSettings.LifeSupportEnabled)
             {
                 bool honorEnabled = string.Equals(dir, Plugin.PluginDir, StringComparison.OrdinalIgnoreCase);
@@ -205,6 +212,95 @@ namespace Teddit
                 catch (Exception ex) { Plugin.Log.LogError($"[LifeSupportPatcher:{label}] {ex}"); }
             }
 
+        }
+    }
+
+    [HarmonyPatch(typeof(Spacecraft), "SetCurrentlyOnThisObject")]
+    static class PatchSpacecraftSetCurrentlyOnThisObjectNoOrbitBodies
+    {
+        static void Postfix(Spacecraft __instance)
+        {
+            if (__instance == null || __instance.spacecraftType == null)
+                return;
+
+            var current = __instance.CurrentlyOnThisObject;
+            if (current == null || !string.Equals(current.objectTypes.ToString(), "Orbit", StringComparison.OrdinalIgnoreCase))
+                return;
+
+            var parent = current.parentObjectInfo;
+            if (parent == null || !BodyPatcher.BodyHasRemovedOrbit(parent))
+                return;
+
+            try
+            {
+                Plugin.Log.LogInfo($"[BodyPatcher] Redirecting '{__instance.GetSpacecraftName()}' from hidden orbit '{current.ObjectName}' to '{parent.ObjectName}'.");
+                __instance.SetCurrentlyOnThisObject(parent);
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[BodyPatcher] Failed to redirect spacecraft '{__instance.GetSpacecraftName()}' off hidden orbit '{current.ObjectName}': {ex.Message}");
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(ObjectInfo), "NeedVehicleToLaunch")]
+    static class PatchObjectInfoNeedVehicleToLaunchRemovedOrbitBodies
+    {
+        static bool Prefix(ObjectInfo __instance, ref bool __result)
+        {
+            if (__instance == null || !BodyPatcher.BodyHasRemovedOrbit(__instance))
+                return true;
+
+            __result = false;
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(ChoseFacilityWindow), "FilterByObjectInfo")]
+    static class PatchChoseFacilityWindowFilterByObjectInfoRemovedOrbitBodies
+    {
+        static bool Prefix(ObjectInfo objectInfo, ref object __state)
+        {
+            __state = null;
+            if (objectInfo == null || !BodyPatcher.BodyHasRemovedOrbit(objectInfo))
+                return true;
+
+            var field = AccessTools.Field(typeof(ObjectInfo), "objectTypes");
+            if (field == null)
+                return true;
+
+            try
+            {
+                __state = field.GetValue(objectInfo);
+                var asteroidEnum = Enum.Parse(field.FieldType, "Asteroid", ignoreCase: true);
+                field.SetValue(objectInfo, asteroidEnum);
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[BodyPatcher] Failed to present '{objectInfo.ObjectName}' as asteroid-like in facility picker: {ex.Message}");
+                __state = null;
+            }
+
+            return true;
+        }
+
+        static void Postfix(ObjectInfo objectInfo, object __state)
+        {
+            if (objectInfo == null || __state == null)
+                return;
+
+            var field = AccessTools.Field(typeof(ObjectInfo), "objectTypes");
+            if (field == null)
+                return;
+
+            try
+            {
+                field.SetValue(objectInfo, __state);
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[BodyPatcher] Failed to restore objectTypes after facility picker for '{objectInfo.ObjectName}': {ex.Message}");
+            }
         }
     }
 

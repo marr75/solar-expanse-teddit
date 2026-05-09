@@ -16,3 +16,13 @@ research_catnip_biotech:
   unlocks:
     - action: UnlockFacility
       id: id_facility_cat_habitat
+
+research_sc_cargo1:
+  replaceUnlocks: true
+  unlocks:
+    - action: UnlockBonus
+      bonus: SCCargoCapacityBase
+      bonusParameter: 1000
+      targets:
+        - spacecraft_chem_mid2
+        - spacecraft_chem_large

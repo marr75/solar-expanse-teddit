@@ -327,6 +327,14 @@ namespace Teddit
                 }
             }
 
+            // ── energyProduction / solarPanels / windPower / geothermal ─────────────
+            if (fields.ContainsKey("energyProduction") || fields.ContainsKey("solarPanels")
+                || fields.ContainsKey("windPower") || fields.ContainsKey("geothermal"))
+            {
+                try { ApplyEnergyProductionFields(descriptor, fields, prefix, id); }
+                catch (Exception ex) { Plugin.Log.LogError($"{prefix} {id}: energyProductionData setup failed — {ex.Message}"); }
+            }
+
             // ── energyInput: { "resource_id": ratePerDay } ───────────────────────
             if (fields.TryGetValue("energyInput", out tok) && tok.Type == JTokenType.Object)
             {
@@ -438,6 +446,17 @@ namespace Teddit
                     FindField(vehicle.GetType(), "rocketBackGround")?.SetValue(vehicle, sprite);
             }
 
+            if (fields.ContainsKey("name") || fields.ContainsKey("description"))
+            {
+                JToken nameTok, descTok;
+                fields.TryGetValue("name",        out nameTok);
+                fields.TryGetValue("description", out descTok);
+                string nameStr = nameTok?.Type == JTokenType.Null ? null : nameTok?.Value<string>();
+                string descStr = descTok?.Type == JTokenType.Null ? null : descTok?.Value<string>();
+                if (!string.IsNullOrEmpty(nameStr) || !string.IsNullOrEmpty(descStr))
+                    FacilityCreator.InjectTranslations(id, nameStr, descStr);
+            }
+
             JToken tok;
             if (fields.TryGetValue("fuelType", out tok) && tok.Type != JTokenType.Null)
             {
@@ -518,6 +537,27 @@ namespace Teddit
             }
 
             refinerFi.SetValue(descriptor, refinerInst);
+        }
+
+        static void ApplyEnergyProductionFields(FacilityBaseDescriptor descriptor, Dictionary<string, JToken> fields, string prefix, string id)
+        {
+            var epdFi = FindField(descriptor.GetType(), "energyProductionData");
+            if (epdFi == null) { Warn(prefix, id, "energyProductionData field not found"); return; }
+
+            object epd = epdFi.GetValue(descriptor);
+            if (epd == null)
+            {
+                epd = Activator.CreateInstance(epdFi.FieldType);
+                epdFi.SetValue(descriptor, epd);
+            }
+
+            SetNamedMember(epd, "energyProduction", fields, "energyProduction", prefix, id);
+            SetNamedMember(epd, "solarPanels", fields, "solarPanels", prefix, id);
+            SetNamedMember(epd, "windPower", fields, "windPower", prefix, id);
+            SetNamedMember(epd, "geothermalPower", fields, "geothermal", prefix, id);
+
+            epdFi.SetValue(descriptor, epd);
+            Plugin.Log.LogDebug($"{prefix} {id}.energyProductionData scalar fields set");
         }
 
         /// <summary>
@@ -665,6 +705,54 @@ namespace Teddit
             Warn(prefix, id, $"could not set RefinerData.{memberName}");
         }
 
+        static void SetNamedMember(object target, string memberName, Dictionary<string, JToken> fields, string jsonKey, string prefix, string id)
+        {
+            if (!fields.TryGetValue(jsonKey, out var tok) || tok == null || tok.Type == JTokenType.Null)
+                return;
+
+            var fi = target.GetType().GetField(memberName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (fi != null)
+            {
+                SetPrimitive(fi, target, tok, prefix, id);
+                return;
+            }
+
+            var pi = target.GetType().GetProperty(memberName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (pi != null)
+            {
+                var setter = pi.GetSetMethod(nonPublic: true);
+                if (setter != null)
+                {
+                    object converted = ConvertToken(tok, pi.PropertyType, prefix, id, memberName);
+                    setter.Invoke(target, new[] { converted });
+                    return;
+                }
+            }
+
+            Warn(prefix, id, $"field/property '{memberName}' not found on {target.GetType().Name}");
+        }
+
+        static object ConvertToken(JToken value, Type targetType, string prefix, string id, string fieldName)
+        {
+            try
+            {
+                if (targetType == typeof(float)) return value.ToObject<float>();
+                if (targetType == typeof(double)) return value.ToObject<double>();
+                if (targetType == typeof(int)) return value.ToObject<int>();
+                if (targetType == typeof(long)) return value.ToObject<long>();
+                if (targetType == typeof(bool)) return value.ToObject<bool>();
+                if (targetType == typeof(float?)) return value.Type == JTokenType.Null ? (float?)null : value.ToObject<float>();
+                if (targetType == typeof(double?)) return value.Type == JTokenType.Null ? (double?)null : value.ToObject<double>();
+                if (targetType.IsEnum) return Enum.Parse(targetType, value.Value<string>(), ignoreCase: true);
+                return value.ToObject(targetType);
+            }
+            catch
+            {
+                Warn(prefix, id, $"could not convert '{value}' to {targetType.Name} for '{fieldName}'");
+                return targetType.IsValueType ? Activator.CreateInstance(targetType) : null;
+            }
+        }
+
         // ── Spacecraft ────────────────────────────────────────────────────────────
 
         static readonly Dictionary<string, string> _hullFieldMap = new Dictionary<string, string>
@@ -717,18 +805,38 @@ namespace Teddit
                     hasCompletedHull = isCompletedFi != null && (bool)isCompletedFi.GetValue(hullBoxed);
                 }
 
+                // Diagnostic: log hull state and field names for this spacecraft
+                {
+                    var thrustFi   = FindField(scType.GetType(), "thrust");
+                    var exhaustFi  = FindField(scType.GetType(), "exhaustV");
+                    Plugin.Log.LogInfo($"[SpacecraftPatcher] {kv.Key}: hullBoxed={(hullBoxed != null ? hullBoxed.GetType().Name : "null")}, hasCompletedHull={hasCompletedHull}");
+                    Plugin.Log.LogInfo($"[SpacecraftPatcher] {kv.Key}: thrust field={(thrustFi != null ? thrustFi.DeclaringType.Name + "." + thrustFi.Name + " (" + thrustFi.FieldType.Name + ")" : "NOT FOUND")}");
+                    Plugin.Log.LogInfo($"[SpacecraftPatcher] {kv.Key}: exhaustV field={(exhaustFi != null ? exhaustFi.DeclaringType.Name + "." + exhaustFi.Name + " (" + exhaustFi.FieldType.Name + ")" : "NOT FOUND")}");
+                    if (hullBoxed != null)
+                    {
+                        var hullThrustFi = FindField(hullBoxed.GetType(), "thrustBase");
+                        Plugin.Log.LogInfo($"[SpacecraftPatcher] {kv.Key}: hull.thrustBase={(hullThrustFi != null ? hullThrustFi.GetValue(hullBoxed)?.ToString() : "field NOT FOUND")}");
+                    }
+                }
+
                 var simpleFields = kv.Value.Where(f => !_complexVehicleKeys.Contains(f.Key))
                                           .ToDictionary(f => f.Key, f => f.Value);
 
                 if (hasCompletedHull)
                 {
-                    Plugin.Log.LogDebug($"[SpacecraftPatcher] {kv.Key} has completed hull — remapping fields.");
+                    Plugin.Log.LogInfo($"[SpacecraftPatcher] {kv.Key} has completed hull — remapping fields.");
                     var scFields   = new Dictionary<string, JToken>();
                     var hullFields = new Dictionary<string, JToken>();
                     foreach (var field in simpleFields)
                     {
                         if (_hullFieldMap.TryGetValue(field.Key, out var hullFieldName))
+                        {
                             hullFields[hullFieldName] = field.Value;
+                            // Zero out the corresponding direct field on scType so it doesn't
+                            // accumulate with hull.thrustBase/exhaustVBase in the game's
+                            // effective-value calculation (effectiveValue = scType.field + hull.fieldBase).
+                            scFields[field.Key] = JToken.FromObject(0);
+                        }
                         else
                             scFields[field.Key] = field.Value;
                     }
@@ -912,24 +1020,21 @@ namespace Teddit
                 if (udType == null) { Warn(prefix, id, "UnlockData type not found in assembly"); return; }
 
                 var actionFi = udType.GetField("actionUnlock", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-                var param1Fi = udType.GetField("parameter1",   BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                 Type actionEnumType = actionFi?.FieldType;
 
                 var udObjects = new List<object>();
                 foreach (var item in (JArray)tok)
                 {
-                    string actionStr = item["action"]?.Value<string>() ?? "UnlockFacility";
-                    string targetId  = item["id"]?.Value<string>();
-                    if (string.IsNullOrEmpty(targetId)) { Warn(prefix, id, "unlock entry missing 'id'"); continue; }
-
-                    object ud = Activator.CreateInstance(udType);
-                    param1Fi?.SetValue(ud, targetId);
-                    if (actionEnumType != null && actionFi != null)
+                    var unlockObj = item as JObject;
+                    if (unlockObj == null)
                     {
-                        try { actionFi.SetValue(ud, Enum.Parse(actionEnumType, actionStr)); }
-                        catch { Warn(prefix, id, $"unknown unlock action '{actionStr}'"); }
+                        Warn(prefix, id, "unlock entry must be an object");
+                        continue;
                     }
-                    udObjects.Add(ud);
+
+                    object ud = CreateUnlockDataFromPatch(unlockObj, udType, actionFi, actionEnumType, prefix, id);
+                    if (ud != null)
+                        udObjects.Add(ud);
                 }
 
                 bool replaceUnlocks = fields.TryGetValue("replaceUnlocks", out var replaceTok)
@@ -943,6 +1048,192 @@ namespace Teddit
                 SetResearchUnlocks(rd, finalUnlocks, udType, actionFi);
                 Plugin.Log.LogDebug($"{prefix} {id}.unlocks = {finalUnlocks.Count} entries (replace={replaceUnlocks})");
             }
+        }
+
+        static object CreateUnlockDataFromPatch(JObject unlockObj, Type udType, FieldInfo actionFi, Type actionEnumType, string prefix, string id)
+        {
+            string actionStr = unlockObj["action"]?.Value<string>() ?? "UnlockFacility";
+            object ud = Activator.CreateInstance(udType);
+
+            if (actionEnumType != null && actionFi != null)
+            {
+                try { actionFi.SetValue(ud, Enum.Parse(actionEnumType, actionStr, ignoreCase: true)); }
+                catch
+                {
+                    Warn(prefix, id, $"unknown unlock action '{actionStr}'");
+                    return null;
+                }
+            }
+
+            SetUnlockField(udType, ud, "parameter1", unlockObj["id"]);
+            SetUnlockField(udType, ud, "parameter2", unlockObj["parameter2"]);
+            SetUnlockField(udType, ud, "bonusParameter", unlockObj["bonusParameter"]);
+            SetUnlockEnumField(udType, ud, "bonus", unlockObj["bonus"], prefix, id);
+            SetUnlockEnumField(udType, ud, "unlockUIElement", unlockObj["unlockUIElement"], prefix, id);
+            SetUnlockEnumField(udType, ud, "unlockEndGame", unlockObj["unlockEndGame"], prefix, id);
+            SetUnlockEnumField(udType, ud, "unlockContractAdvance", unlockObj["unlockContractAdvance"], prefix, id);
+
+            if (unlockObj.TryGetValue("startGameEpoch", out var epochTok) && epochTok.Type != JTokenType.Null)
+            {
+                string epochId = epochTok.Value<string>();
+                if (!string.IsNullOrEmpty(epochId))
+                {
+                    object epoch = ResolveStartGameEpoch(epochId);
+                    if (epoch != null)
+                        SetUnlockFieldValue(udType, ud, "startGameEpoch", epoch);
+                    else
+                        Warn(prefix, id, $"unknown startGameEpoch '{epochId}'");
+                }
+            }
+
+            if (unlockObj.TryGetValue("idObjectInfoAsteroid", out var asteroidTok) && asteroidTok.Type != JTokenType.Null)
+                SetUnlockField(udType, ud, "idObjectInfoAsteroid", asteroidTok);
+            if (unlockObj.TryGetValue("idObjectInfoAllowPullToOrbit", out var pullTok) && pullTok.Type != JTokenType.Null)
+                SetUnlockField(udType, ud, "idObjectInfoAllowPullToOrbit", pullTok);
+
+            if (unlockObj.TryGetValue("targets", out var targetsTok) && targetsTok is JArray targetsArray)
+            {
+                string[] targets = targetsArray
+                    .Select(x => x?.Type == JTokenType.Null ? null : x?.Value<string>())
+                    .Where(x => !string.IsNullOrEmpty(x))
+                    .ToArray();
+                SetUnlockFieldValue(udType, ud, "id_ComponentOrOther", targets);
+            }
+
+            if (unlockObj.TryGetValue("targetVisibility", out var visibilityTok) && visibilityTok is JArray visibilityArray)
+            {
+                object visibilityList = BuildUnlockVisibilityList(udType, visibilityArray, prefix, id);
+                if (visibilityList != null)
+                    SetUnlockFieldValue(udType, ud, "id_ComponentOrOtherBoolShowUI", visibilityList);
+            }
+
+            bool needsId = !string.Equals(actionStr, "UnlockBonus", StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(actionStr, "UnlockStartGameEpoch", StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(actionStr, "UnlockUIElement", StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(actionStr, "UnlockEndGame", StringComparison.OrdinalIgnoreCase);
+
+            var param1Fi = udType.GetField("parameter1", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            string parameter1 = param1Fi?.GetValue(ud)?.ToString();
+            if (needsId && string.IsNullOrEmpty(parameter1))
+            {
+                Warn(prefix, id, $"unlock action '{actionStr}' is missing required 'id'");
+                return null;
+            }
+
+            return ud;
+        }
+
+        static void SetUnlockField(Type udType, object ud, string fieldName, JToken token)
+        {
+            if (token == null)
+                return;
+
+            var fi = udType.GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (fi == null)
+                return;
+
+            if (token.Type == JTokenType.Null)
+            {
+                fi.SetValue(ud, fi.FieldType.IsValueType ? Activator.CreateInstance(fi.FieldType) : null);
+                return;
+            }
+
+            object value = ConvertToken(token, fi.FieldType, "[ResearchPatcher]", "<unlock>", fieldName);
+            fi.SetValue(ud, value);
+        }
+
+        static void SetUnlockFieldValue(Type udType, object ud, string fieldName, object value)
+        {
+            var fi = udType.GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            fi?.SetValue(ud, value);
+        }
+
+        static void SetUnlockEnumField(Type udType, object ud, string fieldName, JToken token, string prefix, string id)
+        {
+            if (token == null || token.Type == JTokenType.Null)
+                return;
+
+            var fi = udType.GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (fi == null || !fi.FieldType.IsEnum)
+                return;
+
+            try
+            {
+                object enumValue = Enum.Parse(fi.FieldType, token.Value<string>(), ignoreCase: true);
+                fi.SetValue(ud, enumValue);
+            }
+            catch
+            {
+                Warn(prefix, id, $"unknown {fieldName} '{token.Value<string>()}'");
+            }
+        }
+
+        static object ResolveStartGameEpoch(string epochId)
+        {
+            var allSO = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance;
+            if (allSO == null)
+                return null;
+
+            foreach (var fi in allSO.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance))
+            {
+                object value = fi.GetValue(allSO);
+                if (value == null)
+                    continue;
+
+                var listProp = value.GetType().GetProperty("List", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (listProp?.GetValue(value) is System.Collections.IEnumerable items)
+                {
+                    foreach (var item in items)
+                    {
+                        if (item == null) continue;
+                        var idProp = item.GetType().GetProperty("ID", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                        if ((idProp?.GetValue(item) as string) == epochId)
+                            return item;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        static object BuildUnlockVisibilityList(Type udType, JArray visibilityArray, string prefix, string id)
+        {
+            var listFi = udType.GetField("id_ComponentOrOtherBoolShowUI", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (listFi == null)
+                return null;
+
+            Type listType = listFi.FieldType;
+            object list = Activator.CreateInstance(listType);
+            var addMethod = listType.GetMethod("Add");
+            if (addMethod == null)
+                return list;
+
+            Type itemType = listType.IsGenericType ? listType.GetGenericArguments()[0] : null;
+            if (itemType == null)
+                return list;
+
+            var item1Fi = itemType.GetField("Item1", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            var item2Fi = itemType.GetField("Item2", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (item1Fi == null || item2Fi == null)
+                return list;
+
+            foreach (var entry in visibilityArray.OfType<JObject>())
+            {
+                string targetId = entry["id"]?.Value<string>();
+                bool showOnUi = entry["showOnUI"]?.Value<bool>() ?? true;
+                if (string.IsNullOrEmpty(targetId))
+                {
+                    Warn(prefix, id, "targetVisibility entry missing 'id'");
+                    continue;
+                }
+
+                object item = Activator.CreateInstance(itemType);
+                item1Fi.SetValue(item, targetId);
+                item2Fi.SetValue(item, showOnUi);
+                addMethod.Invoke(list, new[] { item });
+            }
+
+            return list;
         }
 
         static List<object> MergeResearchUnlocks(ResearchDefinition rd, List<object> additions, Type udType)
@@ -1025,8 +1316,12 @@ namespace Teddit
                 ?.GetValue(unlock)?.ToString() ?? string.Empty;
             string unlockEndGame = type.GetField("unlockEndGame", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
                 ?.GetValue(unlock)?.ToString() ?? string.Empty;
+            string targets = string.Join(",",
+                ((type.GetField("id_ComponentOrOther", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                    ?.GetValue(unlock) as string[]) ?? Array.Empty<string>())
+                .Where(x => !string.IsNullOrEmpty(x)));
 
-            return string.Join("|", action, parameter1, parameter2, bonus, bonusParameter, unlockUi, unlockEndGame);
+            return string.Join("|", action, parameter1, parameter2, bonus, bonusParameter, unlockUi, unlockEndGame, targets);
         }
 
         // ── Price field handler (shared by spacecraft + launch vehicles) ─────────
