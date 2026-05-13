@@ -174,7 +174,27 @@ namespace Teddit
 
                 // ── removeOrbit ───────────────────────────────────────────────
                 if (fields.TryGetValue("removeOrbit", out tok) && tok.Type != JTokenType.Null && tok.Value<bool>())
+                {
                     orbitNamesToRemove.Add(bodyName + " [ORBIT]");
+
+                    if (!fields.ContainsKey("objectTypes") && _objectTypesFi != null)
+                    {
+                        try
+                        {
+                            object asteroidEnum = Enum.Parse(_objectTypesFi.FieldType, "Asteroid", ignoreCase: true);
+                            if (_setObjectTypesMi != null)
+                                _setObjectTypesMi.Invoke(body, new[] { asteroidEnum });
+                            else
+                                _objectTypesFi.SetValue(body, asteroidEnum);
+
+                            Plugin.Log.LogInfo($"[BodyPatcher] '{bodyName}': removeOrbit=true with no explicit objectTypes, defaulted to Asteroid.");
+                        }
+                        catch (Exception ex)
+                        {
+                            Plugin.Log.LogWarning($"[BodyPatcher] '{bodyName}': failed to default objectTypes to Asteroid after removeOrbit - {ex.Message}");
+                        }
+                    }
+                }
 
                 // ── removeFromParentMoonList ───────────────────────────────────
                 if (fields.TryGetValue("removeFromParentMoonList", out tok) && tok.Type != JTokenType.Null && tok.Value<bool>())

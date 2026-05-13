@@ -78,6 +78,7 @@ namespace Teddit
                 return new DepositBodyConfig
                 {
                     Overwrite = entries.Exists(e => e != null && e.Overwrite),
+                    UnsafeOverwrite = entries.Exists(e => e != null && e.UnsafeOverwrite),
                     Deposits = entries
                 };
             }
@@ -93,6 +94,7 @@ namespace Teddit
                 return new DepositBodyConfig
                 {
                     Overwrite = obj["overwrite"]?.Value<bool>() ?? false,
+                    UnsafeOverwrite = obj["unsafeOverwrite"]?.Value<bool>() ?? false,
                     Deposits = entries ?? new List<DepositEntry>()
                 };
             }
@@ -104,6 +106,7 @@ namespace Teddit
     internal sealed class DepositBodyConfig
     {
         public bool Overwrite { get; set; }
+        public bool UnsafeOverwrite { get; set; }
         public List<DepositEntry> Deposits { get; set; } = new List<DepositEntry>();
     }
 
@@ -117,5 +120,6 @@ namespace Teddit
         [JsonProperty("preliminaryExplored")] public bool? PreliminaryExplored { get; set; }
         [JsonProperty("forcePrimary")] public bool   ForcePrimary { get; set; }
         [JsonProperty("overwrite")]    public bool   Overwrite    { get; set; }
+        [JsonProperty("unsafeOverwrite")] public bool UnsafeOverwrite { get; set; }
     }
 }

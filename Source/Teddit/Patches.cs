@@ -256,6 +256,191 @@ namespace Teddit
         }
     }
 
+    [HarmonyPatch(typeof(ObjectInfo), "GetLayerLabel")]
+    static class PatchObjectInfoGetLayerLabelRemovedOrbitBodies
+    {
+        static bool Prefix(ObjectInfo __instance, ref LabelsManager.ELayerLabel __result)
+        {
+            if (__instance == null || !BodyPatcher.BodyHasRemovedOrbit(__instance))
+                return true;
+
+            if (__instance.parentObjectInfo != null)
+            {
+                __result = LabelsManager.ELayerLabel.Moon;
+                return false;
+            }
+
+            __result = LabelsManager.ELayerLabel.Planet;
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(ObjectInfo), "CheckEarthMoonCase")]
+    static class PatchObjectInfoCheckEarthMoonCaseRemovedOrbitBodies
+    {
+        static bool Prefix(ObjectInfo objectInfoStart, ObjectInfo objectInfoTarget, ref bool __result)
+        {
+            bool startRemoved = BodyPatcher.BodyHasRemovedOrbit(objectInfoStart);
+            bool targetRemoved = BodyPatcher.BodyHasRemovedOrbit(objectInfoTarget);
+            if (!startRemoved && !targetRemoved)
+                return true;
+
+            Plugin.Log.LogInfo(
+                $"[BodyPatcher] CheckEarthMoonCase override: start={objectInfoStart?.ObjectName ?? "NULL"} removed={startRemoved} type={objectInfoStart?.objectTypes.ToString() ?? "NULL"} " +
+                $"target={objectInfoTarget?.ObjectName ?? "NULL"} removed={targetRemoved} type={objectInfoTarget?.objectTypes.ToString() ?? "NULL"} => false");
+            __result = false;
+            return false;
+        }
+    }
+
+    [HarmonyPatch]
+    static class PatchGameManagerCheckCanPlanMissionLoggingRemovedOrbitBodies
+    {
+        static readonly Type PMMissionParameterType = AccessTools.TypeByName("PMMissionParameter");
+        static readonly PropertyInfo StartProperty = PMMissionParameterType?.GetProperty("Start", BindingFlags.Public | BindingFlags.Instance);
+        static readonly PropertyInfo TargetProperty = PMMissionParameterType?.GetProperty("Target", BindingFlags.Public | BindingFlags.Instance);
+
+        static MethodBase TargetMethod()
+        {
+            return AccessTools.Method(typeof(GameManager), "CheckCanPlanMission");
+        }
+
+        static void Prefix(object pmp)
+        {
+            if (pmp == null) return;
+            var start = GetPlannerObjectInfo(StartProperty, pmp);
+            var target = GetPlannerObjectInfo(TargetProperty, pmp);
+            bool startRemoved = BodyPatcher.BodyHasRemovedOrbit(start);
+            bool targetRemoved = BodyPatcher.BodyHasRemovedOrbit(target);
+            if (!startRemoved && !targetRemoved)
+                return;
+
+            Plugin.Log.LogInfo(
+                $"[BodyPatcher] Planner start: start={start?.ObjectName ?? "NULL"} removed={startRemoved} type={start?.objectTypes.ToString() ?? "NULL"} " +
+                $"target={target?.ObjectName ?? "NULL"} removed={targetRemoved} type={target?.objectTypes.ToString() ?? "NULL"}");
+        }
+
+        static ObjectInfo GetPlannerObjectInfo(PropertyInfo property, object pmp)
+        {
+            try
+            {
+                return property?.GetValue(pmp) as ObjectInfo;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
+
+    [HarmonyPatch]
+    static class PatchPMMissionParameterChangeRealToCalculationTargetRemovedOrbitBodies
+    {
+        static readonly Type PMMissionParameterType = AccessTools.TypeByName("PMMissionParameter");
+        static readonly PropertyInfo StartProperty = PMMissionParameterType?.GetProperty("Start", BindingFlags.Public | BindingFlags.Instance);
+        static readonly PropertyInfo TargetProperty = PMMissionParameterType?.GetProperty("Target", BindingFlags.Public | BindingFlags.Instance);
+        static readonly FieldInfo StartCalculationField = PMMissionParameterType?.GetField("objectInfoStartCalculation", BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo TargetCalculationField = PMMissionParameterType?.GetField("objectInfoTargetCalculation", BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo CenterBodyField = PMMissionParameterType?.GetField("centerBodyLambertPorkchop", BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo OrbitCaseField = PMMissionParameterType?.GetField("orbitCase", BindingFlags.NonPublic | BindingFlags.Instance);
+
+        static MethodBase TargetMethod()
+        {
+            return AccessTools.Method(PMMissionParameterType, "ChangeRealToCalculationTarget");
+        }
+
+        static void Postfix(object __instance)
+        {
+            if (__instance == null || PMMissionParameterType == null)
+                return;
+
+            var start = GetPlannerObjectInfoSafe(StartProperty, __instance);
+            var target = GetPlannerObjectInfoSafe(TargetProperty, __instance);
+            bool startRemoved = BodyPatcher.BodyHasRemovedOrbit(start);
+            bool targetRemoved = BodyPatcher.BodyHasRemovedOrbit(target);
+            if (!startRemoved && !targetRemoved)
+                return;
+
+            var normalizedStart = NormalizeRemovedOrbitCalculationBody(start);
+            var normalizedTarget = NormalizeRemovedOrbitCalculationBody(target);
+            if (normalizedStart == null || normalizedTarget == null || normalizedStart.NBody == null || normalizedTarget.NBody == null)
+            {
+                Plugin.Log.LogWarning(
+                    $"[BodyPatcher] PMMissionParameter normalize skipped: start={start?.ObjectName ?? "NULL"} normalizedStart={normalizedStart?.ObjectName ?? "NULL"} " +
+                    $"target={target?.ObjectName ?? "NULL"} normalizedTarget={normalizedTarget?.ObjectName ?? "NULL"}");
+                return;
+            }
+
+            var startOrbit = normalizedStart.NBody.gameObject != null ? normalizedStart.NBody.gameObject.GetComponent<OrbitUniversal>() : null;
+            var targetOrbit = normalizedTarget.NBody.gameObject != null ? normalizedTarget.NBody.gameObject.GetComponent<OrbitUniversal>() : null;
+            if (startOrbit == null || targetOrbit == null)
+            {
+                Plugin.Log.LogWarning(
+                    $"[BodyPatcher] PMMissionParameter normalize missing orbit: startCalc={normalizedStart.ObjectName} startOrbit={(startOrbit != null)} " +
+                    $"targetCalc={normalizedTarget.ObjectName} targetOrbit={(targetOrbit != null)}");
+                return;
+            }
+
+            bool orbitCase = ReferenceEquals(normalizedStart, normalizedTarget);
+            NBody centerBody = targetOrbit.centerNbody ?? startOrbit.centerNbody;
+
+            StartCalculationField?.SetValue(__instance, normalizedStart);
+            TargetCalculationField?.SetValue(__instance, normalizedTarget);
+            CenterBodyField?.SetValue(__instance, centerBody);
+            OrbitCaseField?.SetValue(__instance, orbitCase);
+
+            Plugin.Log.LogInfo(
+                $"[BodyPatcher] PMMissionParameter normalize: start={start?.ObjectName ?? "NULL"} removed={startRemoved} -> calcStart={normalizedStart.ObjectName} type={normalizedStart.objectTypes} center={startOrbit.centerNbody?.name ?? "NULL"}; " +
+                $"target={target?.ObjectName ?? "NULL"} removed={targetRemoved} -> calcTarget={normalizedTarget.ObjectName} type={normalizedTarget.objectTypes} center={targetOrbit.centerNbody?.name ?? "NULL"}; orbitCase={orbitCase}");
+        }
+
+        static ObjectInfo NormalizeRemovedOrbitCalculationBody(ObjectInfo body)
+        {
+            if (body == null)
+                return null;
+
+            if (!BodyPatcher.BodyHasRemovedOrbit(body) || body.parentObjectInfo == null)
+                return body;
+
+            return body.parentObjectInfo;
+        }
+
+        static ObjectInfo GetPlannerObjectInfoSafe(PropertyInfo property, object pmp)
+        {
+            try
+            {
+                return property?.GetValue(pmp) as ObjectInfo;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(ObjectInfoGroups), "SetAsteroidCommetsIfNotHaveGroup")]
+    static class PatchObjectInfoGroupsSetAsteroidCommetsIfNotHaveGroupRemovedOrbitBodies
+    {
+        static void Postfix(ObjectInfoGroups __instance)
+        {
+            if (__instance == null || __instance.objectInGroup == null || __instance.objectInGroup.Count == 0)
+                return;
+
+            for (int i = __instance.objectInGroup.Count - 1; i >= 0; i--)
+            {
+                var objectInfo = __instance.objectInGroup[i];
+                if (!BodyPatcher.BodyHasRemovedOrbit(objectInfo))
+                    continue;
+
+                __instance.objectInGroup.RemoveAt(i);
+                if (objectInfo != null && objectInfo.parentObjectInfoGropup == __instance)
+                    objectInfo.parentObjectInfoGropup = null;
+
+                Plugin.Log.LogInfo($"[BodyPatcher] Removed '{objectInfo?.ObjectName ?? "NULL"}' from asteroid object group for moon-like presentation.");
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(ChoseFacilityWindow), "FilterByObjectInfo")]
     static class PatchChoseFacilityWindowFilterByObjectInfoRemovedOrbitBodies
     {

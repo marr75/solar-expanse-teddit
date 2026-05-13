@@ -461,11 +461,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\Teddit\\Teddit.csproj",
+      "projectUniqueName": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj",
       "projectName": "Teddit",
-      "projectPath": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\Teddit\\Teddit.csproj",
+      "projectPath": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj",
       "packagesPath": "C:\\Users\\parft\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\Teddit\\obj\\",
+      "outputPath": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\solar-expanse-teddit\\Source\\Teddit\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\parft\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Teddit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a99e0a270729853de964e573521cb453a96cd96")]
 [assembly: System.Reflection.AssemblyProductAttribute("Teddit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Teddit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

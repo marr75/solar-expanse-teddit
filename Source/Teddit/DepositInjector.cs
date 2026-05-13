@@ -27,12 +27,15 @@ namespace Teddit
 
                 if (bodyConfig.Overwrite)
                 {
-                    if (!isNewGameStart)
+                    if (!isNewGameStart && !bodyConfig.UnsafeOverwrite)
                     {
                         Plugin.Log.LogInfo($"[DepositInjector] Skipping full overwrite for {oi.ObjectName} on loaded save.");
                         skipped += bodyConfig.Deposits.Count;
                         continue;
                     }
+
+                    if (!isNewGameStart && bodyConfig.UnsafeOverwrite)
+                        Plugin.Log.LogWarning($"[DepositInjector] UNSAFE: forcing full overwrite for {oi.ObjectName} on loaded save.");
 
                     ClearAllDeposits(oi);
                     Plugin.Log.LogDebug($"[DepositInjector] Cleared all existing deposits on {oi.ObjectName} before reseeding.");
