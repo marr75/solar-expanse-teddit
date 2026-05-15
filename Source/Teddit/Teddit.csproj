@@ -154,6 +154,12 @@
     <Copy SourceFiles="$(MSBuildProjectDirectory)\research.yaml"
           DestinationFolder="$(RepoPluginDir)"
           Condition="!Exists('$(RepoPluginDir)\research.yaml')" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\facility_placements.yaml"
+          DestinationFolder="$(PluginDir)"
+          Condition="!Exists('$(PluginDir)\facility_placements.yaml')" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\facility_placements.yaml"
+          DestinationFolder="$(RepoPluginDir)"
+          Condition="!Exists('$(RepoPluginDir)\facility_placements.yaml')" />
 
     <Message Text="Deployed to $(PluginDir) and $(RepoPluginDir)" Importance="High" />
   </Target>

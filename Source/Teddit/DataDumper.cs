@@ -48,6 +48,7 @@ namespace Teddit
             DumpBodies(oim, dumpDir);
             DumpDeposits(oim, dumpDir);
             DumpFacilities(allSO, dumpDir);
+            DumpFacilityPlacements(oim, dumpDir);
             DumpSpacecraft(allSO, dumpDir);
             DumpLaunchVehicles(allSO, dumpDir);
             DumpResearch(allSO, dumpDir);
@@ -419,6 +420,81 @@ namespace Teddit
 
             File.WriteAllText(Path.Combine(dir, "facilities.yaml"), sb.ToString());
             Plugin.Log.LogInfo($"[DataDumper] facilities.yaml — {count} entries");
+        }
+
+        // ── Facility placements (per-body, per-company initial buildings) ─────
+
+        static void DumpFacilityPlacements(ObjectInfoManager oim, string dir)
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("# Initial facilities present on each body, grouped by company.");
+            sb.AppendLine("# Format matches facility_placements.yaml so entries can be copy-pasted.");
+            sb.AppendLine("# Duplicate descriptors are collapsed to a single entry with `count:`.");
+            sb.AppendLine();
+
+            int bodyCount = 0, entryCount = 0, facilityCount = 0;
+            foreach (var oi in oim.allObjectInfos)
+            {
+                if (oi == null || oi.ObjectsInfoData == null || oi.ObjectsInfoData.Count == 0)
+                    continue;
+
+                var perBodyEntries = new List<(string company, string facility, int count)>();
+                foreach (var data in oi.ObjectsInfoData)
+                {
+                    if (data?.company == null || data.ListFacility == null || data.ListFacility.Count == 0)
+                        continue;
+
+                    var byDescriptor = new Dictionary<string, int>(StringComparer.Ordinal);
+                    foreach (var facility in data.ListFacility)
+                    {
+                        var descriptor = facility?.facilityDescriptor;
+                        if (descriptor == null || string.IsNullOrEmpty(descriptor.ID))
+                            continue;
+
+                        int stack = (int)Math.Max(1L, facility.Quantity);
+                        byDescriptor.TryGetValue(descriptor.ID, out int existing);
+                        byDescriptor[descriptor.ID] = existing + stack;
+                    }
+
+                    if (byDescriptor.Count == 0)
+                        continue;
+
+                    string companyKey = data.company.Definition != null && data.company.Definition.IsWorldGovernment
+                        ? "world_government"
+                        : (data.company.ID ?? "");
+
+                    foreach (var kv in byDescriptor)
+                    {
+                        perBodyEntries.Add((companyKey, kv.Key, kv.Value));
+                        entryCount++;
+                        facilityCount += kv.Value;
+                    }
+                }
+
+                if (perBodyEntries.Count == 0)
+                    continue;
+
+                perBodyEntries.Sort((a, b) =>
+                {
+                    int c = string.CompareOrdinal(a.company, b.company);
+                    return c != 0 ? c : string.CompareOrdinal(a.facility, b.facility);
+                });
+
+                sb.AppendLine($"# {oi.ObjectName}");
+                sb.AppendLine($"{YamlKey(oi.ObjectName)}:");
+                foreach (var (company, facility, count) in perBodyEntries)
+                {
+                    sb.AppendLine($"  - company: {YamlScalar(company)}");
+                    sb.AppendLine($"    facility: {YamlScalar(facility)}");
+                    if (count != 1)
+                        sb.AppendLine($"    count: {count}");
+                }
+                sb.AppendLine();
+                bodyCount++;
+            }
+
+            File.WriteAllText(Path.Combine(dir, "facility_placements.yaml"), sb.ToString());
+            Plugin.Log.LogInfo($"[DataDumper] facility_placements.yaml — {bodyCount} bodies, {entryCount} entries, {facilityCount} facilities");
         }
 
         static void DumpRefinerList(object refinerData, Type rdType, string memberName, Dictionary<string, double> target)

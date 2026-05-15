@@ -1,0 +1,106 @@
+# facility_placements.yaml — pre-place facilities on (body, company) pairs at game start.
+#
+# Defaults to new-game-only. Set `unsafeOverride: true` on an entry to also place
+# when loading a saved game (will duplicate on each reload — use only for testing).
+#
+# `company` accepts a CompanyDefinition.ID (e.g. NASA, id_company_spacey) or the
+# alias `world_government` for the World Government company.
+#
+# IMPORTANT: do not place `world_government` facilities on bodies other than EARTH.
+# Behavior is unverified and likely to be wrong on non-Earth bodies.
+#
+# A `clear: <company>` entry scraps every existing facility owned by that company
+# on the current body. Apply it before placement entries to fully replace the
+# default starting buildings.
+
+enabled: true
+
+EARTH:
+  # Wipe World Government's vanilla Earth loadout, then rebuild with _big variants.
+  - clear: world_government
+
+  # Mines
+  - company: world_government
+    facility: build_carbonmine_big
+    count: 60
+  - company: world_government
+    facility: build_fuelmine_big
+    count: 80
+  - company: world_government
+    facility: build_icemine_big
+    count: 100
+  - company: world_government
+    facility: build_metalmine_big
+    count: 20
+  - company: world_government
+    facility: build_noblegasmine_big
+    count: 5
+  - company: world_government
+    facility: build_raremine_big
+    count: 20
+  - company: world_government
+    facility: build_siliconmine_big
+    count: 200
+  - company: world_government
+    facility: build_uranmine_big
+    count: 15
+
+  # Production / refining
+  - company: world_government
+    facility: build_alloysmelting_big
+    count: 20
+  - company: world_government
+    facility: build_consumergoods_big
+    count: 20
+  - company: world_government
+    facility: build_electronicsfactory_big
+  - company: world_government
+    facility: build_exoticalloy_big
+  - company: world_government
+    facility: build_fuel_big
+    count: 10
+  - company: world_government
+    facility: build_glass_big
+    count: 5
+  - company: world_government
+    facility: build_polymerproduction_big
+    count: 10
+
+  # Power
+  - company: world_government
+    facility: build_power_fuel_big
+  - company: world_government
+    facility: build_power_nuke_big
+  - company: world_government
+    facility: build_power_solar_big
+    count: 100
+  - company: world_government
+    facility: build_power_wind_big
+    count: 100
+
+  # Facilities without a _big variant — keep at vanilla counts.
+  - company: world_government
+    facility: build_power_carbon
+    count: 20
+  - company: world_government
+    facility: build_power_hydrogen
+    count: 20
+  - company: world_government
+    facility: build_earthfarm
+    count: 2
+  - company: world_government
+    facility: build_habitatcity
+    count: 27
+  - company: world_government
+    facility: build_hq
+
+MARS:
+  - company: NASA
+    facility: id_facility_cat_habitat
+  - company: NASA
+    facility: id_facility_cat_production
+
+LUNA:
+  - company: NASA
+    facility: id_facility_cat_habitat
+    count: 2

@@ -142,6 +142,34 @@ namespace Teddit
 
             foreach (var dir in dirs)
                 ApplyModDir(dir, __instance, rootSettings);
+
+            // ── Second pass: facility placements run AFTER every dir has had a
+            // chance to register its facility descriptors and company definitions,
+            // so any placement in any dir can reference any modded ID.
+            if (rootSettings.FacilityPlacementsEnabled)
+            {
+                foreach (var dir in dirs)
+                {
+                    string label = Path.GetFileName(dir);
+                    var placementConfig = FacilityPlacementConfig.Load(Path.Combine(dir, "facility_placements.yaml"));
+                    try { FacilityPlacementInjector.Run(placementConfig, __instance); }
+                    catch (Exception ex) { Plugin.Log.LogError($"[FacilityPlacement:{label}] {ex}"); }
+                }
+            }
+
+            // ── Third pass: starting resources after facilities exist so the
+            // ObjectInfoData row set is fully realized. Also gives ResourceCreator
+            // mods a chance to register new resources before stockpiles are set.
+            if (rootSettings.StartingResourcesEnabled)
+            {
+                foreach (var dir in dirs)
+                {
+                    string label = Path.GetFileName(dir);
+                    var startingConfig = StartingResourcesConfig.Load(Path.Combine(dir, "starting_resources.yaml"));
+                    try { StartingResourcesInjector.Run(startingConfig, __instance); }
+                    catch (Exception ex) { Plugin.Log.LogError($"[StartingResources:{label}] {ex}"); }
+                }
+            }
         }
 
         static void ApplyModDir(string dir, ObjectInfoManager oi, RootPatchSettings rootSettings)
