@@ -11,6 +11,7 @@ using Game.Info;
 using Game.ObjectInfoDataScripts.CustomFacilitiesAndModules;
 using Game.UI.Windows.Elements.ObjectInfoElements;
 using Game.UI.Windows.Elements.SpaceCraftConstructElements;
+using Game.CompanyScripts;
 using Language;
 using Manager;
 using ScriptableObjectScripts;
@@ -308,6 +309,12 @@ namespace Teddit
                 sb.AppendLine($"  upkeepStacking: {FormatBool(fd.upkeepStacking)}");
                 sb.AppendLine($"  upkeepStackingValue: {FormatFloat(fd.upkeepStackingValue)}");
                 sb.AppendLine($"  blockStacking: {FormatBool(fd.BlockStacking)}");
+                if (fd.CanBuildParameter != null)
+                {
+                    sb.AppendLine($"  canBuildBy: {YamlScalar(fd.CanBuildParameter.canBuildBy.ToString())}");
+                    if (fd.CanBuildParameter.canBuildBy == CanBuildParameter.ECanBuild.countOnPlanet)
+                        sb.AppendLine($"  countOnPlanet: {fd.CanBuildParameter.countOnPlanet}");
+                }
                 string facilityIconRef = FacilityCreator.GetSpriteReference(fd.Sprite);
                 if (!string.IsNullOrEmpty(facilityIconRef))
                     sb.AppendLine($"  iconRef: {YamlScalar(facilityIconRef)}");
@@ -346,6 +353,8 @@ namespace Teddit
                                 energyInput[inp.resource.ID] = inp.ratePerDay;
                     AppendDict(sb, "  energyInput", energyInput);
                 }
+                if (fd.energyStorageData2 != null)
+                    sb.AppendLine($"  energyStorage: {FormatNullableDouble(fd.energyStorageData2.energyMaxCapacity)}");
                 if (fd is GroundFacilityDescriptor gfd)
                 {
                     if (Math.Abs(gfd.resourceExplorationBonus) > 0.0001f)

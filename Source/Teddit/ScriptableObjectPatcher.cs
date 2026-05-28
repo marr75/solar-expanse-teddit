@@ -8,6 +8,7 @@ using Game.ObjectInfoDataScripts;
 using Game.ObjectInfoDataScripts.CustomFacilitiesAndModules;
 using Game.UI.Windows.Elements.ObjectInfoElements;
 using Game.UI.Windows.Elements.SpaceCraftConstructElements;
+using Game.CompanyScripts;
 using Manager;
 using Newtonsoft.Json.Linq;
 using ScriptableObjectScripts;
@@ -27,6 +28,9 @@ namespace Teddit
     ///   specialAbilityParameter                float   context-dependent: mining rate, crew capacity, etc.
     ///   upkeepStackingValue                    float   additional upkeep per stacked unit
     ///   energyProductionData.energyProduction  double  energy output per day
+    ///   energyStorageData2.energyMaxCapacity   double  energy storage capacity
+    ///   canBuildBy                             enum    build-limit / placement gate mode from CanBuildParameter.ECanBuild
+    ///   countOnPlanet                          long    max allowed on one body when canBuildBy == countOnPlanet
     ///   resourceExplorationBonus               float   (GroundFacilityDescriptor only) exploration power bonus
     ///   timeToBuildInDays                      float   construction time in in-game days
     ///   constructionEquipmentCountIsRequired   bool    whether a Construction Equipment facility is required to build
@@ -109,7 +113,8 @@ namespace Teddit
             "facilityOrModuleToInstall", "isSpaceConstructionOnOrbitSpaceCraftToCreate", "isSpaceConstructionOnOrbitLaunchVehicleCanUse",
             // Creation-only keys that aren't real field names on the descriptor
             "icon", "iconRef", "name", "description", "capabilities", "facilityType", "possiblePlacement",
-            "specialAbility", "energyProduction", "solarPanels", "windPower", "geothermal", "buildCost", "facilityItemClass",
+            "specialAbility", "energyProduction", "energyStorage", "solarPanels", "windPower", "geothermal", "buildCost", "facilityItemClass",
+            "canBuildBy", "countOnPlanet",
         };
 
         static readonly HashSet<string> _complexResourceKeys = new HashSet<string>
@@ -335,6 +340,20 @@ namespace Teddit
                 catch (Exception ex) { Plugin.Log.LogError($"{prefix} {id}: energyProductionData setup failed — {ex.Message}"); }
             }
 
+            // ── energyStorage: double ────────────────────────────────────────────────
+            if (fields.ContainsKey("energyStorage"))
+            {
+                try { ApplyEnergyStorageFields(descriptor, fields, prefix, id); }
+                catch (Exception ex) { Plugin.Log.LogError($"{prefix} {id}: energyStorageData2 setup failed — {ex.Message}"); }
+            }
+
+            // ── canBuildBy / countOnPlanet ──────────────────────────────────────────
+            if (fields.ContainsKey("canBuildBy") || fields.ContainsKey("countOnPlanet"))
+            {
+                try { ApplyCanBuildParameterFields(descriptor, fields, prefix, id); }
+                catch (Exception ex) { Plugin.Log.LogError($"{prefix} {id}: canBuildParameter setup failed — {ex.Message}"); }
+            }
+
             // ── energyInput: { "resource_id": ratePerDay } ───────────────────────
             if (fields.TryGetValue("energyInput", out tok) && tok.Type == JTokenType.Object)
             {
@@ -558,6 +577,48 @@ namespace Teddit
 
             epdFi.SetValue(descriptor, epd);
             Plugin.Log.LogDebug($"{prefix} {id}.energyProductionData scalar fields set");
+        }
+
+        static void ApplyEnergyStorageFields(FacilityBaseDescriptor descriptor, Dictionary<string, JToken> fields, string prefix, string id)
+        {
+            if (!fields.TryGetValue("energyStorage", out var tok) || tok == null || tok.Type == JTokenType.Null)
+                return;
+
+            var esdFi = FindField(descriptor.GetType(), "energyStorageData2");
+            if (esdFi == null) { Warn(prefix, id, "energyStorageData2 field not found"); return; }
+
+            object esd = esdFi.GetValue(descriptor);
+            if (esd == null)
+            {
+                esd = Activator.CreateInstance(esdFi.FieldType);
+                esdFi.SetValue(descriptor, esd);
+            }
+
+            var capFi = FindField(esd.GetType(), "energyMaxCapacity");
+            if (capFi == null) { Warn(prefix, id, "EnergyStorageData.energyMaxCapacity field not found"); return; }
+
+            SetPrimitive(capFi, esd, tok, prefix, id);
+            esdFi.SetValue(descriptor, esd);
+            Plugin.Log.LogDebug($"{prefix} {id}.energyStorageData2.energyMaxCapacity set");
+        }
+
+        static void ApplyCanBuildParameterFields(FacilityBaseDescriptor descriptor, Dictionary<string, JToken> fields, string prefix, string id)
+        {
+            var cbpFi = FindField(descriptor.GetType(), "canBuildParameter");
+            if (cbpFi == null) { Warn(prefix, id, "canBuildParameter field not found"); return; }
+
+            object cbp = cbpFi.GetValue(descriptor);
+            if (cbp == null)
+            {
+                cbp = Activator.CreateInstance(cbpFi.FieldType);
+                cbpFi.SetValue(descriptor, cbp);
+            }
+
+            SetNamedMember(cbp, "canBuildBy", fields, "canBuildBy", prefix, id);
+            SetNamedMember(cbp, "countOnPlanet", fields, "countOnPlanet", prefix, id);
+
+            cbpFi.SetValue(descriptor, cbp);
+            Plugin.Log.LogDebug($"{prefix} {id}.canBuildParameter fields set");
         }
 
         /// <summary>

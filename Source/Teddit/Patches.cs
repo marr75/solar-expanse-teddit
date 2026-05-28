@@ -17,9 +17,23 @@ using Manager;
 using ScriptableObjectScripts;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Teddit
 {
+    static class TooltipImageFix
+    {
+        internal static void Repair(Image imgType)
+        {
+            if (imgType == null)
+                return;
+
+            imgType.type = Image.Type.Simple;
+            imgType.useSpriteMesh = false;
+            imgType.preserveAspect = true;
+        }
+    }
+
     /// <summary>
     /// Patches ResearchTree.Show() so we can inject mod-created research nodes into the
     /// already-built tree the first time the player opens the window.
@@ -232,10 +246,11 @@ namespace Teddit
                 catch (Exception ex) { Plugin.Log.LogError($"[BodyPatcher:{label}] {ex}"); }
             }
 
-            if (rootSettings.LifeSupportEnabled)
+            string lifeSupportPath = Path.Combine(dir, "life_support.yaml");
+            if (rootSettings.LifeSupportEnabled || File.Exists(lifeSupportPath))
             {
                 bool honorEnabled = string.Equals(dir, Plugin.PluginDir, StringComparison.OrdinalIgnoreCase);
-                var lifeSupportConfig = LifeSupportConfig.Load(Path.Combine(dir, "life_support.yaml"), honorEnabled);
+                var lifeSupportConfig = LifeSupportConfig.Load(lifeSupportPath, honorEnabled);
                 try { LifeSupportPatcher.MergeConfig(lifeSupportConfig, label); }
                 catch (Exception ex) { Plugin.Log.LogError($"[LifeSupportPatcher:{label}] {ex}"); }
             }
@@ -284,6 +299,292 @@ namespace Teddit
         }
     }
 
+    [HarmonyPatch]
+    static class PatchPMMissionParameterStartHermesCaseRemovedOrbitBodies
+    {
+        static readonly Type PMMissionParameterType = AccessTools.TypeByName("Game.UI.Windows.Elements.PlanMissionElements.PMMissionParameter");
+        static readonly PropertyInfo StartProperty = PMMissionParameterType?.GetProperty("Start", BindingFlags.Public | BindingFlags.Instance);
+
+        static MethodBase TargetMethod()
+        {
+            return PMMissionParameterType?.GetProperty("StartHermesCase", BindingFlags.Public | BindingFlags.Instance)?.GetGetMethod();
+        }
+
+        static void Postfix(object __instance, ref ObjectInfo __result)
+        {
+            if (__instance == null || PMMissionParameterType == null || StartProperty == null)
+                return;
+
+            try
+            {
+                ObjectInfo start = StartProperty.GetValue(__instance) as ObjectInfo;
+                if (start == null || !BodyPatcher.BodyHasRemovedOrbit(start))
+                    return;
+
+                // Match the asteroid-style planner path: no separate hidden orbit source.
+                __result = start;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[BodyPatcher] StartHermesCase override failed: {ex.Message}");
+            }
+        }
+    }
+
+    [HarmonyPatch]
+    static class PatchPMMissionParameterCheckLVFullListOrNoneRemovedOrbitBodies
+    {
+        static readonly Type PMMissionParameterType = AccessTools.TypeByName("Game.UI.Windows.Elements.PlanMissionElements.PMMissionParameter");
+        static readonly PropertyInfo StartProperty = PMMissionParameterType?.GetProperty("Start", BindingFlags.Public | BindingFlags.Instance);
+        static readonly PropertyInfo TargetProperty = PMMissionParameterType?.GetProperty("Target", BindingFlags.Public | BindingFlags.Instance);
+        static readonly FieldInfo ScField = PMMissionParameterType?.GetField("sc", BindingFlags.NonPublic | BindingFlags.Instance);
+
+        static MethodBase TargetMethod()
+        {
+            return AccessTools.Method(PMMissionParameterType, "CheckLVFullListOrNone");
+        }
+
+        static bool Prefix(object __instance, ref bool __result)
+        {
+            if (__instance == null || PMMissionParameterType == null)
+                return true;
+
+            ObjectInfo start = GetPlannerObjectInfoSafe(StartProperty, __instance);
+            if (start == null || !BodyPatcher.BodyHasRemovedOrbit(start))
+                return true;
+
+            try
+            {
+                ISpacecraftInfo sc = ScField?.GetValue(__instance) as ISpacecraftInfo;
+                if (sc != null && sc.GetTypeSpaceCraft() != null && sc.GetTypeSpaceCraft().LowOrbitContainer)
+                    return true;
+
+                __result = false;
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[BodyPatcher] CheckLVFullListOrNone override failed for '{start?.ObjectName ?? "NULL"}': {ex.Message}");
+            }
+
+            return true;
+        }
+
+        static ObjectInfo GetPlannerObjectInfoSafe(PropertyInfo property, object pmp)
+        {
+            try
+            {
+                return property?.GetValue(pmp) as ObjectInfo;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
+
+    [HarmonyPatch]
+    static class PatchPMMissionParameterCheckLVRemovedOrbitBodies
+    {
+        static readonly Type PMMissionParameterType = AccessTools.TypeByName("Game.UI.Windows.Elements.PlanMissionElements.PMMissionParameter");
+        static readonly PropertyInfo StartProperty = PMMissionParameterType?.GetProperty("Start", BindingFlags.Public | BindingFlags.Instance);
+        static readonly PropertyInfo TargetProperty = PMMissionParameterType?.GetProperty("Target", BindingFlags.Public | BindingFlags.Instance);
+        static readonly FieldInfo ScField = PMMissionParameterType?.GetField("sc", BindingFlags.NonPublic | BindingFlags.Instance);
+
+        static MethodBase TargetMethod()
+        {
+            return AccessTools.Method(PMMissionParameterType, "CheckLV");
+        }
+
+        static bool Prefix(object __instance, ref bool __result)
+        {
+            if (__instance == null || PMMissionParameterType == null)
+                return true;
+
+            ObjectInfo start = GetPlannerObjectInfoSafe(StartProperty, __instance);
+            if (start == null || !BodyPatcher.BodyHasRemovedOrbit(start))
+                return true;
+
+            try
+            {
+                ISpacecraftInfo sc = ScField?.GetValue(__instance) as ISpacecraftInfo;
+                if (sc == null || sc.GetTypeSpaceCraft() == null)
+                    return true;
+
+                if (sc.GetTypeSpaceCraft().LowOrbitContainer)
+                    return true;
+
+                __result = true;
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[BodyPatcher] CheckLV override failed for '{start?.ObjectName ?? "NULL"}': {ex.Message}");
+            }
+
+            return true;
+        }
+
+        static ObjectInfo GetPlannerObjectInfoSafe(PropertyInfo property, object pmp)
+        {
+            try
+            {
+                return property?.GetValue(pmp) as ObjectInfo;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
+
+    [HarmonyPatch]
+    static class PatchPMMissionParameterNeedLvHermesCaseCargoRemovedOrbitBodies
+    {
+        static readonly Type PMMissionParameterType = AccessTools.TypeByName("Game.UI.Windows.Elements.PlanMissionElements.PMMissionParameter");
+        static readonly PropertyInfo StartProperty = PMMissionParameterType?.GetProperty("Start", BindingFlags.Public | BindingFlags.Instance);
+        static readonly FieldInfo ScField = PMMissionParameterType?.GetField("sc", BindingFlags.NonPublic | BindingFlags.Instance);
+
+        static MethodBase TargetMethod()
+        {
+            return AccessTools.Method(PMMissionParameterType, "NeedLvHermesCaseCargo");
+        }
+
+        static bool Prefix(object __instance, ref bool __result)
+        {
+            if (__instance == null || PMMissionParameterType == null)
+                return true;
+
+            ObjectInfo start = GetPlannerObjectInfoSafe(StartProperty, __instance);
+            if (start == null || !BodyPatcher.BodyHasRemovedOrbit(start))
+                return true;
+
+            try
+            {
+                ISpacecraftInfo sc = ScField?.GetValue(__instance) as ISpacecraftInfo;
+                if (sc == null || sc.GetTypeSpaceCraft() == null)
+                    return true;
+
+                if (sc.GetTypeSpaceCraft().LowOrbitContainer)
+                    return true;
+
+                __result = false;
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[BodyPatcher] NeedLvHermesCaseCargo override failed for '{start?.ObjectName ?? "NULL"}': {ex.Message}");
+            }
+
+            return true;
+        }
+
+        static ObjectInfo GetPlannerObjectInfoSafe(PropertyInfo property, object pmp)
+        {
+            try
+            {
+                return property?.GetValue(pmp) as ObjectInfo;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
+
+    [HarmonyPatch]
+    static class PatchPMTabScheduleCalculateCostStartRemovedOrbitBodies
+    {
+        static readonly Type PMTabScheduleType = AccessTools.TypeByName("Game.UI.Windows.Elements.PlanMissionElements.PMTabSchedule");
+        static readonly Type PlanMissionWindowType = AccessTools.TypeByName("Game.UI.Windows.Windows.PlanMissionWindow");
+        static readonly Type PMMissionParameterType = AccessTools.TypeByName("Game.UI.Windows.Elements.PlanMissionElements.PMMissionParameter");
+        static readonly FieldInfo PlanMissionWindowField = AccessTools.Field(PMTabScheduleType, "planMissionWindow") ?? AccessTools.Field(PMTabScheduleType?.BaseType, "planMissionWindow");
+        static readonly PropertyInfo PMMissionParameterProperty = PlanMissionWindowType?.GetProperty("PMMissionParameter", BindingFlags.Public | BindingFlags.Instance);
+        static readonly PropertyInfo StartProperty = PMMissionParameterType?.GetProperty("Start", BindingFlags.Public | BindingFlags.Instance);
+        static readonly PropertyInfo LVProperty = PMMissionParameterType?.GetProperty("LV", BindingFlags.Public | BindingFlags.Instance);
+        static readonly FieldInfo ScField = PMMissionParameterType?.GetField("sc", BindingFlags.NonPublic | BindingFlags.Instance);
+
+        static MethodBase TargetMethod()
+        {
+            return AccessTools.Method(PMTabScheduleType, "CalculateCostStart");
+        }
+
+        static void Postfix(object __instance, ref double __result, ref bool launchCostZero)
+        {
+            if (__instance == null || PMTabScheduleType == null || PMMissionParameterType == null)
+                return;
+
+            try
+            {
+                object planMissionWindow = PlanMissionWindowField?.GetValue(__instance);
+                object pmp = PMMissionParameterProperty?.GetValue(planMissionWindow);
+                if (pmp == null)
+                    return;
+
+                ObjectInfo start = StartProperty?.GetValue(pmp) as ObjectInfo;
+                if (start == null || !BodyPatcher.BodyHasRemovedOrbit(start))
+                    return;
+
+                object lv = LVProperty?.GetValue(pmp);
+                if (lv != null)
+                    return;
+
+                ISpacecraftInfo sc = ScField?.GetValue(pmp) as ISpacecraftInfo;
+                if (sc?.GetTypeSpaceCraft() == null || !sc.GetTypeSpaceCraft().OrbitSC || sc.GetTypeSpaceCraft().LowOrbitContainer)
+                    return;
+
+                launchCostZero = true;
+                __result = 0.0;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[BodyPatcher] CalculateCostStart override failed: {ex.Message}");
+            }
+        }
+    }
+
+    [HarmonyPatch]
+    static class PatchPMMissionParameterSetFuelNeedRemovedOrbitBodies
+    {
+        static readonly Type PMMissionParameterType = AccessTools.TypeByName("Game.UI.Windows.Elements.PlanMissionElements.PMMissionParameter");
+        static readonly PropertyInfo StartProperty = PMMissionParameterType?.GetProperty("Start", BindingFlags.Public | BindingFlags.Instance);
+        static readonly PropertyInfo LVProperty = PMMissionParameterType?.GetProperty("LV", BindingFlags.Public | BindingFlags.Instance);
+        static readonly FieldInfo ScField = PMMissionParameterType?.GetField("sc", BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo FuelNeedToGetFuelToOrbitField = PMMissionParameterType?.GetField("fuelNeedToGetFuelToOrbit", BindingFlags.NonPublic | BindingFlags.Instance);
+
+        static MethodBase TargetMethod()
+        {
+            return AccessTools.Method(PMMissionParameterType, "SetFuelNeed");
+        }
+
+        static void Postfix(object __instance)
+        {
+            if (__instance == null || PMMissionParameterType == null)
+                return;
+
+            try
+            {
+                ObjectInfo start = StartProperty?.GetValue(__instance) as ObjectInfo;
+                if (start == null || !BodyPatcher.BodyHasRemovedOrbit(start))
+                    return;
+
+                object lv = LVProperty?.GetValue(__instance);
+                if (lv != null)
+                    return;
+
+                ISpacecraftInfo sc = ScField?.GetValue(__instance) as ISpacecraftInfo;
+                if (sc?.GetTypeSpaceCraft() == null || !sc.GetTypeSpaceCraft().OrbitSC || sc.GetTypeSpaceCraft().LowOrbitContainer)
+                    return;
+
+                FuelNeedToGetFuelToOrbitField?.SetValue(__instance, 0.0);
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[BodyPatcher] SetFuelNeed override failed: {ex.Message}");
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(ObjectInfo), "GetLayerLabel")]
     static class PatchObjectInfoGetLayerLabelRemovedOrbitBodies
     {
@@ -313,51 +614,70 @@ namespace Teddit
             if (!startRemoved && !targetRemoved)
                 return true;
 
-            Plugin.Log.LogInfo(
-                $"[BodyPatcher] CheckEarthMoonCase override: start={objectInfoStart?.ObjectName ?? "NULL"} removed={startRemoved} type={objectInfoStart?.objectTypes.ToString() ?? "NULL"} " +
-                $"target={objectInfoTarget?.ObjectName ?? "NULL"} removed={targetRemoved} type={objectInfoTarget?.objectTypes.ToString() ?? "NULL"} => false");
-            __result = false;
+            __result = CheckMoonCaseLikeStock(objectInfoStart, objectInfoTarget);
             return false;
         }
-    }
 
-    [HarmonyPatch]
-    static class PatchGameManagerCheckCanPlanMissionLoggingRemovedOrbitBodies
-    {
-        static readonly Type PMMissionParameterType = AccessTools.TypeByName("PMMissionParameter");
-        static readonly PropertyInfo StartProperty = PMMissionParameterType?.GetProperty("Start", BindingFlags.Public | BindingFlags.Instance);
-        static readonly PropertyInfo TargetProperty = PMMissionParameterType?.GetProperty("Target", BindingFlags.Public | BindingFlags.Instance);
-
-        static MethodBase TargetMethod()
-        {
-            return AccessTools.Method(typeof(GameManager), "CheckCanPlanMission");
-        }
-
-        static void Prefix(object pmp)
-        {
-            if (pmp == null) return;
-            var start = GetPlannerObjectInfo(StartProperty, pmp);
-            var target = GetPlannerObjectInfo(TargetProperty, pmp);
-            bool startRemoved = BodyPatcher.BodyHasRemovedOrbit(start);
-            bool targetRemoved = BodyPatcher.BodyHasRemovedOrbit(target);
-            if (!startRemoved && !targetRemoved)
-                return;
-
-            Plugin.Log.LogInfo(
-                $"[BodyPatcher] Planner start: start={start?.ObjectName ?? "NULL"} removed={startRemoved} type={start?.objectTypes.ToString() ?? "NULL"} " +
-                $"target={target?.ObjectName ?? "NULL"} removed={targetRemoved} type={target?.objectTypes.ToString() ?? "NULL"}");
-        }
-
-        static ObjectInfo GetPlannerObjectInfo(PropertyInfo property, object pmp)
+        static bool CheckMoonCaseLikeStock(ObjectInfo objectInfoStart, ObjectInfo objectInfoTarget)
         {
             try
             {
-                return property?.GetValue(pmp) as ObjectInfo;
+                if (IsMoonLike(objectInfoTarget))
+                {
+                    if (objectInfoStart == objectInfoTarget)
+                        return false;
+
+                    if (GetParentNBody(objectInfoStart) == GetParentNBody(objectInfoTarget))
+                        return true;
+                }
+                else if (IsMoonLike(objectInfoStart))
+                {
+                    if (objectInfoTarget?.NBody == objectInfoStart?.parentObjectInfo?.NBody)
+                        return true;
+
+                    if (GetParentNBody(objectInfoTarget) == objectInfoStart?.parentObjectInfo?.NBody)
+                        return true;
+                }
+                else if (objectInfoTarget?.parentObjectInfo != null && objectInfoTarget.parentObjectInfo.NBody?.GetObjectInfo()?.parentObjectInfo != null)
+                {
+                    if (IsOrbitLike(objectInfoTarget))
+                    {
+                        if (objectInfoStart?.NBody == objectInfoTarget.parentObjectInfo.NBody.GetObjectInfo().parentObjectInfo.NBody)
+                            return true;
+                    }
+                    else if (IsOrbitLike(objectInfoStart) && objectInfoTarget?.NBody == objectInfoStart.parentObjectInfo.NBody.GetObjectInfo().parentObjectInfo.NBody)
+                    {
+                        return true;
+                    }
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                Plugin.Log.LogWarning($"[BodyPatcher] CheckEarthMoonCase custom evaluation failed: {ex.Message}");
             }
+
+            return false;
+        }
+
+        static bool IsMoonLike(ObjectInfo body)
+        {
+            if (body == null)
+                return false;
+
+            if (string.Equals(body.objectTypes.ToString(), "Moons", StringComparison.OrdinalIgnoreCase))
+                return true;
+
+            return BodyPatcher.BodyHasRemovedOrbit(body) && body.parentObjectInfo != null;
+        }
+
+        static bool IsOrbitLike(ObjectInfo body)
+        {
+            return body != null && string.Equals(body.objectTypes.ToString(), "Orbit", StringComparison.OrdinalIgnoreCase);
+        }
+
+        static NBody GetParentNBody(ObjectInfo body)
+        {
+            return body?.parentObjectInfo?.NBody;
         }
     }
 
@@ -389,13 +709,10 @@ namespace Teddit
             if (!startRemoved && !targetRemoved)
                 return;
 
-            var normalizedStart = NormalizeRemovedOrbitCalculationBody(start);
-            var normalizedTarget = NormalizeRemovedOrbitCalculationBody(target);
+            var normalizedStart = NormalizeCalculationBody(start, target);
+            var normalizedTarget = NormalizeCalculationBody(target, start);
             if (normalizedStart == null || normalizedTarget == null || normalizedStart.NBody == null || normalizedTarget.NBody == null)
             {
-                Plugin.Log.LogWarning(
-                    $"[BodyPatcher] PMMissionParameter normalize skipped: start={start?.ObjectName ?? "NULL"} normalizedStart={normalizedStart?.ObjectName ?? "NULL"} " +
-                    $"target={target?.ObjectName ?? "NULL"} normalizedTarget={normalizedTarget?.ObjectName ?? "NULL"}");
                 return;
             }
 
@@ -403,13 +720,10 @@ namespace Teddit
             var targetOrbit = normalizedTarget.NBody.gameObject != null ? normalizedTarget.NBody.gameObject.GetComponent<OrbitUniversal>() : null;
             if (startOrbit == null || targetOrbit == null)
             {
-                Plugin.Log.LogWarning(
-                    $"[BodyPatcher] PMMissionParameter normalize missing orbit: startCalc={normalizedStart.ObjectName} startOrbit={(startOrbit != null)} " +
-                    $"targetCalc={normalizedTarget.ObjectName} targetOrbit={(targetOrbit != null)}");
                 return;
             }
 
-            bool orbitCase = ReferenceEquals(normalizedStart, normalizedTarget);
+            bool orbitCase = ComputeOrbitCase(normalizedStart, normalizedTarget, startOrbit, targetOrbit);
             NBody centerBody = targetOrbit.centerNbody ?? startOrbit.centerNbody;
 
             StartCalculationField?.SetValue(__instance, normalizedStart);
@@ -417,20 +731,139 @@ namespace Teddit
             CenterBodyField?.SetValue(__instance, centerBody);
             OrbitCaseField?.SetValue(__instance, orbitCase);
 
-            Plugin.Log.LogInfo(
-                $"[BodyPatcher] PMMissionParameter normalize: start={start?.ObjectName ?? "NULL"} removed={startRemoved} -> calcStart={normalizedStart.ObjectName} type={normalizedStart.objectTypes} center={startOrbit.centerNbody?.name ?? "NULL"}; " +
-                $"target={target?.ObjectName ?? "NULL"} removed={targetRemoved} -> calcTarget={normalizedTarget.ObjectName} type={normalizedTarget.objectTypes} center={targetOrbit.centerNbody?.name ?? "NULL"}; orbitCase={orbitCase}");
         }
 
-        static ObjectInfo NormalizeRemovedOrbitCalculationBody(ObjectInfo body)
+        static ObjectInfo NormalizeCalculationBody(ObjectInfo body, ObjectInfo counterpart)
         {
             if (body == null)
                 return null;
 
-            if (!BodyPatcher.BodyHasRemovedOrbit(body) || body.parentObjectInfo == null)
-                return body;
+            if (BodyPatcher.BodyHasRemovedOrbit(body))
+            {
+                if (body.parentObjectInfo == null)
+                    return body;
 
-            return body.parentObjectInfo;
+                if (ShouldPreserveRemovedMoonForMoonCase(body, counterpart))
+                    return body;
+
+                if (CounterpartOrbitMatchesRemovedBodyParent(counterpart, body.parentObjectInfo))
+                    return body;
+
+                return body.parentObjectInfo;
+            }
+
+            if (BodyPatcher.BodyHasRemovedOrbit(counterpart) && counterpart.parentObjectInfo == body)
+            {
+                try
+                {
+                    if (body.LowOrbitCustom != null)
+                    {
+                        ObjectInfo orbitObject = body.LowOrbitCustom.GetObjectInfo();
+                        if (orbitObject != null)
+                            return orbitObject;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Plugin.Log.LogWarning($"[BodyPatcher] Failed to normalize parent body '{body.ObjectName}' to low orbit for removed-orbit counterpart '{counterpart.ObjectName}': {ex.Message}");
+                }
+            }
+
+            if (IsOrbitObjectInfo(body) && BodyPatcher.BodyHasRemovedOrbit(counterpart))
+            {
+                if (counterpart?.parentObjectInfo != null && CounterpartOrbitMatchesRemovedBodyParent(body, counterpart.parentObjectInfo))
+                    return body;
+
+                ObjectInfo centerBody = GetOrbitCenterObjectInfo(body);
+                if (centerBody != null)
+                    return centerBody;
+            }
+
+            return body;
+        }
+
+        static bool ShouldPreserveRemovedMoonForMoonCase(ObjectInfo removedBody, ObjectInfo counterpart)
+        {
+            if (removedBody == null || counterpart == null || removedBody.parentObjectInfo == null)
+                return false;
+
+            if (ReferenceEquals(counterpart, removedBody.parentObjectInfo))
+                return true;
+
+            if (BodyPatcher.BodyHasRemovedOrbit(counterpart) && counterpart.parentObjectInfo == removedBody.parentObjectInfo)
+                return true;
+
+            if (counterpart.parentObjectInfo == removedBody.parentObjectInfo)
+                return true;
+
+            return false;
+        }
+
+        static bool CounterpartOrbitMatchesRemovedBodyParent(ObjectInfo counterpart, ObjectInfo removedBodyParent)
+        {
+            if (counterpart == null || removedBodyParent?.NBody == null || !IsOrbitObjectInfo(counterpart))
+                return false;
+
+            OrbitUniversal counterpartOrbit = GetOrbitUniversal(counterpart);
+            return counterpartOrbit != null && counterpartOrbit.centerNbody == removedBodyParent.NBody;
+        }
+
+        static bool IsOrbitObjectInfo(ObjectInfo body)
+        {
+            return body != null && string.Equals(body.objectTypes.ToString(), "Orbit", StringComparison.OrdinalIgnoreCase);
+        }
+
+        static bool ComputeOrbitCase(ObjectInfo normalizedStart, ObjectInfo normalizedTarget, OrbitUniversal startOrbit, OrbitUniversal targetOrbit)
+        {
+            if (normalizedStart == null || normalizedTarget == null || startOrbit == null || targetOrbit == null)
+                return false;
+
+            if (ReferenceEquals(normalizedStart, normalizedTarget))
+                return true;
+
+            // Mirror the stock local-transfer rules from PMMissionParameter.ChangeRealToCalculationTarget
+            // so removed-orbit bodies still classify local parent-orbit hops as orbit cases.
+            if (startOrbit.GetNBody() == targetOrbit.centerNbody && IsOrbitObjectInfo(normalizedTarget))
+                return true;
+
+            if (targetOrbit.GetNBody() == startOrbit.centerNbody && IsOrbitObjectInfo(normalizedStart))
+                return true;
+
+            if (targetOrbit.centerNbody == startOrbit.centerNbody
+                && targetOrbit.centerNbody != null
+                && IsOrbitObjectInfo(normalizedStart)
+                && IsOrbitObjectInfo(normalizedTarget))
+                return true;
+
+            return false;
+        }
+
+        static ObjectInfo GetOrbitCenterObjectInfo(ObjectInfo orbitBody)
+        {
+            OrbitUniversal orbit = GetOrbitUniversal(orbitBody);
+            if (orbit?.centerNbody == null)
+                return null;
+
+            try
+            {
+                return orbit.centerNbody.GetObjectInfo();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        static OrbitUniversal GetOrbitUniversal(ObjectInfo body)
+        {
+            try
+            {
+                return body?.NBody?.gameObject != null ? body.NBody.gameObject.GetComponent<OrbitUniversal>() : null;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         static ObjectInfo GetPlannerObjectInfoSafe(PropertyInfo property, object pmp)
@@ -770,6 +1203,24 @@ namespace Teddit
                 __result += "\n\n" + capabilities;
 
             return null;
+        }
+    }
+
+    [HarmonyPatch(typeof(AllFacility), "SetImgType")]
+    static class PatchAllFacilitySetImgTypeTooltipImage
+    {
+        static void Postfix(Image imgType)
+        {
+            TooltipImageFix.Repair(imgType);
+        }
+    }
+
+    [HarmonyPatch(typeof(AllFacility), "SetImgTypeSC")]
+    static class PatchAllFacilitySetImgTypeSCTooltipImage
+    {
+        static void Postfix(Image imgType)
+        {
+            TooltipImageFix.Repair(imgType);
         }
     }
 

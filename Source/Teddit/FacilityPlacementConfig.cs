@@ -17,6 +17,8 @@ namespace Teddit
     ///       unsafeOverride: false             # default false (new-game only)
     ///
     /// Body keys must match ObjectInfo.ObjectName (uppercase, e.g. "MARS", "EARTH").
+    /// Company must exist in GameManager.Companies for the current run. If that
+    /// company was disabled on the start-game screen, the entry is skipped.
     /// </summary>
     internal sealed class FacilityPlacementConfig
     {

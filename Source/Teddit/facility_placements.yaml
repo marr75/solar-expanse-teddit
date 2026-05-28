@@ -7,6 +7,8 @@
 # Body keys are ObjectInfo.ObjectName values (uppercase: MARS, EARTH, LUNA, ...).
 # Company is the CompanyDefinition.ID, or the alias 'world_government' to target
 # whichever company has IsWorldGovernment=true.
+# The company must be active in the current game. If it was disabled on the
+# start-game screen, Teddit skips the entry.
 #
 # Example (uncomment to use):
 #

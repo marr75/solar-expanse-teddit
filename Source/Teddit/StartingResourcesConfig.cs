@@ -9,12 +9,15 @@ namespace Teddit
     /// Reads starting_resources.yaml from a mod folder. Sets per-(body, company)
     /// stockpiles on game start. Like facility_placements, additive on top of vanilla
     /// initial state and gated on new-game vs save-load via `unsafeOverride`.
+    /// Companies must exist in GameManager.Companies for the current run; entries
+    /// targeting companies disabled on the start-game screen are skipped.
     ///
     /// Format:
     ///   enabled: true
     ///   EARTH:
     ///     - company: world_government
     ///       unsafeOverride: false           # optional, default false
+    ///       mode: set                       # optional: set (default) or add
     ///       resources:
     ///         id_resource_metal: 1000000
     ///         id_resource_steel: 750000

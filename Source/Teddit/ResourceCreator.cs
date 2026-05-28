@@ -416,7 +416,7 @@ namespace Teddit
                     RenderTexture.ReleaseTemporary(rt);
                 }
 
-                var sprite = Sprite.Create(tex, new Rect(0, 0, width, height), new Vector2(0.5f, 0.5f), source.pixelsPerUnit);
+                var sprite = Sprite.Create(tex, new Rect(0, 0, width, height), new Vector2(0.5f, 0.5f), source.pixelsPerUnit, 0u, SpriteMeshType.FullRect);
                 sprite.name = newName;
                 return sprite;
             }

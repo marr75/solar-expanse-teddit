@@ -62,7 +62,7 @@ namespace Teddit
                     var company = ResolveCompany(companies, entry.Company);
                     if (company == null)
                     {
-                        Plugin.Log.LogWarning($"[StartingResources] Company '{entry.Company}' not found.");
+                        Plugin.Log.LogWarning($"[StartingResources] Company '{entry.Company}' is not active in this game (disabled at start or missing) — skipping {body.ObjectName}.");
                         skipped++;
                         continue;
                     }

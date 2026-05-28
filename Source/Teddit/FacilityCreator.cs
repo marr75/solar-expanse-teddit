@@ -20,6 +20,14 @@ namespace Teddit
 {
     internal static class FacilityCreator
     {
+        static readonly string[] PreferredTooltipDonorSpriteNames =
+        {
+            "build_modular_habitat",
+            "module_crew_compartment_small",
+            "module_crew_compartment_medium",
+            "module_crew_compartment_large"
+        };
+
         static readonly string[] CurrentLangCandidates =
             { "_currentLaungage", "_currentLanguage", "currentLaungage", "currentLanguage" };
         static readonly string[] DefaultLangCandidates =
@@ -199,28 +207,7 @@ namespace Teddit
         {
             try
             {
-                // Find an already-upgraded facility sprite asset to inject into.
-                // Each built-in facility is its own TMP_SpriteAsset with a single sprite.
-                // We find the first one with a valid material+texture, duplicate its texture
-                // into a Texture2DArray alongside ours, then add our glyph/character to it.
-                // Simpler: just find any asset that is already upgraded and add our character
-                // to it directly, pointing to a new atlas index with our texture.
-                //
-                // Simplest working approach: find an existing upgraded asset, add our
-                // character to its tables, then call UpdateLookupTables (safe on upgraded assets).
-
-                var all = Resources.FindObjectsOfTypeAll<TMP_SpriteAsset>();
-                TMP_SpriteAsset target = null;
-                foreach (var a in all)
-                {
-                    if (a == null || a.material == null) continue;
-                    // Access via reflection to avoid triggering upgrade on potentially broken assets
-                    var charFi = typeof(TMP_SpriteAsset).GetField("m_SpriteCharacterTable", BindingFlags.NonPublic | BindingFlags.Instance)
-                              ?? typeof(TMP_SpriteAsset).GetField("spriteCharacterTable",   BindingFlags.NonPublic | BindingFlags.Instance);
-                    var chars = charFi?.GetValue(a) as List<TMP_SpriteCharacter>;
-                    if (chars != null && chars.Count > 0) { target = a; break; }
-                }
-
+                TMP_SpriteAsset target = FindStableTmpSpriteAsset();
                 if (target == null)
                 {
                     Plugin.Log.LogWarning("[FacilityCreator] No suitable TMP_SpriteAsset found — tooltip icon will be missing.");
@@ -253,13 +240,14 @@ namespace Teddit
                 var cloneGlyphs = new List<TMP_SpriteGlyph>();
                 var cloneChars  = new List<TMP_SpriteCharacter>();
 
-                // Borrow metrics/scale from the existing glyph so sizing matches built-in sprites
-                var existingGlyphs = (List<TMP_SpriteGlyph>)glyphListFi.GetValue(target);
-                var refGlyph = existingGlyphs != null && existingGlyphs.Count > 0 ? existingGlyphs[0] : null;
+                var refGlyph = GetReferenceGlyph(target);
+                var refMetrics = refGlyph != null
+                    ? refGlyph.metrics
+                    : new UnityEngine.TextCore.GlyphMetrics(36f, 36f, 0f, 36f, 36f);
 
                 var glyph = new TMP_SpriteGlyph();
                 glyph.index      = 0;
-                glyph.metrics    = refGlyph != null ? refGlyph.metrics : new UnityEngine.TextCore.GlyphMetrics(tex.width, tex.height, 0, tex.height, tex.width);
+                glyph.metrics    = refMetrics;
                 glyph.glyphRect  = new UnityEngine.TextCore.GlyphRect(0, 0, tex.width, tex.height);
                 glyph.scale      = refGlyph != null ? refGlyph.scale : 1f;
                 glyph.atlasIndex = 0;
@@ -286,6 +274,94 @@ namespace Teddit
             {
                 Plugin.Log.LogWarning($"[FacilityCreator] TMP sprite registration failed for {spriteName}: {ex.Message}");
             }
+        }
+
+        static TMP_SpriteAsset FindStableTmpSpriteAsset()
+        {
+            foreach (string preferredName in PreferredTooltipDonorSpriteNames)
+            {
+                TMP_SpriteAsset preferred = FindSpriteAssetByCharacterName(preferredName);
+                if (preferred != null)
+                    return preferred;
+            }
+
+            TMP_SpriteAsset asset = TMP_Settings.defaultSpriteAsset;
+            if (HasSpriteGlyphs(asset))
+                return asset;
+
+            if (asset?.fallbackSpriteAssets != null)
+            {
+                foreach (var fallback in asset.fallbackSpriteAssets)
+                    if (HasSpriteGlyphs(fallback))
+                        return fallback;
+            }
+
+            foreach (var candidate in Resources.FindObjectsOfTypeAll<TMP_SpriteAsset>())
+                if (HasSpriteGlyphs(candidate))
+                    return candidate;
+
+            return null;
+        }
+
+        static TMP_SpriteAsset FindSpriteAssetByCharacterName(string spriteName)
+        {
+            if (string.IsNullOrEmpty(spriteName))
+                return null;
+
+            TMP_SpriteAsset defaultAsset = TMP_Settings.defaultSpriteAsset;
+            if (AssetContainsSpriteName(defaultAsset, spriteName))
+                return defaultAsset;
+
+            if (defaultAsset?.fallbackSpriteAssets != null)
+            {
+                foreach (var fallback in defaultAsset.fallbackSpriteAssets)
+                    if (AssetContainsSpriteName(fallback, spriteName))
+                        return fallback;
+            }
+
+            foreach (var candidate in Resources.FindObjectsOfTypeAll<TMP_SpriteAsset>())
+                if (AssetContainsSpriteName(candidate, spriteName))
+                    return candidate;
+
+            return null;
+        }
+
+        static bool HasSpriteGlyphs(TMP_SpriteAsset asset)
+        {
+            return asset != null
+                && asset.material != null
+                && asset.spriteGlyphTable != null
+                && asset.spriteGlyphTable.Count > 0
+                && asset.spriteCharacterTable != null
+                && asset.spriteCharacterTable.Count > 0;
+        }
+
+        static bool AssetContainsSpriteName(TMP_SpriteAsset asset, string spriteName)
+        {
+            if (!HasSpriteGlyphs(asset))
+                return false;
+
+            foreach (var ch in asset.spriteCharacterTable)
+            {
+                if (ch != null && string.Equals(ch.name, spriteName, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+
+            return false;
+        }
+
+        static TMP_SpriteGlyph GetReferenceGlyph(TMP_SpriteAsset asset)
+        {
+            if (asset?.spriteGlyphTable == null)
+                return null;
+            foreach (var glyph in asset.spriteGlyphTable)
+            {
+                if (glyph == null)
+                    continue;
+                if (glyph.metrics.height > 0f && glyph.metrics.horizontalAdvance > 0f)
+                    return glyph;
+            }
+            return asset.spriteGlyphTable.Count > 0 ? asset.spriteGlyphTable[0] : null;
         }
 
         internal static void EnsureSpriteRegisteredWithTMP(Sprite sprite, string spriteNameOverride = null)
@@ -490,7 +566,7 @@ namespace Teddit
                     Plugin.Log.LogWarning($"[FacilityCreator] Failed to decode {fmt} image: {fullPath}");
                     return null;
                 }
-                var sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f);
+                var sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f, 0u, SpriteMeshType.FullRect);
                 sprite.name = spriteName;
                 Plugin.Log.LogInfo($"[FacilityCreator] Loaded icon ({tex.width}x{tex.height} {fmt}): {Path.GetFileName(fullPath)}");
                 RegisterSpriteWithTMP(spriteName, tex);

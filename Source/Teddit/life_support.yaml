@@ -1,4 +1,4 @@
-enabled: false
+enabled: true
 
 # Teddit life support patch file
 #
@@ -7,8 +7,9 @@ enabled: false
 # based on how much supply was actually consumed during UpdateLifeSupport().
 #
 # Safety:
-# - enabled must be true or this subsystem stays fully off
-# - any loaded life_support.yaml with enabled: false hard-disables the subsystem
+# - enabled should normally stay true in the root Teddit file so mod-local
+#   life_support.yaml files can merge in
+# - any loaded root life_support.yaml with enabled: false hard-disables the subsystem
 # - deposit writes follow the same lightweight pattern used by facility byproducts
 #
 # Dump/patch rule:

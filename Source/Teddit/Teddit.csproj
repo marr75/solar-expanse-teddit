@@ -160,6 +160,12 @@
     <Copy SourceFiles="$(MSBuildProjectDirectory)\facility_placements.yaml"
           DestinationFolder="$(RepoPluginDir)"
           Condition="!Exists('$(RepoPluginDir)\facility_placements.yaml')" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\starting_resources.yaml"
+          DestinationFolder="$(PluginDir)"
+          Condition="!Exists('$(PluginDir)\starting_resources.yaml')" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\starting_resources.yaml"
+          DestinationFolder="$(RepoPluginDir)"
+          Condition="!Exists('$(RepoPluginDir)\starting_resources.yaml')" />
 
     <Message Text="Deployed to $(PluginDir) and $(RepoPluginDir)" Importance="High" />
   </Target>

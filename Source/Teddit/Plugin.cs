@@ -5,7 +5,7 @@ using HarmonyLib;
 
 namespace Teddit
 {
-    [BepInPlugin("com.teddit.teddit", "Teddit", "1.6.1")]
+    [BepInPlugin("com.teddit.teddit", "Teddit", "1.7")]
     public class Plugin : BaseUnityPlugin
     {
         internal static ManualLogSource Log;

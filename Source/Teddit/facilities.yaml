@@ -17,10 +17,13 @@ enabled: true
 #   upkeepStacking:                       bool    whether upkeep scales with additional units
 #   upkeepStackingValue:                  float   extra upkeep per stacked unit
 #   blockStacking:                        bool    true = separate facility instances, false = merge identical built facilities
+#   canBuildBy:                           enum    build-limit mode from CanBuildParameter.ECanBuild
+#   countOnPlanet:                        long    max allowed on one body when canBuildBy: countOnPlanet
 #   timeToBuildInDays:                    float   construction time in in-game days
 #   constructionEquipmentCountIsRequired: bool    whether Construction Equipment is required to build
 #   price.buildCost:                      double  direct nested form for money cost
 #   energyProductionData.energyProduction:double  direct nested form for power output
+#   energyStorageData2.energyMaxCapacity: double  direct nested form for power storage
 #   resourceExplorationBonus:             float   GroundFacilityDescriptor only; adds exploration power
 #   facilityItemClass:                    string  runtime facility class name, e.g. LabFacility
 #   mass:                                 float   SpaceModuleDescriptor only; cargo mass of the module
@@ -38,6 +41,9 @@ enabled: true
 #   resourcesToMine:   [resource_id, ...]          resources a Mining facility can extract
 #   refinerInput:      { resource_id: rate }       resources consumed per day by a Refiner facility
 #   refinerOutput:     { resource_id: rate }       resources produced per day by a Refiner facility
+#   energyStorage:     double                       energy storage capacity
+#   canBuildBy:        enum                         build-limit / placement gate mode
+#   countOnPlanet:     long                         limit value for canBuildBy: countOnPlanet
 #   byproducts:                                      side outputs
 #     - resource: id_resource_co2
 #       rate: 0.5
@@ -87,6 +93,12 @@ enabled: true
 # Refiner notes:
 #   refinerInput/refinerOutput use the same mapping shape as the dump.
 #   Do not use a list of {resource, rate, state}; refinery IO does not store state.
+#
+# Build-limit notes:
+#   The stock one-per-body rule is:
+#     canBuildBy: countOnPlanet
+#     countOnPlanet: 1
+#   `countOnPlanet` only matters for that canBuildBy mode.
 #
 # Module notes:
 #   A movable module is a SpaceModuleDescriptor.

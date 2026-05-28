@@ -58,7 +58,7 @@ namespace Teddit
                         var clearTarget = ResolveCompany(companies, entry.Clear);
                         if (clearTarget == null)
                         {
-                            Plugin.Log.LogWarning($"[FacilityPlacement] clear: company '{entry.Clear}' not found on {body.ObjectName} — skipping.");
+                            Plugin.Log.LogWarning($"[FacilityPlacement] clear: company '{entry.Clear}' is not active in this game on {body.ObjectName} (disabled at start or missing) — skipping.");
                             skipped++;
                             continue;
                         }
@@ -90,7 +90,7 @@ namespace Teddit
                     var company = ResolveCompany(companies, entry.Company);
                     if (company == null)
                     {
-                        Plugin.Log.LogWarning($"[FacilityPlacement] Company '{entry.Company}' not found — skipping {entry.Facility} on {body.ObjectName}.");
+                        Plugin.Log.LogWarning($"[FacilityPlacement] Company '{entry.Company}' is not active in this game (disabled at start or missing) — skipping {entry.Facility} on {body.ObjectName}.");
                         skipped++;
                         continue;
                     }
