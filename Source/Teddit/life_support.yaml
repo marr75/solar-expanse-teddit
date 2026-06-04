@@ -36,5 +36,8 @@ enabled: true
 #       target: Storage
 
 humanLifeSupport:
+  # supplyTonsPerCrewDay: 0.2
+  # shipSupplyTonsPerCrewDay: 0.2
+  # colonySupplyTonsPerCrewDay: 0.2
   byproducts: []
 

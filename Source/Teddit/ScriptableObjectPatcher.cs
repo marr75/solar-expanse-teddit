@@ -985,7 +985,7 @@ namespace Teddit
             var allSO = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance;
             if (allSO == null) { Plugin.Log.LogError("[ResearchPatcher] AllScriptableObjectManager null"); return; }
 
-            int patched = 0, skipped = 0;
+            int patched = 0, created = 0, skipped = 0;
             foreach (var kv in config)
             {
                 if (kv.Key.StartsWith("_")) continue;
@@ -993,15 +993,16 @@ namespace Teddit
                 var rd = allSO.AllResearchDefinition.GetByID(kv.Key);
                 if (rd == null)
                 {
-                    Plugin.Log.LogDebug($"[ResearchPatcher] '{kv.Key}' not found in game data - new-entry injection is disabled, skipping.");
-                    skipped++;
-                    continue;
-                }
-                if (rd == null)
-                {
-                    // New-research injection is temporarily disabled — skip unknown IDs.
-                    Plugin.Log.LogDebug($"[ResearchPatcher] '{kv.Key}' not found in game data — new-entry injection is disabled, skipping.");
-                    skipped++;
+                    try
+                    {
+                        ResearchCreator.CreateAndInjectResearch(kv.Key, kv.Value, allSO, modDir);
+                        created++;
+                    }
+                    catch (Exception ex)
+                    {
+                        Plugin.Log.LogError($"[ResearchPatcher] Failed to create '{kv.Key}': {ex}");
+                        skipped++;
+                    }
                     continue;
                 }
 
@@ -1012,8 +1013,8 @@ namespace Teddit
                 ApplyResearchComplexFields(rd, kv.Value, kv.Key, allSO, modDir);
                 patched++;
             }
-            if (patched > 0 || skipped > 0)
-                Plugin.Log.LogInfo($"[ResearchPatcher] Done - patched: {patched}, skipped: {skipped}");
+            if (patched > 0 || created > 0 || skipped > 0)
+                Plugin.Log.LogInfo($"[ResearchPatcher] Done — patched: {patched}, created: {created}, skipped: {skipped}");
 
         }
 

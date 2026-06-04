@@ -48,29 +48,45 @@ namespace Teddit
 
         static bool ReadTopLevelEnabled(string path, bool defaultValue)
         {
-            var raw = YamlHelper.LoadRawMap(path);
-            if (raw == null)
-                return defaultValue;
+            try
+            {
+                var raw = YamlHelper.LoadRawMap(path);
+                if (raw == null)
+                    return defaultValue;
 
-            if (!TryGetBool(raw, "enabled", out var enabled))
-                return defaultValue;
+                if (!TryGetBool(raw, "enabled", out var enabled))
+                    return defaultValue;
 
-            return enabled;
+                return enabled;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogError($"[RootPatchSettings] Failed to parse {Path.GetFileName(path)}: {ex.Message}");
+                return defaultValue;
+            }
         }
 
         static bool ReadLifeSupportEnabled(string path, bool defaultValue)
         {
-            var raw = YamlHelper.LoadRawMap(path);
-            if (raw == null)
+            try
+            {
+                var raw = YamlHelper.LoadRawMap(path);
+                if (raw == null)
+                    return defaultValue;
+
+                if (TryGetBool(raw, "enabled", out var topLevelEnabled))
+                    return topLevelEnabled;
+
+                if (TryGetNestedBool(raw, "humanLifeSupport", "enabled", out var nestedEnabled))
+                    return nestedEnabled;
+
                 return defaultValue;
-
-            if (TryGetBool(raw, "enabled", out var topLevelEnabled))
-                return topLevelEnabled;
-
-            if (TryGetNestedBool(raw, "humanLifeSupport", "enabled", out var nestedEnabled))
-                return nestedEnabled;
-
-            return defaultValue;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogError($"[RootPatchSettings] Failed to parse {Path.GetFileName(path)}: {ex.Message}");
+                return defaultValue;
+            }
         }
 
         static bool TryGetBool(Dictionary<object, object> raw, string key, out bool value)

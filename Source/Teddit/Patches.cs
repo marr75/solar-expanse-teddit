@@ -50,7 +50,7 @@ namespace Teddit
             var t = AccessTools.TypeByName("Game.UI.Windows.Windows.ResearchTree.ResearchTree");
             if (t == null)
             {
-                Plugin.Log.LogWarning("[Patch] ResearchTree type not found — Show patch skipped.");
+                Plugin.Log.LogWarning("[Patch] ResearchTree type not found — CreateUI patch skipped.");
                 return null;
             }
             return AccessTools.Method(t, "CreateUI");
@@ -59,16 +59,13 @@ namespace Teddit
         static void Prefix(object __instance)
         {
             ResearchCreator._researchTreeInstance = __instance;
-            // Research node injection disabled.
-            // New-research injection is temporarily disabled — do nothing here.
-            // ResearchCreator._researchTreeInstance = __instance;
-            // ResearchCreator.SpawnPendingEntries(__instance);
+            ResearchCreator.EnsureResearchLoadedBeforeCreateUI();
         }
 
         static void Postfix(object __instance)
         {
             ResearchCreator._researchTreeInstance = __instance;
-            // Research node injection disabled.
+            ResearchCreator.LogTreeStatus(__instance);
         }
     }
 
@@ -86,7 +83,7 @@ namespace Teddit
         static void Postfix(object __instance)
         {
             ResearchCreator._researchTreeInstance = __instance;
-            // Research node injection disabled.
+            ResearchCreator.SpawnPendingEntries(__instance);
         }
     }
 
@@ -137,7 +134,9 @@ namespace Teddit
                 catch (Exception ex) { Plugin.Log.LogError($"[DataDumper] {ex}"); }
             }
 
+            Plugin.Log.LogInfo("[Teddit] About to load RootPatchSettings.");
             var rootSettings = RootPatchSettings.Load(Plugin.PluginDir);
+            Plugin.Log.LogInfo("[Teddit] RootPatchSettings loaded.");
 
             // ── Collect mod directories in load order ─────────────────────────
             var dirs = new List<string> { Plugin.PluginDir };
@@ -155,7 +154,10 @@ namespace Teddit
             LifeSupportPatcher.ResetConfig();
 
             foreach (var dir in dirs)
+            {
+                Plugin.Log.LogInfo($"[Teddit] Applying mod dir: {dir}");
                 ApplyModDir(dir, __instance, rootSettings);
+            }
 
             // ── Second pass: facility placements run AFTER every dir has had a
             // chance to register its facility descriptors and company definitions,

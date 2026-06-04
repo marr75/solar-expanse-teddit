@@ -98,6 +98,16 @@ namespace Teddit
             Plugin.Log.LogInfo($"[ResearchCreator] + {id} (type:{rtId}, stage:{FacilityCreator.GetVal<int>(def, "stage", 1)})");
             _createdResearchIds.Add(id);
             _treeRebuildRequested = true;
+
+            try
+            {
+                Type rtpType = typeof(ResearchDefinition).Assembly
+                    .GetType("Game.UI.Windows.Windows.ResearchTree.ResearchTreeRightPanel");
+                rtpType?.GetMethod("ClearDictionaryAllRDNeedCash",
+                    BindingFlags.Public | BindingFlags.Static)
+                    ?.Invoke(null, null);
+            }
+            catch { }
         }
 
         // ── Helpers ───────────────────────────────────────────────────────────────
@@ -129,10 +139,9 @@ namespace Teddit
 
         internal static void InjectResearchTranslations(string id, string name, string description)
         {
-            // rd.Title  = LEManager.Get(id + "_Title", null).ToUpper()  → key uses capital T
-            // rd.Description = LEManager.Get(id + "_Description", null) → capital D
-            // Lookup reads from Laungage.translations only (translations2 is a pre-load overlay,
-            // merged into translations at file load — injecting there after load has no effect).
+            // rd.Title       = LEManager.Get(id + "_Title", null).ToUpper()
+            // rd.Description = LEManager.Get(id + "_Description", null)
+            // rd.Fluffu      = LEManager.Get(id + "_fluff")  ← research tree detail panel
             try
             {
                 var le     = MonoBehaviourSingleton<LEManager>.Instance;
@@ -147,6 +156,7 @@ namespace Teddit
 
                     if (!string.IsNullOrEmpty(name))        dict[id + "_Title"]       = name;
                     if (!string.IsNullOrEmpty(description)) dict[id + "_Description"] = description;
+                    if (!string.IsNullOrEmpty(description)) dict[id + "_fluff"]       = description;
                 }
 
                 // Fire OnTranslationChanged so any live UI refreshes its text
@@ -536,6 +546,32 @@ namespace Teddit
         }
 
         /// <summary>
+        /// ResearchTreeElement.Awake() calls MyInit(), but researchTreeTypeUI is still null
+        /// at that point (SetData hasn't run yet).  MyInit sets myInit=true and skips the
+        /// event subscriptions.  After SetData wires up researchTreeTypeUI, we reset myInit
+        /// and re-call MyInit so researchDefinitionGet/Change are properly subscribed — these
+        /// drive the highlight circle and click selection.
+        /// </summary>
+        static void ReInitResearchElements(MonoBehaviour stageElement)
+        {
+            Type rteType = typeof(ResearchDefinition).Assembly
+                .GetType("Game.UI.Windows.Windows.ResearchTree.ResearchTreeElement");
+            if (rteType == null) return;
+
+            var myInitFi = rteType.GetField("myInit",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            var myInitMI = rteType.GetMethod("MyInit",
+                BindingFlags.Public | BindingFlags.Instance);
+            if (myInitFi == null || myInitMI == null) return;
+
+            foreach (var elem in stageElement.GetComponentsInChildren(rteType, true))
+            {
+                myInitFi.SetValue(elem, false);
+                myInitMI.Invoke(elem, null);
+            }
+        }
+
+        /// <summary>
         /// Called from the Harmony Show() postfix.  Finds entries in ListNotEmpty that were
         /// never added to listSpawnRD (i.e. mod-created entries injected after the initial tree
         /// build), destroys the branch that should contain them so SetData() can rebuild it
@@ -599,7 +635,7 @@ namespace Teddit
                     else Plugin.Log.LogWarning($"{prefix} No root found for '{rd.ID}' — cannot inject.");
                 }
 
-                int rebuilt = 0;
+                var rebuiltStageUIs = new List<object>();
                 foreach (var root in rootsToRebuild)
                 {
                     if (root.ResearchType == null) continue;
@@ -645,24 +681,52 @@ namespace Teddit
 
                     // Spawn fresh — SetData() will scan ListNotEmpty and pick up our new entry
                     spawnMI.Invoke(targetStageUI, new object[] { root });
-                    rebuilt++;
+                    rebuiltStageUIs.Add(targetStageUI);
+
+                    // Awake() fires during Instantiate with researchTreeTypeUI still null,
+                    // setting myInit=true before the event subscriptions run.  Reset the
+                    // flag on every new ResearchTreeElement so the explicit MyInit() call
+                    // from Spawn() can wire up researchDefinitionGet/Change (highlight+click).
+                    var newElem = stageElemFi.GetValue(targetStageUI) as MonoBehaviour;
+                    if (newElem != null)
+                        ReInitResearchElements(newElem);
+
                     Plugin.Log.LogInfo($"{prefix} Rebuilt branch for root '{root.ID}'.");
                 }
 
-                if (rebuilt > 0)
+                if (rebuiltStageUIs.Count > 0)
                 {
+                    // SetCorrectHighAfterSpawn(true) creates line GameObjects.
+                    // Only call it on rebuilt branches — calling it tree-wide would
+                    // duplicate lines on every untouched branch.
+                    var stageSetCorrectMI = stageUIType.GetMethod("SetCorrectHighAfterSpawn",
+                        BindingFlags.Public | BindingFlags.Instance);
+                    foreach (var stageUI in rebuiltStageUIs)
+                        stageSetCorrectMI?.Invoke(stageUI, new object[] { true });
+
+                    // Height-only pass across the whole tree (false = don't regenerate lines)
                     treeType.GetMethod("SetCorrectHighAfterSpawn",
                         BindingFlags.Public | BindingFlags.Instance)
-                        ?.Invoke(treeInstance, new object[] { true });
+                        ?.Invoke(treeInstance, new object[] { false });
                     treeType.GetMethod("HorizontalLayoutRebuild",
                         BindingFlags.Public | BindingFlags.Instance)
                         ?.Invoke(treeInstance, null);
-                    treeType.GetMethod("SetCorrectHighAfterSpawn",
+                    treeType.GetMethod("MarkAllDirty",
                         BindingFlags.Public | BindingFlags.Instance)
-                        ?.Invoke(treeInstance, new object[] { false });
-                    treeType.GetMethod("UpdateLookUI",
-                        BindingFlags.Public | BindingFlags.Instance)
-                        ?.Invoke(treeInstance, new object[] { false });
+                        ?.Invoke(treeInstance, null);
+
+                    try
+                    {
+                        Type rtpType = typeof(ResearchDefinition).Assembly
+                            .GetType("Game.UI.Windows.Windows.ResearchTree.ResearchTreeRightPanel");
+                        rtpType?.GetMethod("ClearDictionaryAllRDNeedCash",
+                            BindingFlags.Public | BindingFlags.Static)
+                            ?.Invoke(null, null);
+                    }
+                    catch (Exception ex)
+                    {
+                        Plugin.Log.LogWarning($"{prefix} ClearDictionaryAllRDNeedCash failed: {ex.Message}");
+                    }
                 }
             }
             catch (Exception ex)
