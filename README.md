@@ -18,7 +18,7 @@ Teddit can currently edit and create:
 Teddit also extends several existing gameplay features, for use by mods. All features are togglable in ```gameplay_patches.yaml``` in the root folder.
 
 ```constructionRespectsEfficiency```: Allows constrruction modules to take crew, power, and resources in order to run.
-```energyModuleConsumeFuel```
+```energyModuleConsumeFuel```: Allows energy modules (transportable modules, not facilities) to consume fuel in order to generate power. In stock, only the permanent fixed modules were able to consume resources through the energy system.
 ```energyThrottleable``` (Set per-facility in Facilities YAML): In stock, energy facilities run at full efficiency regardless of energy deficit. This boolean, when set to true, allows a facility to throttle down production to meet demand (when batteries are full), so as to not waste fuel.
 
 ## How to Use
