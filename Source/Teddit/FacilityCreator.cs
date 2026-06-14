@@ -183,6 +183,7 @@ namespace Teddit
 
             // Complex fields (buildResources, resourcesToMine, refinerInput/Output, byproducts)
             ScriptableObjectPatcher.ApplyFacilityComplexFields(desc, def, id);
+            ScriptableObjectPatcher.ApplyCustomFields(def, id);
 
             // Register in AllFacility
             var allFacility = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance.AllFacility;

@@ -656,26 +656,28 @@ namespace Teddit
                     var stageUIList = listStageUIFi.GetValue(typeUI) as System.Collections.IList;
                     if (stageUIList == null) continue;
 
-                    // Find the stage UI row whose element matches the branch root.
-                    // Match by ResearchDefinition, not stage number — serialized
-                    // stageUI.stage doesn't reliably match ResearchDefinition.Stage.
+                    // Find the stage UI row matching the root's stage AND branch.
+                    // Multiple branches can share the same researchType + stage (e.g.
+                    // Chemical and Materials are both Engineering stage 0), so matching
+                    // on stage alone would destroy/rebuild the wrong branch.
                     object targetStageUI = null;
+                    object fallbackStageUI = null;
                     foreach (var sUI in stageUIList)
                     {
+                        if ((int)stageNumFi.GetValue(sUI) != root.Stage) continue;
                         var elem = stageElemFi.GetValue(sUI) as MonoBehaviour;
-                        if (elem == null) continue;
-                        if (stageElemRdPi != null)
+                        if (elem != null && stageElemRdPi != null)
                         {
                             var elemRd = stageElemRdPi.GetValue(elem, null) as ResearchDefinition;
                             if (elemRd == root) { targetStageUI = sUI; break; }
+                            if (fallbackStageUI == null) fallbackStageUI = sUI;
+                        }
+                        else if (fallbackStageUI == null)
+                        {
+                            fallbackStageUI = sUI;
                         }
                     }
-                    if (targetStageUI == null)
-                    {
-                        foreach (var sUI in stageUIList)
-                            if ((int)stageNumFi.GetValue(sUI) == root.Stage)
-                            { targetStageUI = sUI; break; }
-                    }
+                    if (targetStageUI == null) targetStageUI = fallbackStageUI;
 
                     if (targetStageUI == null)
                     {

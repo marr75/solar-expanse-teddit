@@ -138,6 +138,10 @@ namespace Teddit
             var rootSettings = RootPatchSettings.Load(Plugin.PluginDir);
             Plugin.Log.LogInfo("[Teddit] RootPatchSettings loaded.");
 
+            var gameplaySettings = GameplayPatchSettings.Load(Plugin.PluginDir);
+            GameplayPatches.ConstructionRespectsEfficiency = gameplaySettings.ConstructionRespectsEfficiency;
+            GameplayPatches.EnergyModuleConsumeFuel = gameplaySettings.EnergyModuleConsumeFuel;
+
             // ── Collect mod directories in load order ─────────────────────────
             var dirs = new List<string> { Plugin.PluginDir };
 

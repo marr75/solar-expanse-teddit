@@ -92,7 +92,13 @@
     <PropertyGroup>
       <PluginDir>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit</PluginDir>
       <RepoPluginDir>C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit\Teddit</RepoPluginDir>
+      <RepoRootDir>C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit</RepoRootDir>
+      <ExampleModDir>$(RepoRootDir)\example_mod</ExampleModDir>
     </PropertyGroup>
+
+    <ItemGroup>
+      <ExampleModFiles Include="$(ExampleModDir)\**\*" Condition="Exists('$(ExampleModDir)')" />
+    </ItemGroup>
 
     <MakeDir Directories="$(PluginDir)" />
     <MakeDir Directories="$(RepoPluginDir)" />
@@ -105,6 +111,13 @@
 
     <MakeDir Directories="$(PluginDir)\mods" />
     <MakeDir Directories="$(RepoPluginDir)\mods" />
+    <RemoveDir Directories="$(PluginDir)\mods\example_mod" Condition="Exists('$(PluginDir)\mods\example_mod')" />
+    <RemoveDir Directories="$(RepoPluginDir)\mods\example_mod" Condition="Exists('$(RepoPluginDir)\mods\example_mod')" />
+    <MakeDir Directories="$(PluginDir)\example_mod" Condition="Exists('$(ExampleModDir)')" />
+    <Copy SourceFiles="@(ExampleModFiles)"
+          DestinationFiles="@(ExampleModFiles->'$(PluginDir)\example_mod\%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true"
+          Condition="Exists('$(ExampleModDir)')" />
 
     <Copy SourceFiles="$(MSBuildProjectDirectory)\facilities.yaml"
           DestinationFolder="$(PluginDir)"
@@ -166,6 +179,12 @@
     <Copy SourceFiles="$(MSBuildProjectDirectory)\starting_resources.yaml"
           DestinationFolder="$(RepoPluginDir)"
           Condition="!Exists('$(RepoPluginDir)\starting_resources.yaml')" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\gameplay_patches.yaml"
+          DestinationFolder="$(PluginDir)"
+          Condition="!Exists('$(PluginDir)\gameplay_patches.yaml')" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\gameplay_patches.yaml"
+          DestinationFolder="$(RepoPluginDir)"
+          Condition="!Exists('$(RepoPluginDir)\gameplay_patches.yaml')" />
 
     <Message Text="Deployed to $(PluginDir) and $(RepoPluginDir)" Importance="High" />
   </Target>

@@ -108,7 +108,7 @@ namespace Teddit
         static readonly HashSet<string> _complexFacilityKeys = new HashSet<string>
         {
             "buildResources", "resourcesToMine", "refinerInput", "refinerOutput", "byproducts",
-            "energyInput",
+            "energyInput", "energyThrottleable", "constructionSpeed",
             "labBonusToResearchInPerHour", "labResearchSubTypeId", "labIdToBonus",
             "facilityOrModuleToInstall", "isSpaceConstructionOnOrbitSpaceCraftToCreate", "isSpaceConstructionOnOrbitLaunchVehicleCanUse",
             // Creation-only keys that aren't real field names on the descriptor
@@ -228,10 +228,44 @@ namespace Teddit
 
                 ApplyFields(descriptor, simpleFields, "[FacilityPatcher]", kv.Key);
                 ApplyFacilityComplexFields(descriptor, kv.Value, kv.Key);
+                ApplyCustomFields(kv.Value, kv.Key);
                 patched++;
             }
             if (patched > 0 || skipped > 0)
                 Plugin.Log.LogInfo($"[FacilityPatcher] Done — patched: {patched}, created: {created}, skipped: {skipped}");
+        }
+
+        // ── Custom Teddit fields (not handled by the generic patcher or complex fields) ──
+
+        internal static void ApplyCustomFields(Dictionary<string, JToken> fields, string id)
+        {
+            JToken tok;
+            if (fields.TryGetValue("energyThrottleable", out tok))
+            {
+                bool throttleable = false;
+                if (tok.Type == JTokenType.Boolean)
+                    throttleable = tok.Value<bool>();
+                else if (tok.Type == JTokenType.String)
+                    bool.TryParse(tok.Value<string>(), out throttleable);
+
+                if (throttleable)
+                    EnergyThrottle.RegisterThrottleable(id);
+                else
+                    EnergyThrottle.UnregisterThrottleable(id);
+
+                Plugin.Log.LogInfo($"[FacilityPatcher] {id}.energyThrottleable = {throttleable} (tok.Type={tok.Type})"); // TEMP-DEBUG
+            }
+
+            if (fields.TryGetValue("constructionSpeed", out tok))
+            {
+                double speed = 1.0;
+                if (tok.Type == JTokenType.Float || tok.Type == JTokenType.Integer)
+                    speed = tok.Value<double>();
+                else if (tok.Type == JTokenType.String)
+                    double.TryParse(tok.Value<string>(), out speed);
+
+                GameplayPatches.RegisterConstructionSpeed(id, speed);
+            }
         }
 
         // ── Complex facility field handler ────────────────────────────────────────
@@ -241,6 +275,8 @@ namespace Teddit
             const string prefix = "[FacilityPatcher]";
             var allSO = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance;
             JToken tok;
+
+            Plugin.Log.LogInfo($"{prefix} ApplyFacilityComplexFields({id}) keys=[{string.Join(", ", fields.Keys)}]"); // TEMP-DEBUG
 
             if (fields.ContainsKey("icon") || fields.ContainsKey("iconRef"))
             {
@@ -360,6 +396,8 @@ namespace Teddit
                 try { ApplyEnergyInput(descriptor, (JObject)tok, allSO, prefix, id); }
                 catch (Exception ex) { Plugin.Log.LogError($"{prefix} {id}: energyInput setup failed — {ex.Message}"); }
             }
+
+            // energyThrottleable is handled by ApplyCustomFields (runs separately)
 
             // labData / research output
             if (descriptor is GroundFacilityDescriptor groundDescriptor &&
