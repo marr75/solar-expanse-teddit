@@ -13,6 +13,14 @@ Teddit can currently edit and create:
 * Launch Vehicles
 * Life Support
 
+## Gameplay Patches
+
+Teddit also extends several existing gameplay features, for use by mods. All features are togglable in ```gameplay_patches.yaml``` in the root folder.
+
+```constructionRespectsEfficiency```: Allows constrruction modules to take crew, power, and resources in order to run.
+```energyModuleConsumeFuel```
+```energyThrottleable``` (Set per-facility in Facilities YAML): In stock, energy facilities run at full efficiency regardless of energy deficit. This boolean, when set to true, allows a facility to throttle down production to meet demand (when batteries are full), so as to not waste fuel.
+
 ## How to Use
 This mod is based around the use of YAML files to modify or create objects for Solar Expanse.
 
