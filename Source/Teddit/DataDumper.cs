@@ -5,13 +5,16 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Data;
 using Data.ScriptableObject;
 using Game;
+using Game.CompanyScripts;
+using Game.ContractsObjectives;
 using Game.Info;
+using Game.ObjectInfoDataScripts;
 using Game.ObjectInfoDataScripts.CustomFacilitiesAndModules;
 using Game.UI.Windows.Elements.ObjectInfoElements;
 using Game.UI.Windows.Elements.SpaceCraftConstructElements;
-using Game.CompanyScripts;
 using Language;
 using Manager;
 using ScriptableObjectScripts;
@@ -53,6 +56,7 @@ namespace Teddit
             DumpSpacecraft(allSO, dumpDir);
             DumpLaunchVehicles(allSO, dumpDir);
             DumpResearch(allSO, dumpDir);
+            DumpContracts(allSO, oim, dumpDir);
 
             Plugin.Log.LogInfo($"[DataDumper] Done → {dumpDir}");
         }
@@ -854,6 +858,428 @@ namespace Teddit
             object allowPullId = _udAllowPullFi?.GetValue(entry);
             if (allowPullId is int allowPullInt && allowPullInt >= 0)
                 sb.AppendLine($"      idObjectInfoAllowPullToOrbit: {allowPullInt}");
+        }
+
+        // ── Contracts ──────────────────────────────────────────────────────────
+
+        static readonly FieldInfo _cdOverrideTranslationFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "overrideTranslation");
+        static readonly FieldInfo _cdRewardsFi             = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "rewards");
+        static readonly FieldInfo _cdRewardsStartFi        = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "rewardsStartContract");
+        static readonly FieldInfo _cdObjectivesFi          = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "objectives");
+        static readonly FieldInfo _cdHelpObjectivesFi      = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "helpObjectives");
+        static readonly FieldInfo _cdHideUIFi              = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "hideUI");
+        static readonly FieldInfo _cdSkipForAIFi           = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "skipForAI");
+        static readonly FieldInfo _cdIsFinalFi             = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "isFinalContract");
+        static readonly FieldInfo _cdIsFinalDemoFi         = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "isFinalContractToEndDemo");
+        static readonly FieldInfo _cdYearsToExpireFi       = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "yearsToExpire");
+        static readonly FieldInfo _cdDateStartFi           = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "dateTimeStringStart");
+        static readonly FieldInfo _cdDateStartLimitFi      = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "dateTimeStringStartLimit");
+        static readonly FieldInfo _cdDateStartEnableFi     = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "dateTimeStringStartEnable");
+        static readonly FieldInfo _cdStageTutorialFi       = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "stageTutorialToActive");
+        static readonly FieldInfo _cdTextNextContractFi    = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "textToShowNextContractKeyId");
+        static readonly FieldInfo _cdUnlockContractFi      = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "unlockContractHelpNotUse");
+        static readonly FieldInfo _cdIsLockedByFi          = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "isLockByContractHelpNotUse");
+        static readonly FieldInfo _cdUnlockResearchFi      = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "unlockResearchDefinitionHelpNotUse");
+
+        static string ObjectName(ObjectInfoManager oim, int id)
+        {
+            if (id < 0) return null;
+            try
+            {
+                var oi = oim.GetByID(id);
+                if (oi != null) return oi.ObjectName;
+            }
+            catch { }
+            return null;
+        }
+
+        static string FormatObjectId(ObjectInfoManager oim, int id)
+        {
+            string name = ObjectName(oim, id);
+            if (name != null)
+                return YamlScalar(name);
+            return id.ToString();
+        }
+
+        static void DumpContracts(AllScriptableObjectManager allSO, ObjectInfoManager oim, string dir)
+        {
+            var sb = new StringBuilder();
+            int count = 0;
+            foreach (var cd in allSO.AllContract.List)
+            {
+                if (cd == null) continue;
+
+                string title = cd.ID;
+                try { title = LEManager.Get(cd.ID + "_Title"); } catch { }
+                string fluff = null;
+                try { fluff = LEManager.Get(cd.ID + "_fluff"); } catch { }
+                string fluffEnd = null;
+                try { fluffEnd = LEManager.Get(cd.ID + "_fluffEnd"); } catch { }
+
+                sb.AppendLine($"# {title}");
+                sb.AppendLine($"{YamlKey(cd.ID)}:");
+                sb.AppendLine($"  title: {YamlScalar(title)}");
+                if (!string.IsNullOrEmpty(fluff) && fluff != cd.ID + "_fluff")
+                    sb.AppendLine($"  description: {YamlScalar(fluff)}");
+                if (!string.IsNullOrEmpty(fluffEnd) && fluffEnd != cd.ID + "_fluffEnd")
+                    sb.AppendLine($"  descriptionEnd: {YamlScalar(fluffEnd)}");
+
+                sb.AppendLine($"  isLocked: {FormatBool(cd.isLocked)}");
+
+                bool hideUI = _cdHideUIFi != null && (bool)_cdHideUIFi.GetValue(cd);
+                sb.AppendLine($"  hideUI: {FormatBool(hideUI)}");
+
+                bool skipForAI = _cdSkipForAIFi != null && (bool)_cdSkipForAIFi.GetValue(cd);
+                sb.AppendLine($"  skipForAI: {FormatBool(skipForAI)}");
+
+                bool isFinal = _cdIsFinalFi != null && (bool)_cdIsFinalFi.GetValue(cd);
+                sb.AppendLine($"  isFinalContract: {FormatBool(isFinal)}");
+
+                bool isFinalDemo = _cdIsFinalDemoFi != null && (bool)_cdIsFinalDemoFi.GetValue(cd);
+                if (isFinalDemo) sb.AppendLine($"  isFinalContractToEndDemo: true");
+
+                sb.AppendLine($"  waitForComplete: {FormatBool(cd.waitForComplete)}");
+                sb.AppendLine($"  showUIAvailable: {FormatBool(cd.showUIAvailable)}");
+                sb.AppendLine($"  cancelOn: {FormatBool(cd.cancelOn)}");
+
+                int yearsToExpire = _cdYearsToExpireFi != null ? (int)_cdYearsToExpireFi.GetValue(cd) : 2;
+                sb.AppendLine($"  yearsToExpire: {yearsToExpire}");
+
+                int stageTutorial = _cdStageTutorialFi != null ? (int)_cdStageTutorialFi.GetValue(cd) : int.MaxValue;
+                if (stageTutorial != int.MaxValue)
+                    sb.AppendLine($"  stageTutorialToActive: {stageTutorial}");
+
+                bool dateStartEnable = _cdDateStartEnableFi != null && (bool)_cdDateStartEnableFi.GetValue(cd);
+                if (dateStartEnable)
+                {
+                    sb.AppendLine($"  dateTimeStringStartEnable: true");
+                    string dateStart = _cdDateStartFi?.GetValue(cd) as string;
+                    if (!string.IsNullOrEmpty(dateStart))
+                        sb.AppendLine($"  dateTimeStringStart: {YamlScalar(dateStart)}");
+                    string dateStartLimit = _cdDateStartLimitFi?.GetValue(cd) as string;
+                    if (!string.IsNullOrEmpty(dateStartLimit))
+                        sb.AppendLine($"  dateTimeStringStartLimit: {YamlScalar(dateStartLimit)}");
+                }
+
+                if (!string.IsNullOrEmpty(cd.dateStartActive))
+                    sb.AppendLine($"  dateStartActive: {YamlScalar(cd.dateStartActive)}");
+
+                string overrideTranslation = _cdOverrideTranslationFi?.GetValue(cd) as string;
+                if (!string.IsNullOrEmpty(overrideTranslation))
+                    sb.AppendLine($"  overrideTranslation: {YamlScalar(overrideTranslation)}");
+
+                string textNextContract = _cdTextNextContractFi?.GetValue(cd) as string;
+                if (!string.IsNullOrEmpty(textNextContract))
+                    sb.AppendLine($"  textToShowNextContractKeyId: {YamlScalar(textNextContract)}");
+
+                // Contract chain references
+                var unlockContract = _cdUnlockContractFi?.GetValue(cd) as ContractDefinition;
+                if (unlockContract != null)
+                    sb.AppendLine($"  unlockContract: {YamlScalar(unlockContract.ID)}");
+                var isLockedBy = _cdIsLockedByFi?.GetValue(cd) as ContractDefinition;
+                if (isLockedBy != null)
+                    sb.AppendLine($"  isLockedByContract: {YamlScalar(isLockedBy.ID)}");
+                var unlockResearch = _cdUnlockResearchFi?.GetValue(cd) as ResearchDefinition;
+                if (unlockResearch != null)
+                    sb.AppendLine($"  unlockResearch: {YamlScalar(unlockResearch.ID)}");
+
+                // Delivery-related fields on the ContractDefinition itself
+                if (cd.whatResource != null)
+                    sb.AppendLine($"  whatResource: {YamlScalar(cd.whatResource.ID)}");
+                if (cd.whatSpaceModuleDescriptor != null)
+                    sb.AppendLine($"  whatSpaceModuleDescriptor: {YamlScalar(cd.whatSpaceModuleDescriptor.ID)}");
+                if (cd.launchVehicleType != null)
+                    sb.AppendLine($"  launchVehicleType: {YamlScalar(cd.launchVehicleType.ID)}");
+                if (cd.howMuch > 0f)
+                    sb.AppendLine($"  howMuch: {FormatFloat(cd.howMuch)}");
+                if (cd.targetID >= 0)
+                    sb.AppendLine($"  targetID: {FormatObjectId(oim, cd.targetID)}");
+                if (cd.startID >= 0)
+                    sb.AppendLine($"  startID: {FormatObjectId(oim, cd.startID)}");
+                if (cd.sendFromAsteroid)
+                    sb.AppendLine($"  sendFromAsteroid: true");
+                if (cd.timeLandAndReturnLandTimeInDay > 0f)
+                    sb.AppendLine($"  timeLandAndReturnLandTimeInDay: {FormatFloat(cd.timeLandAndReturnLandTimeInDay)}");
+
+                // Rewards on start
+                AppendRewardList(sb, "  rewardsStartContract", cd.RewardsStartContract);
+
+                // Objectives
+                AppendObjectiveList(sb, "  objectives", cd.Objectives, oim);
+
+                // Help objectives
+                var helpObjectives = _cdHelpObjectivesFi?.GetValue(cd) as List<Objective>;
+                if (helpObjectives != null && helpObjectives.Count > 0)
+                    AppendObjectiveList(sb, "  helpObjectives", helpObjectives, oim);
+
+                // Rewards on completion
+                AppendRewardList(sb, "  rewards", cd.Rewards);
+
+                sb.AppendLine();
+                count++;
+            }
+
+            File.WriteAllText(Path.Combine(dir, "contracts.yaml"), sb.ToString());
+            Plugin.Log.LogInfo($"[DataDumper] contracts.yaml — {count} entries");
+        }
+
+        static void AppendRewardList(StringBuilder sb, string keyWithIndent, List<Reward> rewards)
+        {
+            if (rewards == null || rewards.Count == 0) return;
+            sb.AppendLine($"{keyWithIndent}:");
+            foreach (var reward in rewards)
+            {
+                sb.AppendLine($"    - rewardType: {YamlScalar(reward.rewardType.ToString())}");
+                if (reward.amount != 0)
+                    sb.AppendLine($"      amount: {reward.amount}");
+                if (reward.resourceDefinition != null)
+                    sb.AppendLine($"      resource: {YamlScalar(reward.resourceDefinition.ID)}");
+                if (reward.facilityBaseDescriptor != null)
+                    sb.AppendLine($"      facility: {YamlScalar(reward.facilityBaseDescriptor.ID)}");
+                if (reward.spaceCraftType != null)
+                    sb.AppendLine($"      spacecraft: {YamlScalar(reward.spaceCraftType.ID)}");
+                if (reward.launchVehicleType != null)
+                    sb.AppendLine($"      launchVehicle: {YamlScalar(reward.launchVehicleType.ID)}");
+                if (reward.buildImmediately)
+                    sb.AppendLine($"      buildImmediately: true");
+                if (reward.rewardType == EReward.Unlock && reward.unlockData != null)
+                    AppendContractUnlockData(sb, "      ", reward.unlockData);
+            }
+        }
+
+        static void AppendContractUnlockData(StringBuilder sb, string indent, UnlockData ud)
+        {
+            sb.AppendLine($"{indent}unlock:");
+            sb.AppendLine($"{indent}  action: {YamlScalar(ud.actionUnlock.ToString())}");
+            if (!string.IsNullOrEmpty(ud.parameter1))
+                sb.AppendLine($"{indent}  id: {YamlScalar(ud.parameter1)}");
+            if (!string.IsNullOrEmpty(ud.parameter2))
+                sb.AppendLine($"{indent}  parameter2: {YamlScalar(ud.parameter2)}");
+            if (ud.actionUnlock == EActionUnlock.UnlockBonus)
+            {
+                sb.AppendLine($"{indent}  bonus: {YamlScalar(ud.bonus.ToString())}");
+                sb.AppendLine($"{indent}  bonusParameter: {FormatFloat(ud.bonusParameter)}");
+                if (ud.id_ComponentOrOther != null && ud.id_ComponentOrOther.Length > 0)
+                {
+                    sb.AppendLine($"{indent}  targets:");
+                    foreach (var id in ud.id_ComponentOrOther.Where(x => !string.IsNullOrEmpty(x)))
+                        sb.AppendLine($"{indent}    - {YamlScalar(id)}");
+                }
+            }
+            if (ud.unlockContractAdvance != UnlockData.EUnlockContractAdvance.None)
+                sb.AppendLine($"{indent}  unlockContractAdvance: {YamlScalar(ud.unlockContractAdvance.ToString())}");
+        }
+
+        static void AppendObjectiveList(StringBuilder sb, string keyWithIndent, List<Objective> objectives, ObjectInfoManager oim)
+        {
+            if (objectives == null || objectives.Count == 0) return;
+            sb.AppendLine($"{keyWithIndent}:");
+            foreach (var obj in objectives)
+            {
+                sb.AppendLine($"    - id: {YamlScalar(obj.ID)}");
+                sb.AppendLine($"      objectiveType: {YamlScalar(obj.objectiveType.ToString())}");
+
+                if (obj.productItem != null)
+                    sb.AppendLine($"      productItem: {YamlScalar(obj.productItem.ID)}");
+                if (obj.productItem2 != null)
+                    sb.AppendLine($"      productItem2: {YamlScalar(obj.productItem2.ID)}");
+                if (obj.fromList && obj.productItems != null && obj.productItems.Length > 0)
+                {
+                    sb.AppendLine($"      fromList: true");
+                    sb.AppendLine($"      productItems:");
+                    foreach (var pi in obj.productItems)
+                        if (pi != null)
+                            sb.AppendLine($"        - {YamlScalar(pi.ID)}");
+                }
+
+                if (obj.howMuch != 0f)
+                    sb.AppendLine($"      howMuch: {FormatFloat(obj.howMuch)}");
+                if (obj.howMuch2 != 0f)
+                    sb.AppendLine($"      howMuch2: {FormatFloat(obj.howMuch2)}");
+                if (obj.fromID != 0)
+                    sb.AppendLine($"      fromID: {FormatObjectId(oim, obj.fromID)}");
+                if (obj.toID != 0)
+                    sb.AppendLine($"      toID: {FormatObjectId(oim, obj.toID)}");
+
+                if (!string.IsNullOrEmpty(obj.fromIDString))
+                    sb.AppendLine($"      fromIDString: {YamlScalar(obj.fromIDString)}");
+                if (!string.IsNullOrEmpty(obj.toIDString))
+                    sb.AppendLine($"      toIDString: {YamlScalar(obj.toIDString)}");
+
+                if (obj.objectiveType == EObjectiveType.Deliver || obj.objectiveType == EObjectiveType.Possession)
+                    sb.AppendLine($"      possessionType: {YamlScalar(obj.possessionType.ToString())}");
+
+                if (obj.objectiveType == EObjectiveType.Deliver)
+                {
+                    sb.AppendLine($"      resourceTypeType: {YamlScalar(obj.resourceTypeType.ToString())}");
+                    if (obj.deliverEntireAsteroid)
+                        sb.AppendLine($"      deliverEntireAsteroid: true");
+                    if (obj.checkCrewInCargoMustBe)
+                        sb.AppendLine($"      checkCrewInCargoMustBe: true");
+                    if (obj.justScheduleToComplete)
+                        sb.AppendLine($"      justScheduleToComplete: true");
+                }
+
+                if (obj.advance)
+                {
+                    sb.AppendLine($"      advance: true");
+                    if (obj.moonOfID != -1)
+                        sb.AppendLine($"      moonOfID: {FormatObjectId(oim, obj.moonOfID)}");
+                    if (!string.IsNullOrEmpty(obj.objectSubTypeID))
+                        sb.AppendLine($"      objectSubTypeID: {YamlScalar(obj.objectSubTypeID)}");
+                    if (obj.advanceObjectTypes != EObjectTypes.None)
+                        sb.AppendLine($"      advanceObjectTypes: {YamlScalar(obj.advanceObjectTypes.ToString())}");
+                }
+
+                if (obj.asteroidPullingNeedDeposit != null && obj.asteroidPullingNeedDeposit.Count > 0)
+                {
+                    sb.AppendLine($"      asteroidPullingNeedDeposit:");
+                    foreach (var rd in obj.asteroidPullingNeedDeposit)
+                        if (rd != null) sb.AppendLine($"        - {YamlScalar(rd.ID)}");
+                }
+
+                if (obj.helpSpaceCraftType != null)
+                    sb.AppendLine($"      helpSpaceCraftType: {YamlScalar(obj.helpSpaceCraftType.ID)}");
+
+                if (obj.needPreviousObjective)
+                    sb.AppendLine($"      needPreviousObjective: true");
+                if (!obj.checkCompletedOnStart)
+                    sb.AppendLine($"      checkCompletedOnStart: false");
+                if (obj.dummy)
+                    sb.AppendLine($"      dummy: true");
+                if (obj.dummyVersion1)
+                    sb.AppendLine($"      dummyVersion1: true");
+                if (!string.IsNullOrEmpty(obj.dummyAlternativeIDTranslate))
+                    sb.AppendLine($"      dummyAlternativeIDTranslate: {YamlScalar(obj.dummyAlternativeIDTranslate)}");
+
+                if (obj.afterFindAutomaticFillFromID)
+                    sb.AppendLine($"      afterFindAutomaticFillFromID: true");
+                if (obj.afterBuildAutomaticFillToID)
+                    sb.AppendLine($"      afterBuildAutomaticFillToID: true");
+                if (obj.afterBuildAutomaticFillToIDObjectNameHighLightShort)
+                    sb.AppendLine($"      afterBuildAutomaticFillToIDObjectNameHighLightShort: true");
+                if (!string.IsNullOrEmpty(obj.fromIDUseTranslateBeforeBuild))
+                    sb.AppendLine($"      fromIDUseTranslateBeforeBuild: {YamlScalar(obj.fromIDUseTranslateBeforeBuild)}");
+                if (!string.IsNullOrEmpty(obj.toIDUseTranslateBeforeBuild))
+                    sb.AppendLine($"      toIDUseTranslateBeforeBuild: {YamlScalar(obj.toIDUseTranslateBeforeBuild)}");
+
+                if (!string.IsNullOrEmpty(obj.dateTimeStringLimit))
+                    sb.AppendLine($"      dateTimeStringLimit: {YamlScalar(obj.dateTimeStringLimit)}");
+                if (!string.IsNullOrEmpty(obj.dateTimeStringLimit2))
+                    sb.AppendLine($"      dateTimeStringLimit2: {YamlScalar(obj.dateTimeStringLimit2)}");
+
+                if (!string.IsNullOrEmpty(obj.helpObjectiveID))
+                    sb.AppendLine($"      helpObjectiveID: {YamlScalar(obj.helpObjectiveID)}");
+
+                if (!string.IsNullOrEmpty(obj.objectiveToMarkDoneAfterThisObjective))
+                    sb.AppendLine($"      objectiveToMarkDoneAfterThisObjective: {YamlScalar(obj.objectiveToMarkDoneAfterThisObjective)}");
+
+                if (obj.showWarningInPlanMission)
+                    sb.AppendLine($"      showWarningInPlanMission: true");
+
+                if (obj.objectiveType == EObjectiveType.SelectLayer)
+                    sb.AppendLine($"      layer: {YamlScalar(obj.layer.ToString())}");
+
+                // Cyclical mission data
+                if (obj.scheduleCyclicalFlyDataObjective != null && obj.objectiveType == EObjectiveType.ScheduleCyclicalMission)
+                    AppendScheduleCyclicalData(sb, "      ", obj.scheduleCyclicalFlyDataObjective);
+
+                // Markets offers data
+                if (obj.marketsOffersObjectiveData != null && obj.objectiveType == EObjectiveType.MarketPlaceOffers)
+                {
+                    sb.AppendLine($"      marketsOffers:");
+                    sb.AppendLine($"        sellOffers: {FormatBool(obj.marketsOffersObjectiveData.sellOffers)}");
+                    if (obj.marketsOffersObjectiveData.rd != null)
+                        sb.AppendLine($"        resource: {YamlScalar(obj.marketsOffersObjectiveData.rd.ID)}");
+                    sb.AppendLine($"        howMuch: {obj.marketsOffersObjectiveData.howMuch}");
+                    if (obj.marketsOffersObjectiveData.IDObjectInfo?.Object != null)
+                        sb.AppendLine($"        location: {YamlScalar(obj.marketsOffersObjectiveData.IDObjectInfo.Object.ObjectName)}");
+                }
+
+                // Change habitability data
+                if (obj.changeHabitabilityParametersObjectiveData != null && obj.objectiveType == EObjectiveType.ChangeHabitabilityParameters)
+                {
+                    var chpd = obj.changeHabitabilityParametersObjectiveData;
+                    sb.AppendLine($"      changeHabitability:");
+                    sb.AppendLine($"        parameter: {YamlScalar(chpd.whatHabitabilityParameterToChange.ToString())}");
+                    sb.AppendLine($"        comparingType: {YamlScalar(chpd.comparingType.ToString())}");
+                    sb.AppendLine($"        toCompare: {FormatFloat(chpd.toCompare)}");
+                    if (chpd.comparingType == Objective.ChangeHabitabilityParametersObjectiveData.EComparingType.Between)
+                    {
+                        sb.AppendLine($"        min: {FormatFloat(chpd.Min)}");
+                        sb.AppendLine($"        max: {FormatFloat(chpd.Max)}");
+                    }
+                    if (chpd.IDObjectInfo?.Object != null)
+                        sb.AppendLine($"        location: {YamlScalar(chpd.IDObjectInfo.Object.ObjectName)}");
+                }
+
+                // Change deposit data
+                if (obj.changeDepositParametersObjectiveData != null && obj.objectiveType == EObjectiveType.ChangeDeposit)
+                {
+                    var cdpd = obj.changeDepositParametersObjectiveData;
+                    sb.AppendLine($"      changeDeposit:");
+                    if (cdpd.rd != null)
+                        sb.AppendLine($"        resource: {YamlScalar(cdpd.rd.ID)}");
+                    sb.AppendLine($"        howMuch: {cdpd.howMuch}");
+                    if (cdpd.IDObjectInfo?.Object != null)
+                        sb.AppendLine($"        location: {YamlScalar(cdpd.IDObjectInfo.Object.ObjectName)}");
+                }
+
+                // Exploration interstellar data
+                if (obj.explorationInterstellarData != null && obj.objectiveType == EObjectiveType.ExplorationInterstellar)
+                {
+                    var eid = obj.explorationInterstellarData;
+                    sb.AppendLine($"      explorationInterstellar:");
+                    sb.AppendLine($"        condition: {YamlScalar(eid.condition.ToString())}");
+                    sb.AppendLine($"        number: {eid.number}");
+                    if (eid.list != null && eid.list.Count > 0)
+                    {
+                        sb.AppendLine($"        objects:");
+                        foreach (var obj2 in eid.list)
+                        {
+                            sb.AppendLine($"          - checkMass: {FormatBool(obj2.checkMass)}");
+                            sb.AppendLine($"            minMass: {FormatFloat(obj2.minMass)}");
+                            sb.AppendLine($"            maxMass: {FormatFloat(obj2.maxMass)}");
+                            sb.AppendLine($"            checkHabitableZone: {FormatBool(obj2.checkHabitableZone)}");
+                        }
+                    }
+                }
+
+                // Tutorial/UI flags (only emit non-defaults)
+                if (!obj.tutorialOnForThisObjective)
+                    sb.AppendLine($"      tutorialOnForThisObjective: false");
+                if (obj.showShortTutorial)
+                    sb.AppendLine($"      showShortTutorial: true");
+                if (!string.IsNullOrEmpty(obj.idTextShortTutorial))
+                    sb.AppendLine($"      idTextShortTutorial: {YamlScalar(obj.idTextShortTutorial)}");
+                if (obj.showDragAndDrop)
+                    sb.AppendLine($"      showDragAndDrop: true");
+                if (obj.fake)
+                    sb.AppendLine($"      fake: true");
+                if (obj.thisHelpObjective)
+                    sb.AppendLine($"      thisHelpObjective: true");
+            }
+        }
+
+        static void AppendScheduleCyclicalData(StringBuilder sb, string indent, ScheduleCyclicalFlyDataObjective data)
+        {
+            sb.AppendLine($"{indent}scheduleCyclicalFlyData:");
+            var dataType = data.GetType();
+            foreach (var fi in dataType.GetFields(BindingFlags.Public | BindingFlags.Instance))
+            {
+                object val = fi.GetValue(data);
+                if (val == null) continue;
+                if (val is bool b)
+                    sb.AppendLine($"{indent}  {fi.Name}: {FormatBool(b)}");
+                else if (val is float f)
+                    sb.AppendLine($"{indent}  {fi.Name}: {FormatFloat(f)}");
+                else if (val is int i)
+                    sb.AppendLine($"{indent}  {fi.Name}: {i}");
+                else if (val is string s && !string.IsNullOrEmpty(s))
+                    sb.AppendLine($"{indent}  {fi.Name}: {YamlScalar(s)}");
+                else if (val is Enum)
+                    sb.AppendLine($"{indent}  {fi.Name}: {YamlScalar(val.ToString())}");
+            }
         }
 
         // ── YAML emit helpers ─────────────────────────────────────────────────

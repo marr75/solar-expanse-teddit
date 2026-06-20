@@ -17,6 +17,7 @@ namespace Teddit
         public bool LifeSupportEnabled = false;
         public bool FacilityPlacementsEnabled = true;
         public bool StartingResourcesEnabled = true;
+        public bool ContractsEnabled = true;
 
         public static RootPatchSettings Load(string pluginDir)
         {
@@ -32,7 +33,8 @@ namespace Teddit
                 BodiesEnabled = ReadTopLevelEnabled(Path.Combine(pluginDir, "bodies.yaml"), true),
                 LifeSupportEnabled = ReadLifeSupportEnabled(Path.Combine(pluginDir, "life_support.yaml"), false),
                 FacilityPlacementsEnabled = ReadTopLevelEnabled(Path.Combine(pluginDir, "facility_placements.yaml"), true),
-                StartingResourcesEnabled  = ReadTopLevelEnabled(Path.Combine(pluginDir, "starting_resources.yaml"), true)
+                StartingResourcesEnabled  = ReadTopLevelEnabled(Path.Combine(pluginDir, "starting_resources.yaml"), true),
+                ContractsEnabled          = ReadTopLevelEnabled(Path.Combine(pluginDir, "contracts.yaml"), true)
             };
 
             Plugin.Log.LogInfo(
@@ -41,7 +43,8 @@ namespace Teddit
                 $"research={settings.ResearchEnabled}, deposits={settings.DepositsEnabled}, " +
                 $"bodies={settings.BodiesEnabled}, lifeSupport={settings.LifeSupportEnabled}, " +
                 $"facilityPlacements={settings.FacilityPlacementsEnabled}, " +
-                $"startingResources={settings.StartingResourcesEnabled}");
+                $"startingResources={settings.StartingResourcesEnabled}, " +
+                $"contracts={settings.ContractsEnabled}");
 
             return settings;
         }

@@ -1,0 +1,28 @@
+# Contract Test — edit an existing contract and add a new one
+
+contract_tutorial_firstorbit:
+  title: "First Orbit [MODDED]"
+  description: "Send a spacecraft into orbit around Earth. This contract has been modified by Teddit!"
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: test_contract_custom
+
+test_contract_custom:
+  isLocked: false
+  title: "Teddit Test Contract"
+  description: "A custom contract created by the Teddit contract patcher. Deliver 10 units of steel to Luna."
+  descriptionEnd: "Congratulations! You completed the Teddit test contract."
+  showUIAvailable: true
+  cancelOn: true
+  yearsToExpire: 5
+  objectives:
+    - objectiveType: Deliver
+      productItem: id_resource_steel
+      howMuch: 10
+      fromID: Earth
+      toID: Luna
+  rewards:
+    - rewardType: Money
+      amount: 50000

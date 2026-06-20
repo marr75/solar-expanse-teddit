@@ -28,9 +28,9 @@ namespace Teddit
             "module_crew_compartment_large"
         };
 
-        static readonly string[] CurrentLangCandidates =
+        internal static readonly string[] CurrentLangCandidates =
             { "_currentLaungage", "_currentLanguage", "currentLaungage", "currentLanguage" };
-        static readonly string[] DefaultLangCandidates =
+        internal static readonly string[] DefaultLangCandidates =
             { "_defaultLanguage", "_defaultLaungage", "defaultLanguage", "defaultLaungage" };
 
         /// <summary>

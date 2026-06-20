@@ -108,7 +108,7 @@ namespace Teddit
         static readonly HashSet<string> _complexFacilityKeys = new HashSet<string>
         {
             "buildResources", "resourcesToMine", "refinerInput", "refinerOutput", "byproducts",
-            "energyInput", "energyThrottleable", "constructionSpeed",
+            "energyInput", "energyThrottleable", "constructionSpeed", "revenuePerDay",
             "labBonusToResearchInPerHour", "labResearchSubTypeId", "labIdToBonus",
             "facilityOrModuleToInstall", "isSpaceConstructionOnOrbitSpaceCraftToCreate", "isSpaceConstructionOnOrbitLaunchVehicleCanUse",
             // Creation-only keys that aren't real field names on the descriptor
@@ -254,6 +254,20 @@ namespace Teddit
                     EnergyThrottle.UnregisterThrottleable(id);
 
                 Plugin.Log.LogInfo($"[FacilityPatcher] {id}.energyThrottleable = {throttleable} (tok.Type={tok.Type})"); // TEMP-DEBUG
+            }
+
+            if (fields.TryGetValue("revenuePerDay", out tok))
+            {
+                double revenue = 0.0;
+                if (tok.Type == JTokenType.Float || tok.Type == JTokenType.Integer)
+                    revenue = tok.Value<double>();
+                else if (tok.Type == JTokenType.String)
+                    double.TryParse(tok.Value<string>(), out revenue);
+
+                if (revenue > 0.0)
+                    FacilityRevenue.RegisterRevenue(id, revenue);
+                else
+                    FacilityRevenue.UnregisterRevenue(id);
             }
 
             if (fields.TryGetValue("constructionSpeed", out tok))
@@ -1056,6 +1070,68 @@ namespace Teddit
 
         }
 
+        public static void RunContracts(Dictionary<string, Dictionary<string, JToken>> config, string modDir)
+        {
+            if (config.Count == 0) return;
+
+            var allSO = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance;
+            if (allSO == null) { Plugin.Log.LogError("[ContractPatcher] AllScriptableObjectManager null"); return; }
+
+            // Pass 1: create new contracts so cross-references resolve in pass 2
+            int created = 0, skipped = 0;
+            foreach (var kv in config)
+            {
+                if (kv.Key.StartsWith("_")) continue;
+                if (allSO.AllContract.GetByID(kv.Key) != null) continue;
+
+                try
+                {
+                    ContractCreator.CreateAndInjectContract(kv.Key, kv.Value);
+                    created++;
+                }
+                catch (Exception ex)
+                {
+                    Plugin.Log.LogError($"[ContractPatcher] Failed to create '{kv.Key}': {ex}");
+                    skipped++;
+                }
+            }
+
+            // Pass 2: patch existing (including newly created) contracts
+            int patched = 0;
+            foreach (var kv in config)
+            {
+                if (kv.Key.StartsWith("_")) continue;
+
+                var cd = allSO.AllContract.GetByID(kv.Key);
+                if (cd == null) continue; // failed to create in pass 1
+
+                var simpleFields = kv.Value
+                    .Where(f => !ContractCreator.ComplexKeys.Contains(f.Key))
+                    .ToDictionary(f => f.Key, f => f.Value);
+                bool overrideEntry = kv.Value.TryGetValue("override", out var ovTok)
+                                    && ovTok.Type != JTokenType.Null && ovTok.Value<bool>();
+                ApplyFields(cd, simpleFields, "[ContractPatcher]", kv.Key);
+                ContractCreator.ApplyComplexFields(cd, kv.Value, kv.Key, allSO, overrideEntry);
+                ContractCreator.InjectTranslations(kv.Key, kv.Value);
+                patched++;
+            }
+            if (patched > 0 || created > 0 || skipped > 0)
+            {
+                Plugin.Log.LogInfo($"[ContractPatcher] Done — patched: {patched}, created: {created}, skipped: {skipped}");
+
+                // Force the contract sidebar UI to rebuild with updated translations
+                try
+                {
+                    var cm = MonoBehaviourSingleton<ContractManager>.Instance;
+                    cm?.UpdateStateChangePublic();
+                }
+                catch (Exception ex)
+                {
+                    Plugin.Log.LogDebug($"[ContractPatcher] UI refresh failed: {ex.Message}");
+                }
+            }
+        }
+
         internal static void ApplyResearchComplexFields(ResearchDefinition rd, Dictionary<string, JToken> fields, string id, AllScriptableObjectManager allSO, string modDir = null)
         {
             const string prefix = "[ResearchPatcher]";
@@ -1460,6 +1536,9 @@ namespace Teddit
         }
 
         // ── Generic field setter ──────────────────────────────────────────────────
+
+        internal static void ApplyFieldsPublic(object target, Dictionary<string, JToken> fields, string prefix, string id)
+            => ApplyFields(target, fields, prefix, id);
 
         static void ApplyFields(object target, Dictionary<string, JToken> fields, string prefix, string id)
         {

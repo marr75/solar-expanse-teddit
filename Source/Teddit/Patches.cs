@@ -7,6 +7,7 @@ using CustomUpdate;
 using Data.ScriptableObject;
 using Extensions;
 using Game;
+using Game.ContractsObjectives;
 using Game.Info;
 using Game.UI;
 using Game.UI.Windows.Elements.ChoseFacilityElements;
@@ -190,6 +191,9 @@ namespace Teddit
                     catch (Exception ex) { Plugin.Log.LogError($"[StartingResources:{label}] {ex}"); }
                 }
             }
+
+            // ── Deferred market refresh so modded resources get trade offers ──
+            MarketRefresh.Schedule();
         }
 
         static void ApplyModDir(string dir, ObjectInfoManager oi, RootPatchSettings rootSettings)
@@ -259,6 +263,13 @@ namespace Teddit
                 var lifeSupportConfig = LifeSupportConfig.Load(lifeSupportPath, honorEnabled);
                 try { LifeSupportPatcher.MergeConfig(lifeSupportConfig, label); }
                 catch (Exception ex) { Plugin.Log.LogError($"[LifeSupportPatcher:{label}] {ex}"); }
+            }
+
+            if (rootSettings.ContractsEnabled)
+            {
+                var contractPatches = PatchConfig.Load(Path.Combine(dir, "contracts.yaml"));
+                try { ScriptableObjectPatcher.RunContracts(contractPatches, dir); }
+                catch (Exception ex) { Plugin.Log.LogError($"[ContractPatcher:{label}] {ex}"); }
             }
 
         }
@@ -1234,6 +1245,66 @@ namespace Teddit
     /// Injects a small version badge into the bottom-right corner of the main menu.
     /// Patches MenuSceneUI.Start() which runs after the menu canvas is fully built.
     /// </summary>
+    [HarmonyPatch(typeof(Contract), "GiveRewards",
+        new[] { typeof(ContractDefinition), typeof(Contract), typeof(Company), typeof(List<Reward>), typeof(bool), typeof(bool) })]
+    static class PatchContractGiveRewardsAiOnly
+    {
+        static void Prefix(Company company, ref List<Reward> rewards)
+        {
+            if (ContractCreator.AiOnlyRewards.Count == 0) return;
+            if (company != MonoBehaviourSingleton<GameManager>.Instance.Player) return;
+            if (!rewards.Any(r => ContractCreator.AiOnlyRewards.Contains(r))) return;
+            rewards = rewards.Where(r => !ContractCreator.AiOnlyRewards.Contains(r)).ToList();
+        }
+    }
+
+    [HarmonyPatch(typeof(CompanyObjectiveData), "MarkAsComplete")]
+    static class PatchContractMarkAsComplete
+    {
+        static void Prefix(CompanyObjectiveData __instance)
+        {
+            try
+            {
+                var obj = __instance.Objective;
+                var cd = __instance.ContractData?.contractDefinition;
+                Plugin.Log.LogInfo($"[ContractDebug] MarkAsComplete called — contract={cd?.ID}, objective={obj?.ID}, type={obj?.objectiveType}, howMuch={obj?.howMuch}, howMuchCurrent={__instance.howMuchCurrent}, company={__instance.ContractData?.company?.ID}");
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[ContractDebug] MarkAsComplete prefix error: {ex.Message}");
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(ContractManager), "ObjectiveOnOnCompleteStatic")]
+    static class PatchContractObjectiveOnComplete
+    {
+        static void Prefix(CompanyObjectiveData cod)
+        {
+            try
+            {
+                var cm = MonoBehaviourSingleton<ContractManager>.Instance;
+                var company = cod.ContractData?.company;
+                Plugin.Log.LogInfo($"[ContractDebug] ObjectiveOnOnCompleteStatic — source contract={cod.ContractData?.contractDefinition?.ID}, company={company?.ID}");
+                foreach (var contract in cm.allContracts)
+                {
+                    var state = contract.ContractStateForCompany(company);
+                    if (state != ContractManager.EContractState.Active) continue;
+                    var ccd = contract.PerCompanyContractData.ContainsKey(company) ? contract.PerCompanyContractData[company] : null;
+                    if (ccd == null) { Plugin.Log.LogInfo($"[ContractDebug]   {contract.ContractDefinition.ID}: Active but no per-company data"); continue; }
+                    bool allDone = ccd.ObjectivesDataList.TrueForAll(d => d.IsComplete);
+                    Plugin.Log.LogInfo($"[ContractDebug]   {contract.ContractDefinition.ID}: Active, objectives={ccd.ObjectivesDataList.Count}, allComplete={allDone}");
+                    foreach (var od in ccd.ObjectivesDataList)
+                        Plugin.Log.LogInfo($"[ContractDebug]     obj={od.Objective?.ID} type={od.Objective?.objectiveType} isComplete={od.IsComplete}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Plugin.Log.LogWarning($"[ContractDebug] ObjectiveOnOnCompleteStatic prefix error: {ex.Message}");
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(MenuSceneUI), "Start")]
     static class PatchMenuSceneUIStart
     {
