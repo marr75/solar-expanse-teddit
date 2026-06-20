@@ -12,6 +12,7 @@ Teddit can currently edit and create:
 * Spacecraft
 * Launch Vehicles
 * Life Support
+* Contracts
 
 ## Gameplay Patches
 
@@ -20,6 +21,7 @@ Teddit also extends several existing gameplay features, for use by mods. All fea
 ```constructionRespectsEfficiency```: Allows constrruction modules to take crew, power, and resources in order to run.
 ```energyModuleConsumeFuel```: Allows energy modules (transportable modules, not facilities) to consume fuel in order to generate power. In stock, only the permanent fixed modules were able to consume resources through the energy system.
 ```energyThrottleable``` (Set per-facility in Facilities YAML): In stock, energy facilities run at full efficiency regardless of energy deficit. This boolean, when set to true, allows a facility to throttle down production to meet demand (when batteries are full), so as to not waste fuel.
+```revenuePerDay``` (Integer, Set per-facility in Facilities YAML): Allows buildings to provide revenue per day. Scaled by building efficiency, so energy/crew/resource deficit will make it produce proportionally less.
 
 ## How to Use
 This mod is based around the use of YAML files to modify or create objects for Solar Expanse.
