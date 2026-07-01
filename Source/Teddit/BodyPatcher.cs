@@ -63,6 +63,11 @@ namespace Teddit
         // Bodies whose low orbit was intentionally removed this session.
         static readonly HashSet<int> _removedOrbitParentIds = new HashSet<int>();
 
+        public static void ResetSessionState()
+        {
+            _removedOrbitParentIds.Clear();
+        }
+
         public static bool BodyHasRemovedOrbit(ObjectInfo body)
         {
             return body != null && _removedOrbitParentIds.Contains(body.id);

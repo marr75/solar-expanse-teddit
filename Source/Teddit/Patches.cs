@@ -107,6 +107,7 @@ namespace Teddit
     static class PatchObjectInfoManagerUpdate
     {
         static bool _ran = false;
+        static int _lastInstanceId = -1;
 
         static readonly FieldInfo _eventWasField = typeof(ObjectInfoManager)
             .GetField("solarSystemLoadEventWas",
@@ -114,6 +115,15 @@ namespace Teddit
 
         static void Postfix(ObjectInfoManager __instance)
         {
+            int instanceId = __instance.GetInstanceID();
+            if (instanceId != _lastInstanceId)
+            {
+                _ran = false;
+                _lastInstanceId = instanceId;
+                BodyPatcher.ResetSessionState();
+                Plugin.Log.LogInfo($"[Teddit] New ObjectInfoManager instance ({instanceId}) — resetting load state.");
+            }
+
             if (_ran) return;
             if (_eventWasField == null)
             {
@@ -278,9 +288,18 @@ namespace Teddit
     [HarmonyPatch(typeof(Spacecraft), "SetCurrentlyOnThisObject")]
     static class PatchSpacecraftSetCurrentlyOnThisObjectNoOrbitBodies
     {
+        static readonly HashSet<int> _redirecting = new HashSet<int>();
+
         static void Postfix(Spacecraft __instance)
         {
             if (__instance == null || __instance.spacecraftType == null)
+                return;
+
+            // Guard against re-entrant calls: SetCurrentlyOnThisObject(parent) below
+            // is itself patched, and the game may route through the orbit body internally,
+            // which would retrigger this postfix infinitely without this check.
+            int instanceId = __instance.GetInstanceID();
+            if (_redirecting.Contains(instanceId))
                 return;
 
             var current = __instance.CurrentlyOnThisObject;
@@ -293,12 +312,17 @@ namespace Teddit
 
             try
             {
+                _redirecting.Add(instanceId);
                 Plugin.Log.LogInfo($"[BodyPatcher] Redirecting '{__instance.GetSpacecraftName()}' from hidden orbit '{current.ObjectName}' to '{parent.ObjectName}'.");
                 __instance.SetCurrentlyOnThisObject(parent);
             }
             catch (Exception ex)
             {
                 Plugin.Log.LogWarning($"[BodyPatcher] Failed to redirect spacecraft '{__instance.GetSpacecraftName()}' off hidden orbit '{current.ObjectName}': {ex.Message}");
+            }
+            finally
+            {
+                _redirecting.Remove(instanceId);
             }
         }
     }
