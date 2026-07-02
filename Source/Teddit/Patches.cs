@@ -784,6 +784,12 @@ namespace Teddit
                 if (body.parentObjectInfo == null)
                     return body;
 
+                // Asteroid/Comet-typed bodies route correctly in the base game; don't substitute parent.
+                string typeName = body.objectTypes.ToString();
+                if (string.Equals(typeName, "Asteroid", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(typeName, "Comet", StringComparison.OrdinalIgnoreCase))
+                    return body;
+
                 if (ShouldPreserveRemovedMoonForMoonCase(body, counterpart))
                     return body;
 
