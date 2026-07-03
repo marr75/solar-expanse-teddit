@@ -90,7 +90,7 @@ namespace Teddit
             return AccessTools.Method(typeof(Game.UI.UIManager), "UpdateUpkeepAndIncome");
         }
 
-        static void Prefix(ref long totalIncome, ref long balance, ref long colonistsIncome)
+        static void Prefix(ref long totalIncome, ref long balance)
         {
             var player = MonoBehaviourSingleton<GameManager>.Instance?.Player;
             if (player == null) return;

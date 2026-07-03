@@ -784,12 +784,6 @@ namespace Teddit
                 if (body.parentObjectInfo == null)
                     return body;
 
-                // Asteroid/Comet-typed bodies route correctly in the base game; don't substitute parent.
-                string typeName = body.objectTypes.ToString();
-                if (string.Equals(typeName, "Asteroid", StringComparison.OrdinalIgnoreCase) ||
-                    string.Equals(typeName, "Comet", StringComparison.OrdinalIgnoreCase))
-                    return body;
-
                 if (ShouldPreserveRemovedMoonForMoonCase(body, counterpart))
                     return body;
 
@@ -852,7 +846,23 @@ namespace Teddit
                 return false;
 
             OrbitUniversal counterpartOrbit = GetOrbitUniversal(counterpart);
-            return counterpartOrbit != null && counterpartOrbit.centerNbody == removedBodyParent.NBody;
+            if (counterpartOrbit == null) return false;
+
+            if (counterpartOrbit.centerNbody == removedBodyParent.NBody)
+                return true;
+
+            // One level up: handles the case where the counterpart is an orbit companion of a
+            // moon that itself orbits the removed body's parent system. Example: CALLISTO [ORBIT]
+            // orbits CALLISTO, which orbits JUPITER — so it shares AMALTHEA's parent (JUPITER).
+            try
+            {
+                var grandparentOrbit = counterpartOrbit.centerNbody?.gameObject.GetComponent<OrbitUniversal>();
+                if (grandparentOrbit != null && grandparentOrbit.centerNbody == removedBodyParent.NBody)
+                    return true;
+            }
+            catch { }
+
+            return false;
         }
 
         static bool IsOrbitObjectInfo(ObjectInfo body)
@@ -1196,18 +1206,7 @@ namespace Teddit
             if (descriptor == null)
                 return;
 
-            ObjectInfo currentObject = null;
-            try
-            {
-                currentObject = SerializedMonoBehaviourSingleton<UIManager>.Instance
-                    .GetWindow<ChoseFacilityWindow>()?.ObjectInfoCurrent;
-            }
-            catch
-            {
-                // Leave null; FacilityBaseDescriptor.Tooltip tolerates it.
-            }
-
-            string baseTooltip = descriptor.Tooltip(MonoBehaviourSingleton<GameManager>.Instance.Player, currentObject);
+            string baseTooltip = descriptor.Tooltip();
             if (string.IsNullOrWhiteSpace(__result))
             {
                 __result = baseTooltip;
