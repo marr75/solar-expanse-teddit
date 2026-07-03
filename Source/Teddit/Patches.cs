@@ -812,7 +812,13 @@ namespace Teddit
 
             if (IsOrbitObjectInfo(body) && BodyPatcher.BodyHasRemovedOrbit(counterpart))
             {
-                if (counterpart?.parentObjectInfo != null && CounterpartOrbitMatchesRemovedBodyParent(body, counterpart.parentObjectInfo))
+                // Keep the orbit body only when it directly orbits the same body as the removed
+                // counterpart's parent (e.g. MARS [ORBIT] → PHOBOS: both centered on MARS).
+                // Do NOT use the grandparent check here — CALLISTO [ORBIT] orbits CALLISTO (not
+                // Jupiter), so it must be unwound to CALLISTO to share a center with AMALTHEA.
+                var bodyOrbit = GetOrbitUniversal(body);
+                if (bodyOrbit != null && counterpart.parentObjectInfo?.NBody != null &&
+                    bodyOrbit.centerNbody == counterpart.parentObjectInfo.NBody)
                     return body;
 
                 ObjectInfo centerBody = GetOrbitCenterObjectInfo(body);
