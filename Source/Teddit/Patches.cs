@@ -107,6 +107,7 @@ namespace Teddit
     static class PatchObjectInfoManagerUpdate
     {
         static bool _ran = false;
+        static int _lastInstanceId = -1;
 
         static readonly FieldInfo _eventWasField = typeof(ObjectInfoManager)
             .GetField("solarSystemLoadEventWas",
@@ -114,6 +115,15 @@ namespace Teddit
 
         static void Postfix(ObjectInfoManager __instance)
         {
+            int instanceId = __instance.GetInstanceID();
+            if (instanceId != _lastInstanceId)
+            {
+                _ran = false;
+                _lastInstanceId = instanceId;
+                BodyPatcher.ResetSessionState();
+                Plugin.Log.LogInfo($"[Teddit] New ObjectInfoManager instance ({instanceId}) — resetting load state.");
+            }
+
             if (_ran) return;
             if (_eventWasField == null)
             {
@@ -278,9 +288,18 @@ namespace Teddit
     [HarmonyPatch(typeof(Spacecraft), "SetCurrentlyOnThisObject")]
     static class PatchSpacecraftSetCurrentlyOnThisObjectNoOrbitBodies
     {
+        static readonly HashSet<int> _redirecting = new HashSet<int>();
+
         static void Postfix(Spacecraft __instance)
         {
             if (__instance == null || __instance.spacecraftType == null)
+                return;
+
+            // Guard against re-entrant calls: SetCurrentlyOnThisObject(parent) below
+            // is itself patched, and the game may route through the orbit body internally,
+            // which would retrigger this postfix infinitely without this check.
+            int instanceId = __instance.GetInstanceID();
+            if (_redirecting.Contains(instanceId))
                 return;
 
             var current = __instance.CurrentlyOnThisObject;
@@ -293,12 +312,17 @@ namespace Teddit
 
             try
             {
+                _redirecting.Add(instanceId);
                 Plugin.Log.LogInfo($"[BodyPatcher] Redirecting '{__instance.GetSpacecraftName()}' from hidden orbit '{current.ObjectName}' to '{parent.ObjectName}'.");
                 __instance.SetCurrentlyOnThisObject(parent);
             }
             catch (Exception ex)
             {
                 Plugin.Log.LogWarning($"[BodyPatcher] Failed to redirect spacecraft '{__instance.GetSpacecraftName()}' off hidden orbit '{current.ObjectName}': {ex.Message}");
+            }
+            finally
+            {
+                _redirecting.Remove(instanceId);
             }
         }
     }
@@ -788,7 +812,13 @@ namespace Teddit
 
             if (IsOrbitObjectInfo(body) && BodyPatcher.BodyHasRemovedOrbit(counterpart))
             {
-                if (counterpart?.parentObjectInfo != null && CounterpartOrbitMatchesRemovedBodyParent(body, counterpart.parentObjectInfo))
+                // Keep the orbit body only when it directly orbits the same body as the removed
+                // counterpart's parent (e.g. MARS [ORBIT] → PHOBOS: both centered on MARS).
+                // Do NOT use the grandparent check here — CALLISTO [ORBIT] orbits CALLISTO (not
+                // Jupiter), so it must be unwound to CALLISTO to share a center with AMALTHEA.
+                var bodyOrbit = GetOrbitUniversal(body);
+                if (bodyOrbit != null && counterpart.parentObjectInfo?.NBody != null &&
+                    bodyOrbit.centerNbody == counterpart.parentObjectInfo.NBody)
                     return body;
 
                 ObjectInfo centerBody = GetOrbitCenterObjectInfo(body);
@@ -822,7 +852,23 @@ namespace Teddit
                 return false;
 
             OrbitUniversal counterpartOrbit = GetOrbitUniversal(counterpart);
-            return counterpartOrbit != null && counterpartOrbit.centerNbody == removedBodyParent.NBody;
+            if (counterpartOrbit == null) return false;
+
+            if (counterpartOrbit.centerNbody == removedBodyParent.NBody)
+                return true;
+
+            // One level up: handles the case where the counterpart is an orbit companion of a
+            // moon that itself orbits the removed body's parent system. Example: CALLISTO [ORBIT]
+            // orbits CALLISTO, which orbits JUPITER — so it shares AMALTHEA's parent (JUPITER).
+            try
+            {
+                var grandparentOrbit = counterpartOrbit.centerNbody?.gameObject.GetComponent<OrbitUniversal>();
+                if (grandparentOrbit != null && grandparentOrbit.centerNbody == removedBodyParent.NBody)
+                    return true;
+            }
+            catch { }
+
+            return false;
         }
 
         static bool IsOrbitObjectInfo(ObjectInfo body)
@@ -1166,18 +1212,7 @@ namespace Teddit
             if (descriptor == null)
                 return;
 
-            ObjectInfo currentObject = null;
-            try
-            {
-                currentObject = SerializedMonoBehaviourSingleton<UIManager>.Instance
-                    .GetWindow<ChoseFacilityWindow>()?.ObjectInfoCurrent;
-            }
-            catch
-            {
-                // Leave null; FacilityBaseDescriptor.Tooltip tolerates it.
-            }
-
-            string baseTooltip = descriptor.Tooltip(MonoBehaviourSingleton<GameManager>.Instance.Player, currentObject);
+            string baseTooltip = descriptor.Tooltip();
             if (string.IsNullOrWhiteSpace(__result))
             {
                 __result = baseTooltip;

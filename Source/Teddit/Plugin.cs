@@ -5,7 +5,7 @@ using HarmonyLib;
 
 namespace Teddit
 {
-    [BepInPlugin("com.teddit.teddit", "Teddit", "1.11")]
+    [BepInPlugin("com.teddit.teddit", "Teddit", "1.12")]
     public class Plugin : BaseUnityPlugin
     {
         internal static ManualLogSource Log;
@@ -21,7 +21,15 @@ namespace Teddit
             PluginDir = Path.GetDirectoryName(Info.Location);
             Version = Info.Metadata.Version.ToString();
             Log.LogInfo($"Teddit v{Version} loaded.");
-            new Harmony("com.teddit.teddit").PatchAll();
+            // Patch each class independently so a patch whose target method is
+            // absent in the running game version can't abort the batch and silently
+            // take the rest of the mod's patches down with it.
+            var harmony = new Harmony("com.teddit.teddit");
+            foreach (var type in AccessTools.GetTypesFromAssembly(System.Reflection.Assembly.GetExecutingAssembly()))
+            {
+                try { harmony.CreateClassProcessor(type).Patch(); }
+                catch (System.Exception ex) { Log.LogWarning($"Skipped incompatible patch '{type.Name}': {ex.Message}"); }
+            }
         }
     }
 }
