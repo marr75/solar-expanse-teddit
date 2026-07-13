@@ -27,12 +27,12 @@ namespace Teddit
         internal static void DumpAll()
         {
             var bm = BehaviorManager.instance;
-            Plugin.Log.LogInfo($"[BehaviorTreeDumper] BehaviorManager.instance==null? {bm == null}");
+            Plugin.Log.LogDebug($"[BehaviorTreeDumper] BehaviorManager.instance==null? {bm == null}");
             if (bm == null)
                 return;
 
             var trees = bm.BehaviorTrees;
-            Plugin.Log.LogInfo($"[BehaviorTreeDumper] BehaviorTrees.Count={trees.Count}");
+            Plugin.Log.LogDebug($"[BehaviorTreeDumper] BehaviorTrees.Count={trees.Count}");
             if (trees.Count == 0)
             {
                 Plugin.Log.LogWarning("[BehaviorTreeDumper] BehaviorTrees.Count==0 — trigger fired too early; no trees registered yet.");
@@ -68,7 +68,7 @@ namespace Teddit
 
                 var taskList = tree.taskList;
                 int taskCount = taskList?.Count ?? 0;
-                Plugin.Log.LogInfo($"[BehaviorTreeDumper] tree name={treeName} gameObject={goName} tasks={taskCount}");
+                Plugin.Log.LogDebug($"[BehaviorTreeDumper] tree name={treeName} gameObject={goName} tasks={taskCount}");
 
                 sb.AppendLine($"# {treeName} on {goName}");
                 sb.AppendLine($"{YamlKey(treeName + "_" + goName)}:");
@@ -173,7 +173,7 @@ namespace Teddit
             {
                 sb.AppendLine($"{pad}external_resolved: true");
                 sb.AppendLine($"{pad}external_note: already_expanded");
-                Plugin.Log.LogInfo($"[BehaviorTreeDumper] external '{extName}' already expanded this session — referencing prior dump.");
+                Plugin.Log.LogDebug($"[BehaviorTreeDumper] external '{extName}' already expanded this session — referencing prior dump.");
                 return;
             }
 
@@ -212,7 +212,7 @@ namespace Teddit
             sb.AppendLine($"{pad}external_task_count: {count}");
             sb.AppendLine($"{pad}external_tree:");
             sb.Append(body);
-            Plugin.Log.LogInfo($"[BehaviorTreeDumper] expanded external '{extName}' resolved=true tasks={count}");
+            Plugin.Log.LogDebug($"[BehaviorTreeDumper] expanded external '{extName}' resolved=true tasks={count}");
         }
 
         static void EmitTaskTree(Task task, StringBuilder sb, int indent, ref int count)

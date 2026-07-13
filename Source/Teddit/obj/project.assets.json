@@ -456,25 +456,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\parft\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj",
+      "projectUniqueName": "D:\\dev\\SolarExpanseMods\\ThirdPartyMods\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj",
       "projectName": "Teddit",
-      "projectPath": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj",
-      "packagesPath": "C:\\Users\\parft\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\solar-expanse-teddit\\Source\\Teddit\\obj\\",
+      "projectPath": "D:\\dev\\SolarExpanseMods\\ThirdPartyMods\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\dev\\SolarExpanseMods\\ThirdPartyMods\\solar-expanse-teddit\\Source\\Teddit\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\parft\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "D:\\dev\\SolarExpanseMods\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net471"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.bepinex.dev/v3/index.json": {}
       },
       "frameworks": {
         "net471": {
@@ -491,7 +493,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net471": {
@@ -509,7 +512,7 @@
             "version": "[13.7.1, )"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.420\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -10,7 +10,7 @@ Solex:
     housingExpectancyModifier: 100
     foodDemandMultiplier: 1.2
     populationParameter: 0.01
-    minPopulationSize: 100
+    minPopulationSize: 0
     minConsumptionRate: 0.0002678572
   marketConfig:
     requiredMoneyMarginMultiplier: 0.5
@@ -52,7 +52,7 @@ NASA:
     housingExpectancyModifier: 100
     foodDemandMultiplier: 1.2
     populationParameter: 0.01
-    minPopulationSize: 100
+    minPopulationSize: 0
     minConsumptionRate: 0.0002678572
   marketConfig:
     requiredMoneyMarginMultiplier: 0.5
@@ -94,7 +94,7 @@ CNSA:
     housingExpectancyModifier: 100
     foodDemandMultiplier: 1.2
     populationParameter: 0.01
-    minPopulationSize: 100
+    minPopulationSize: 0
     minConsumptionRate: 0.0002678572
   marketConfig:
     requiredMoneyMarginMultiplier: 0.5
@@ -136,7 +136,7 @@ ESA:
     housingExpectancyModifier: 100
     foodDemandMultiplier: 1.2
     populationParameter: 0.01
-    minPopulationSize: 100
+    minPopulationSize: 0
     minConsumptionRate: 0.0002678572
   marketConfig:
     requiredMoneyMarginMultiplier: 0.5
@@ -178,7 +178,7 @@ Roscosmos:
     housingExpectancyModifier: 100
     foodDemandMultiplier: 1.2
     populationParameter: 0.01
-    minPopulationSize: 100
+    minPopulationSize: 0
     minConsumptionRate: 0.0002678572
   marketConfig:
     requiredMoneyMarginMultiplier: 0.5

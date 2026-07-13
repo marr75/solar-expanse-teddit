@@ -572,7 +572,7 @@ namespace Teddit
     {
         static bool Prefix(EnergyProductionModule __instance, double days)
         {
-            Plugin.Log.LogInfo($"[EnergyModule:ProductEnergy] id={__instance.facilityDescriptor?.ID} days={days:F4} flag={GameplayPatches.EnergyModuleConsumeFuel}"); // TEMP-DEBUG
+            Plugin.Log.LogDebug($"[EnergyModule:ProductEnergy] id={__instance.facilityDescriptor?.ID} days={days:F4} flag={GameplayPatches.EnergyModuleConsumeFuel}"); // TEMP-DEBUG
             if (!GameplayPatches.EnergyModuleConsumeFuel)
                 return true;
 
@@ -608,7 +608,7 @@ namespace Teddit
             {
                 __result = GameplayPatches.ComputeEnergyModuleResourceEfficiency(module);
                 double throttle = EnergyThrottle.GetThrottleFactor(module);
-                Plugin.Log.LogInfo($"[EnergyModule:GetResEff] id={module.facilityDescriptor?.ID} resEff={__result:F4} throttle={throttle:F4}"); // TEMP-DEBUG
+                Plugin.Log.LogDebug($"[EnergyModule:GetResEff] id={module.facilityDescriptor?.ID} resEff={__result:F4} throttle={throttle:F4}"); // TEMP-DEBUG
                 if (throttle < 1.0)
                     __result *= throttle;
             }

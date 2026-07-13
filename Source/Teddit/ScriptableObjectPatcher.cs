@@ -253,7 +253,7 @@ namespace Teddit
                 else
                     EnergyThrottle.UnregisterThrottleable(id);
 
-                Plugin.Log.LogInfo($"[FacilityPatcher] {id}.energyThrottleable = {throttleable} (tok.Type={tok.Type})"); // TEMP-DEBUG
+                Plugin.Log.LogDebug($"[FacilityPatcher] {id}.energyThrottleable = {throttleable} (tok.Type={tok.Type})"); // TEMP-DEBUG
             }
 
             if (fields.TryGetValue("revenuePerDay", out tok))
@@ -290,7 +290,7 @@ namespace Teddit
             var allSO = SerializedMonoBehaviourSingleton<AllScriptableObjectManager>.Instance;
             JToken tok;
 
-            Plugin.Log.LogInfo($"{prefix} ApplyFacilityComplexFields({id}) keys=[{string.Join(", ", fields.Keys)}]"); // TEMP-DEBUG
+            Plugin.Log.LogDebug($"{prefix} ApplyFacilityComplexFields({id}) keys=[{string.Join(", ", fields.Keys)}]"); // TEMP-DEBUG
 
             if (fields.ContainsKey("icon") || fields.ContainsKey("iconRef"))
             {
@@ -922,13 +922,13 @@ namespace Teddit
                 {
                     var thrustFi   = FindField(scType.GetType(), "thrust");
                     var exhaustFi  = FindField(scType.GetType(), "exhaustV");
-                    Plugin.Log.LogInfo($"[SpacecraftPatcher] {kv.Key}: hullBoxed={(hullBoxed != null ? hullBoxed.GetType().Name : "null")}, hasCompletedHull={hasCompletedHull}");
-                    Plugin.Log.LogInfo($"[SpacecraftPatcher] {kv.Key}: thrust field={(thrustFi != null ? thrustFi.DeclaringType.Name + "." + thrustFi.Name + " (" + thrustFi.FieldType.Name + ")" : "NOT FOUND")}");
-                    Plugin.Log.LogInfo($"[SpacecraftPatcher] {kv.Key}: exhaustV field={(exhaustFi != null ? exhaustFi.DeclaringType.Name + "." + exhaustFi.Name + " (" + exhaustFi.FieldType.Name + ")" : "NOT FOUND")}");
+                    Plugin.Log.LogDebug($"[SpacecraftPatcher] {kv.Key}: hullBoxed={(hullBoxed != null ? hullBoxed.GetType().Name : "null")}, hasCompletedHull={hasCompletedHull}");
+                    Plugin.Log.LogDebug($"[SpacecraftPatcher] {kv.Key}: thrust field={(thrustFi != null ? thrustFi.DeclaringType.Name + "." + thrustFi.Name + " (" + thrustFi.FieldType.Name + ")" : "NOT FOUND")}");
+                    Plugin.Log.LogDebug($"[SpacecraftPatcher] {kv.Key}: exhaustV field={(exhaustFi != null ? exhaustFi.DeclaringType.Name + "." + exhaustFi.Name + " (" + exhaustFi.FieldType.Name + ")" : "NOT FOUND")}");
                     if (hullBoxed != null)
                     {
                         var hullThrustFi = FindField(hullBoxed.GetType(), "thrustBase");
-                        Plugin.Log.LogInfo($"[SpacecraftPatcher] {kv.Key}: hull.thrustBase={(hullThrustFi != null ? hullThrustFi.GetValue(hullBoxed)?.ToString() : "field NOT FOUND")}");
+                        Plugin.Log.LogDebug($"[SpacecraftPatcher] {kv.Key}: hull.thrustBase={(hullThrustFi != null ? hullThrustFi.GetValue(hullBoxed)?.ToString() : "field NOT FOUND")}");
                     }
                 }
 
@@ -937,7 +937,7 @@ namespace Teddit
 
                 if (hasCompletedHull)
                 {
-                    Plugin.Log.LogInfo($"[SpacecraftPatcher] {kv.Key} has completed hull — remapping fields.");
+                    Plugin.Log.LogDebug($"[SpacecraftPatcher] {kv.Key} has completed hull — remapping fields.");
                     var scFields   = new Dictionary<string, JToken>();
                     var hullFields = new Dictionary<string, JToken>();
                     foreach (var field in simpleFields)

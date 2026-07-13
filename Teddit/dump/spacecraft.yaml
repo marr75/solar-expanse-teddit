@@ -34,6 +34,20 @@ spacecraft_asteroid_puller:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
+  constanceAccelerationFlightDivine: 4
+  constanceAccelerationDvMultiplayer: 4
+  constanceAccelerationFlightMinFlightTime: 0.1
+  constanceAccelerationFlightMaxFlightTime: 0.9
+  constanceAccelerationDistanceMax: 1.2
+  constanceAccelerationFlightMultiDelta: 2
 
 # ID_SPACECRAFT_CHEAT (SpacecraftType)
 id_Spacecraft_Cheat:
@@ -66,6 +80,14 @@ id_Spacecraft_Cheat:
   maximumAcceleration: 100
   maintenanceCostPerDay: 0
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.100000001490116
+  maxFlightTimeHohRel: 1.5
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # INTERSTELLAR SHIP (SpacecraftType)
 id_Spacecraft_InterstellarShip:
@@ -95,13 +117,27 @@ id_Spacecraft_InterstellarShip:
   cargoCapacity: 200000
   fuelCapacity: 500000
   thrust: 8E+07
-  exhaustV: 10000
+  exhaustV: 11000
   mass: 50000
   maxLifeSupport: 219000
   availableDeltaV: 100
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
+  constanceAccelerationFlightDivine: 4
+  constanceAccelerationDvMultiplayer: 4
+  constanceAccelerationFlightMinFlightTime: 0.1
+  constanceAccelerationFlightMaxFlightTime: 0.9
+  constanceAccelerationDistanceMax: 1.2
+  constanceAccelerationFlightMultiDelta: 2
 
 # INTERSTELLAR SHIP2 (SpacecraftType)
 id_Spacecraft_InterstellarShip2:
@@ -139,6 +175,20 @@ id_Spacecraft_InterstellarShip2:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
+  constanceAccelerationFlightDivine: 4
+  constanceAccelerationDvMultiplayer: 4
+  constanceAccelerationFlightMinFlightTime: 0.1
+  constanceAccelerationFlightMaxFlightTime: 0.9
+  constanceAccelerationDistanceMax: 1.2
+  constanceAccelerationFlightMultiDelta: 2
 
 # ZEPHYR (SpacecraftType)
 spacecraft_sail_long:
@@ -174,6 +224,14 @@ spacecraft_sail_long:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.100000001490116
+  maxFlightTimeHohRel: 1.39999997615814
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # TALOS (SpacecraftType)
 spacecraft_sail_mid:
@@ -209,6 +267,14 @@ spacecraft_sail_mid:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.100000001490116
+  maxFlightTimeHohRel: 1.39999997615814
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # DAEDALUS (SpacecraftType)
 spacecraft_sail_small:
@@ -244,6 +310,14 @@ spacecraft_sail_small:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.100000001490116
+  maxFlightTimeHohRel: 1.39999997615814
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # IRIS (SpacecraftType)
 spacecraft_chem_small:
@@ -278,6 +352,14 @@ spacecraft_chem_small:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0799999982118607
+  maxFlightTimeHohRel: 1.39999997615814
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # SELENE (SpacecraftType)
 spacecraft_chem_mid2:
@@ -313,6 +395,14 @@ spacecraft_chem_mid2:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0500000007450581
+  maxFlightTimeHohRel: 1.29999995231628
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # STRATOS (SpacecraftType)
 spacecraft_chem_large:
@@ -348,7 +438,15 @@ spacecraft_chem_large:
   availableDeltaV: 100
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
-  maxPayload: null
+  maxPayload: 1000
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.100000001490116
+  maxFlightTimeHohRel: 1.39999997615814
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # HERMES (SpacecraftType)
 spacecraft_electric_small:
@@ -386,6 +484,14 @@ spacecraft_electric_small:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.100000001490116
+  maxFlightTimeHohRel: 1.5
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # CENTAUR (SpacecraftType)
 spacecraft_chem_mid:
@@ -418,6 +524,14 @@ spacecraft_chem_mid:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0500000007450581
+  maxFlightTimeHohRel: 1.39999997615814
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # ORBITAL PAYLOAD CONTAINER (SpacecraftType)
 spacecraft_capsule:
@@ -450,6 +564,14 @@ spacecraft_capsule:
   maximumAcceleration: 100
   maintenanceCostPerDay: 0
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.100000001490116
+  maxFlightTimeHohRel: 1.5
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # ATHENA (SpacecraftType)
 spacecraft_electric_mid:
@@ -486,6 +608,14 @@ spacecraft_electric_mid:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.025000000372529
+  maxFlightTimeHohRel: 0.899999976158142
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # PROMETHEUS (SpacecraftType)
 spacecraft_nuke_small:
@@ -522,6 +652,14 @@ spacecraft_nuke_small:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.20000004768372
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # HEPHAISTOS (SpacecraftType)
 spacecraft_nuke_mid:
@@ -558,6 +696,14 @@ spacecraft_nuke_mid:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # ARIANE (SpacecraftType)
 spacecraft_nuke_large:
@@ -595,6 +741,20 @@ spacecraft_nuke_large:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
+  constanceAccelerationFlightDivine: 4
+  constanceAccelerationDvMultiplayer: 4
+  constanceAccelerationFlightMinFlightTime: 0.1
+  constanceAccelerationFlightMaxFlightTime: 0.9
+  constanceAccelerationDistanceMax: 1.2
+  constanceAccelerationFlightMultiDelta: 2
 
 # CRONOS (SpacecraftType)
 spacecraft_nuke_nolv:
@@ -631,6 +791,14 @@ spacecraft_nuke_nolv:
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # NIKE (SpacecraftType)
 spacecraft_fusion_small:
@@ -661,13 +829,27 @@ spacecraft_fusion_small:
   cargoCapacity: 5000
   fuelCapacity: 5000
   thrust: 6000000
-  exhaustV: 1200
+  exhaustV: 1000
   mass: 400
   maxLifeSupport: 4400
   availableDeltaV: 500
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
+  constanceAccelerationFlightDivine: 4
+  constanceAccelerationDvMultiplayer: 4
+  constanceAccelerationFlightMinFlightTime: 0.1
+  constanceAccelerationFlightMaxFlightTime: 0.9
+  constanceAccelerationDistanceMax: 1.2
+  constanceAccelerationFlightMultiDelta: 2
 
 # SIRIUS (SpacecraftType)
 spacecraft_fusion_mid:
@@ -698,13 +880,27 @@ spacecraft_fusion_mid:
   cargoCapacity: 10000
   fuelCapacity: 3000
   thrust: 9800000
-  exhaustV: 4000
+  exhaustV: 2400
   mass: 500
   maxLifeSupport: 4380
   availableDeltaV: 100
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
+  constanceAccelerationFlightDivine: 4
+  constanceAccelerationDvMultiplayer: 4
+  constanceAccelerationFlightMinFlightTime: 0.1
+  constanceAccelerationFlightMaxFlightTime: 0.9
+  constanceAccelerationDistanceMax: 1.2
+  constanceAccelerationFlightMultiDelta: 2
 
 # ZEUS (SpacecraftType)
 spacecraft_fusion_large:
@@ -735,13 +931,112 @@ spacecraft_fusion_large:
   cargoCapacity: 20000
   fuelCapacity: 5000
   thrust: 4E+07
-  exhaustV: 10000
+  exhaustV: 11000
   mass: 1000
   maxLifeSupport: 4380
   availableDeltaV: 100
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
+  constanceAccelerationFlightDivine: 4
+  constanceAccelerationDvMultiplayer: 4
+  constanceAccelerationFlightMinFlightTime: 0.1
+  constanceAccelerationFlightMaxFlightTime: 0.9
+  constanceAccelerationDistanceMax: 1.2
+  constanceAccelerationFlightMultiDelta: 2
+
+# METIS (SpacecraftType)
+spacecraft_electric_metis:
+  engineType: electric
+  orbitSC: false
+  solarSC: false
+  solarParameter: 10
+  isLocked: true
+  needLaunchVehicleToGoToMoon: true
+  buildOnlyLowOrbit: false
+  canByBuildByUser: true
+  lowOrbitContainer: false
+  magneticCatapult: false
+  reusability: 1
+  constanceAcceleration: false
+  isInterstellarShip: false
+  asteroidPullingShip: false
+  fuelType: id_resource_noblegas
+  iconRef: metis
+  timeToBuildInDays: 30
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 3
+  cargoCapacity: 0
+  fuelCapacity: 50
+  thrust: 40
+  exhaustV: 20
+  mass: 1
+  maxLifeSupport: 0
+  availableDeltaV: 100
+  maximumAcceleration: 100
+  maintenanceCostPerDay: 0
+  maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0500000007450581
+  maxFlightTimeHohRel: 1.29999995231628
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
+
+# ARGO (SpacecraftType)
+spacecraft_chem_extralarge:
+  engineType: chemical
+  orbitSC: false
+  solarSC: false
+  solarParameter: 10
+  isLocked: true
+  needLaunchVehicleToGoToMoon: false
+  buildOnlyLowOrbit: false
+  canByBuildByUser: true
+  lowOrbitContainer: false
+  magneticCatapult: false
+  reusability: 1
+  constanceAcceleration: false
+  isInterstellarShip: false
+  asteroidPullingShip: false
+  fuelType: id_resource_fuel
+  iconRef: placeholder_icon
+  timeToBuildInDays: 120
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 240
+    id_resource_plastic: 60
+  cargoCapacity: 400
+  fuelCapacity: 2000
+  thrust: 9600000
+  exhaustV: 5.4
+  mass: 100
+  maxLifeSupport: 480
+  availableDeltaV: 100
+  maximumAcceleration: 100
+  maintenanceCostPerDay: 10
+  maxPayload: 1000
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.100000001490116
+  maxFlightTimeHohRel: 1.39999997615814
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # SPACECRAFT_ASTEROID_PULLER_FORASTEROIDIMPACT (SpacecraftType)
 spacecraft_asteroid_puller_ForAsteroidImpact:
@@ -774,6 +1069,14 @@ spacecraft_asteroid_puller_ForAsteroidImpact:
   maximumAcceleration: 100
   maintenanceCostPerDay: 0
   maxPayload: null
+  notUsePorkchope: true
+  minFlightTimeHohRel: 0.100000001490116
+  maxFlightTimeHohRel: 1.5
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # BUILD_ASTEROID_ENGINE_FACILITY (SpacecraftType)
 Spacecraft_build_asteroid_engine_facility:
@@ -809,6 +1112,14 @@ Spacecraft_build_asteroid_engine_facility:
   maximumAcceleration: 100
   maintenanceCostPerDay: 0
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # ASTEROID ENGINE (SpacecraftType)
 Spacecraft_build_asteroid_engine_facilityModule:
@@ -846,6 +1157,14 @@ Spacecraft_build_asteroid_engine_facilityModule:
   maximumAcceleration: 100
   maintenanceCostPerDay: 0
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 
 # ELECTROMAGNETIC CATAPULT (SpacecraftType)
 SpacecraftFakemagnetic_catapult:
@@ -873,11 +1192,19 @@ SpacecraftFakemagnetic_catapult:
   cargoCapacity: 2000
   fuelCapacity: 0
   thrust: 4.0002E+07
-  exhaustV: 12000
+  exhaustV: 13000
   mass: 10
   maxLifeSupport: 0
   availableDeltaV: 100
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+  notUsePorkchope: false
+  minFlightTimeHohRel: 0.0399999991059303
+  maxFlightTimeHohRel: 1.10000002384186
+  costLaunch: 1000
+  interstellarProbeSC: false
+  trajectoryObjectImpulseSpeedParameter1: 100
+  trajectoryObjectImpulseSpeedMin: 0.3
+  trajectoryObjectImpulseSpeedMax: 1
 

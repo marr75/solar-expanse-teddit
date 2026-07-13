@@ -472,24 +472,24 @@ namespace Teddit
 
             if (activeContracts.Count == 0)
             {
-                Plugin.Log.LogInfo($"[AIOverhaul] Contract snapshot for {cb.Company.ID}: no active contracts.");
+                Plugin.Log.LogDebug($"[AIOverhaul] Contract snapshot for {cb.Company.ID}: no active contracts.");
                 return;
             }
 
-            Plugin.Log.LogInfo($"[AIOverhaul] Contract snapshot for {cb.Company.ID}: {activeContracts.Count} active contract(s).");
+            Plugin.Log.LogDebug($"[AIOverhaul] Contract snapshot for {cb.Company.ID}: {activeContracts.Count} active contract(s).");
             foreach (var contract in activeContracts)
             {
                 if (!contract.PerCompanyContractData.TryGetValue(cb.Company, out var perCompany) || perCompany == null)
                     continue;
 
-                Plugin.Log.LogInfo($"[AIOverhaul]   Contract '{contract.ContractDefinition.ID}' state={perCompany.currentState} objectives={perCompany.ObjectivesDataList.Count}.");
+                Plugin.Log.LogDebug($"[AIOverhaul]   Contract '{contract.ContractDefinition.ID}' state={perCompany.currentState} objectives={perCompany.ObjectivesDataList.Count}.");
                 for (int i = 0; i < perCompany.ObjectivesDataList.Count; i++)
                 {
                     var objectiveData = perCompany.ObjectivesDataList[i];
                     if (objectiveData == null)
                         continue;
 
-                    Plugin.Log.LogInfo($"[AIOverhaul]     [{i}] {DescribeObjectiveProgress(objectiveData)}");
+                    Plugin.Log.LogDebug($"[AIOverhaul]     [{i}] {DescribeObjectiveProgress(objectiveData)}");
                 }
             }
         }
@@ -770,7 +770,7 @@ namespace Teddit
                 return BDTaskStatus.Failure;
 
             targetData.AddFacility(needed, prebuilt: false);
-            Plugin.Log.LogInfo($"[AIOverhaul] Queued {needed.ID} on {target.ObjectName} for {cb.Company.ID} ({reason}).");
+            Plugin.Log.LogDebug($"[AIOverhaul] Queued {needed.ID} on {target.ObjectName} for {cb.Company.ID} ({reason}).");
             return BDTaskStatus.Running;
         }
 
@@ -872,7 +872,7 @@ namespace Teddit
                     string stagedFuel = StageResourceToObject(sourceData, fuelType, seedFuelAmount, allowReserveFallback: true);
                     if (!string.IsNullOrEmpty(stagedFuel))
                     {
-                        Plugin.Log.LogInfo($"[AIOverhaul] Seeded return fuel for {company.ID} ship '{sc.GetSpacecraftName()}' on {from.ObjectName}: {stagedFuel}.");
+                        Plugin.Log.LogDebug($"[AIOverhaul] Seeded return fuel for {company.ID} ship '{sc.GetSpacecraftName()}' on {from.ObjectName}: {stagedFuel}.");
                         result = MonoBehaviourSingleton<GameManager>.Instance.PlanFlyCode(pmp);
                         scheduled = result != null &&
                             result.endCalculation &&
@@ -883,7 +883,7 @@ namespace Teddit
 
                 if (scheduled)
                 {
-                    Plugin.Log.LogInfo($"[AIOverhaul] Scheduled return flight for {company.ID} ship '{sc.GetSpacecraftName()}' from {from.ObjectName} to {home.ObjectName}.");
+                    Plugin.Log.LogDebug($"[AIOverhaul] Scheduled return flight for {company.ID} ship '{sc.GetSpacecraftName()}' from {from.ObjectName} to {home.ObjectName}.");
                 }
 
                 return scheduled;
@@ -1046,7 +1046,7 @@ namespace Teddit
             if (launchVehicle.Value?.Object != null)
                 cb.LaunchVehiclesLockedForAIMission.Add(launchVehicle.Value);
 
-            Plugin.Log.LogInfo($"[AIOverhaul] Scheduled crew shipment of {crewToSend} from {sourceData.ObjectInfo.ObjectName} to {targetData.ObjectInfo.ObjectName} for {cb.Company.ID} using {spacecraft.Value.Object.spacecraftType.ID}.");
+            Plugin.Log.LogDebug($"[AIOverhaul] Scheduled crew shipment of {crewToSend} from {sourceData.ObjectInfo.ObjectName} to {targetData.ObjectInfo.ObjectName} for {cb.Company.ID} using {spacecraft.Value.Object.spacecraftType.ID}.");
             return true;
         }
 
@@ -1121,7 +1121,7 @@ namespace Teddit
 
                     if (TryScheduleReturnHome(spacecraft))
                     {
-                        Plugin.Log.LogInfo($"[AIOverhaul] Return sweep recalled '{spacecraft.GetSpacecraftName()}' for {cb.Company.ID} from {spacecraft.CurrentlyOnThisObject?.ObjectName ?? "?"}.");
+                        Plugin.Log.LogDebug($"[AIOverhaul] Return sweep recalled '{spacecraft.GetSpacecraftName()}' for {cb.Company.ID} from {spacecraft.CurrentlyOnThisObject?.ObjectName ?? "?"}.");
                         changed = true;
                     }
                 }
@@ -1294,7 +1294,7 @@ namespace Teddit
                 string uniqueName = company.GetUniqueRocketName(baseName);
                 var construct = new SpacecraftConstructData(baseName, uniqueName, type, home, company.productionCountID++);
                 home.AddRocketToConstruct(construct);
-                Plugin.Log.LogInfo($"[AIOverhaul] Queued reserve spacecraft '{type.ID}' on {home.ObjectInfo.ObjectName} for {company.ID}. Ready reserve below target.");
+                Plugin.Log.LogDebug($"[AIOverhaul] Queued reserve spacecraft '{type.ID}' on {home.ObjectInfo.ObjectName} for {company.ID}. Ready reserve below target.");
                 changed = true;
             }
 
@@ -1315,7 +1315,7 @@ namespace Teddit
                 string uniqueName = company.GetUniqueRocketName(baseName);
                 var construct = new SpacecraftConstructData(baseName, uniqueName, type, home, company.productionCountID++);
                 home.AddRocketToConstruct(construct);
-                Plugin.Log.LogInfo($"[AIOverhaul] Queued reserve launch vehicle '{type.ID}' on {home.ObjectInfo.ObjectName} for {company.ID}. Ready reserve below target.");
+                Plugin.Log.LogDebug($"[AIOverhaul] Queued reserve launch vehicle '{type.ID}' on {home.ObjectInfo.ObjectName} for {company.ID}. Ready reserve below target.");
                 changed = true;
             }
 
@@ -1486,7 +1486,7 @@ namespace Teddit
 
             if (spacecraftType.Value != null)
             {
-                Plugin.Log.LogInfo($"[AIOverhaul] {cb.Company.ID} selected spacecraft '{spacecraftType.Value.ID}' for route {from.ObjectName}->{to.ObjectName}.");
+                Plugin.Log.LogDebug($"[AIOverhaul] {cb.Company.ID} selected spacecraft '{spacecraftType.Value.ID}' for route {from.ObjectName}->{to.ObjectName}.");
                 return true;
             }
 
@@ -1578,7 +1578,7 @@ namespace Teddit
 
                 if (launchVehicleType.Value != null)
                 {
-                    Plugin.Log.LogInfo($"[AIOverhaul] {cb.Company.ID} selected launch vehicle '{launchVehicleType.Value.ID}' for spacecraft '{scType.ID}' from {from.ObjectName}.");
+                    Plugin.Log.LogDebug($"[AIOverhaul] {cb.Company.ID} selected launch vehicle '{launchVehicleType.Value.ID}' for spacecraft '{scType.ID}' from {from.ObjectName}.");
                     return true;
                 }
 
@@ -2011,7 +2011,7 @@ namespace Teddit
                     if (research != null)
                     {
                         cb.QueueResearch(research, force: true);
-                        Plugin.Log.LogInfo($"[AIOverhaul] Queued research '{research.ID}' to industrialize {objectInfo.ObjectName} for {cb.Company.ID} ({reason}).");
+                        Plugin.Log.LogDebug($"[AIOverhaul] Queued research '{research.ID}' to industrialize {objectInfo.ObjectName} for {cb.Company.ID} ({reason}).");
                         MarkHandledThisMonth(_lastCrewCapacityAdditionPass, bodyKey, now.Year, now.Month);
                         changed = true;
                     }
@@ -2022,7 +2022,7 @@ namespace Teddit
                 {
                     string bootstrapSource = StageBootstrapResources(data, needed);
                     data.AddFacility(needed, prebuilt: false);
-                    Plugin.Log.LogInfo($"[AIOverhaul] Queued {needed.ID} on {objectInfo.ObjectName} for {cb.Company.ID} ({reason})" +
+                    Plugin.Log.LogDebug($"[AIOverhaul] Queued {needed.ID} on {objectInfo.ObjectName} for {cb.Company.ID} ({reason})" +
                         (string.IsNullOrEmpty(bootstrapSource) ? "." : $". Seeded resources: {bootstrapSource}."));
                     MarkHandledThisMonth(_lastCrewCapacityAdditionPass, bodyKey, now.Year, now.Month);
                     changed = true;
@@ -2101,7 +2101,7 @@ namespace Teddit
                             string staged = StageBootstrapResources(data, habitat);
                             data.AddFacility(habitat, prebuilt: false);
                             MarkHandledThisMonth(_lastCrewCapacityAdditionPass, bodyKey, now.Year, now.Month);
-                            Plugin.Log.LogInfo($"[AIOverhaul] Queued crew-capacity facility '{habitat.ID}' on {objectInfo.ObjectName} for {cb.Company.ID}. Desired crew {desiredCrew}, capacity {habitatCapacity}, gap {crewGap}.{(string.IsNullOrEmpty(staged) ? string.Empty : $" Seeded resources: {staged}")}");
+                            Plugin.Log.LogDebug($"[AIOverhaul] Queued crew-capacity facility '{habitat.ID}' on {objectInfo.ObjectName} for {cb.Company.ID}. Desired crew {desiredCrew}, capacity {habitatCapacity}, gap {crewGap}.{(string.IsNullOrEmpty(staged) ? string.Empty : $" Seeded resources: {staged}")}");
                             changed = true;
                         }
                     }
@@ -2124,7 +2124,7 @@ namespace Teddit
                             }
                             else
                             {
-                                Plugin.Log.LogInfo($"[AIOverhaul] {cb.Company.ID} needs off-world crew on {objectInfo.ObjectName} but could not schedule shipment. Crew {currentCrew}, target {targetCrew}, workers needed {totalWorkersNeeded}, critical jobs {criticalWorkersNeeded}, habitat cap {habitatCapacity}.");
+                                Plugin.Log.LogDebug($"[AIOverhaul] {cb.Company.ID} needs off-world crew on {objectInfo.ObjectName} but could not schedule shipment. Crew {currentCrew}, target {targetCrew}, workers needed {totalWorkersNeeded}, critical jobs {criticalWorkersNeeded}, habitat cap {habitatCapacity}.");
                                 MarkHandledThisMonth(_lastCrewShipmentPass, crewKey, now.Year, now.Month);
                             }
                         }
@@ -2145,7 +2145,7 @@ namespace Teddit
                     if (toHire > 0)
                     {
                         data.CrewResource.Value += toHire;
-                        Plugin.Log.LogInfo($"[AIOverhaul] Staffed {toHire} crew on {objectInfo.ObjectName} for {cb.Company.ID}. Crew {currentCrew}->{data.CurrentCrew}, target {targetCrew}, workers needed {totalWorkersNeeded}, critical jobs {criticalWorkersNeeded}, habitat cap {habitatCapacity}.");
+                        Plugin.Log.LogDebug($"[AIOverhaul] Staffed {toHire} crew on {objectInfo.ObjectName} for {cb.Company.ID}. Crew {currentCrew}->{data.CurrentCrew}, target {targetCrew}, workers needed {totalWorkersNeeded}, critical jobs {criticalWorkersNeeded}, habitat cap {habitatCapacity}.");
                         changed = true;
                     }
                 }
@@ -2202,7 +2202,7 @@ namespace Teddit
                 string manifest = manifestDemands.Count == 0
                     ? "none"
                     : string.Join(", ", manifestDemands.Take(8).Select(x => $"{x.Resource.ID}={x.TotalDemand:0.##}"));
-                Plugin.Log.LogInfo($"[AIOverhaul] Evaluating cargo bundle for {cb.Company.ID} {from.ObjectName}->{to.ObjectName}. Capacity={cargoCapacity:0.##}, free={capacityRemaining:0.##}, primary={primaryId ?? "none"}, destination demands: {manifest}");
+                Plugin.Log.LogDebug($"[AIOverhaul] Evaluating cargo bundle for {cb.Company.ID} {from.ObjectName}->{to.ObjectName}. Capacity={cargoCapacity:0.##}, free={capacityRemaining:0.##}, primary={primaryId ?? "none"}, destination demands: {manifest}");
             }
 
             if (primaryCargo is ResourceDefinition primaryResource)
@@ -2224,7 +2224,7 @@ namespace Teddit
                         primaryCargoEntry.cargoMass += extraPrimary;
                         capacityRemaining -= extraPrimary;
                         bundledAny = true;
-                        Plugin.Log.LogInfo($"[AIOverhaul] Topped up primary cargo with {extraPrimary:0.##} of {primaryResource.ID} on AI flight {from.ObjectName}->{to.ObjectName} for {cb.Company.ID}.");
+                        Plugin.Log.LogDebug($"[AIOverhaul] Topped up primary cargo with {extraPrimary:0.##} of {primaryResource.ID} on AI flight {from.ObjectName}->{to.ObjectName} for {cb.Company.ID}.");
                     }
                 }
             }
@@ -2255,7 +2255,7 @@ namespace Teddit
                 });
                 capacityRemaining -= amount;
                 bundledAny = true;
-                Plugin.Log.LogInfo($"[AIOverhaul] Bundled {amount:0.##} of {resource.ID} onto AI flight {from.ObjectName}->{to.ObjectName} for {cb.Company.ID}.");
+                Plugin.Log.LogDebug($"[AIOverhaul] Bundled {amount:0.##} of {resource.ID} onto AI flight {from.ObjectName}->{to.ObjectName} for {cb.Company.ID}.");
 
                 if (capacityRemaining <= 1.0)
                     break;
@@ -2263,7 +2263,7 @@ namespace Teddit
 
             if (!bundledAny && capacityRemaining > 1.0 && primaryCargo is ResourceDefinition)
             {
-                Plugin.Log.LogInfo($"[AIOverhaul] No extra cargo available to bundle on AI flight {from.ObjectName}->{to.ObjectName} for {cb.Company.ID}; remaining capacity {capacityRemaining:0.##}.");
+                Plugin.Log.LogDebug($"[AIOverhaul] No extra cargo available to bundle on AI flight {from.ObjectName}->{to.ObjectName} for {cb.Company.ID}; remaining capacity {capacityRemaining:0.##}.");
             }
         }
 
@@ -2316,7 +2316,7 @@ namespace Teddit
                         crewValue = 0
                     });
                     capacityRemaining -= neededModule.Mass;
-                    Plugin.Log.LogInfo($"[AIOverhaul] Bundled module {neededModule.ID} onto AI flight {from.ObjectName}->{to.ObjectName} for {cb.Company.ID}.");
+                    Plugin.Log.LogDebug($"[AIOverhaul] Bundled module {neededModule.ID} onto AI flight {from.ObjectName}->{to.ObjectName} for {cb.Company.ID}.");
                     break;
                 }
             }
@@ -2347,7 +2347,7 @@ namespace Teddit
                 return false;
             }
 
-            Plugin.Log.LogInfo($"[AIOverhaul] Custom PlanMission for {cb.Company.ID}: {from.Value.Object.ObjectName}->{to.Value.Object.ObjectName}, cargo={(cargoElement?.Value?.ID ?? "none")}, howMuch={howMuch.Value:0.##}, quantity={quantity.Value}, spacecraft={spacecraft.Value.Object.spacecraftType?.ID ?? "none"}.");
+            Plugin.Log.LogDebug($"[AIOverhaul] Custom PlanMission for {cb.Company.ID}: {from.Value.Object.ObjectName}->{to.Value.Object.ObjectName}, cargo={(cargoElement?.Value?.ID ?? "none")}, howMuch={howMuch.Value:0.##}, quantity={quantity.Value}, spacecraft={spacecraft.Value.Object.spacecraftType?.ID ?? "none"}.");
 
             var cargoAll = CargoAll.CreateCargoEmpty();
             cargoAll.cargoFuel.objectInfo = from.Value.Object;
@@ -2359,7 +2359,7 @@ namespace Teddit
             {
                 string prepared = PrepareManifestResourcesAtSource(cb, fromData, to.Value.Object);
                 if (!string.IsNullOrEmpty(prepared))
-                    Plugin.Log.LogInfo($"[AIOverhaul] Prepared manifest resources at {from.Value.Object.ObjectName} for {cb.Company.ID} before launch to {to.Value.Object.ObjectName}: {prepared}.");
+                    Plugin.Log.LogDebug($"[AIOverhaul] Prepared manifest resources at {from.Value.Object.ObjectName} for {cb.Company.ID} before launch to {to.Value.Object.ObjectName}: {prepared}.");
             }
 
             var cargoItem = cargoElement?.Value;
@@ -2553,7 +2553,7 @@ namespace Teddit
             shared.Value = chosen;
             if (chosen != null)
             {
-                Plugin.Log.LogInfo($"[AIOverhaul] {cb.Company.ID} selected research '{chosen.ID}'.");
+                Plugin.Log.LogDebug($"[AIOverhaul] {cb.Company.ID} selected research '{chosen.ID}'.");
             }
             __result = chosen != null
                 ? BDTaskStatus.Success
@@ -2587,11 +2587,11 @@ namespace Teddit
             {
                 if (__state == Spacecraft.EPhase.Launch && phase == Spacecraft.EPhase.Fly)
                 {
-                    Plugin.Log.LogInfo($"[AIOverhaul] {company.ID} launched '{__instance.GetSpacecraftName()}' from {__instance.StartObjectOnLand()?.ObjectName ?? "?"} to {__instance.EndObjectOnLand()?.ObjectName ?? "?"}.");
+                    Plugin.Log.LogDebug($"[AIOverhaul] {company.ID} launched '{__instance.GetSpacecraftName()}' from {__instance.StartObjectOnLand()?.ObjectName ?? "?"} to {__instance.EndObjectOnLand()?.ObjectName ?? "?"}.");
                 }
                 else if (__state == Spacecraft.EPhase.Fly && phase == Spacecraft.EPhase.Landing)
                 {
-                    Plugin.Log.LogInfo($"[AIOverhaul] {company.ID} ship '{__instance.GetSpacecraftName()}' arrived at {__instance.EndObjectOnLand()?.ObjectName ?? "?"}.");
+                    Plugin.Log.LogDebug($"[AIOverhaul] {company.ID} ship '{__instance.GetSpacecraftName()}' arrived at {__instance.EndObjectOnLand()?.ObjectName ?? "?"}.");
                 }
             }
 
@@ -2614,7 +2614,7 @@ namespace Teddit
             if (cb?.Company == null || contract == null)
                 return;
 
-            Plugin.Log.LogInfo($"[AIOverhaul] {cb.Company.ID} started contract '{contract.ContractDefinition.ID}'.");
+            Plugin.Log.LogDebug($"[AIOverhaul] {cb.Company.ID} started contract '{contract.ContractDefinition.ID}'.");
         }
     }
 
@@ -2642,7 +2642,7 @@ namespace Teddit
             if (cb?.Company == null)
                 return;
 
-            Plugin.Log.LogInfo($"[AIOverhaul] {cb.Company.ID} released a resource delivery task early after launch so the AI can queue additional flights.");
+            Plugin.Log.LogDebug($"[AIOverhaul] {cb.Company.ID} released a resource delivery task early after launch so the AI can queue additional flights.");
             __result = BDTaskStatus.Success;
         }
     }

@@ -32,6 +32,10 @@ namespace Teddit
     ///   research.yaml   — all research definitions
     ///   deposits.yaml   — all body deposits in patch-compatible format
     /// Dump format == patch format: keyed by ID, camelCase field names, copy-pasteable.
+    /// Exception: the spacecraft flight-window/porkchop/launch-cost keys
+    /// (notUsePorkchope, min/maxFlightTimeHohRel, costLaunch, interstellarProbeSC,
+    /// trajectoryObjectImpulseSpeed*, constanceAcceleration*) are dump-only — the
+    /// spacecraft patcher does not consume them; they round-trip only if a setter is added.
     /// Disable by setting DumpOnLoad = false in Plugin after you have the data.
     /// </summary>
     internal static class DataDumper
@@ -618,6 +622,25 @@ namespace Teddit
                 sb.AppendLine($"  maximumAcceleration: {FormatFloat(sc.MaximumAcceleration)}");
                 sb.AppendLine($"  maintenanceCostPerDay: {FormatFloat(sc.MaintenanceCostPerDay)}");
                 sb.AppendLine($"  maxPayload: {FormatNullableFloat(sc.MaxPayload)}");
+
+                // flight-window / porkchop-mode / launch-cost
+                sb.AppendLine($"  notUsePorkchope: {FormatBool(sc.NotUsePorkchope)}");
+                sb.AppendLine($"  minFlightTimeHohRel: {FormatDouble(sc.MinFlightTimeHohRel)}");
+                sb.AppendLine($"  maxFlightTimeHohRel: {FormatDouble(sc.MaxFlightTimeHohRel)}");
+                sb.AppendLine($"  costLaunch: {FormatFloat(sc.costLaunch)}");
+                sb.AppendLine($"  interstellarProbeSC: {FormatBool(sc.InterstellarProbeSC)}");
+                sb.AppendLine($"  trajectoryObjectImpulseSpeedParameter1: {FormatFloat(sc.trajectoryObjectImpulseSpeedParameter1)}");
+                sb.AppendLine($"  trajectoryObjectImpulseSpeedMin: {FormatFloat(sc.trajectoryObjectImpulseSpeedMin)}");
+                sb.AppendLine($"  trajectoryObjectImpulseSpeedMax: {FormatFloat(sc.trajectoryObjectImpulseSpeedMax)}");
+                if (sc.ConstanceAcceleration)
+                {
+                    sb.AppendLine($"  constanceAccelerationFlightDivine: {FormatFloat(sc.ConstanceAccelerationFlightDivine)}");
+                    sb.AppendLine($"  constanceAccelerationDvMultiplayer: {FormatFloat(sc.ConstanceAccelerationDvMultiplayer)}");
+                    sb.AppendLine($"  constanceAccelerationFlightMinFlightTime: {FormatFloat(sc.ConstanceAccelerationFlightMinFlightTime)}");
+                    sb.AppendLine($"  constanceAccelerationFlightMaxFlightTime: {FormatFloat(sc.ConstanceAccelerationFlightMaxFlightTime)}");
+                    sb.AppendLine($"  constanceAccelerationDistanceMax: {FormatFloat(sc.ConstanceAccelerationDistanceMax)}");
+                    sb.AppendLine($"  constanceAccelerationFlightMultiDelta: {FormatFloat(sc.ConstanceAccelerationFlightMultiDelta)}");
+                }
 
                 sb.AppendLine();
                 count++;

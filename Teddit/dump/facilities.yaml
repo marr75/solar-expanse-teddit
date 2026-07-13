@@ -10,6 +10,7 @@ build_asteroid_engine_module:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_asteroid_engine_module
   timeToBuildInDays: 900
   constructionEquipmentCountIsRequired: true
@@ -24,6 +25,7 @@ build_asteroid_engine_module:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 500
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -45,6 +47,7 @@ build_habitat:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_habitat
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -57,6 +60,7 @@ build_habitat:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 5
 
 # CITY (GroundFacilityDescriptor)
@@ -71,6 +75,7 @@ build_habitatcity:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_city
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -84,6 +89,7 @@ build_habitatcity:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 20
 
 # DOME HABITAT (GroundFacilityDescriptor)
@@ -98,6 +104,7 @@ build_habitatdome:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_dome
   timeToBuildInDays: 300
   constructionEquipmentCountIsRequired: true
@@ -111,6 +118,7 @@ build_habitatdome:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # UNDERGROUND HABITAT (GroundFacilityDescriptor)
@@ -125,6 +133,7 @@ build_habitatunder:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_Underground_Habitat
   timeToBuildInDays: 300
   constructionEquipmentCountIsRequired: true
@@ -137,6 +146,7 @@ build_habitatunder:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 5
 
 # HEADQUARTERS (GroundFacilityDescriptor)
@@ -151,6 +161,7 @@ build_hq:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_hq
   timeToBuildInDays: 12
   constructionEquipmentCountIsRequired: true
@@ -162,6 +173,7 @@ build_hq:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 100
 
 # RESEARCH LABORATORY (GroundFacilityDescriptor)
@@ -176,6 +188,8 @@ build_lab:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 1
   iconRef: build_research_lab
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -190,6 +204,7 @@ build_lab:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
   labBonusToResearchInPerHour: 3
   labResearchSubTypeId: ""
@@ -206,6 +221,7 @@ build_observatory:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_observatory
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -219,7 +235,36 @@ build_observatory:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
+
+# BUILD_OBSERVATORYSHIPMETIS (GroundFacilityDescriptor)
+build_observatoryShipMetis:
+  facilityType: Other
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  blockStacking: false
+  canBuildBy: None
+  iconRef: build_observatory
+  timeToBuildInDays: 100
+  constructionEquipmentCountIsRequired: true
+  facilityItemClass: ObservatoryFacility
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 40
+    id_resource_glass: 50
+    id_resource_chips: 10
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyStorage: 0
 
 # OUTPOST (GroundFacilityDescriptor)
 build_outpost:
@@ -233,6 +278,8 @@ build_outpost:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 1
   iconRef: build_outpost
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -245,6 +292,7 @@ build_outpost:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # CITY STATION (GroundFacilityDescriptor)
@@ -259,6 +307,7 @@ build_space_0gcity:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_roatation_city
   timeToBuildInDays: 1200
   constructionEquipmentCountIsRequired: true
@@ -273,6 +322,7 @@ build_space_0gcity:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # ROTATING HABITAT (GroundFacilityDescriptor)
@@ -287,6 +337,7 @@ build_space_0gcolony:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_Rotate_habitat
   timeToBuildInDays: 120
   constructionEquipmentCountIsRequired: true
@@ -300,6 +351,7 @@ build_space_0gcolony:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # ROTATING STATION (GroundFacilityDescriptor)
@@ -314,6 +366,7 @@ build_space_0gdome:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_rotating_station
   timeToBuildInDays: 450
   constructionEquipmentCountIsRequired: true
@@ -328,6 +381,7 @@ build_space_0gdome:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # ORBITAL CONSTRUCTION (GroundFacilityDescriptor)
@@ -342,6 +396,7 @@ build_space_construction:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_space_construction
   timeToBuildInDays: 15
   constructionEquipmentCountIsRequired: false
@@ -354,6 +409,7 @@ build_space_construction:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # ORBITAL SHIPYARD (GroundFacilityDescriptor)
 build_space_drydock:
@@ -367,6 +423,7 @@ build_space_drydock:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_space_drydock
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -380,6 +437,7 @@ build_space_drydock:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # ORBITAL FUEL REFINERY (GroundFacilityDescriptor)
 build_space_fuel:
@@ -393,6 +451,7 @@ build_space_fuel:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_space_fuel_orbital
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -405,6 +464,7 @@ build_space_fuel:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   refinerInput:
     id_resource_water: 0.09
   refinerOutput:
@@ -422,6 +482,7 @@ build_space_telescope:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_space_telescope
   timeToBuildInDays: 30
   constructionEquipmentCountIsRequired: true
@@ -435,6 +496,7 @@ build_space_telescope:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # PLANETARY MAGNETOSPHERE GENERATOR (GroundFacilityDescriptor)
@@ -449,6 +511,7 @@ build_terraform_magnet:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_terraform_magnet
   timeToBuildInDays: 1800
   constructionEquipmentCountIsRequired: true
@@ -460,6 +523,7 @@ build_terraform_magnet:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # ORBITAL MAGNETOSPHERE GENERATOR (GroundFacilityDescriptor)
@@ -474,6 +538,7 @@ build_terraform_space_magnet:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_terraform_space_magnet
   timeToBuildInDays: 1600
   constructionEquipmentCountIsRequired: true
@@ -485,6 +550,7 @@ build_terraform_space_magnet:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # ORBITAL MIRROR (GroundFacilityDescriptor)
 build_terraform_space_mirror:
@@ -498,6 +564,7 @@ build_terraform_space_mirror:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_terraform_space_mirror
   timeToBuildInDays: 1600
   constructionEquipmentCountIsRequired: true
@@ -511,6 +578,7 @@ build_terraform_space_mirror:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # ORBITAL SHADE (GroundFacilityDescriptor)
 build_terraform_space_shade:
@@ -524,6 +592,7 @@ build_terraform_space_shade:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_terraform_space_shade
   timeToBuildInDays: 1600
   constructionEquipmentCountIsRequired: true
@@ -537,6 +606,7 @@ build_terraform_space_shade:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # VEHICLE ASSEMBLY (GroundFacilityDescriptor)
 build_veh_assembly:
@@ -550,6 +620,7 @@ build_veh_assembly:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_veh_assembly
   timeToBuildInDays: 300
   constructionEquipmentCountIsRequired: true
@@ -562,6 +633,7 @@ build_veh_assembly:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # BUILD_VEH_ASSEMBLYINTERSTELLARSHIP (GroundFacilityDescriptor)
 build_veh_assemblyInterstellarShip:
@@ -575,6 +647,7 @@ build_veh_assemblyInterstellarShip:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_interstellar_construction
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -587,6 +660,7 @@ build_veh_assemblyInterstellarShip:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # CARBON RELEASE STATION (GroundFacilityDescriptor)
 build_carbon_deposition:
@@ -600,6 +674,7 @@ build_carbon_deposition:
   upkeepStacking: true
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_carbon_deposition
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -611,6 +686,7 @@ build_carbon_deposition:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: -1
   refinerInput:
     id_resource_volatile: 1
@@ -631,6 +707,7 @@ build_co2_deposition:
   upkeepStacking: true
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_co2_deposition
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -642,6 +719,7 @@ build_co2_deposition:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: -1
   resourcesToMine:
     - id_resource_co2
@@ -658,6 +736,7 @@ build_hel3_deposition:
   upkeepStacking: true
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_hel3_deposition
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -669,6 +748,7 @@ build_hel3_deposition:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: -1
   resourcesToMine:
     - id_resource_hel3
@@ -685,6 +765,7 @@ build_hydrogen_deposition:
   upkeepStacking: true
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_hydrogen_deposition
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -696,6 +777,7 @@ build_hydrogen_deposition:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: -1
   resourcesToMine:
     - id_resource_hydrogen
@@ -712,6 +794,7 @@ build_metal_deposition:
   upkeepStacking: true
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_metal_deposition
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -723,6 +806,7 @@ build_metal_deposition:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: -1
   resourcesToMine:
     - id_resource_metal
@@ -739,6 +823,7 @@ build_nitrogen_deposition:
   upkeepStacking: true
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_nitrogen_deposition
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -750,6 +835,7 @@ build_nitrogen_deposition:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: -1
   resourcesToMine:
     - id_resource_nitrogen
@@ -766,6 +852,7 @@ build_noblegas_deposition:
   upkeepStacking: true
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_noblegas_deposition
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -777,6 +864,7 @@ build_noblegas_deposition:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: -1
   resourcesToMine:
     - id_resource_noblegas
@@ -793,6 +881,7 @@ build_oxygen_deposition:
   upkeepStacking: true
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_oxygen_deposition
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -804,6 +893,7 @@ build_oxygen_deposition:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: -1
   resourcesToMine:
     - id_resource_oxygen
@@ -820,6 +910,7 @@ build_raremetal_deposition:
   upkeepStacking: true
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_raremetal_deposition
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -831,6 +922,7 @@ build_raremetal_deposition:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: -1
   resourcesToMine:
     - id_resource_raremetal
@@ -847,6 +939,7 @@ build_silicon_deposition:
   upkeepStacking: true
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_silicon_deposition
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -858,6 +951,7 @@ build_silicon_deposition:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: -1
   resourcesToMine:
     - id_resource_silicon
@@ -874,6 +968,7 @@ build_uran_deposition:
   upkeepStacking: true
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_uran_deposition
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -885,6 +980,7 @@ build_uran_deposition:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: -1
   resourcesToMine:
     - id_resource_uran
@@ -901,6 +997,8 @@ build_interstellar_drive:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 3
   iconRef: build_interstellar_drive
   timeToBuildInDays: 450
   constructionEquipmentCountIsRequired: true
@@ -916,6 +1014,7 @@ build_interstellar_drive:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # HABITAT SEGMENT (1/8) (GroundFacilityDescriptor)
@@ -930,6 +1029,8 @@ build_interstellar_habitat:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 8
   iconRef: build_interstellar_habitat
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -944,6 +1045,7 @@ build_interstellar_habitat:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # PREPARE THE HABITATS (GroundFacilityDescriptor)
@@ -958,6 +1060,7 @@ build_interstellar_HouseTheCrew:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: otherGroundFacilityIsBlockThenEnable
   iconRef: build_interstellar_HouseTheCrew
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -971,6 +1074,7 @@ build_interstellar_HouseTheCrew:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # MAIN STRUCTURE (GroundFacilityDescriptor)
@@ -985,6 +1089,8 @@ build_interstellar_structure:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 1
   iconRef: build_interstellar_structure
   timeToBuildInDays: 1200
   constructionEquipmentCountIsRequired: true
@@ -998,6 +1104,7 @@ build_interstellar_structure:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # INTERSTELLAR VEHICLE ASSEMBLY (GroundFacilityDescriptor)
@@ -1012,6 +1119,8 @@ build_space_interstellarconstruction:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 1
   iconRef: build_interstellar_construction
   timeToBuildInDays: 90
   constructionEquipmentCountIsRequired: true
@@ -1023,6 +1132,7 @@ build_space_interstellarconstruction:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # BUILD_INTERSTELLAR_DRIVE2 (GroundFacilityDescriptor)
@@ -1037,6 +1147,8 @@ build_interstellar_drive2:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 3
   iconRef: build_interstellar_drive
   timeToBuildInDays: 450
   constructionEquipmentCountIsRequired: true
@@ -1051,6 +1163,7 @@ build_interstellar_drive2:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # BUILD_INTERSTELLAR_HABITAT2 (GroundFacilityDescriptor)
@@ -1065,6 +1178,8 @@ build_interstellar_habitat2:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 8
   iconRef: build_interstellar_habitat
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -1079,6 +1194,7 @@ build_interstellar_habitat2:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # BUILD_INTERSTELLAR_HOUSETHECREW2 (GroundFacilityDescriptor)
@@ -1093,6 +1209,7 @@ build_interstellar_HouseTheCrew2:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: otherGroundFacilityIsBlockThenEnable
   iconRef: build_interstellar_HouseTheCrew
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -1107,6 +1224,7 @@ build_interstellar_HouseTheCrew2:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # BUILD_INTERSTELLAR_STRUCTURE2 (GroundFacilityDescriptor)
@@ -1121,6 +1239,8 @@ build_interstellar_structure2:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 1
   iconRef: build_interstellar_structure
   timeToBuildInDays: 1200
   constructionEquipmentCountIsRequired: true
@@ -1134,6 +1254,7 @@ build_interstellar_structure2:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # BUILD_SPACE_INTERSTELLARCONSTRUCTION2 (GroundFacilityDescriptor)
@@ -1148,6 +1269,7 @@ build_space_interstellarconstruction2:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_interstellar_construction
   timeToBuildInDays: 90
   constructionEquipmentCountIsRequired: true
@@ -1159,6 +1281,7 @@ build_space_interstellarconstruction2:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 10
 
 # SPACE ELEVATOR (GroundFacilityDescriptor)
@@ -1173,6 +1296,7 @@ build_launch_elevator:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: true
+  canBuildBy: asteroidOnOrbit
   iconRef: build_launch_elevator
   timeToBuildInDays: 2200
   constructionEquipmentCountIsRequired: true
@@ -1186,6 +1310,7 @@ build_launch_elevator:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # ELECTROMAGNETIC CATAPULT (GroundFacilityDescriptor)
@@ -1200,6 +1325,7 @@ build_launch_magnetic_catapult:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_magnetic_catapult
   timeToBuildInDays: 800
   constructionEquipmentCountIsRequired: true
@@ -1213,6 +1339,7 @@ build_launch_magnetic_catapult:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # MAGNETIC LAUNCH RAILS (GroundFacilityDescriptor)
@@ -1227,6 +1354,7 @@ build_launch_magrails:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_launch_magrails
   timeToBuildInDays: 800
   constructionEquipmentCountIsRequired: true
@@ -1240,6 +1368,7 @@ build_launch_magrails:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # STATIONARY MASS DRIVER (GroundFacilityDescriptor)
@@ -1254,6 +1383,7 @@ build_launch_massdriver:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_launch_massdriver
   timeToBuildInDays: 800
   constructionEquipmentCountIsRequired: true
@@ -1267,6 +1397,7 @@ build_launch_massdriver:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # LAUNCH PAD (GroundFacilityDescriptor)
@@ -1281,6 +1412,8 @@ build_launch_pad:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 1
   iconRef: build_launch_pad
   timeToBuildInDays: 90
   constructionEquipmentCountIsRequired: true
@@ -1292,6 +1425,7 @@ build_launch_pad:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # ROTARY LAUNCHER (GroundFacilityDescriptor)
@@ -1306,6 +1440,7 @@ build_launch_spin:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_launch_spin
   timeToBuildInDays: 180
   constructionEquipmentCountIsRequired: true
@@ -1318,6 +1453,7 @@ build_launch_spin:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # EXOTIC ALLOY EXTRACTOR (GroundFacilityDescriptor)
@@ -1332,6 +1468,7 @@ build_alloymine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_steelmine
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1343,6 +1480,7 @@ build_alloymine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_alloy
@@ -1359,6 +1497,7 @@ build_carbonmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_carbonmine
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1370,6 +1509,7 @@ build_carbonmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_volatile
@@ -1386,6 +1526,7 @@ build_carbonmine_big:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_carbonmine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1397,6 +1538,7 @@ build_carbonmine_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_volatile
@@ -1413,6 +1555,7 @@ build_co2mine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_co2mine
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1424,6 +1567,7 @@ build_co2mine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_co2
@@ -1440,6 +1584,7 @@ build_earthmine:
   upkeepStacking: false
   upkeepStackingValue: 10
   blockStacking: false
+  canBuildBy: IDObjectInfo
   iconRef: build_terrestial_mine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1452,6 +1597,7 @@ build_earthmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   refinerOutput:
     id_resource_metal: 0.1
     id_resource_raremetal: 0.1
@@ -1472,6 +1618,7 @@ build_electronicsmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_electronicsmine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1483,6 +1630,7 @@ build_electronicsmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_chips
@@ -1499,6 +1647,7 @@ build_fuelmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_fuelmine
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1510,6 +1659,7 @@ build_fuelmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_fuel
@@ -1526,6 +1676,7 @@ build_fuelmine_big:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_fuelmine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1537,6 +1688,7 @@ build_fuelmine_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_fuel
@@ -1553,6 +1705,7 @@ build_glassmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_glassmine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1564,6 +1717,7 @@ build_glassmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_glass
@@ -1580,6 +1734,7 @@ build_he3mine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: oneOnPlanetNotEarth
   iconRef: build_he3mine
   timeToBuildInDays: 200
   constructionEquipmentCountIsRequired: true
@@ -1591,6 +1746,7 @@ build_he3mine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_hel3
@@ -1607,6 +1763,7 @@ build_he3mine_big:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_he3mine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1618,6 +1775,7 @@ build_he3mine_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_hel3
@@ -1634,6 +1792,7 @@ build_hydrogenmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_hydrogenmine
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1645,6 +1804,7 @@ build_hydrogenmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_hydrogen
@@ -1661,6 +1821,7 @@ build_icemine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_Mining_Base_water
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1672,6 +1833,7 @@ build_icemine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_water
@@ -1688,6 +1850,7 @@ build_icemine_big:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_Mining_Base_water
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1699,6 +1862,7 @@ build_icemine_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_water
@@ -1715,6 +1879,7 @@ build_metalmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_Mining_Base_metals
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1726,6 +1891,7 @@ build_metalmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_metal
@@ -1742,6 +1908,7 @@ build_metalmine_big:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_Mining_Base_metals
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1753,6 +1920,7 @@ build_metalmine_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_metal
@@ -1769,6 +1937,7 @@ build_nitrogenmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_nitrogenmine
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1780,6 +1949,7 @@ build_nitrogenmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_nitrogen
@@ -1796,6 +1966,7 @@ build_noblegasmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_noblegasmine
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1807,6 +1978,7 @@ build_noblegasmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_noblegas
@@ -1823,6 +1995,7 @@ build_noblegasmine_big:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_noblegasmine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1834,6 +2007,7 @@ build_noblegasmine_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_noblegas
@@ -1850,6 +2024,7 @@ build_oxygenmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_oxygenmine
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1861,6 +2036,7 @@ build_oxygenmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_oxygen
@@ -1877,6 +2053,7 @@ build_plasticmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_plasticmine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1888,6 +2065,7 @@ build_plasticmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_plastic
@@ -1904,6 +2082,7 @@ build_raremine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_Mining_Base_rare_metals
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1915,6 +2094,7 @@ build_raremine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_raremetal
@@ -1931,6 +2111,7 @@ build_raremine_big:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_Mining_Base_rare_metals
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1942,6 +2123,7 @@ build_raremine_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_raremetal
@@ -1958,6 +2140,7 @@ build_siliconmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_siliconmine
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -1969,6 +2152,7 @@ build_siliconmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_silicon
@@ -1985,6 +2169,7 @@ build_siliconmine_big:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_siliconmine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -1996,6 +2181,7 @@ build_siliconmine_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_silicon
@@ -2012,6 +2198,7 @@ build_space_atmoscoop:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_orbital_gas_extractor
   timeToBuildInDays: 120
   constructionEquipmentCountIsRequired: true
@@ -2025,6 +2212,7 @@ build_space_atmoscoop:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
 
 # STEEL EXTRACTOR (GroundFacilityDescriptor)
@@ -2039,6 +2227,7 @@ build_steelmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_alloymine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2050,6 +2239,7 @@ build_steelmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_steel
@@ -2066,6 +2256,7 @@ build_uranmine:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_uranmine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2077,6 +2268,7 @@ build_uranmine:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_uran
@@ -2093,6 +2285,7 @@ build_uranmine_big:
   upkeepStacking: false
   upkeepStackingValue: 5
   blockStacking: false
+  canBuildBy: None
   iconRef: build_uranmine
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2104,6 +2297,7 @@ build_uranmine_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   resourcesToMine:
     - id_resource_uran
@@ -2120,6 +2314,7 @@ module_basemining:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_mining
   timeToBuildInDays: 30
   constructionEquipmentCountIsRequired: true
@@ -2132,6 +2327,7 @@ module_basemining:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 15
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2159,6 +2355,7 @@ module_construction:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_construction_equipment
   timeToBuildInDays: 30
   constructionEquipmentCountIsRequired: true
@@ -2171,6 +2368,7 @@ module_construction:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 5
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2192,6 +2390,7 @@ module_contractitem:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_contractitem
   timeToBuildInDays: 10
   constructionEquipmentCountIsRequired: true
@@ -2201,6 +2400,7 @@ module_contractitem:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 5
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: false
@@ -2222,10 +2422,11 @@ module_crew_compartment:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_crew_compartment_small
   timeToBuildInDays: 10
   constructionEquipmentCountIsRequired: true
-  facilityItemClass: null
+  facilityItemClass: SpaceModule
   buildCost: 0
   buildResources:
     id_resource_steel: 5
@@ -2234,6 +2435,7 @@ module_crew_compartment:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 5
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2255,10 +2457,11 @@ module_crew_large:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_crew_compartment_large
   timeToBuildInDays: 90
   constructionEquipmentCountIsRequired: true
-  facilityItemClass: null
+  facilityItemClass: SpaceModule
   buildCost: 0
   buildResources:
     id_resource_steel: 20
@@ -2267,6 +2470,7 @@ module_crew_large:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 60
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2288,10 +2492,11 @@ module_crew_medium:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_crew_compartment_medium
   timeToBuildInDays: 30
   constructionEquipmentCountIsRequired: true
-  facilityItemClass: null
+  facilityItemClass: SpaceModule
   buildCost: 0
   buildResources:
     id_resource_steel: 10
@@ -2300,6 +2505,7 @@ module_crew_medium:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 15
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2321,6 +2527,7 @@ module_fuel:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_fuel
   timeToBuildInDays: 60
   constructionEquipmentCountIsRequired: true
@@ -2333,6 +2540,7 @@ module_fuel:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 25
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2358,6 +2566,7 @@ module_ground_probe:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_ground_probe
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2369,6 +2578,7 @@ module_ground_probe:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 1
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2390,10 +2600,11 @@ module_habitat:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_modular_habitat
   timeToBuildInDays: 120
   constructionEquipmentCountIsRequired: true
-  facilityItemClass: null
+  facilityItemClass: SpaceModule
   buildCost: 0
   buildResources:
     id_resource_steel: 120
@@ -2403,6 +2614,7 @@ module_habitat:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 80
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2424,6 +2636,7 @@ module_hubel_telescope:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_space_telescope
   timeToBuildInDays: 30
   constructionEquipmentCountIsRequired: true
@@ -2437,6 +2650,7 @@ module_hubel_telescope:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 2
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: false
@@ -2459,6 +2673,7 @@ module_icemining:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_mining
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -2471,6 +2686,7 @@ module_icemining:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 5
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2495,6 +2711,7 @@ module_metalmining:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_mining
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -2507,6 +2724,7 @@ module_metalmining:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 5
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2530,6 +2748,7 @@ module_power:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_power
   timeToBuildInDays: 120
   constructionEquipmentCountIsRequired: true
@@ -2543,6 +2762,7 @@ module_power:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 15
   mass: 5
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2564,6 +2784,7 @@ module_raremining:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_mining
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -2576,6 +2797,7 @@ module_raremining:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 5
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2599,6 +2821,7 @@ module_space_construction_cargo:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_space_construction
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2611,6 +2834,7 @@ module_space_construction_cargo:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 50
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: false
@@ -2633,6 +2857,7 @@ module_space_probe:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: module_ground_probe
   timeToBuildInDays: 35
   constructionEquipmentCountIsRequired: true
@@ -2645,6 +2870,7 @@ module_space_probe:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 1
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2666,6 +2892,7 @@ BateryStorageTest:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2677,6 +2904,7 @@ BateryStorageTest:
   solarPanels: true
   windPower: false
   geothermal: false
+  energyStorage: 10
 
 # BUILD_ALLOYSMELTINGENERGYTEST (GroundFacilityDescriptor)
 build_alloysmeltingEnergyTest:
@@ -2690,6 +2918,7 @@ build_alloysmeltingEnergyTest:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2701,6 +2930,7 @@ build_alloysmeltingEnergyTest:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   refinerInput:
     id_resource_metal: 1.5
     id_resource_volatile: 0.5
@@ -2719,6 +2949,7 @@ build_asteroid_engine_facility:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: ObjectTypes
   iconRef: build_asteroid_engine_module
   timeToBuildInDays: 180
   constructionEquipmentCountIsRequired: true
@@ -2733,6 +2964,7 @@ build_asteroid_engine_facility:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # BUILD_EARTHMINEENERGYTEST (GroundFacilityDescriptor)
 build_earthmineEnergyTest:
@@ -2746,6 +2978,7 @@ build_earthmineEnergyTest:
   upkeepStacking: true
   upkeepStackingValue: 10
   blockStacking: false
+  canBuildBy: IDObjectInfo
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2758,6 +2991,7 @@ build_earthmineEnergyTest:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   refinerOutput:
     id_resource_metal: 0.1
     id_resource_raremetal: 0.1
@@ -2778,6 +3012,7 @@ build_launch_elevator_Test:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: false
@@ -2789,6 +3024,7 @@ build_launch_elevator_Test:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # BUILD_LAUNCH_MAGRAILS_TEST (GroundFacilityDescriptor)
 build_launch_magrails_Test:
@@ -2802,6 +3038,7 @@ build_launch_magrails_Test:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: false
@@ -2813,6 +3050,7 @@ build_launch_magrails_Test:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # BUILD_LAUNCH_MASSDRIVER_TEST (GroundFacilityDescriptor)
 build_launch_massdriver_test:
@@ -2826,6 +3064,7 @@ build_launch_massdriver_test:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: false
@@ -2837,6 +3076,7 @@ build_launch_massdriver_test:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # BUILD_TESTLABATORY 1 SUBBRANCH_AGRICULTURE (GroundFacilityDescriptor)
 build_testLabatory 1 SubBranch_Agriculture:
@@ -2850,6 +3090,8 @@ build_testLabatory 1 SubBranch_Agriculture:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 1
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2861,6 +3103,7 @@ build_testLabatory 1 SubBranch_Agriculture:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   labBonusToResearchInPerHour: 1
   labResearchSubTypeId: SubBranch_Agriculture
 
@@ -2876,6 +3119,8 @@ build_testLabatoryAll:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: countOnPlanet
+  countOnPlanet: 1
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2887,6 +3132,7 @@ build_testLabatoryAll:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   labBonusToResearchInPerHour: 1
   labResearchSubTypeId: ""
   labIdToBonus:
@@ -2904,6 +3150,7 @@ CoalPlantTest:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2918,6 +3165,7 @@ CoalPlantTest:
   energyInput:
     id_resource_volatile: 1
     id_resource_oxygen: 1
+  energyStorage: 10
 
 # HYDROELEKTYKATEST (GroundFacilityDescriptor)
 HydroelektykaTest:
@@ -2931,6 +3179,7 @@ HydroelektykaTest:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -2942,6 +3191,7 @@ HydroelektykaTest:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 5
 
 # MODULE_THERMOELECTRICTEST (SpaceModuleDescriptor)
 module_ThermoelectricTest:
@@ -2955,6 +3205,7 @@ module_ThermoelectricTest:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -2967,6 +3218,7 @@ module_ThermoelectricTest:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 5
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -2988,6 +3240,7 @@ module_ThermoelectricTest2:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -3000,6 +3253,7 @@ module_ThermoelectricTest2:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   mass: 5
   canBeLoadAsCargo: true
   buildOnOrbitSpaceModuleAllow: true
@@ -3021,6 +3275,7 @@ NuclearReactor:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3034,6 +3289,7 @@ NuclearReactor:
   geothermal: false
   energyInput:
     id_resource_uran: 1
+  energyStorage: 10
   resourceExplorationBonus: 1
 
 # NUCLEARTERMALREACTOR (GroundFacilityDescriptor)
@@ -3048,6 +3304,7 @@ NucleartermalReactor:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3060,6 +3317,7 @@ NucleartermalReactor:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
 
 # SOLARPANEL (GroundFacilityDescriptor)
 SolarPanel:
@@ -3073,6 +3331,7 @@ SolarPanel:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3084,6 +3343,7 @@ SolarPanel:
   solarPanels: true
   windPower: false
   geothermal: false
+  energyStorage: 5
 
 # WINDPOWERTEST (GroundFacilityDescriptor)
 WindPowerTest:
@@ -3097,6 +3357,7 @@ WindPowerTest:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: placeholder_icon
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3108,6 +3369,7 @@ WindPowerTest:
   solarPanels: false
   windPower: true
   geothermal: false
+  energyStorage: 5
 
 # BATTERIES (GroundFacilityDescriptor)
 build_power_battery:
@@ -3121,6 +3383,7 @@ build_power_battery:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_battery
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -3134,6 +3397,7 @@ build_power_battery:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 2000
   resourceExplorationBonus: 1
 
 # CARBON POWER PLANT (GroundFacilityDescriptor)
@@ -3148,6 +3412,7 @@ build_power_carbon:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_carbon
   timeToBuildInDays: 800
   constructionEquipmentCountIsRequired: true
@@ -3163,6 +3428,7 @@ build_power_carbon:
   energyInput:
     id_resource_volatile: 0.12
     id_resource_oxygen: 0.32
+  energyStorage: 350
   byproducts:
     - resource: id_resource_co2
       rate: 0.44
@@ -3180,6 +3446,7 @@ build_power_chemical:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_chemical
   timeToBuildInDays: 800
   constructionEquipmentCountIsRequired: true
@@ -3193,6 +3460,7 @@ build_power_chemical:
   solarPanels: false
   windPower: false
   geothermal: true
+  energyStorage: 400
   resourceExplorationBonus: 1
 
 # POWER PLANT (GroundFacilityDescriptor)
@@ -3207,6 +3475,7 @@ build_power_fuel_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_hydrogen
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3220,6 +3489,7 @@ build_power_fuel_big:
   geothermal: false
   energyInput:
     id_resource_fuel: 40
+  energyStorage: 1300
   resourceExplorationBonus: 1
 
 # FUSION REACTOR (GroundFacilityDescriptor)
@@ -3234,6 +3504,7 @@ build_power_fusion:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_fusion
   timeToBuildInDays: 1200
   constructionEquipmentCountIsRequired: true
@@ -3249,6 +3520,7 @@ build_power_fusion:
   geothermal: false
   energyInput:
     id_resource_hel3: 0.42
+  energyStorage: 5000
 
 # GEOTHERMAL POWER (GroundFacilityDescriptor)
 build_power_geothermal:
@@ -3262,6 +3534,7 @@ build_power_geothermal:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_geothermal
   timeToBuildInDays: 800
   constructionEquipmentCountIsRequired: true
@@ -3275,6 +3548,7 @@ build_power_geothermal:
   solarPanels: false
   windPower: false
   geothermal: true
+  energyStorage: 400
   resourceExplorationBonus: 1
 
 # GEOTHERMAL POWER (GroundFacilityDescriptor)
@@ -3289,6 +3563,7 @@ build_power_geothermal_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_geothermal
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3300,6 +3575,7 @@ build_power_geothermal_big:
   solarPanels: false
   windPower: false
   geothermal: true
+  energyStorage: 5000
   resourceExplorationBonus: 1
 
 # HYDROGEN POWER PLANT (GroundFacilityDescriptor)
@@ -3314,6 +3590,7 @@ build_power_hydrogen:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_hydrogen
   timeToBuildInDays: 800
   constructionEquipmentCountIsRequired: true
@@ -3323,17 +3600,18 @@ build_power_hydrogen:
     id_resource_steel: 500
     id_resource_alloy: 50
     id_resource_chips: 70
-  energyProduction: 300
+  energyProduction: 270
   solarPanels: false
   windPower: false
   geothermal: false
   energyInput:
-    id_resource_hydrogen: 1.2
-    id_resource_oxygen: 0.6
+    id_resource_hydrogen: 7.2
+    id_resource_oxygen: 3.6
+  energyStorage: 270
   byproducts:
     - resource: id_resource_water
-      rate: 1.6
-      state: Liquid
+      rate: 9.5
+      state: Solid
 
 # NUCLEAR REACTOR (GroundFacilityDescriptor)
 build_power_nuke:
@@ -3347,6 +3625,7 @@ build_power_nuke:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_nuke
   timeToBuildInDays: 1000
   constructionEquipmentCountIsRequired: true
@@ -3362,6 +3641,7 @@ build_power_nuke:
   geothermal: false
   energyInput:
     id_resource_uran: 0.2
+  energyStorage: 500
 
 # NUCLEAR REACTOR (GroundFacilityDescriptor)
 build_power_nuke_big:
@@ -3375,6 +3655,7 @@ build_power_nuke_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_nuke
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3390,6 +3671,7 @@ build_power_nuke_big:
   geothermal: false
   energyInput:
     id_resource_uran: 1
+  energyStorage: 20000
   resourceExplorationBonus: 1
 
 # REMOTE POWER RECEIVER (GroundFacilityDescriptor)
@@ -3404,6 +3686,7 @@ build_power_receiver:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_receiver
   timeToBuildInDays: 800
   constructionEquipmentCountIsRequired: true
@@ -3417,6 +3700,7 @@ build_power_receiver:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 2000
   resourceExplorationBonus: 1
 
 # ORBITAL POWER RECEIVER (GroundFacilityDescriptor)
@@ -3431,6 +3715,7 @@ build_power_receiver_orbit:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_receiver_orbit
   timeToBuildInDays: 800
   constructionEquipmentCountIsRequired: true
@@ -3444,6 +3729,7 @@ build_power_receiver_orbit:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 2000
   resourceExplorationBonus: 1
 
 # SOLAR ARRAY (GroundFacilityDescriptor)
@@ -3458,6 +3744,7 @@ build_power_solar:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_solar
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -3470,6 +3757,7 @@ build_power_solar:
   solarPanels: true
   windPower: false
   geothermal: false
+  energyStorage: 5
   resourceExplorationBonus: 1
 
 # SOLAR ARRAY (GroundFacilityDescriptor)
@@ -3484,6 +3772,7 @@ build_power_solar_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_solar
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3496,6 +3785,7 @@ build_power_solar_big:
   solarPanels: true
   windPower: false
   geothermal: false
+  energyStorage: 2000
   resourceExplorationBonus: 1
 
 # REMOTE POWER EMITTER (GroundFacilityDescriptor)
@@ -3510,6 +3800,7 @@ build_power_transfer:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_transfer
   timeToBuildInDays: 1800
   constructionEquipmentCountIsRequired: true
@@ -3524,6 +3815,7 @@ build_power_transfer:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 1000
   resourceExplorationBonus: 1
 
 # ORBITAL POWER STATION (GroundFacilityDescriptor)
@@ -3538,6 +3830,7 @@ build_power_transfer_orbit:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_transfer_orbit
   timeToBuildInDays: 200
   constructionEquipmentCountIsRequired: true
@@ -3550,6 +3843,7 @@ build_power_transfer_orbit:
   solarPanels: true
   windPower: false
   geothermal: false
+  energyStorage: 20
   resourceExplorationBonus: 1
 
 # WIND POWER (GroundFacilityDescriptor)
@@ -3564,6 +3858,7 @@ build_power_wind:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_wind
   timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
@@ -3575,6 +3870,7 @@ build_power_wind:
   solarPanels: false
   windPower: true
   geothermal: false
+  energyStorage: 5
   resourceExplorationBonus: 1
 
 # WIND POWER (GroundFacilityDescriptor)
@@ -3589,6 +3885,7 @@ build_power_wind_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_power_wind
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3600,6 +3897,7 @@ build_power_wind_big:
   solarPanels: false
   windPower: true
   geothermal: false
+  energyStorage: 1500
   resourceExplorationBonus: 1
 
 # ALLOY SMELTING (GroundFacilityDescriptor)
@@ -3614,6 +3912,7 @@ build_alloysmelting:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_factory_alloy
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -3625,6 +3924,7 @@ build_alloysmelting:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_metal: 0.15
@@ -3643,6 +3943,7 @@ build_alloysmelting_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_factory_alloy
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3654,6 +3955,7 @@ build_alloysmelting_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_metal: 150
@@ -3672,6 +3974,7 @@ build_co2_splitting:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_co2_production
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -3683,6 +3986,7 @@ build_co2_splitting:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_co2: 0.09
@@ -3702,6 +4006,7 @@ build_consumergoods_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_consumergoods
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3715,6 +4020,7 @@ build_consumergoods_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_steel: 100
@@ -3725,7 +4031,7 @@ build_consumergoods_big:
   refinerOutput:
     id_resource_consumergoods: 300
 
-# OPEN AIR FARM (GroundFacilityDescriptor)
+# AGRICULTURE COMPLEX (GroundFacilityDescriptor)
 build_earthfarm:
   facilityType: Production
   possiblePlacement: Surface
@@ -3737,6 +4043,7 @@ build_earthfarm:
   upkeepStacking: true
   upkeepStackingValue: 10
   blockStacking: false
+  canBuildBy: None
   iconRef: build_open_air_farm
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3751,6 +4058,7 @@ build_earthfarm:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   refinerInput:
     id_resource_water: 9
     id_resource_volatile: 1
@@ -3770,6 +4078,7 @@ build_earthhe3:
   upkeepStacking: true
   upkeepStackingValue: 10
   blockStacking: false
+  canBuildBy: IDObjectInfo
   iconRef: build_helium_3_factory
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3783,6 +4092,7 @@ build_earthhe3:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   refinerInput:
     id_resource_uran: 0.01
   refinerOutput:
@@ -3800,6 +4110,7 @@ build_earthnuke:
   upkeepStacking: true
   upkeepStackingValue: 10
   blockStacking: false
+  canBuildBy: IDObjectInfo
   iconRef: build_fissile_extraction
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3812,6 +4123,7 @@ build_earthnuke:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   refinerOutput:
     id_resource_uran: 0.01
 
@@ -3827,6 +4139,7 @@ build_electrolysis:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_electrolysis_plant
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -3838,6 +4151,7 @@ build_electrolysis:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_water: 0.09
@@ -3857,6 +4171,7 @@ build_electrolysis_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_electrolysis_plant
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3868,6 +4183,7 @@ build_electrolysis_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_water: 90
@@ -3887,6 +4203,7 @@ build_electronicsfactory:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_factory_electronics
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -3899,6 +4216,7 @@ build_electronicsfactory:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_silicon: 0.2
@@ -3919,6 +4237,7 @@ build_electronicsfactory_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_factory_electronics
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3931,6 +4250,7 @@ build_electronicsfactory_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_silicon: 200
@@ -3951,6 +4271,7 @@ build_exoticalloy:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_exotic_alloy_production
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -3964,6 +4285,7 @@ build_exoticalloy:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_raremetal: 0.09
@@ -3983,6 +4305,7 @@ build_exoticalloy_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_exotic_alloy_production
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -3996,6 +4319,7 @@ build_exoticalloy_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_raremetal: 90
@@ -4015,6 +4339,7 @@ build_farm:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_hydroponic_farms
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -4026,6 +4351,7 @@ build_farm:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_water: 0.1
@@ -4045,6 +4371,7 @@ build_fuel:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_space_fuel_ground
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -4057,6 +4384,7 @@ build_fuel:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_water: 0.09
@@ -4075,6 +4403,7 @@ build_fuel_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_space_fuel_ground
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -4087,6 +4416,7 @@ build_fuel_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_hydrogen: 90
@@ -4106,6 +4436,7 @@ build_glass:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_glass_kiln
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -4117,6 +4448,7 @@ build_glass:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_silicon: 0.1
@@ -4135,6 +4467,7 @@ build_glass_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_glass_kiln
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -4146,6 +4479,7 @@ build_glass_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_silicon: 100
@@ -4164,6 +4498,7 @@ build_polymerproduction:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_factory_polymer
   timeToBuildInDays: 150
   constructionEquipmentCountIsRequired: true
@@ -4175,6 +4510,7 @@ build_polymerproduction:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_volatile: 0.05
@@ -4193,6 +4529,7 @@ build_polymerproduction_big:
   upkeepStacking: false
   upkeepStackingValue: 0
   blockStacking: false
+  canBuildBy: None
   iconRef: build_factory_polymer
   timeToBuildInDays: 100
   constructionEquipmentCountIsRequired: true
@@ -4204,9 +4541,123 @@ build_polymerproduction_big:
   solarPanels: false
   windPower: false
   geothermal: false
+  energyStorage: 0
   resourceExplorationBonus: 1
   refinerInput:
     id_resource_volatile: 50
   refinerOutput:
     id_resource_plastic: 40
+
+# COMMUNICATIONS SATELLITE (SpaceModuleDescriptor)
+id_space_module_comsat_revenue:
+  facilityType: Other
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  blockStacking: false
+  canBuildBy: None
+  iconRef: comsat_revenue_icon
+  timeToBuildInDays: 30
+  constructionEquipmentCountIsRequired: true
+  facilityItemClass: null
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 5
+    id_resource_chips: 5
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyStorage: 0
+  mass: 10
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: Utility
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
+
+# AI DATACENTER SAT (SpaceModuleDescriptor)
+id_space_module_ai_datacenter:
+  facilityType: Other
+  possiblePlacement: Surface, Orbit
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  blockStacking: false
+  canBuildBy: None
+  iconRef: ai_datacenter_sat_icon
+  timeToBuildInDays: 180
+  constructionEquipmentCountIsRequired: true
+  facilityItemClass: null
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 20
+    id_resource_chips: 70
+    id_resource_silicon: 25
+    id_resource_alloy: 20
+    id_resource_raremetal: 10
+    id_resource_plastic: 5
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyStorage: 0
+  mass: 150
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: true
+  timeToDestroyInDay: null
+  spaceModuleType: Utility
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
+
+# RESOURCE PROSPECTOR (SpaceModuleDescriptor)
+id_space_module_resource_prospector:
+  facilityType: Other
+  possiblePlacement: Surface
+  maintenanceCostPerDay: 0
+  energyConsumption: 0
+  needWorkersToWork: 0
+  specialAbility: None
+  specialAbilityParameter: 0
+  upkeepStacking: false
+  upkeepStackingValue: 0
+  blockStacking: false
+  canBuildBy: None
+  iconRef: resource_prospector_icon
+  timeToBuildInDays: 90
+  constructionEquipmentCountIsRequired: true
+  facilityItemClass: null
+  buildCost: 0
+  buildResources:
+    id_resource_metal: 50
+    id_resource_silicon: 20
+    id_resource_chips: 15
+    id_resource_alloy: 10
+    id_resource_raremetal: 2
+    id_resource_plastic: 3
+  energyProduction: 0
+  solarPanels: false
+  windPower: false
+  geothermal: false
+  energyStorage: 0
+  mass: 100
+  canBeLoadAsCargo: true
+  buildOnOrbitSpaceModuleAllow: false
+  timeToDestroyInDay: null
+  spaceModuleType: Utility
+  typeSubObjectInfo: None
+  isLockedCreate: false
+  isSpaceConstructionOnOrbit: false
 

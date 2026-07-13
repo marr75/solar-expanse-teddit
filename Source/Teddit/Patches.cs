@@ -293,7 +293,7 @@ namespace Teddit
 
             try
             {
-                Plugin.Log.LogInfo($"[BodyPatcher] Redirecting '{__instance.GetSpacecraftName()}' from hidden orbit '{current.ObjectName}' to '{parent.ObjectName}'.");
+                Plugin.Log.LogDebug($"[BodyPatcher] Redirecting '{__instance.GetSpacecraftName()}' from hidden orbit '{current.ObjectName}' to '{parent.ObjectName}'.");
                 __instance.SetCurrentlyOnThisObject(parent);
             }
             catch (Exception ex)
@@ -914,7 +914,7 @@ namespace Teddit
                 if (objectInfo != null && objectInfo.parentObjectInfoGropup == __instance)
                     objectInfo.parentObjectInfoGropup = null;
 
-                Plugin.Log.LogInfo($"[BodyPatcher] Removed '{objectInfo?.ObjectName ?? "NULL"}' from asteroid object group for moon-like presentation.");
+                Plugin.Log.LogDebug($"[BodyPatcher] Removed '{objectInfo?.ObjectName ?? "NULL"}' from asteroid object group for moon-like presentation.");
             }
         }
     }
@@ -998,7 +998,7 @@ namespace Teddit
 
             if (spacecraft.spacecraftType != spacecraftType)
             {
-                Plugin.Log.LogInfo($"[VehicleFix] Rebinding spawned spacecraft from '{spacecraft.spacecraftType?.ID ?? "null"}' to '{spacecraftType.ID}'.");
+                Plugin.Log.LogDebug($"[VehicleFix] Rebinding spawned spacecraft from '{spacecraft.spacecraftType?.ID ?? "null"}' to '{spacecraftType.ID}'.");
                 spacecraft.spacecraftType = spacecraftType;
             }
 
@@ -1267,7 +1267,7 @@ namespace Teddit
             {
                 var obj = __instance.Objective;
                 var cd = __instance.ContractData?.contractDefinition;
-                Plugin.Log.LogInfo($"[ContractDebug] MarkAsComplete called — contract={cd?.ID}, objective={obj?.ID}, type={obj?.objectiveType}, howMuch={obj?.howMuch}, howMuchCurrent={__instance.howMuchCurrent}, company={__instance.ContractData?.company?.ID}");
+                Plugin.Log.LogDebug($"[ContractDebug] MarkAsComplete called — contract={cd?.ID}, objective={obj?.ID}, type={obj?.objectiveType}, howMuch={obj?.howMuch}, howMuchCurrent={__instance.howMuchCurrent}, company={__instance.ContractData?.company?.ID}");
             }
             catch (Exception ex)
             {
@@ -1285,17 +1285,17 @@ namespace Teddit
             {
                 var cm = MonoBehaviourSingleton<ContractManager>.Instance;
                 var company = cod.ContractData?.company;
-                Plugin.Log.LogInfo($"[ContractDebug] ObjectiveOnOnCompleteStatic — source contract={cod.ContractData?.contractDefinition?.ID}, company={company?.ID}");
+                Plugin.Log.LogDebug($"[ContractDebug] ObjectiveOnOnCompleteStatic — source contract={cod.ContractData?.contractDefinition?.ID}, company={company?.ID}");
                 foreach (var contract in cm.allContracts)
                 {
                     var state = contract.ContractStateForCompany(company);
                     if (state != ContractManager.EContractState.Active) continue;
                     var ccd = contract.PerCompanyContractData.ContainsKey(company) ? contract.PerCompanyContractData[company] : null;
-                    if (ccd == null) { Plugin.Log.LogInfo($"[ContractDebug]   {contract.ContractDefinition.ID}: Active but no per-company data"); continue; }
+                    if (ccd == null) { Plugin.Log.LogDebug($"[ContractDebug]   {contract.ContractDefinition.ID}: Active but no per-company data"); continue; }
                     bool allDone = ccd.ObjectivesDataList.TrueForAll(d => d.IsComplete);
-                    Plugin.Log.LogInfo($"[ContractDebug]   {contract.ContractDefinition.ID}: Active, objectives={ccd.ObjectivesDataList.Count}, allComplete={allDone}");
+                    Plugin.Log.LogDebug($"[ContractDebug]   {contract.ContractDefinition.ID}: Active, objectives={ccd.ObjectivesDataList.Count}, allComplete={allDone}");
                     foreach (var od in ccd.ObjectivesDataList)
-                        Plugin.Log.LogInfo($"[ContractDebug]     obj={od.Objective?.ID} type={od.Objective?.objectiveType} isComplete={od.IsComplete}");
+                        Plugin.Log.LogDebug($"[ContractDebug]     obj={od.Objective?.ID} type={od.Objective?.objectiveType} isComplete={od.IsComplete}");
                 }
             }
             catch (Exception ex)

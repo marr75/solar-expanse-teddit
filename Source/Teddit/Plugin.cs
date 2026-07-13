@@ -13,7 +13,7 @@ namespace Teddit
         internal static string Version;
 
         // Set to false once you have dump.json.
-        internal const bool DumpOnLoad = true;
+        internal const bool DumpOnLoad = false;
 
         void Awake()
         {

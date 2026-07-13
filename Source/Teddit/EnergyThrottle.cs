@@ -30,7 +30,7 @@ namespace Teddit
         internal static void RegisterThrottleable(string descriptorId)
         {
             _throttleableIds.Add(descriptorId);
-            Plugin.Log.LogInfo($"[EnergyThrottle] Registered throttleable: {descriptorId}"); // TEMP-DEBUG
+            Plugin.Log.LogDebug($"[EnergyThrottle] Registered throttleable: {descriptorId}"); // TEMP-DEBUG
         }
 
         internal static void UnregisterThrottleable(string descriptorId)
@@ -48,20 +48,20 @@ namespace Teddit
         {
             if (_computingPotential)
             {
-                Plugin.Log.LogInfo($"[EnergyThrottle:GetFactor] {producer.facilityDescriptor?.ID} — guard active, returning 1.0"); // TEMP-DEBUG
+                Plugin.Log.LogDebug($"[EnergyThrottle:GetFactor] {producer.facilityDescriptor?.ID} — guard active, returning 1.0"); // TEMP-DEBUG
                 return 1.0;
             }
 
             if (!IsThrottleable(producer))
             {
-                Plugin.Log.LogInfo($"[EnergyThrottle:GetFactor] {producer.facilityDescriptor?.ID} — NOT throttleable (registered: {string.Join(",", _throttleableIds)})"); // TEMP-DEBUG
+                Plugin.Log.LogDebug($"[EnergyThrottle:GetFactor] {producer.facilityDescriptor?.ID} — NOT throttleable (registered: {string.Join(",", _throttleableIds)})"); // TEMP-DEBUG
                 return 1.0;
             }
 
             var oid = producer.ObjectInfoData;
             if (oid == null)
             {
-                Plugin.Log.LogInfo($"[EnergyThrottle:GetFactor] {producer.facilityDescriptor?.ID} — oid null"); // TEMP-DEBUG
+                Plugin.Log.LogDebug($"[EnergyThrottle:GetFactor] {producer.facilityDescriptor?.ID} — oid null"); // TEMP-DEBUG
                 return 1.0;
             }
 
@@ -77,11 +77,11 @@ namespace Teddit
             double factor;
             if (tc.Factors != null && tc.Factors.TryGetValue(producer, out factor))
             {
-                Plugin.Log.LogInfo($"[EnergyThrottle:GetFactor] {producer.facilityDescriptor?.ID} — factor={factor:F4}"); // TEMP-DEBUG
+                Plugin.Log.LogDebug($"[EnergyThrottle:GetFactor] {producer.facilityDescriptor?.ID} — factor={factor:F4}"); // TEMP-DEBUG
                 return factor;
             }
 
-            Plugin.Log.LogInfo($"[EnergyThrottle:GetFactor] {producer.facilityDescriptor?.ID} — not in cache factors, returning 1.0"); // TEMP-DEBUG
+            Plugin.Log.LogDebug($"[EnergyThrottle:GetFactor] {producer.facilityDescriptor?.ID} — not in cache factors, returning 1.0"); // TEMP-DEBUG
             return 1.0;
         }
 
@@ -124,7 +124,7 @@ namespace Teddit
                 _computingPotential = false;
             }
 
-            Plugin.Log.LogInfo($"[EnergyThrottle:Compute] body={oid.ObjectInfo?.ObjectName} demand={demand:F2} battery={batterySpace:F2} effectiveDemand={effectiveDemand:F2} nonThrottle={nonThrottleableTotal:F2} throttleableCount={throttleable.Count}"); // TEMP-DEBUG
+            Plugin.Log.LogDebug($"[EnergyThrottle:Compute] body={oid.ObjectInfo?.ObjectName} demand={demand:F2} battery={batterySpace:F2} effectiveDemand={effectiveDemand:F2} nonThrottle={nonThrottleableTotal:F2} throttleableCount={throttleable.Count}"); // TEMP-DEBUG
 
             if (throttleable.Count == 0)
                 return tc;
@@ -207,14 +207,14 @@ namespace Teddit
         static void Postfix(FacilityBaseDescriptor __instance, Facility facility,
                             ref List<(string, string)> __result)
         {
-            Plugin.Log.LogInfo($"[EnergyThrottle:UI] GetFacilityStats postfix — id={__instance?.ID} facility={facility?.facilityDescriptor?.ID} energyCons={__instance?.EnergyConsumption} isThrottleable={facility != null && EnergyThrottle.IsThrottleable(facility)}"); // TEMP-DEBUG
+            Plugin.Log.LogDebug($"[EnergyThrottle:UI] GetFacilityStats postfix — id={__instance?.ID} facility={facility?.facilityDescriptor?.ID} energyCons={__instance?.EnergyConsumption} isThrottleable={facility != null && EnergyThrottle.IsThrottleable(facility)}"); // TEMP-DEBUG
             if (facility == null || __instance.EnergyConsumption > 0.0)
                 return;
             if (!EnergyThrottle.IsThrottleable(facility))
                 return;
 
             double eff = facility.GetResourceEfficiency() * 100.0;
-            Plugin.Log.LogInfo($"[EnergyThrottle:UI] Adding PowerEfficiency line: {eff:F2}%"); // TEMP-DEBUG
+            Plugin.Log.LogDebug($"[EnergyThrottle:UI] Adding PowerEfficiency line: {eff:F2}%"); // TEMP-DEBUG
             __result.Add(("Game.UI.Windows.FacilityInfoWindow.PowerEfficiency",
                 eff.ToPostfixString() + "%"));
         }
@@ -237,7 +237,7 @@ namespace Teddit
             try
             {
                 double factor = EnergyThrottle.GetThrottleFactor(__instance);
-                Plugin.Log.LogInfo($"[EnergyThrottle:FacilityEff] id={__instance.facilityDescriptor?.ID} stockEff={__result:F4} throttle={factor:F4}"); // TEMP-DEBUG
+                Plugin.Log.LogDebug($"[EnergyThrottle:FacilityEff] id={__instance.facilityDescriptor?.ID} stockEff={__result:F4} throttle={factor:F4}"); // TEMP-DEBUG
                 if (factor < 1.0)
                     __result *= factor;
             }
