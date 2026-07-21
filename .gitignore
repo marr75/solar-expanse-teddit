@@ -1,0 +1,15 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+
+# Deployed plugin binaries
+Teddit/*.dll
+Teddit/*.pdb
+
+# Generated data dumps
+Teddit/dump/
+
+# IDE / user
+.vs/
+.idea/
+*.user
